@@ -1,0 +1,22 @@
+.ulPagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.liPagination {
+  list-style-type: none;
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 3px;
+}
+.aPagination {
+  text-decoration: none;
+  color: black;
+}
+
+.liPagination:hover {
+  cursor: pointer;
+}
+.active {
+  background: white;
+}

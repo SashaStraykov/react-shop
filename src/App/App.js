@@ -5,7 +5,7 @@ import PublickLayout from "../Layouts/PublickLayout/PublickLayout";
 import { Context } from "./Context/Context";
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState("SAS");
 
   return (
     <Context.Provider value={{ user, setUser }}>

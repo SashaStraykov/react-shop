@@ -24,7 +24,10 @@ function ItemPage({ itemid }) {
               <div className="gridSlider">
                 {el.img.length === 0 ? null : <Slider img={el.img} />}
               </div>
-              <div className="itemDescription">{el.description}</div>
+              <div className="itemDescription">
+                {el.description}
+                nfieufew n ifdewbnidwendiuwe ndiuewnbdeiwbdewbdhuew budbewbduewybdwudewnsdjxjksxkjnwejxnwjknjkwnnifdewbnidwendiuwendiuewnbdeiwbdewbdhuewbudbewbduewybdwudewnsdjxjksxkjnwejxnwjknjkwnnifdewbnidwendiuwendiuewnbdeiwbdewbdhuewbudbewbduewybdwudewnsdjxjksxkjnwejxnwjknjkwnjnwk
+              </div>
               <span className="itemPrice">{el.price}$</span>
               {user ? (
                 <button className="itemButton">BUY</button>
