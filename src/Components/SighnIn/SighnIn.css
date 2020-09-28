@@ -1,0 +1,39 @@
+.LoginPasswordLoghIn {
+  font-size: 25px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+.checkBoxSighnIn {
+  width: 20px;
+  height: 20px;
+}
+.checkBoxSighnIn:focus {
+  outline: none;
+}
+.inputSighnIn:focus {
+  border: none;
+  border-bottom: 3px solid white;
+  outline: none;
+}
+.sighnInBox {
+  margin-top: 30px;
+}
+.errorSighnIn {
+  margin-top: 10px;
+  color: red;
+  font-size: 20px;
+}
+.buttonSighnIn {
+  padding: 20px;
+  width: 40%;
+  margin: 25px auto;
+  font-size: 24px;
+  background: white;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.buttonSighnIn:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 26px 10px black;
+}

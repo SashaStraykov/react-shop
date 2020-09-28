@@ -1,0 +1,23 @@
+.categoryComponentBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  border: 1px solid black;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  transition: 0.5s;
+}
+
+.categoryComponentImg {
+  border: 1px solid black;
+}
+
+.categoryComponentBox:hover img {
+  transform: translate(1.2);
+}
+
+.categoryComponentTitle {
+  margin-top: 20px;
+}

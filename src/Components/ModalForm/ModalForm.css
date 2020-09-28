@@ -1,0 +1,28 @@
+.modalDiv {
+  width: 50%;
+  border: 1px solid black;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+}
+.modalButtonBox {
+  display: flex;
+  justify-content: center;
+  margin: 10px auto;
+}
+.modalSighnButton {
+  border: 1px solid black;
+  padding: 15px 35px;
+  margin: 10px;
+  font-size: 23px;
+  font-weight: bold;
+  box-shadow: 0 0 10px black;
+}
+.modalSighnButton:hover {
+  border: 3px solid black;
+  background: rgba(255, 255, 255, 0.5);
+}
+.active {
+  border: 3px solid black;
+  box-shadow: none;
+}
