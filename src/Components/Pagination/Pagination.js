@@ -1,5 +1,6 @@
 import React from "react";
-import "./Pagination.css";
+
+import { UlPagination, LiPagination, SpanPagination } from "./Styled";
 
 const Pagination = ({
   postsPerPage,
@@ -14,24 +15,17 @@ const Pagination = ({
     pageNumbers.push(i);
   }
   return (
-    <ul className="ulPagination">
+    <UlPagination>
       {pageNumbers.map((number) => (
-        <li
-          className={
-            number === currentPage ? "liPagination active" : "liPagination"
-          }
+        <LiPagination
+          onClick={() => paginate(number)}
+          active={number === currentPage ? true : false}
           key={number}
         >
-          <span
-            className=".aPagination"
-            onClick={() => paginate(number)}
-            href={category}
-          >
-            {number}
-          </span>
-        </li>
+          <SpanPagination>{number}</SpanPagination>
+        </LiPagination>
       ))}
-    </ul>
+    </UlPagination>
   );
 };
 

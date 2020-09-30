@@ -1,8 +1,8 @@
 import React from "react";
-import "./ButtonCustom.css";
+import { Button } from "./Styled";
 
 function ButtonCustom({ children }) {
-  return <div className="btn">{children}</div>;
+  return <Button>{children}</Button>;
 }
 
 export default ButtonCustom;

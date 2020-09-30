@@ -1,17 +1,15 @@
 import React from "react";
-import "./ProducsCategoryItem.css";
 import logo from "../../images/dataArtLogo.png";
+import { ItemBox, Img, H2, Boxdate, BoxPrice } from "./Styled";
 
 function ProducsCategoryItem({ title, description, price, date }) {
   return (
-    <div className="box">
-      <img src={logo} alt={logo} className="boxImg" />
-      <h2 className="boxTitle">
-        {title.slice(0, 1).toUpperCase() + title.slice(1).toLowerCase()}
-      </h2>
-      <div className="boxDate">{date}</div>
-      <div className="boxPrice">{price + "$"}</div>
-    </div>
+    <ItemBox>
+      <Img src={logo} alt={logo} />
+      <H2>{title.slice(0, 1).toUpperCase() + title.slice(1).toLowerCase()}</H2>
+      <Boxdate>{date}</Boxdate>
+      <BoxPrice>{price + "$"}</BoxPrice>
+    </ItemBox>
   );
 }
 

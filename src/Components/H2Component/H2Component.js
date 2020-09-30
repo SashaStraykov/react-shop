@@ -1,8 +1,8 @@
 import React from "react";
-import "./H2Component.css";
+import { H2 } from "./Styled.js";
 
 function H2Component({ children }) {
-  return <h2 className="h2Title">{children}</h2>;
+  return <H2>{children}</H2>;
 }
 
 export default H2Component;

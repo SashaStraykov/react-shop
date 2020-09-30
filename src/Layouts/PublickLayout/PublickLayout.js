@@ -1,17 +1,23 @@
 import React from "react";
 import Header from "../../Header/Header";
-import MainPage from "../../Pages/MainPage/MainPage";
+import MainPage from "../../Pages/MainPage";
 import CheckoutPage from "../../Pages/CheckoutPage/CheckoutPage";
 import PersonPage from "../../Pages/PersonPage/PersonPage";
-import ProductsCategoryPage from "../../Pages/ProductsCategoryPage/ProductsCategoryPage";
-import ProductsCategoryItemsPage from "../../Pages/ProductsCategoryItemsPage/ProductsCategoryItemsPage";
-import ItemPage from "../../Pages/ItemPage/ItemPage";
+
 import AuthorizationPage from "../../Pages/AuthorizationPage/AuthorizationPage";
 import { Switch, Route } from "react-router-dom";
 
+import { ItemPageContextProvider } from "../../Pages/ItemPage/Context/Index";
+import LolPage from "../../Pages/LolPage";
+import ProductsLayout from "../ProductsLayout/ProductsLayout";
+
 function PublickLayout() {
+  const routes = {
+    MainPage: "/",
+    PerspnPage: "/person-page",
+  };
   return (
-    <div>
+    <>
       <Header />
       <Switch>
         <Route path="/" exact>
@@ -23,28 +29,15 @@ function PublickLayout() {
         <Route path="/Checkout-Page">
           <CheckoutPage />
         </Route>
-        <Route path="/Products-Category-Page" exact>
-          <ProductsCategoryPage />
-        </Route>
-        <Route
-          path="/Products-Category-Page/:category/:itemid"
-          render={({ match }) => {
-            const { itemid } = match.params;
-            return <ItemPage itemid={itemid} />;
-          }}
-        ></Route>
-        <Route
-          path="/Products-Category-Page/:category"
-          render={({ match }) => {
-            const { category } = match.params;
-            return <ProductsCategoryItemsPage category={category} />;
-          }}
-        ></Route>
+        <ProductsLayout />
         <Route path="/Authorization-Page">
           <AuthorizationPage />
         </Route>
+        <Route path="/lol">
+          <LolPage />
+        </Route>
       </Switch>
-    </div>
+    </>
   );
 }
 

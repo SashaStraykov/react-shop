@@ -3,34 +3,43 @@ import { Link } from "react-router-dom";
 import dataArtLogo from "../images/dataArtLogo.png";
 import PersonIcon from "@material-ui/icons/Person";
 import WorkIcon from "@material-ui/icons/Work";
-import "./Header.css";
 import { Context } from "../App/Context/Context";
+import { Nav, Img, Container, ContainerRight } from "./Styled.js";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+  icon: {
+    color: "black",
+    fontSize: "3em",
+    "&:hover": {
+      color: "rgb(245,245,245)",
+    },
+  },
+});
 
 function Header() {
   const { user } = useContext(Context);
+  const classes = useStyles();
   return (
-    <nav className="nav">
-      <div className="navLeft">
-        <Link className="navLink" to="/">
-          <img className="navLogo" src={dataArtLogo} alt="dataArtLogo" />
+    // <nav className="nav">
+    <Nav>
+      <Container>
+        <Link to="/">
+          <Img src={dataArtLogo} />
         </Link>
-      </div>
-      <div className="navRight">
-        <Link
-          className="navLink"
-          to={user ? "/Person-Page" : "/Authorization-Page"}
-        >
-          <div className="navLinkA">
-            <PersonIcon ccolor="inherit" fontSize="large" />
-          </div>
-        </Link>
-        <Link className="navLink" to="/Checkout-Page">
-          <div className="navLinkA">
-            <WorkIcon color="inherit" fontSize="large" />
-          </div>
-        </Link>
-      </div>
-    </nav>
+
+        <ContainerRight>
+          <Link to={user ? "/Person-Page" : "/Authorization-Page"}>
+            <PersonIcon className={classes.icon} />
+          </Link>
+          <Link to="/Checkout-Page">
+            <WorkIcon className={classes.icon} />
+          </Link>
+        </ContainerRight>
+      </Container>
+    </Nav>
+
+    // </nav>
   );
 }
 

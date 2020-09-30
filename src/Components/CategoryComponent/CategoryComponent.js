@@ -1,12 +1,13 @@
 import React from "react";
-import "./CategoryComponent.css";
+import { Box, Img, H2 } from "./Styled";
+import l1 from "../../images/1.jpeg";
 
 function CategoryComponent({ title }) {
   return (
-    <div className="categoryComponentBox">
-      <img className="categoryComponentImg" alt="img" />
-      <h2 className="categoryComponentTitle">{title.toUpperCase()}</h2>
-    </div>
+    <Box>
+      <Img src={l1} alt={l1} />
+      <H2 className="categoryComponentTitle">{title.toUpperCase()}</H2>
+    </Box>
   );
 }
 
