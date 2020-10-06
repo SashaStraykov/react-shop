@@ -2,7 +2,7 @@ import React from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import "./SearchPannel.css";
 
-function SearchPannel() {
+const SearchPannel = () => {
   return (
     <form>
       <input className="boxInput" />
@@ -11,6 +11,6 @@ function SearchPannel() {
       </button>
     </form>
   );
-}
+};
 
 export default SearchPannel;

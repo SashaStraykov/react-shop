@@ -1,15 +1,24 @@
 import React, { useContext } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 import ProductsCategoryItem from "../../../Components/ProducsCategoryItem/ProducsCategoryItem";
-import SearchPannel from "../../../Components/SearchPannel/SearchPannel";
+// import SearchPannel from "../../../Components/SearchPannel/SearchPannel";
 import Pagination from "../../../Components/Pagination/Pagination";
-import { BackGroundGrey, Container, H2, ContainerItem } from "./Styled";
+import {
+  BackGroundGrey,
+  Container,
+  H2,
+  ContainerItem,
+  SearchPannel,
+} from "./Styled";
 import { ProductsCategoryItemsPageContext } from "../Context/Index";
+import Spinner from ".././../../Components/Spinner/Spinner";
 
 function ProductsCategoryItemsPageContent() {
   const { url } = useRouteMatch();
-  const { contextData } = useContext(ProductsCategoryItemsPageContext);
-  console.log(contextData);
+  const { ProductsCategoryItemsPageContextData } = useContext(
+    ProductsCategoryItemsPageContext
+  );
+
   const {
     currentPage,
     postsPerPage,
@@ -17,17 +26,27 @@ function ProductsCategoryItemsPageContent() {
     posts,
     paginate,
     category,
-  } = contextData;
-  console.log(category);
+    loading,
+    search,
+    setSearch,
+    finalItems,
+  } = ProductsCategoryItemsPageContextData;
+
+  if (loading) {
+    return <Spinner />;
+  }
   return (
     <div>
       <BackGroundGrey>
         <Container>
           <H2>Welcome to the {category.toUpperCase()} category</H2>
-          <SearchPannel />
+          <SearchPannel
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
         </Container>
         <Container>
-          {currentPost.map((item) => (
+          {finalItems.map((item) => (
             <Link key={item.id} to={`${url}/${item.id}`}>
               <ContainerItem>
                 <ProductsCategoryItem {...item} />

@@ -8,7 +8,7 @@ function ProducsCategoryItem({ title, description, price, date }) {
       <Img src={logo} alt={logo} />
       <H2>{title.slice(0, 1).toUpperCase() + title.slice(1).toLowerCase()}</H2>
       <Boxdate>{date}</Boxdate>
-      <BoxPrice>{price + "$"}</BoxPrice>
+      <BoxPrice>{price + "typs"}</BoxPrice>
     </ItemBox>
   );
 }

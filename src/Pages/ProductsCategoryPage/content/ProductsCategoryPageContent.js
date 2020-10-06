@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import CategoryComponent from "../../../Components/CategoryComponent/CategoryComponent";
 import { Link, useRouteMatch } from "react-router-dom";
+import { ProductsCategoryPageContext } from "../context";
+import Spinner from "../../../Components/Spinner/Spinner";
+import ErrorModal from "../../../Components/ErrorModal";
 
-import { data } from "../../../Data/Data";
 import { DivGrid, BackGroundGrey, Container, H2 } from "./Styled";
 
-function ProductsCategoryPageContent() {
+const ProductsCategoryPageContent = () => {
   const { url } = useRouteMatch();
-  const { category } = data;
-  console.log(url);
+  const { productsCategoryPageContextData } = useContext(
+    ProductsCategoryPageContext
+  );
+  const { category, loading, error } = productsCategoryPageContextData;
+
+  if (loading) {
+    return <Spinner />;
+  }
+  if (error) {
+    return <ErrorModal />;
+  }
   return (
     <>
       <BackGroundGrey>
@@ -17,9 +28,9 @@ function ProductsCategoryPageContent() {
         </Container>
         <Container>
           <DivGrid>
-            {category.map(({ idCategory, title }) => (
-              <Link className="link" key={idCategory} to={`${url}/${title}`}>
-                <CategoryComponent title={title} />
+            {category.map(({ idCategory, title, img }) => (
+              <Link key={idCategory} to={`${url}/${title}`}>
+                <CategoryComponent img={img} title={title} />
               </Link>
             ))}
           </DivGrid>
@@ -27,6 +38,6 @@ function ProductsCategoryPageContent() {
       </BackGroundGrey>
     </>
   );
-}
+};
 
 export default ProductsCategoryPageContent;

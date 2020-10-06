@@ -1,11 +1,10 @@
 import React from "react";
 import { Box, Img, H2 } from "./Styled";
-import l1 from "../../images/1.jpeg";
 
-function CategoryComponent({ title }) {
+function CategoryComponent({ img, title }) {
   return (
     <Box>
-      <Img src={l1} alt={l1} />
+      <Img src={img} alt={img} />
       <H2 className="categoryComponentTitle">{title.toUpperCase()}</H2>
     </Box>
   );

@@ -1,42 +1,43 @@
 import React from "react";
 import Header from "../../Header/Header";
 import MainPage from "../../Pages/MainPage";
-import CheckoutPage from "../../Pages/CheckoutPage/CheckoutPage";
-import PersonPage from "../../Pages/PersonPage/PersonPage";
-
-import AuthorizationPage from "../../Pages/AuthorizationPage/AuthorizationPage";
+import AuthorizationPage from "../../Pages/AuthorizationPage";
 import { Switch, Route } from "react-router-dom";
 
-import { ItemPageContextProvider } from "../../Pages/ItemPage/Context/Index";
-import LolPage from "../../Pages/LolPage";
+import PrivateLayout from "../PrivateLayout/PrivateLayout";
 import ProductsLayout from "../ProductsLayout/ProductsLayout";
+import { RoutesPath } from "../../RoutesPath";
+import PrivateLayoutCheckoutPage from "../PrivateLayoutCheckoutPage/PrivateLayoutCheckoutPage";
+import PrivateLayoutAdminPage from "../PrivateLayoutAdminPage";
+
+import AdminHeader from "../../Components/AdminHeader";
 
 function PublickLayout() {
-  const routes = {
-    MainPage: "/",
-    PerspnPage: "/person-page",
-  };
   return (
     <>
       <Header />
+
       <Switch>
-        <Route path="/" exact>
+        <Route path={RoutesPath.adminPage}>
+          <PrivateLayoutAdminPage />
+        </Route>
+        <Route path={RoutesPath.mainPage} exact>
           <MainPage />
         </Route>
-        <Route path="/Person-Page">
-          <PersonPage />
+        <Route path={RoutesPath.personPage}>
+          <PrivateLayout />
         </Route>
-        <Route path="/Checkout-Page">
-          <CheckoutPage />
+        <Route path={RoutesPath.checkoutPage}>
+          <PrivateLayoutCheckoutPage />
         </Route>
-        <ProductsLayout />
-        <Route path="/Authorization-Page">
+        <Route path={RoutesPath.productsCategoryPage}>
+          <ProductsLayout />
+        </Route>
+        <Route path={RoutesPath.authorizationPage}>
           <AuthorizationPage />
         </Route>
-        <Route path="/lol">
-          <LolPage />
-        </Route>
       </Switch>
+      <AdminHeader />
     </>
   );
 }

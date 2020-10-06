@@ -1,0 +1,131 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "login": "qwe",
+      "password": "123",
+      "email": "qwert@mail.ru",
+      "typs": 25,
+      "role": "user",
+      "userItems": ["cat1", "cat2"]
+    },
+    {
+      "id": 2,
+      "login": "asd",
+      "password": "qwe",
+      "email": "qwert@mail.ru",
+      "typs": 599,
+      "role": "user",
+      "userItems": ["cat2", "cat4"]
+    },
+    {
+      "id": 3,
+      "login": "admin",
+      "password": "admin",
+      "email": "qwert@mail.ru",
+      "typs": 10000,
+      "role": "admin",
+      "userItems": ["cat2", "cat4"]
+    }
+  ],
+  "category": [
+    {
+      "idCategory": "animals",
+      "title": "animals",
+      "img": "https://fainaidea.com/wp-content/uploads/2017/10/0003a709_medium-720x479.jpg"
+    },
+    {
+      "idCategory": "property",
+      "title": "property",
+      "img": "https://ktonanovenkogo.ru/image/uslugi-chto-takoe.jpg"
+    },
+    {
+      "idCategory": "cars",
+      "title": "cars",
+      "img": "https://cdn.riastatic.com/photosnewr/ria/news_common/top-10-luchshikh-avtomobilej-2016-goda-v-ssha__227660-620x0.jpg"
+    },
+    {
+      "idCategory": "electronic",
+      "title": "electronic",
+      "img": "https://www.tal-com.com/images/2018/08/19/electronic_devices-daily-sun.jpg"
+    }
+  ],
+  "items": [
+    {
+      "id": "cat1",
+      "idCategory": "animals",
+      "title": "Tiger",
+      "description": "aediewjdwejdjweio ewhdiuwehdieudbwebd uewdbwyu uwedyuw edbuwyd yueruyc yrf rgyr fgryfgr fruyu hewudhwue yewdyuewd yewdydw yuweduyw",
+      "price": "200",
+      "date": "22.04.2020",
+      "img": [
+        "https://st.depositphotos.com/2044631/2014/i/950/depositphotos_20146623-stock-photo-tigers-face.jpg",
+        "https://static.mk.ru/upload/entities/2019/06/28/11/articles/detailPicture/84/24/4c/92/d37dbc4d9ddf010e01e8736a6d68b5cf.jpg",
+        "https://cdn.iz.ru/sites/default/files/styles/900x506/public/news-2018-06/20160617_gaf_u40_211.jpeg.jpg?itok=H1yBAYAM"
+      ],
+      "approved": "",
+      "remark": ""
+    },
+    {
+      "id": "cat2",
+      "idCategory": "animals",
+      "title": "Cat",
+      "description": "a",
+      "price": "2200",
+      "date": "22.04.2020",
+      "img": [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTvkC1NkcRwsoi2VzVr7ba0zfD8LSnkEk1zjA&usqp=CAU",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSfIaDqCihBeIWr2kCy0oM7vcZ2v2nmDZUc9g&usqp=CAU",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRqk_HX_BBQA5O8DRg-dKdBWtNOxHUcfWVIWw&usqp=CAU"
+      ],
+      "approved": true,
+      "remark": ""
+    },
+    {
+      "id": "cat3",
+      "idCategory": "animals",
+      "title": "Dog",
+      "description": "a",
+      "price": "200",
+      "date": "22.04.2020",
+      "img": [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ9aEk1yxO35Plt7ELFonE_wGQE67XOtzbU0w&usqp=CAU"
+      ],
+      "approved": false,
+      "remark": "wrong description"
+    },
+    {
+      "id": "cat4",
+      "idCategory": "animals",
+      "title": "Ellefant",
+      "description": "a",
+      "price": "200",
+      "date": "22.04.2020",
+      "img": [],
+      "approved": false,
+      "remark": "add some photo"
+    },
+    {
+      "id": "cat5",
+      "idCategory": "animals",
+      "title": "Crocodile",
+      "description": "a",
+      "price": "225",
+      "date": "22.04.2020",
+      "img": [],
+      "approved": true,
+      "remark": ""
+    },
+    {
+      "id": "cat6",
+      "idCategory": "animals",
+      "title": "Monkey",
+      "description": "a",
+      "price": "3200",
+      "date": "22.04.2020",
+      "img": [],
+      "approved": true,
+      "remark": ""
+    }
+  ]
+}

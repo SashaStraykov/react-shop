@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import PublickLayout from "../Layouts/PublickLayout/PublickLayout";
 
 function App() {
+
   return (
     <Router>
       <div className="App">

@@ -1,28 +1,22 @@
 import React, { useState } from "react";
-import "./ModalForm.css";
-import SighnIn from "../../Components/SighnIn/SighnIn";
+import SignIn from "../SignIn/SignIn";
+import SignUp from "../SignUp/SignUp";
+import { ModalBox, ModalButtonBox, ModalButton } from "./Styled";
 
 function ModalForm() {
-  const [sighn, setSighn] = useState(true);
-
+  const [sign, setSign] = useState(true);
   return (
-    <div className="modalDiv">
-      <div className="modalButtonBox">
-        <div
-          onClick={() => setSighn(true)}
-          className={sighn ? "modalSighnButton active" : "modalSighnButton"}
-        >
-          Sighn in
-        </div>
-        <div
-          onClick={() => setSighn(false)}
-          className={sighn ? "modalSighnButton" : "modalSighnButton active"}
-        >
-          Sighn up
-        </div>
-      </div>
-      {sighn ? <SighnIn /> : <h1>no</h1>}
-    </div>
+    <ModalBox>
+      <ModalButtonBox>
+        <ModalButton sign={sign} onClick={() => setSign(true)}>
+          Sign in
+        </ModalButton>
+        <ModalButton onClick={() => setSign(false)} sign={!sign}>
+          Sign up
+        </ModalButton>
+      </ModalButtonBox>
+      {sign ? <SignIn /> : <SignUp />}
+    </ModalBox>
   );
 }
 

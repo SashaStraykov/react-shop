@@ -1,12 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import dataArtLogo from "../images/dataArtLogo.png";
 import PersonIcon from "@material-ui/icons/Person";
 import WorkIcon from "@material-ui/icons/Work";
-import { Context } from "../App/Context/Context";
 import { Nav, Img, Container, ContainerRight } from "./Styled.js";
 import { makeStyles } from "@material-ui/core/styles";
-
+import { RoutesPath } from "../RoutesPath";
 const useStyles = makeStyles({
   icon: {
     color: "black",
@@ -18,28 +17,24 @@ const useStyles = makeStyles({
 });
 
 function Header() {
-  const { user } = useContext(Context);
   const classes = useStyles();
   return (
-    // <nav className="nav">
     <Nav>
       <Container>
-        <Link to="/">
+        <Link to={RoutesPath.mainPage}>
           <Img src={dataArtLogo} />
         </Link>
 
         <ContainerRight>
-          <Link to={user ? "/Person-Page" : "/Authorization-Page"}>
+          <Link to={RoutesPath.personPage}>
             <PersonIcon className={classes.icon} />
           </Link>
-          <Link to="/Checkout-Page">
+          <Link to={RoutesPath.checkoutPage}>
             <WorkIcon className={classes.icon} />
           </Link>
         </ContainerRight>
       </Container>
     </Nav>
-
-    // </nav>
   );
 }
 

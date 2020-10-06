@@ -5,6 +5,7 @@ const Img = styled.img.attrs((props) => ({ src: props.src, alt: props.src }))`
   height: 100%;
   width: 100%;
   margin-top: 2em;
+  object-fit: cover;
 `;
 const Box = styled.div`
   display: flex;
@@ -12,7 +13,7 @@ const Box = styled.div`
   justify-content: center;
   justify-items: center;
   padding: 2em;
-  width: 15em;
+  width: 16em;
   height: 100%;
   transition: 0.5s;
   &:hover {
