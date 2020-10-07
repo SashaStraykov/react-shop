@@ -21,8 +21,32 @@ export const Provider = ({ children }) => {
     setLoading(false);
   }, []);
 
+  useEffect(() => {
+    const storage = [];
+    const checkout = [];
+    if (localStorage.getItem(user.id.toString())) {
+      storage.push(...localStorage.getItem(user.id).split(","));
+    }
+
+    items.forEach((el) => {
+      for (let key of storage) {
+        if (key === el.id) {
+          checkout.push(el);
+        }
+      }
+    });
+    setCheckoutUser(checkout);
+  }, [items]);
+
+  useEffect(() => {
+    if (checkoutUser.length >= 0) {
+      setTotalPrice(checkoutUser.reduce((acc, el) => acc + +el.price, 0));
+    }
+  }, [checkoutUser]);
+
   const cancelItem = (id) => {
     const storage = [];
+    const newCheckoutItems = [];
     let index;
     storage.push(...localStorage.getItem(user.id.toString()).split(","));
     storage.forEach((el, i) => {
@@ -31,30 +55,16 @@ export const Provider = ({ children }) => {
       }
     });
     storage.splice(index, 1);
-    setCheckoutUser(storage);
-    localStorage.setItem(user.id.toString(), storage);
-  };
-
-  useEffect(() => {
-    const storage = [];
-    const checkout = [];
-    const checkoutPrice = [];
-    storage.push(...localStorage.getItem(user.id).split(","));
-
     items.forEach((el) => {
       for (let key of storage) {
         if (key === el.id) {
-          checkout.push(el);
-          checkoutPrice.push(el.price);
+          newCheckoutItems.push(el);
         }
       }
     });
-    setCheckoutUser(checkout);
-
-    if (checkout.length > 0) {
-      setTotalPrice(checkoutPrice.reduce((acc, el) => +acc + parseInt(el)));
-    }
-  }, [items]);
+    setCheckoutUser(newCheckoutItems);
+    localStorage.setItem(user.id.toString(), storage);
+  };
 
   const checkoutContextData = {
     user: user,

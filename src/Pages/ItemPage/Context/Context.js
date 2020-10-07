@@ -9,6 +9,7 @@ export const Provider = ({ children, itemid }) => {
 
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [addedToBucket, setAddedToBucket] = useState(false);
   useEffect(() => {
     const req = async () => {
       await fetch("http://localhost:3000/items")
@@ -30,16 +31,11 @@ export const Provider = ({ children, itemid }) => {
       } else {
         prevBucketItems.push(id);
       }
-
-      console.log(prevBucketItems);
       localStorage.setItem(user.id.toString(), prevBucketItems);
     } else {
       localStorage.setItem(user.id, id);
-      console.log(false);
     }
-
-
-    console.log(localStorage);
+    setAddedToBucket(true);
   };
 
   const item = items.filter((el) => el.id === itemid);
@@ -47,7 +43,8 @@ export const Provider = ({ children, itemid }) => {
     item: item,
     user: user,
     loading: loading,
-    addItemToBucket,
+    addItemToBucket: addItemToBucket,
+    addedToBucket: addedToBucket,
   };
 
   return (

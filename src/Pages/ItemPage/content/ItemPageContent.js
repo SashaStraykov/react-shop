@@ -18,7 +18,13 @@ import Spinner from "../../../Components/Spinner/Spinner";
 
 function ItemPageContent() {
   const { contextDataItem } = useContext(ItemPageContext);
-  const { item, user, loading, addItemToBucket } = contextDataItem;
+  const {
+    item,
+    user,
+    loading,
+    addItemToBucket,
+    addedToBucket,
+  } = contextDataItem;
   if (loading) {
     return <Spinner />;
   }
@@ -39,7 +45,7 @@ function ItemPageContent() {
                 <ItemPrice>{price}$</ItemPrice>
                 {user ? (
                   <Button onClick={() => addItemToBucket(id)}>
-                    Add to bucket
+                    {addedToBucket ? "Added" : "Add to bucket"}
                   </Button>
                 ) : (
                   <Link to={RoutesPath.authorizationPage}>
