@@ -13,7 +13,7 @@ function MainPageContent() {
         <H1>DataArt typ's shop</H1>
         <H2>What do you want?</H2>
         <ButtonContainer>
-          <Link to={RoutesPath.personPage}>
+          <Link to={`${RoutesPath.personPage}${RoutesPath.addAnnouncment}`}>
             <ButtonCustom>SELL</ButtonCustom>
           </Link>
           <Link to={RoutesPath.productsCategoryPage}>

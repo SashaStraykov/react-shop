@@ -5,6 +5,8 @@ const BackGroundGrey = styled.div`
   min-height: 100vh;
   background: rgb(238, 238, 238);
   margin-top: 0;
+  max-height: 90vh;
+  overflow: scroll;
 `;
 const H2 = styled.h2`
   font-size: 2em;
@@ -65,7 +67,7 @@ const ButtonCancel = styled.button`
   font-size: 2em;
   color: var(--icon-color);
   border: none;
-  transition:0.3s;
+  transition: 0.3s;
   &:focus {
     outline: none;
   }

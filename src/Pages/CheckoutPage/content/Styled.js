@@ -6,6 +6,8 @@ const BackGroundGrey = styled.div`
   background: rgb(238, 238, 238);
   margin-top: 0;
   border: 1px solid rgb(238, 238, 238);
+  max-height: 90vh;
+  overflow: scroll;
 `;
 const H2 = styled.h2`
   font-size: 2em;

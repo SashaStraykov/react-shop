@@ -13,7 +13,6 @@ import PersonPageInfo from "../PersonPageInfo";
 import PersonPageRejectedItems from "../PersonPageRejectedItems";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import { AppContext } from "../../App/Context/Index";
-import AdminPage from "../../Pages/AdminPage";
 import PrivateLayoutAdminPage from "../../Layouts/PrivateLayoutAdminPage";
 
 const useStyles = makeStyles({
