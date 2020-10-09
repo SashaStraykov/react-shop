@@ -10,6 +10,7 @@ export const Provider = ({ children, category }) => {
 
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const items = [];
@@ -23,7 +24,8 @@ export const Provider = ({ children, category }) => {
             }
           }
           setPosts(items);
-        });
+        })
+        .catch((e) => setError(true));
     };
     dataRequest();
     setLoading(false);
@@ -60,6 +62,7 @@ export const Provider = ({ children, category }) => {
     search: search,
     setSearch: setSearch,
     finalItems: finalItems,
+    error: error,
   };
 
   return (

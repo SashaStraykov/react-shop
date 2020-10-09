@@ -7,6 +7,7 @@ const RemarkFormBox = styled.div`
   color: rgb(66, 66, 66);
   font-size: 1.1em;
   border: 1px solid rgb(66, 66, 66);
+  margin-bottom: 2em;
 `;
 
 const BoxFirstSection = styled.div`
@@ -16,8 +17,8 @@ const BoxFirstSection = styled.div`
 
 const BoxFirstSectionSlider = styled.div`
   display: flex;
-  width: 40%;
-  height: 20em;
+  width: 45%;
+  height: 25em;
 `;
 
 const BoxFirstSectionRight = styled.div`
@@ -26,12 +27,12 @@ const BoxFirstSectionRight = styled.div`
   justify-content: stretch;
 
   align-content: stretch;
-  width: 100%;
+  width: 55%;
 `;
 
 const BoxFirstSectionRightTitle = styled.div`
   display: flex;
-  height: 33.33%;
+  height: 20%;
   align-self: center;
   vertical-align: center;
   align-items: center;
@@ -39,7 +40,7 @@ const BoxFirstSectionRightTitle = styled.div`
 
 const BoxFirstSectionRigthDescription = styled.div`
   display: flex;
-  height: 33.33%;
+  height: 60%;
   align-self: center;
   justify-content: flex-start;
   align-items: center;
@@ -48,12 +49,14 @@ const BoxFirstSectionRigthDescription = styled.div`
   overflow: scroll;
   padding: 1em;
   width: 100%;
+  text-align: justify;
+  padding-top: 4em;
 `;
 
 const BoxSecondSection = styled.div`
   display: flex;
   flex-direction: row;
-  height: 33.33%;
+  height: 20%;
 `;
 
 const BoxSecondSectionDate = styled.div`

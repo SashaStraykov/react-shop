@@ -5,16 +5,19 @@ export const Context = createContext();
 
 export const Provider = ({ children, itemid }) => {
   const { contextData } = useContext(AppContext);
-  const { user } = contextData;
+  const { user, setCart, cart } = contextData;
 
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [addedToBucket, setAddedToBucket] = useState(false);
+  const [error, setError] = useState(false);
+
   useEffect(() => {
     const req = async () => {
       await fetch("http://localhost:3000/items")
         .then((res) => res.json())
-        .then((data) => setItems(data));
+        .then((data) => setItems(data))
+        .catch((e) => setError(true));
       setLoading(false);
     };
     req();
@@ -36,6 +39,7 @@ export const Provider = ({ children, itemid }) => {
       localStorage.setItem(user.id, id);
     }
     setAddedToBucket(true);
+    setCart(cart + 1);
   };
 
   const item = items.filter((el) => el.id === itemid);
@@ -45,6 +49,7 @@ export const Provider = ({ children, itemid }) => {
     loading: loading,
     addItemToBucket: addItemToBucket,
     addedToBucket: addedToBucket,
+    error: error,
   };
 
   return (

@@ -1,20 +1,20 @@
 import React from "react";
-import "./BackGroundVideoComponent.css";
+import { Intro, IntroMedia, IntroMediaVideo, IntroContent } from "./Styled";
 
 function BackGroundVideoComponent({ children, video }) {
   return (
-    <div className="intro">
-      <div className="introMedia">
-        <video
+    <Intro>
+      <IntroMedia>
+        <IntroMediaVideo
           src={video}
           autoPlay
           muted
           loop
           className="introMediaVideo"
-        ></video>
-      </div>
-      <div className="introContent">{children}</div>
-    </div>
+        ></IntroMediaVideo>
+      </IntroMedia>
+      <IntroContent>{children}</IntroContent>
+    </Intro>
   );
 }
 

@@ -48,7 +48,7 @@ const ItemDescription = styled.div`
   width: 100%;
   overflow-y: scroll;
   font-size: 1.3em;
-
+  text-align: justify;
   white-space: wrap;
   word-break: break-all;
   padding: 1em;
@@ -79,9 +79,11 @@ const ButtonSign = styled.button`
   background: red;
   color: black;
   padding: 0.5em 2em;
-  margin: auto auto;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);  
   font-size: 1.5em;
-  margin-right: 25px;
+
   border: 1px solid black;
   &:focus {
     outline: none;

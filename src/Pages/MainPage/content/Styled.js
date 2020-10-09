@@ -18,4 +18,10 @@ const ButtonContainer = styled.div`
   justify-content: center;
   margin-top: 5.5em;
 `;
-export { H1, H2, ButtonContainer };
+
+const Container = styled.div`
+  width: 80%;
+  margin: 0 auto;
+  padding: 10px;
+`;
+export { H1, H2, ButtonContainer, Container };

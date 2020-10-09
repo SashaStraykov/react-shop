@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Span, Form, InputC, Select, InputDescription } from "./Styled";
+import {
+  Span,
+  Form,
+  InputC,
+  Select,
+  InputDescription,
+  Box,
+  H2,
+  Container,
+} from "./Styled";
 import Spinner from "../Spinner/Spinner";
 
 const AddItemForm = () => {
@@ -20,22 +29,28 @@ const AddItemForm = () => {
     return <Spinner />;
   } else {
     return (
-      <Form>
-        <Span>Title</Span>
-        <InputC />
-        <Span>Category</Span>
-        <Select>
-          {items.map(({ idCategory }) => (
-            <option key={idCategory}>{idCategory}</option>
-          ))}
-        </Select>
-        <Span>Description</Span>
-        <InputDescription />
-        <Span>Photos</Span>
-        <InputC type="file" multiple />
-        <InputC type="file" multiple />
-        <InputC type="file" multiple />
-      </Form>
+      <Box>
+        <Container>
+          <H2>Add new announcment</H2>
+        </Container>
+
+        <Form>
+          <Span>Title</Span>
+          <InputC />
+          <Span>Category</Span>
+          <Select>
+            {items.map(({ idCategory }) => (
+              <option key={idCategory}>{idCategory}</option>
+            ))}
+          </Select>
+          <Span>Description</Span>
+          <InputDescription />
+          <Span>Photos</Span>
+          <InputC type="file" multiple />
+          <InputC type="file" multiple />
+          <InputC type="file" multiple />
+        </Form>
+      </Box>
     );
   }
 };

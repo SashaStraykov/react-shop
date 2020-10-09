@@ -13,9 +13,7 @@ function AuthorizationPageContent() {
   }
   return (
     <BackGroundGrey>
-      <Container white>
-        <H2>Authorization Page</H2>
-      </Container>
+      <H2>Authorization Page</H2>
       <Container>
         <ModalForm />
       </Container>

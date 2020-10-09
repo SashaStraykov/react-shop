@@ -4,8 +4,8 @@ const ItemBox = styled.div`
   width: 95%;
   margin: 1 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 30% 35% 35%;
+  grid-template-rows: 6em 3em 3em;
   overflow: hidden;
   padding: 1em;
 `;
@@ -17,20 +17,25 @@ const Img = styled.img.attrs((props) => ({ src: props.src, alt: props.src }))`
   width: 100%;
 `;
 
-const H2 = styled.h2`
+const H2 = styled.span`
   grid-column: 2 / 4;
   grid-row: 1 / 2;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 1em;
 `;
 
 const Boxdate = styled.div`
   grid-column: 2 / 3;
   grid-row: 3 / 4;
+  text-align: left;
+  margin-left: 1em;
 `;
 
 const BoxPrice = styled.div`
   grid-column: 3 / 4;
   grid-row: 3/ 4;
-  margin-left: auto;
-  margin-right: 2.5em;
+  text-align: right;
 `;
 export { ItemBox, Img, H2, Boxdate, BoxPrice };

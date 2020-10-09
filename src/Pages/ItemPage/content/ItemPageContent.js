@@ -15,6 +15,7 @@ import {
 } from "./Styled";
 import { RoutesPath } from "../../../RoutesPath";
 import Spinner from "../../../Components/Spinner/Spinner";
+import ErrorModal from "../../../Components/ErrorModal";
 
 function ItemPageContent() {
   const { contextDataItem } = useContext(ItemPageContext);
@@ -24,18 +25,20 @@ function ItemPageContent() {
     loading,
     addItemToBucket,
     addedToBucket,
+    error,
   } = contextDataItem;
   if (loading) {
     return <Spinner />;
+  }
+  if (error) {
+    return <ErrorModal />;
   }
   return (
     <BackGroundGrey>
       {item.map(({ id, title, img, price, description }) => {
         return (
           <div key={id}>
-            <Container>
-              <H2>{title}</H2>
-            </Container>
+            <H2>{title}</H2>
             <Container>
               <GridBox>
                 <GridSlider>

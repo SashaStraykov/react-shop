@@ -8,7 +8,7 @@ const BackGroundGrey = styled.div`
   border: 1px solid rgb(238, 238, 238);
 `;
 const Container = styled.div`
-  width: 80%;
+  width: 70%;
   margin: 1em auto;
   background: rgb(245, 245, 245);
   padding: 0;

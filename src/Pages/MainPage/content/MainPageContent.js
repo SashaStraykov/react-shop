@@ -1,10 +1,10 @@
 import React from "react";
 import BackGroundVideoMainPage from "../../../Components/BackGroundVideoComponent/BackGroundVideoComponent";
-import Container from "../../../Components/Container/Container";
 import ButtonCustom from "../../../Components/ButtonCustom/ButtonCustom";
 import night from "../../../Components/BackGroundVideoComponent/night.mp4";
 import { Link } from "react-router-dom";
-import { H1, H2, ButtonContainer } from "./Styled";
+import { H1, H2, ButtonContainer, Container } from "./Styled";
+import { RoutesPath } from "../../../RoutesPath";
 
 function MainPageContent() {
   return (
@@ -13,10 +13,10 @@ function MainPageContent() {
         <H1>DataArt typ's shop</H1>
         <H2>What do you want?</H2>
         <ButtonContainer>
-          <Link to="/Person-Page">
+          <Link to={RoutesPath.personPage}>
             <ButtonCustom>SELL</ButtonCustom>
           </Link>
-          <Link to="/Products-Category-Page">
+          <Link to={RoutesPath.productsCategoryPage}>
             <ButtonCustom>BUY</ButtonCustom>
           </Link>
         </ButtonContainer>

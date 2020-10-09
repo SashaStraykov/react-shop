@@ -5,4 +5,6 @@ export const RoutesPath = {
   checkoutPage: "/checkout-page",
   productsCategoryPage: "/products-category-page",
   adminPage: "/admin-page",
+  addAnnouncment: "/add-announcment",
+  rejectItems: "/reject-items",
 };

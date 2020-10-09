@@ -5,17 +5,19 @@ export const Context = createContext();
 
 export const Provider = ({ children }) => {
   const { contextData } = useContext(AppContext);
-  const { user } = contextData;
+  const { user, cart, setCart } = contextData;
   const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [checkoutUser, setCheckoutUser] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const req = async () => {
       await fetch("http://localhost:3000/items")
         .then((res) => res.json())
-        .then((data) => setItems(data));
+        .then((data) => setItems(data))
+        .catch((e) => setError(true));
     };
     req();
     setLoading(false);
@@ -64,6 +66,7 @@ export const Provider = ({ children }) => {
     });
     setCheckoutUser(newCheckoutItems);
     localStorage.setItem(user.id.toString(), storage);
+    setCart(cart - 1);
   };
 
   const checkoutContextData = {
@@ -72,6 +75,7 @@ export const Provider = ({ children }) => {
     checkoutUser: checkoutUser,
     totalPrice: totalPrice,
     cancelItem: cancelItem,
+    error:error,
   };
   return (
     <Context.Provider value={{ checkoutContextData }}>

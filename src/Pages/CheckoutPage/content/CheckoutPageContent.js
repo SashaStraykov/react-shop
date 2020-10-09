@@ -12,18 +12,27 @@ import {
   ButtonCancel,
   PriceBox,
 } from "./Styled";
+import ErrorModal from "../../../Components/ErrorModal";
 
 const CheckoutPageContent = () => {
   const { checkoutContextData } = useContext(CheckoutPageContext);
-  const { loading, checkoutUser, totalPrice, cancelItem } = checkoutContextData;
+  const {
+    loading,
+    checkoutUser,
+    totalPrice,
+    cancelItem,
+    error,
+  } = checkoutContextData;
   if (loading) {
     return <Spinner />;
   }
+  if (error) {
+    return <ErrorModal />;
+  }
   return (
     <BackGroundGrey>
-      <Container>
-        <H2>CheckoutPage</H2>
-      </Container>
+      <H2>CheckoutPage</H2>
+
       <Container>
         {checkoutUser.map(({ id, idCategory, ...rest }) => (
           <ItemBox key={id}>

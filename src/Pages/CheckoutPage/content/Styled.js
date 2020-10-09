@@ -23,7 +23,7 @@ const Container = styled.div`
 `;
 
 const ButtonCancel = styled.button`
-  background: rgb(239, 154, 154);
+  background: var(--red-color);
   font-size: 2em;
   color: rgb(66, 66, 66);
   border: none;
@@ -31,7 +31,7 @@ const ButtonCancel = styled.button`
     outline: none;
   }
   &:hover {
-    background: rgb(66, 66, 66);
+    background: var(--brand-color);
     color: rgb(245, 245, 245);
     cursor: pointer;
   }

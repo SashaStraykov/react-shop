@@ -16,9 +16,7 @@ const AdminPageContent = () => {
   }
   return (
     <BackGroundGrey>
-      <Container>
-        <H2>Admin page</H2>
-      </Container>
+      <H2>Admin page</H2>
       <Container>
         <H2>
           New Items <span>&#8595;</span>

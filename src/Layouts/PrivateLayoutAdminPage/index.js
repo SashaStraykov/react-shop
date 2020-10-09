@@ -10,7 +10,7 @@ const PrivateLayoutAdminPage = () => {
 
   if (user && user.role === "admin") {
     return (
-      <Route path={RoutesPath.adminPage}>
+      <Route path={`${RoutesPath.personPage}${RoutesPath.adminPage}`}>
         <AdminPage />
       </Route>
     );
