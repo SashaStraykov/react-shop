@@ -4,15 +4,7 @@ export const Context = createContext();
 
 export const Provider = ({ children }) => {
   const [cart, setCart] = useState(1);
-  const [user, setUser] = useState({
-    id: 2,
-    login: "asd",
-    password: "qwe",
-    email: "qwert@mail.ru",
-    typs: 599,
-    role: "user",
-    userItems: ["cat3", "cat4"],
-  });
+  const [user, setUser] = useState(null);
 
   const contextData = {
     user: user,

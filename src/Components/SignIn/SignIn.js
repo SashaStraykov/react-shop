@@ -3,11 +3,15 @@ import {
   SignInBox,
   LoginPasswordSignIn,
   ErrorSignIn,
-  InputCheckBox,
   ButtonSignIn,
   InputC,
+  PasswordBox,
+  PasswordBoxIcon,
+  InputP,
 } from "./Styled";
 import { AuthorizationPageContext } from "../../Pages/AuthorizationPage/context";
+import VisibilityIcon from "@material-ui/icons/Visibility";
+import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 
 function SignIn() {
   const [vissiblePasword, setVissiblePassword] = useState(true);
@@ -29,21 +33,20 @@ function SignIn() {
           onChange={(e) => setLoginSignIn(e.target.value)}
         />
         <LoginPasswordSignIn>Password</LoginPasswordSignIn>
-        <InputC
-          type={vissiblePasword ? "password" : "text"}
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <PasswordBox>
+          <InputP
+            type={vissiblePasword ? "password" : "text"}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <PasswordBoxIcon
+            onClick={() => setVissiblePassword(!vissiblePasword)}
+          >
+            {vissiblePasword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+          </PasswordBoxIcon>
+        </PasswordBox>
 
         <ErrorSignIn>{pasError ? `*incorrect password` : null}</ErrorSignIn>
-        <br></br>
-        <InputCheckBox
-          onChange={() => setVissiblePassword(!vissiblePasword)}
-          id="password"
-          type="checkbox"
-        />
-        <label htmlFor="password"> Vissible password</label>
-        <br></br>
         <ButtonSignIn>SIGN IN</ButtonSignIn>
       </form>
     </SignInBox>

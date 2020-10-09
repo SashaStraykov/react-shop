@@ -15,11 +15,6 @@ const ErrorSignIn = styled.div`
   font-size: 1.1em;
 `;
 
-const InputCheckBox = styled.input`
-  width: 1.5em;
-  height: 1.5em;
-`;
-
 const ButtonSignIn = styled.button`
   padding: 1em;
   width: 40%;
@@ -50,12 +45,41 @@ const InputC = styled.input`
     outline: none;
   }
 `;
+const InputP = styled.input`
+  height: 2em;
+  width: 75%;
+  margin-top: 0.5em;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid rgb(66, 66, 66);
+  padding: 0.3em;
+  font-size: 1.3em;
+  font-weight: bold;
+  &:focus {
+    border: none;
+    border-bottom: 3px solid rgb(245, 245, 245);
+    outline: none;
+  }
+`;
 
+const PasswordBox = styled.div`
+  padding-left: 20%;
+  display: flex;
+  justify-content: stretch;
+  margin: 0 auto;
+`;
+const PasswordBoxIcon = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 export {
   SignInBox,
   LoginPasswordSignIn,
   ErrorSignIn,
-  InputCheckBox,
   ButtonSignIn,
   InputC,
+  PasswordBox,
+  PasswordBoxIcon,
+  InputP,
 };
