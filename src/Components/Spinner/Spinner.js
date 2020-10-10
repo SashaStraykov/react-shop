@@ -2,7 +2,7 @@ import React from "react";
 import { SpinnerDiv } from "./Styled";
 
 const Spinner = () => {
-  return <SpinnerDiv></SpinnerDiv>;
+  return <SpinnerDiv />;
 };
 
 export default Spinner;
