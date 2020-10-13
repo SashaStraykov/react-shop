@@ -2,7 +2,9 @@ import React, { useContext } from "react";
 import AdminPage from "../../Pages/AdminPage";
 import { Route, Redirect } from "react-router-dom";
 import { AppContext } from "../../App/Context/Index";
-import { RoutesPath } from "../../RoutesPath";
+import { PERSON_PAGE } from "../../constants/routes";
+import { AUTHORIZATION_PAGE } from "../../constants/routes";
+import { ADMIN_PAGE } from "../../constants/routes";
 
 const PrivateLayoutAdminPage = () => {
   const { contextData } = useContext(AppContext);
@@ -10,12 +12,12 @@ const PrivateLayoutAdminPage = () => {
 
   if (user && user.role === "admin") {
     return (
-      <Route path={`${RoutesPath.personPage}${RoutesPath.adminPage}`}>
+      <Route path={`${PERSON_PAGE}${ADMIN_PAGE}`}>
         <AdminPage />
       </Route>
     );
   }
-  return <Redirect to={RoutesPath.authorizationPage} />;
+  return <Redirect to={AUTHORIZATION_PAGE} />;
 };
 
 export default PrivateLayoutAdminPage;

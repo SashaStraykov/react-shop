@@ -2,12 +2,12 @@ import React from "react";
 import MainPageContent from "./content/MainPageContent";
 import { MainPageContextProvider } from "./context";
 import { Route } from "react-router-dom";
-import { RoutesPath } from "../../RoutesPath";
+import { HOME_PAGE } from "../../constants/routes";
 
 const MainPage = () => {
   return (
     <>
-      <Route exact path={RoutesPath.mainPage}>
+      <Route exact path={HOME_PAGE}>
         <MainPageContextProvider>
           <MainPageContent />
         </MainPageContextProvider>

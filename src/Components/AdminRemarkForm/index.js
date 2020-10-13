@@ -5,13 +5,7 @@ import {
   BoxBottomTop,
   BoxBottomInput,
   BoxBottomReject,
-  // BoxSlider,
-  // BoxTitle,
-  // BoxDescription,
-  // BoxDate,
-  // BoxPrice,
-  // BoxReamrkArea,
-  // BoxSentButton,
+
 } from "./Styled";
 
 const AdminRemarkForm = ({ id, ...rest }) => {
@@ -23,15 +17,6 @@ const AdminRemarkForm = ({ id, ...rest }) => {
         <BoxBottomInput />
         <BoxBottomReject>Reject</BoxBottomReject>
       </BoxBottom>
-      {/* <BoxSlider>
-        <Slider img={img} />
-      </BoxSlider>
-      <BoxTitle>{title}</BoxTitle>
-      <BoxDescription>{description}</BoxDescription>
-      <BoxDate>{date}</BoxDate>
-      <BoxPrice>{price}</BoxPrice>
-      <BoxReamrkArea />
-      <BoxSentButton>Button</BoxSentButton> */}
     </>
   );
 };

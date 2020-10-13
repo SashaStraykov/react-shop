@@ -1,10 +1,12 @@
 import React from "react";
 import BackGroundVideoMainPage from "../../../Components/BackGroundVideoComponent/BackGroundVideoComponent";
-import ButtonCustom from "../../../Components/ButtonCustom/ButtonCustom";
+
 import night from "../../../Components/BackGroundVideoComponent/night.mp4";
 import { Link } from "react-router-dom";
-import { H1, H2, ButtonContainer, Container } from "./Styled";
-import { RoutesPath } from "../../../RoutesPath";
+import { H1, H2, ButtonContainer, Container, ButtonCustom } from "./Styled";
+import { PERSON_PAGE } from "../../../constants/routes";
+import { PRODUCTS_CATEGORY_PAGE } from "../../../constants/routes";
+import { ADD_ANNOUNCMENT_PAGE } from "../../../constants/routes";
 
 function MainPageContent() {
   return (
@@ -13,10 +15,10 @@ function MainPageContent() {
         <H1>DataArt typ's shop</H1>
         <H2>What do you want?</H2>
         <ButtonContainer>
-          <Link to={`${RoutesPath.personPage}${RoutesPath.addAnnouncment}`}>
+          <Link to={`${PERSON_PAGE}${ADD_ANNOUNCMENT_PAGE}`}>
             <ButtonCustom>SELL</ButtonCustom>
           </Link>
-          <Link to={RoutesPath.productsCategoryPage}>
+          <Link to={PRODUCTS_CATEGORY_PAGE}>
             <ButtonCustom>BUY</ButtonCustom>
           </Link>
         </ButtonContainer>

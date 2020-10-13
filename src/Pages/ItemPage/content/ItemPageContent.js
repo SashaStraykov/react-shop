@@ -13,9 +13,9 @@ import {
   Button,
   ButtonSign,
 } from "./Styled";
-import { RoutesPath } from "../../../RoutesPath";
 import Spinner from "../../../Components/Spinner/Spinner";
 import ErrorModal from "../../../Components/ErrorModal";
+import { AUTHORIZATION_PAGE } from "../../../constants/routes";
 
 function ItemPageContent() {
   const { contextDataItem } = useContext(ItemPageContext);
@@ -24,9 +24,11 @@ function ItemPageContent() {
     user,
     loading,
     addItemToBucket,
-    addedToBucket,
+    added,
     error,
+    setAdded,
   } = contextDataItem;
+
   if (loading) {
     return <Spinner />;
   }
@@ -48,10 +50,10 @@ function ItemPageContent() {
                 <ItemPrice>{price}$</ItemPrice>
                 {user ? (
                   <Button onClick={() => addItemToBucket(id)}>
-                    {addedToBucket ? "Added" : "Add to bucket"}
+                    {added ? "Added" : "Add to bucket"}
                   </Button>
                 ) : (
-                  <Link to={RoutesPath.authorizationPage}>
+                  <Link to={AUTHORIZATION_PAGE}>
                     <ButtonSign>Sign in to buy</ButtonSign>
                   </Link>
                 )}

@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
-import ModalForm from "../../../Components/ModalForm/ModalForm";
+import ModalForm from "./ModalForm/ModalForm";
 import { BackGroundGrey, Container, H2 } from "./Styled";
 import { AppContext } from "../../../App/Context/Index";
 import { Redirect } from "react-router-dom";
-import { RoutesPath } from "../../../RoutesPath";
+import { PERSON_PAGE } from "../../../constants/routes";
 
 function AuthorizationPageContent() {
   const { contextData } = useContext(AppContext);
   const { user } = contextData;
   if (user) {
-    return <Redirect to={RoutesPath.personPage} />;
+    return <Redirect to={PERSON_PAGE} />;
   }
   return (
     <BackGroundGrey>

@@ -31,7 +31,7 @@ const ItemModal = ({ img, title, description, date, price, remark }) => {
           </BoxSecondSection>
         </BoxFirstSectionRight>
       </BoxFirstSection>
-      {remark ? <BoxRemark>{remark}</BoxRemark> : null}
+      {remark && <BoxRemark>{remark}</BoxRemark>}
     </RemarkFormBox>
   );
 };
