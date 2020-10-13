@@ -12,7 +12,7 @@ import {
   PriceBox,
 } from "./Styled";
 import ErrorModal from "../../../Components/ErrorModal";
-import {PRODUCTS_CATEGORY_PAGE} from "../../../constants/routes"
+import { PRODUCTS_CATEGORY_PAGE } from "../../../constants/routes";
 
 const CheckoutPageContent = () => {
   const { checkoutContextData } = useContext(CheckoutPageContext);
@@ -22,6 +22,7 @@ const CheckoutPageContent = () => {
     totalPrice,
     cancelItem,
     error,
+    items,
   } = checkoutContextData;
   if (loading) {
     return <Spinner />;
@@ -39,7 +40,7 @@ const CheckoutPageContent = () => {
             <Link to={`${PRODUCTS_CATEGORY_PAGE}/${idCategory}/${id}`}>
               <ProductsCategoryItem id={id} {...rest} />
             </Link>
-            <ButtonCancel onClick={() => cancelItem(id)}>x</ButtonCancel>
+            <ButtonCancel onClick={() => cancelItem(id, items)}>x</ButtonCancel>
           </ItemBox>
         ))}
       </Container>

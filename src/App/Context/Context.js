@@ -7,6 +7,7 @@ export const Provider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [bucketItems, setBucketItems] = useState(null);
   const [added, setAdded] = useState(false);
+  const [checkoutUser, setCheckoutUser] = useState([]);
 
   useEffect(() => {
     if (user) {
@@ -29,6 +30,29 @@ export const Provider = ({ children }) => {
 
     setCart(cart + 1);
   };
+
+  const cancelItem = (id, items) => {
+    const storage = [];
+    const newCheckoutItems = [];
+    let index;
+    storage.push(...localStorage.getItem(user.id.toString()).split(","));
+    storage.forEach((el, i) => {
+      if (el === id) {
+        index = i;
+      }
+    });
+    storage.splice(index, 1);
+    items.forEach((el) => {
+      for (let key of storage) {
+        if (key === el.id) {
+          newCheckoutItems.push(el);
+        }
+      }
+    });
+    setCheckoutUser(newCheckoutItems);
+    localStorage.setItem(user.id.toString(), storage);
+    setCart(cart - 1);
+  };
   const contextData = {
     user: user,
     setUser: setUser,
@@ -39,6 +63,9 @@ export const Provider = ({ children }) => {
     setBucketItems: setBucketItems,
     added: added,
     setAdded: setAdded,
+    cancelItem: cancelItem,
+    checkoutUser: checkoutUser,
+    setCheckoutUser: setCheckoutUser,
   };
   return (
     <Context.Provider value={{ contextData }}>{children}</Context.Provider>

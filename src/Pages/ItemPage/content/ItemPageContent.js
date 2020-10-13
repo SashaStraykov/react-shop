@@ -26,7 +26,6 @@ function ItemPageContent() {
     addItemToBucket,
     added,
     error,
-    setAdded,
   } = contextDataItem;
 
   if (loading) {
@@ -49,7 +48,7 @@ function ItemPageContent() {
                 <ItemDescription>{description}</ItemDescription>
                 <ItemPrice>{price}$</ItemPrice>
                 {user ? (
-                  <Button onClick={() => addItemToBucket(id)}>
+                  <Button  onClick={() => addItemToBucket(id)}>
                     {added ? "Added" : "Add to bucket"}
                   </Button>
                 ) : (

@@ -5,9 +5,9 @@ export const Context = createContext();
 
 export const Provider = ({ children }) => {
   const { contextData } = useContext(AppContext);
-  const { user, cart, setCart } = contextData;
+  const { user, cancelItem, checkoutUser, setCheckoutUser } = contextData;
   const [items, setItems] = useState([]);
-  const [checkoutUser, setCheckoutUser] = useState([]);
+
   const [loading, setLoading] = useState(true);
   const [totalPrice, setTotalPrice] = useState(0);
   const [error, setError] = useState(false);
@@ -46,36 +46,14 @@ export const Provider = ({ children }) => {
     }
   }, [checkoutUser]);
 
-  const cancelItem = (id) => {
-    const storage = [];
-    const newCheckoutItems = [];
-    let index;
-    storage.push(...localStorage.getItem(user.id.toString()).split(","));
-    storage.forEach((el, i) => {
-      if (el === id) {
-        index = i;
-      }
-    });
-    storage.splice(index, 1);
-    items.forEach((el) => {
-      for (let key of storage) {
-        if (key === el.id) {
-          newCheckoutItems.push(el);
-        }
-      }
-    });
-    setCheckoutUser(newCheckoutItems);
-    localStorage.setItem(user.id.toString(), storage);
-    setCart(cart - 1);
-  };
-
   const checkoutContextData = {
     user: user,
     loading: loading,
     checkoutUser: checkoutUser,
     totalPrice: totalPrice,
     cancelItem: cancelItem,
-    error:error,
+    error: error,
+    items: items,
   };
   return (
     <Context.Provider value={{ checkoutContextData }}>
