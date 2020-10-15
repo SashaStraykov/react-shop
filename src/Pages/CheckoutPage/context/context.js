@@ -1,11 +1,16 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
-import { AppContext } from "../../../App/Context/Index";
+import React, {
+  createContext, useContext, useEffect, useState,
+} from 'react';
+import PropTypes from 'prop-types';
+import { AppContext } from '../../../App/Context/Index';
 
 export const Context = createContext();
 
 export const Provider = ({ children }) => {
   const { contextData } = useContext(AppContext);
-  const { user, cancelItem, checkoutUser, setCheckoutUser } = contextData;
+  const {
+    user, cancelItem, checkoutUser, setCheckoutUser,
+  } = contextData;
   const [items, setItems] = useState([]);
 
   const [loading, setLoading] = useState(true);
@@ -14,10 +19,10 @@ export const Provider = ({ children }) => {
 
   useEffect(() => {
     const req = async () => {
-      await fetch("http://localhost:3000/items")
+      await fetch('http://localhost:3000/items')
         .then((res) => res.json())
         .then((data) => setItems(data))
-        .catch((e) => setError(true));
+        .catch(() => setError(true));
     };
     req();
     setLoading(false);
@@ -27,17 +32,19 @@ export const Provider = ({ children }) => {
     const storage = [];
     const checkout = [];
     if (localStorage.getItem(user.id.toString())) {
-      storage.push(...localStorage.getItem(user.id).split(","));
+      storage.push(...localStorage.getItem(user.id).split(','));
     }
 
     items.forEach((el) => {
-      for (let key of storage) {
+      // eslint-disable-next-line no-restricted-syntax
+      for (const key of storage) {
         if (key === el.id) {
           checkout.push(el);
         }
       }
     });
     setCheckoutUser(checkout);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [items]);
 
   useEffect(() => {
@@ -47,17 +54,22 @@ export const Provider = ({ children }) => {
   }, [checkoutUser]);
 
   const checkoutContextData = {
-    user: user,
-    loading: loading,
-    checkoutUser: checkoutUser,
-    totalPrice: totalPrice,
-    cancelItem: cancelItem,
-    error: error,
-    items: items,
+    user,
+    loading,
+    checkoutUser,
+    totalPrice,
+    cancelItem,
+    error,
+    items,
   };
   return (
     <Context.Provider value={{ checkoutContextData }}>
       {children}
     </Context.Provider>
   );
+};
+
+Provider.propTypes = {
+  children: PropTypes.node.isRequired,
+
 };

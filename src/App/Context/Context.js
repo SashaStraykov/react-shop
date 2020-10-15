@@ -1,4 +1,5 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 export const Context = createContext();
 
@@ -11,17 +12,18 @@ export const Provider = ({ children }) => {
 
   useEffect(() => {
     if (user) {
-      setBucketItems([...localStorage.getItem(user.id.toString()).split(",")]);
+      setBucketItems([...localStorage.getItem(user.id.toString()).split(',')]);
     }
   }, [user, cart]);
 
+  // eslint-disable-next-line consistent-return
   const addItemToBucket = (id) => {
     if (localStorage.getItem(user.id.toString())) {
       if (bucketItems.some((el) => el === id)) {
         return bucketItems;
-      } else {
-        setBucketItems(bucketItems.push(id));
       }
+      setBucketItems(bucketItems.push(id));
+
       localStorage.setItem(user.id.toString(), bucketItems);
     } else {
       localStorage.setItem(user.id, id);
@@ -35,7 +37,7 @@ export const Provider = ({ children }) => {
     const storage = [];
     const newCheckoutItems = [];
     let index;
-    storage.push(...localStorage.getItem(user.id.toString()).split(","));
+    storage.push(...localStorage.getItem(user.id.toString()).split(','));
     storage.forEach((el, i) => {
       if (el === id) {
         index = i;
@@ -43,7 +45,8 @@ export const Provider = ({ children }) => {
     });
     storage.splice(index, 1);
     items.forEach((el) => {
-      for (let key of storage) {
+      // eslint-disable-next-line no-restricted-syntax
+      for (const key of storage) {
         if (key === el.id) {
           newCheckoutItems.push(el);
         }
@@ -53,21 +56,26 @@ export const Provider = ({ children }) => {
     localStorage.setItem(user.id.toString(), storage);
     setCart(cart - 1);
   };
+
   const contextData = {
-    user: user,
-    setUser: setUser,
-    cart: cart,
-    setCart: setCart,
-    addItemToBucket: addItemToBucket,
-    bucketItems: bucketItems,
-    setBucketItems: setBucketItems,
-    added: added,
-    setAdded: setAdded,
-    cancelItem: cancelItem,
-    checkoutUser: checkoutUser,
-    setCheckoutUser: setCheckoutUser,
+    user,
+    setUser,
+    cart,
+    setCart,
+    addItemToBucket,
+    bucketItems,
+    setBucketItems,
+    added,
+    setAdded,
+    cancelItem,
+    checkoutUser,
+    setCheckoutUser,
   };
   return (
     <Context.Provider value={{ contextData }}>{children}</Context.Provider>
   );
+};
+
+Provider.propTypes = {
+  children: PropTypes.node.isRequired,
 };

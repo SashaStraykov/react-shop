@@ -1,30 +1,27 @@
-import React, { useContext } from "react";
-import { Link, useRouteMatch } from "react-router-dom";
-import ProductsCategoryItem from "../../../Components/ProducsCategoryItem/ProducsCategoryItem";
-// import SearchPannel from "../../../Components/SearchPannel/SearchPannel";
-import Pagination from "../../../Components/Pagination/Pagination";
+import React, { useContext } from 'react';
+import { Link, useRouteMatch } from 'react-router-dom';
+import ProductsCategoryItem from '../../../Components/ProducsCategoryItem/ProducsCategoryItem';
+import Pagination from '../../../Components/Pagination/Pagination';
 import {
   BackGroundGrey,
   Container,
   H2,
   ContainerItem,
   SearchPannel,
-} from "./Styled";
-import { ProductsCategoryItemsPageContext } from "../Context/Index";
-import Spinner from ".././../../Components/Spinner/Spinner";
-import ErrorModal from "../../../Components/ErrorModal"
-
+} from './Styled';
+import { ProductsCategoryItemsPageContext } from '../Context/Index';
+import Spinner from '../../../Components/Spinner/Spinner';
+import ErrorModal from '../../../Components/ErrorModal';
 
 function ProductsCategoryItemsPageContent() {
   const { url } = useRouteMatch();
   const { ProductsCategoryItemsPageContextData } = useContext(
-    ProductsCategoryItemsPageContext
+    ProductsCategoryItemsPageContext,
   );
 
   const {
     currentPage,
     postsPerPage,
-    currentPost,
     posts,
     paginate,
     category,
@@ -38,13 +35,18 @@ function ProductsCategoryItemsPageContent() {
   if (loading) {
     return <Spinner />;
   }
-  if(error){
-    return <ErrorModal/>
+  if (error) {
+    return <ErrorModal />;
   }
   return (
     <div>
       <BackGroundGrey>
-        <H2>Welcome to the {category.toUpperCase()} category</H2>
+        <H2>
+          Welcome to the
+          {category.toUpperCase()}
+          {' '}
+          category
+        </H2>
 
         <SearchPannel
           value={search}

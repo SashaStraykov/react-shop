@@ -1,4 +1,5 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 export const Context = createContext();
 export const { Consumer } = Context;
@@ -8,24 +9,25 @@ export const Provider = ({ children, category }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(5);
 
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
     const items = [];
     const dataRequest = async () => {
-      await fetch("http://localhost:3000/items")
+      await fetch('http://localhost:3000/items')
         .then((data) => data.json())
         .then((response) => {
-          for (let key of response) {
+          // eslint-disable-next-line no-restricted-syntax
+          for (const key of response) {
             if (key.approved === true) {
               items.push(key);
             }
           }
           setPosts(items);
         })
-        .catch((e) => setError(true));
+        .catch(() => setError(true));
     };
     dataRequest();
     setLoading(false);
@@ -40,29 +42,28 @@ export const Provider = ({ children, category }) => {
     setCurrentPage(pageNumber);
   };
 
+  // eslint-disable-next-line no-shadow
   const searchItems = (items, search) => {
     if (search.length === 0) {
       return items;
     }
-    return items.filter((item) => {
-      return item.title.toLowerCase().indexOf(search.toLowerCase()) > -1;
-    });
+    return items.filter((item) => item.title.toLowerCase().indexOf(search.toLowerCase()) > -1);
   };
 
   const finalItems = searchItems(currentPost, search);
 
   const ProductsCategoryItemsPageContextData = {
-    posts: posts,
-    postsPerPage: postsPerPage,
-    paginate: paginate,
-    category: category,
-    currentPage: currentPage,
-    currentPost: currentPost,
-    loading: loading,
-    search: search,
-    setSearch: setSearch,
-    finalItems: finalItems,
-    error: error,
+    posts,
+    postsPerPage,
+    paginate,
+    category,
+    currentPage,
+    currentPost,
+    loading,
+    search,
+    setSearch,
+    finalItems,
+    error,
   };
 
   return (
@@ -70,4 +71,10 @@ export const Provider = ({ children, category }) => {
       {children}
     </Context.Provider>
   );
+};
+
+Provider.propTypes = {
+  children: PropTypes.node.isRequired,
+  category: PropTypes.string.isRequired,
+
 };

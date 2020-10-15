@@ -1,8 +1,8 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App/App";
-import { AppProvider } from "./App/Context/Index";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App/App';
+import { AppProvider } from './App/Context/Index';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -10,5 +10,5 @@ ReactDOM.render(
       <App />
     </AppProvider>
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById('root'),
 );

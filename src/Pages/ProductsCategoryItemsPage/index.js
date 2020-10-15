@@ -1,10 +1,10 @@
-import React from "react";
-import ProductsCategoryItemsPageContent from "./content/ProductsCategoryItemsPageContent";
-import { ProductsCategoryItemsPageContextProvider } from "./Context/Index";
-import { useParams } from "react-router-dom";
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import ProductsCategoryItemsPageContent from './content/ProductsCategoryItemsPageContent';
+import { ProductsCategoryItemsPageContextProvider } from './Context/Index';
 
 const ProductsCategoryItemsPage = () => {
-  let { category } = useParams();
+  const { category } = useParams();
   return (
     <>
       <ProductsCategoryItemsPageContextProvider category={category}>

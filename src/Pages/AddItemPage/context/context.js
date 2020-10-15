@@ -1,4 +1,5 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
 export const Context = createContext();
 
@@ -8,10 +9,10 @@ export const Provider = ({ children }) => {
   const [error, setError] = useState(false);
   useEffect(() => {
     const req = async () => {
-      await fetch("http://localhost:3000/category")
+      await fetch('http://localhost:3000/category')
         .then((response) => response.json())
         .then((data) => setItems(data))
-        .catch((e) => setError(true));
+        .catch(() => setError(true));
     };
 
     req();
@@ -19,9 +20,9 @@ export const Provider = ({ children }) => {
   }, []);
 
   const contextDataAddItemPage = {
-    loading: loading,
-    error: error,
-    items: items,
+    loading,
+    error,
+    items,
   };
 
   return (
@@ -29,4 +30,10 @@ export const Provider = ({ children }) => {
       {children}
     </Context.Provider>
   );
+};
+
+Provider.propTypes = {
+
+  children: PropTypes.node.isRequired,
+
 };

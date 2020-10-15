@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import { UlPagination, LiPagination, SpanPagination } from "./Styled";
+import { UlPagination, LiPagination, SpanPagination } from './Styled';
 
 const Pagination = ({
   postsPerPage,
@@ -19,7 +19,7 @@ const Pagination = ({
       {pageNumbers.map((number) => (
         <LiPagination
           onClick={() => paginate(number)}
-          active={number === currentPage ? true : false}
+          active={number === currentPage}
           key={number}
         >
           <SpanPagination>{number}</SpanPagination>

@@ -1,13 +1,11 @@
-import React from "react";
-import AdminPageContent from "./content/AdminPageContent";
-import { AdminPageContextProvider } from "./context";
+import React from 'react';
+import AdminPageContent from './content/AdminPageContent';
+import { AdminPageContextProvider } from './context';
 
-const AdminPage = () => {
-  return (
-    <AdminPageContextProvider>
-      <AdminPageContent />
-    </AdminPageContextProvider>
-  );
-};
+const AdminPage = () => (
+  <AdminPageContextProvider>
+    <AdminPageContent />
+  </AdminPageContextProvider>
+);
 
 export default AdminPage;

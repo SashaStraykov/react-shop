@@ -1,4 +1,4 @@
 export {
   Context as AdminPageContext,
   Provider as AdminPageContextProvider,
-} from "./context";
+} from './context';

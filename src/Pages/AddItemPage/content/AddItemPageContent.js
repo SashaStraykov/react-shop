@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext } from 'react';
 import {
   Span,
   Form,
@@ -8,10 +8,10 @@ import {
   Box,
   H2,
   Container,
-} from "./Styled";
-import Spinner from "../../../Components/Spinner/Spinner";
-import ErrorModal from "../../../Components/ErrorModal";
-import { AddItemPageContext } from "../context";
+} from './Styled';
+import Spinner from '../../../Components/Spinner/Spinner';
+import ErrorModal from '../../../Components/ErrorModal';
+import { AddItemPageContext } from '../context';
 
 const AddItemPageContent = () => {
   const { contextDataAddItemPage } = useContext(AddItemPageContext);

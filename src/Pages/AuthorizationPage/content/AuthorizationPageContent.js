@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import ModalForm from "./ModalForm/ModalForm";
-import { BackGroundGrey, Container, H2 } from "./Styled";
-import { AppContext } from "../../../App/Context/Index";
-import { Redirect } from "react-router-dom";
-import { PERSON_PAGE } from "../../../constants/routes";
+import React, { useContext } from 'react';
+import { Redirect } from 'react-router-dom';
+import ModalForm from './ModalForm/ModalForm';
+import { BackGroundGrey, Container, H2 } from './Styled';
+import { AppContext } from '../../../App/Context/Index';
+import { PERSON_PAGE } from '../../../constants/routes';
 
 function AuthorizationPageContent() {
   const { contextData } = useContext(AppContext);

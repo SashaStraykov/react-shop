@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Img = styled.img.attrs((props) => ({ src: props.src, alt: props.src }))`
   border: 1px solid black;

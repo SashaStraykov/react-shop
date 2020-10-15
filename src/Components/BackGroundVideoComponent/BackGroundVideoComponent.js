@@ -1,6 +1,9 @@
-import React from "react";
-import { Intro, IntroMedia, IntroMediaVideo, IntroContent } from "./Styled";
+import React from 'react';
+import {
+  Intro, IntroMedia, IntroMediaVideo, IntroContent,
+} from './Styled';
 
+// eslint-disable-next-line react/prop-types
 function BackGroundVideoComponent({ children, video }) {
   return (
     <Intro>
@@ -11,7 +14,7 @@ function BackGroundVideoComponent({ children, video }) {
           muted
           loop
           className="introMediaVideo"
-        ></IntroMediaVideo>
+        />
       </IntroMedia>
       <IntroContent>{children}</IntroContent>
     </Intro>

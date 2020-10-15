@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Intro = styled.div`
   height: 100vh;
@@ -32,4 +32,6 @@ const IntroContent = styled.div`
   width: 100%;
 `;
 
-export { Intro, IntroMedia, IntroMediaVideo, IntroContent };
+export {
+  Intro, IntroMedia, IntroMediaVideo, IntroContent,
+};

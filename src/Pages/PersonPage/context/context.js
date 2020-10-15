@@ -1,5 +1,8 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
-import { AppContext } from "../../../App/Context/Index";
+import React, {
+  createContext, useContext, useState, useEffect,
+} from 'react';
+import PropTypes from 'prop-types';
+import { AppContext } from '../../../App/Context/Index';
 
 export const Context = createContext();
 
@@ -14,10 +17,10 @@ export const Provider = ({ children }) => {
 
   useEffect(() => {
     const req = async () => {
-      await fetch("http://localhost:3000/items")
+      await fetch('http://localhost:3000/items')
         .then((res) => res.json())
         .then((data) => setItems(data))
-        .catch((e) => setError(true));
+        .catch(() => setError(true));
     };
     req();
     setLoading(false);
@@ -27,7 +30,8 @@ export const Provider = ({ children }) => {
     const unApprovedItemsArray = [];
     const userItems = [];
     items.forEach((el) => {
-      for (let key of user.userItems) {
+      // eslint-disable-next-line no-restricted-syntax
+      for (const key of user.userItems) {
         if (key === el.id) {
           if (el.approved === false) {
             unApprovedItemsArray.push(el);
@@ -35,13 +39,6 @@ export const Provider = ({ children }) => {
           userItems.push(el);
         }
       }
-      // for (let i = 0; i < localStorage.length; i++) {
-      //   if (localStorage.key(i) === el.id) {
-      //     if (el.approved === false) {
-      //       unApprovedItemsArray.push(el);
-      //     }
-      //   }
-      // }
     });
     setUnApprovedItems(unApprovedItemsArray);
     setMadePosts(userItems);
@@ -49,12 +46,12 @@ export const Provider = ({ children }) => {
   }, [items, user.userItems]);
 
   const contextdataPersonPage = {
-    user: user,
-    setUser: setUser,
-    loading: loading,
-    madePosts: madePosts,
-    unApprovedItems: unApprovedItems,
-    error: error,
+    user,
+    setUser,
+    loading,
+    madePosts,
+    unApprovedItems,
+    error,
   };
 
   return (
@@ -62,4 +59,9 @@ export const Provider = ({ children }) => {
       {children}
     </Context.Provider>
   );
+};
+
+Provider.propTypes = {
+  children: PropTypes.node.isRequired,
+
 };

@@ -1,9 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const DivGrid = styled.div`
-  /* display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 1.25em; */
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -33,4 +30,6 @@ const H2 = styled.h2`
   margin: 1em;
   color: rgb(66, 66, 66);
 `;
-export { DivGrid, BackGroundGrey, Container, H2 };
+export {
+  DivGrid, BackGroundGrey, Container, H2,
+};

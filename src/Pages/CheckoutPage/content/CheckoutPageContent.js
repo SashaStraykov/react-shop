@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
-import { CheckoutPageContext } from "../context";
-import ProductsCategoryItem from "../../../Components/ProducsCategoryItem/ProducsCategoryItem";
-import Spinner from "../../../Components/Spinner/Spinner";
-import { Link } from "react-router-dom";
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { CheckoutPageContext } from '../context';
+import ProductsCategoryItem from '../../../Components/ProducsCategoryItem/ProducsCategoryItem';
+import Spinner from '../../../Components/Spinner/Spinner';
 import {
   BackGroundGrey,
   H2,
@@ -10,9 +10,9 @@ import {
   ItemBox,
   ButtonCancel,
   PriceBox,
-} from "./Styled";
-import ErrorModal from "../../../Components/ErrorModal";
-import { PRODUCTS_CATEGORY_PAGE } from "../../../constants/routes";
+} from './Styled';
+import ErrorModal from '../../../Components/ErrorModal';
+import { PRODUCTS_CATEGORY_PAGE } from '../../../constants/routes';
 
 const CheckoutPageContent = () => {
   const { checkoutContextData } = useContext(CheckoutPageContext);
@@ -45,7 +45,11 @@ const CheckoutPageContent = () => {
         ))}
       </Container>
       <Container>
-        <PriceBox>Total value: {totalPrice} typs</PriceBox>
+        <PriceBox>
+          Total value:
+          {totalPrice}
+          typs
+        </PriceBox>
       </Container>
     </BackGroundGrey>
   );

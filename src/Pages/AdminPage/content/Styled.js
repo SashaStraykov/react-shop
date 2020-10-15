@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const BackGroundGrey = styled.div`
   width: 100%;
@@ -24,4 +24,6 @@ const Container = styled.div`
 const Box = styled.div`
   display: block;
 `;
-export { BackGroundGrey, H2, Container, Box };
+export {
+  BackGroundGrey, H2, Container, Box,
+};

@@ -1,16 +1,18 @@
-import React, { useContext } from "react";
-import CategoryComponent from "../../../Components/CategoryComponent/CategoryComponent";
-import { Link, useRouteMatch } from "react-router-dom";
-import { ProductsCategoryPageContext } from "../context";
-import Spinner from "../../../Components/Spinner/Spinner";
-import ErrorModal from "../../../Components/ErrorModal";
+import React, { useContext } from 'react';
+import { Link, useRouteMatch } from 'react-router-dom';
+import CategoryComponent from '../../../Components/CategoryComponent/CategoryComponent';
+import { ProductsCategoryPageContext } from '../context';
+import Spinner from '../../../Components/Spinner/Spinner';
+import ErrorModal from '../../../Components/ErrorModal';
 
-import { DivGrid, BackGroundGrey, Container, H2 } from "./Styled";
+import {
+  DivGrid, BackGroundGrey, Container, H2,
+} from './Styled';
 
 const ProductsCategoryPageContent = () => {
   const { url } = useRouteMatch();
   const { productsCategoryPageContextData } = useContext(
-    ProductsCategoryPageContext
+    ProductsCategoryPageContext,
   );
   const { category, loading, error } = productsCategoryPageContextData;
 

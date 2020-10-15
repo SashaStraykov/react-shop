@@ -1,8 +1,8 @@
-import React from "react";
-import { Route, Switch, useRouteMatch } from "react-router-dom";
-import ItemPage from "../../Pages/ItemPage";
-import ProductsCategoryPage from "../../Pages/ProductsCategoryPage";
-import ProductsCategoryItemsPage from "../../Pages/ProductsCategoryItemsPage";
+import React from 'react';
+import { Route, Switch, useRouteMatch } from 'react-router-dom';
+import ItemPage from '../../Pages/ItemPage';
+import ProductsCategoryPage from '../../Pages/ProductsCategoryPage';
+import ProductsCategoryItemsPage from '../../Pages/ProductsCategoryItemsPage';
 
 const ProductsLayout = () => {
   const { path } = useRouteMatch();

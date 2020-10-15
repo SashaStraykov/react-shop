@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import { BackGroundGrey, H2, Container } from "./Styled";
-import { PersonPageContext } from "../../../PersonPage/context";
-import ItemModal from "../../../../Components/ItemModal";
+import React, { useContext } from 'react';
+import { BackGroundGrey, H2, Container } from './Styled';
+import { PersonPageContext } from '../../context';
+import ItemModal from '../../../../Components/ItemModal';
 
 const PersonPageRejectedItems = () => {
   const { contextdataPersonPage } = useContext(PersonPageContext);
@@ -12,15 +12,15 @@ const PersonPageRejectedItems = () => {
         {unApprovedItems && (
           <Container>
             <H2>
-              Unapproved announcment <span>&#8595;</span>
+              Unapproved announcment
+              {' '}
+              <span>&#8595;</span>
             </H2>
-            {unApprovedItems.map(({ id, ...rest }) => {
-              return (
-                <div key={id}>
-                  <ItemModal id={id} {...rest} />
-                </div>
-              );
-            })}
+            {unApprovedItems.map(({ id, ...rest }) => (
+              <div key={id}>
+                <ItemModal id={id} {...rest} />
+              </div>
+            ))}
           </Container>
         )}
       </Container>

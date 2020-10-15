@@ -1,6 +1,8 @@
-import React, { useContext } from "react";
-import { Logs, SignUpBox, ErrorSignUp, ButtonSignUp, InputC } from "./Styled";
-import { AuthorizationPageContext } from "../../../AuthorizationPage/context";
+import React, { useContext } from 'react';
+import {
+  Logs, SignUpBox, ErrorSignUp, ButtonSignUp, InputC,
+} from './Styled';
+import { AuthorizationPageContext } from '../../context';
 
 const SignUp = () => {
   const { authorizationContextData } = useContext(AuthorizationPageContext);

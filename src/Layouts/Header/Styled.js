@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Nav = styled.nav`
   background: rgb(33, 33, 33);

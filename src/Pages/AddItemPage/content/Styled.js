@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Span = styled.span`
   color: rgb(66, 66, 66);
@@ -90,4 +90,6 @@ const Container = styled.div`
   padding: 0;
 `;
 
-export { Span, Form, InputC, Select, InputDescription, Box, H2, Container };
+export {
+  Span, Form, InputC, Select, InputDescription, Box, H2, Container,
+};

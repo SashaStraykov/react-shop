@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const ItemBox = styled.div`
   width: 95%;
@@ -38,4 +38,6 @@ const BoxPrice = styled.div`
   grid-row: 3/ 4;
   text-align: right;
 `;
-export { ItemBox, Img, H2, Boxdate, BoxPrice };
+export {
+  ItemBox, Img, H2, Boxdate, BoxPrice,
+};

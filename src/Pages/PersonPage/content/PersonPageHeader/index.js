@@ -1,31 +1,32 @@
-import React, { useState, useContext } from "react";
-import { Nav, NavUl, NavLi } from "./Styled";
-import { Link, Switch, Route, useRouteMatch } from "react-router-dom";
-import AddItemPage from "../../../AddItemPage";
-import CheckoutPage from "../../../CheckoutPage";
-import WorkIcon from "@material-ui/icons/Work";
-import AddIcon from "@material-ui/icons/Add";
-import DashboardIcon from "@material-ui/icons/Dashboard";
-import CancelPresentationIcon from "@material-ui/icons/CancelPresentation";
-import { makeStyles } from "@material-ui/core/styles";
-import PersonPageInfo from "../PersonPageInfo";
-import PersonPageRejectedItems from "../PersonPageRejectedItems";
-import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
-import { AppContext } from "../../../../App/Context/Index";
-import PrivateLayoutAdminPage from "../../../../Layouts/PrivateLayoutAdminPage";
-import { ADMIN_PAGE } from "../../../../constants/routes";
-import { CHECKOUT_PAGE } from "../../../../constants/routes";
-import { ADD_ANNOUNCMENT_PAGE } from "../../../../constants/routes";
-import { REJECT_ITEMS_PAGE } from "../../../../constants/routes";
+import React, { useState, useContext } from 'react';
+import {
+  Link, Switch, Route, useRouteMatch,
+} from 'react-router-dom';
+import WorkIcon from '@material-ui/icons/Work';
+import AddIcon from '@material-ui/icons/Add';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import CancelPresentationIcon from '@material-ui/icons/CancelPresentation';
+import { makeStyles } from '@material-ui/core/styles';
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
+import PersonPageInfo from '../PersonPageInfo';
+import PersonPageRejectedItems from '../PersonPageRejectedItems';
+import CheckoutPage from '../../../CheckoutPage';
+import AddItemPage from '../../../AddItemPage';
+import { Nav, NavUl, NavLi } from './Styled';
+import { AppContext } from '../../../../App/Context/Index';
+import PrivateLayoutAdminPage from '../../../../Layouts/PrivateLayoutAdminPage';
+import {
+  ADMIN_PAGE, CHECKOUT_PAGE, ADD_ANNOUNCMENT_PAGE, REJECT_ITEMS_PAGE,
+} from '../../../../constants/routes';
 
 const useStyles = makeStyles({
   icon: {
-    color: "inherit",
-    fontSize: "2.5em",
+    color: 'inherit',
+    fontSize: '2.5em',
   },
   iconPlus: {
-    color: "inherit",
-    fontSize: "3em",
+    color: 'inherit',
+    fontSize: '3em',
   },
 });
 
@@ -45,19 +46,17 @@ const PersonPageHeader = () => {
     <>
       <Nav>
         <NavUl>
-          {user && user.role === "admin" ? (
+          {user && user.role === 'admin' ? (
             <Link to={`${url}${ADMIN_PAGE}`}>
               <NavLi
                 active={active.admin}
-                onClick={() =>
-                  setActive({
-                    dash: false,
-                    bucket: false,
-                    add: false,
-                    cancel: false,
-                    admin: true,
-                  })
-                }
+                onClick={() => setActive({
+                  dash: false,
+                  bucket: false,
+                  add: false,
+                  cancel: false,
+                  admin: true,
+                })}
               >
                 <SupervisorAccountIcon className={classes.iconPlus} />
               </NavLi>
@@ -67,14 +66,12 @@ const PersonPageHeader = () => {
           <Link to={`${url}`}>
             <NavLi
               active={active.dash}
-              onClick={() =>
-                setActive({
-                  dash: true,
-                  bucket: false,
-                  add: false,
-                  cancel: false,
-                })
-              }
+              onClick={() => setActive({
+                dash: true,
+                bucket: false,
+                add: false,
+                cancel: false,
+              })}
             >
               <DashboardIcon className={classes.icon} />
             </NavLi>
@@ -82,14 +79,12 @@ const PersonPageHeader = () => {
           <Link to={`${url}${CHECKOUT_PAGE}`}>
             <NavLi
               active={active.bucket}
-              onClick={() =>
-                setActive({
-                  dash: false,
-                  bucket: true,
-                  add: false,
-                  cancel: false,
-                })
-              }
+              onClick={() => setActive({
+                dash: false,
+                bucket: true,
+                add: false,
+                cancel: false,
+              })}
             >
               <WorkIcon className={classes.icon} />
             </NavLi>
@@ -97,14 +92,12 @@ const PersonPageHeader = () => {
           <Link to={`${url}${ADD_ANNOUNCMENT_PAGE}`}>
             <NavLi
               active={active.add}
-              onClick={() =>
-                setActive({
-                  dash: false,
-                  bucket: false,
-                  add: true,
-                  cancel: false,
-                })
-              }
+              onClick={() => setActive({
+                dash: false,
+                bucket: false,
+                add: true,
+                cancel: false,
+              })}
             >
               <AddIcon className={classes.iconPlus} />
             </NavLi>
@@ -112,14 +105,12 @@ const PersonPageHeader = () => {
           <Link to={`${url}${REJECT_ITEMS_PAGE}`}>
             <NavLi
               active={active.cancel}
-              onClick={() =>
-                setActive({
-                  dash: false,
-                  bucket: false,
-                  add: false,
-                  cancel: true,
-                })
-              }
+              onClick={() => setActive({
+                dash: false,
+                bucket: false,
+                add: false,
+                cancel: true,
+              })}
             >
               <CancelPresentationIcon className={classes.iconPlus} />
             </NavLi>

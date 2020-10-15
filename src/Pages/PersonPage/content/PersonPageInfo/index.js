@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import {
   BackGroundGrey,
   H2,
@@ -9,22 +10,28 @@ import {
   ItemBox,
   ButtonCancel,
   H2Title,
-} from "./Styled";
-import ProductsCategoryItem from "../../../../Components/ProducsCategoryItem/ProducsCategoryItem";
-import { Link } from "react-router-dom";
-import Spinner from "../../../../Components/Spinner/Spinner";
-import { PersonPageContext } from "../../../PersonPage/context";
-import { PRODUCTS_CATEGORY_PAGE } from "../../../../constants/routes";
+} from './Styled';
+import ProductsCategoryItem from '../../../../Components/ProducsCategoryItem/ProducsCategoryItem';
+import Spinner from '../../../../Components/Spinner/Spinner';
+import { PersonPageContext } from '../../context';
+import { PRODUCTS_CATEGORY_PAGE } from '../../../../constants/routes';
 
 const PersonPageInfo = () => {
   const { contextdataPersonPage } = useContext(PersonPageContext);
   const { loading, user, madePosts } = contextdataPersonPage;
   return (
     <BackGroundGrey>
-      <H2Title>Hello {user.login}</H2Title>
+      <H2Title>
+        Hello
+        {user.login}
+      </H2Title>
       <Container>
         <TypsBox>
-          <TypsBoxLeft>You have {user.typs} typs</TypsBoxLeft>
+          <TypsBoxLeft>
+            You have
+            {user.typs}
+            typs
+          </TypsBoxLeft>
           <TypsBoxRight>Buy more Typs</TypsBoxRight>
         </TypsBox>
       </Container>

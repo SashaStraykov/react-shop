@@ -1,7 +1,7 @@
-import React from "react";
-import ItemPageContent from "./content/ItemPageContent";
-import { ItemPageContextProvider } from "./Context/Index";
-import { useParams } from "react-router-dom";
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import ItemPageContent from './content/ItemPageContent';
+import { ItemPageContextProvider } from './Context/Index';
 
 const ItemPage = () => {
   const { itemid } = useParams();

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const SignUpBox = styled.div`
   margin-bottom: 3em;
@@ -49,4 +49,6 @@ const InputC = styled.input`
   }
 `;
 
-export { Logs, SignUpBox, ErrorSignUp, ButtonSignUp, InputC };
+export {
+  Logs, SignUpBox, ErrorSignUp, ButtonSignUp, InputC,
+};

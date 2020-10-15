@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const BackGroundGrey = styled.div`
   width: 100%;
@@ -54,4 +54,6 @@ const PriceBox = styled.div`
   color: rgb(66, 66, 66);
   margin-top: 2em;
 `;
-export { BackGroundGrey, H2, Container, ItemBox, ButtonCancel, PriceBox };
+export {
+  BackGroundGrey, H2, Container, ItemBox, ButtonCancel, PriceBox,
+};

@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import { PersonPageContext } from "../context";
-import { PersonPageBox } from "./Styled";
-import Spinner from "../../../Components/Spinner/Spinner";
-import PersonPageHeader from "../content/PersonPageHeader";
-import ErrorModal from "../../../Components/ErrorModal";
+import React, { useContext } from 'react';
+import { PersonPageContext } from '../context';
+import { PersonPageBox } from './Styled';
+import Spinner from '../../../Components/Spinner/Spinner';
+import PersonPageHeader from './PersonPageHeader';
+import ErrorModal from '../../../Components/ErrorModal';
 
 const PersonPageContent = () => {
   const { contextdataPersonPage } = useContext(PersonPageContext);

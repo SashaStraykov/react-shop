@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import SignIn from "../SignIn/SignIn";
-import SignUp from "../SignUp/SignUp";
-import { ModalBox, ModalButtonBox, ModalButton } from "./Styled";
+import React, { useState } from 'react';
+import SignIn from '../SignIn/SignIn';
+import SignUp from '../SignUp/SignUp';
+import { ModalBox, ModalButtonBox, ModalButton } from './Styled';
 
 function ModalForm() {
   const [sign, setSign] = useState(true);

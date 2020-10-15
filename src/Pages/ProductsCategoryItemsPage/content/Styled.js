@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const BackGroundGrey = styled.div`
   width: 100%;
@@ -43,4 +43,6 @@ const SearchPannel = styled.input`
     outline: none;
   }
 `;
-export { BackGroundGrey, Container, H2, ContainerItem, SearchPannel };
+export {
+  BackGroundGrey, Container, H2, ContainerItem, SearchPannel,
+};

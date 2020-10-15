@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Nav = styled.nav`
   background: rgb(33, 33, 33);
@@ -16,7 +16,7 @@ const NavUl = styled.ul`
 const NavLi = styled.li`
   list-style: none;
   padding: 1.5em;
-  background: ${(props) => (props.active ? "var(--brand-color)" : "none")};
+  background: ${(props) => (props.active ? 'var(--brand-color)' : 'none')};
   color: var(--icon-color);
   &:hover {
     color: var(--container-color);

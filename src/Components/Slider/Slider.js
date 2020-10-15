@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { SliderBox, SliderIMG, Arrow } from "./Styled";
+
+import React, { useState } from 'react';
+import { SliderBox, SliderIMG, Arrow } from './Styled';
 
 function Slider({ img }) {
   const [i, setI] = useState(0);

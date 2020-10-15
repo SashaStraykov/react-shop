@@ -1,27 +1,30 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
-import { AppContext } from "../../../App/Context/Index";
+import React, {
+  createContext, useContext, useState, useEffect,
+} from 'react';
+import PropTypes from 'prop-types';
+import { AppContext } from '../../../App/Context/Index';
 
 export const Context = createContext();
 
 export const Provider = ({ children }) => {
-  //signIn
-  const [loginSignIn, setLoginSignIn] = useState("");
+  // signIn
+  const [loginSignIn, setLoginSignIn] = useState('');
   const [pasError, setPasError] = useState(false);
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState('');
   const { contextData } = useContext(AppContext);
   const { user, setUser } = contextData;
   const [usersData, setUsersData] = useState([]);
 
-  //signUp
-  const [loginSignUp, setLoginSignUp] = useState("");
-  const [emailSignUp, setEmailSignUp] = useState("");
-  const [passwordSignUp, setPasswordSignUp] = useState("");
+  // signUp
+  const [loginSignUp, setLoginSignUp] = useState('');
+  const [emailSignUp, setEmailSignUp] = useState('');
+  const [passwordSignUp, setPasswordSignUp] = useState('');
   // const [logErrorSignUp, setLogErrorSignUp] = useState(false);
   // const [pasErrorSignUp, setPasErrorSignUp] = useState(false);
 
   useEffect(() => {
     const dataRequest = async () => {
-      await fetch("http://localhost:3000/users")
+      await fetch('http://localhost:3000/users')
         .then((data) => data.json())
         .then((dataRes) => setUsersData(dataRes));
     };
@@ -31,7 +34,7 @@ export const Provider = ({ children }) => {
   const checkAuthorization = (e) => {
     e.preventDefault();
 
-    for (let key in usersData) {
+    for (const key in usersData) {
       const dataUser = usersData[key];
 
       if (dataUser.login === loginSignIn) {
@@ -46,39 +49,38 @@ export const Provider = ({ children }) => {
     }
   };
 
-  const postData = async (e) => {
-    e.preventDefault();
-    const personData = {
-      id: loginSignUp,
-      login: loginSignUp,
-      password: passwordSignUp,
-      email: emailSignUp,
-    };
-    await fetch("http://localhost:3000/users", {
-      method: "POST",
-      body: personData,
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data));
-    console.log(personData);
-    JSON.stringify(personData);
-  };
+  // const postData = async (e) => {
+  //   e.preventDefault();
+  //   const personData = {
+  //     id: loginSignUp,
+  //     login: loginSignUp,
+  //     password: passwordSignUp,
+  //     email: emailSignUp,
+  //   };
+  //   await fetch('http://localhost:3000/users', {
+  //     method: 'POST',
+  //     body: personData,
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => );
+
+  //   JSON.stringify(personData);
+  // };
 
   const authorizationContextData = {
-    loginSignIn: loginSignIn,
-    setLoginSignIn: setLoginSignIn,
-    password: password,
-    setPassword: setPassword,
-    checkAuthorization: checkAuthorization,
-    pasError: pasError,
-    user: user,
-    loginSignUp: loginSignUp,
-    setLoginSignUp: setLoginSignUp,
-    passwordSignUp: passwordSignUp,
-    setPasswordSignUp: setPasswordSignUp,
-    emailSignUp: emailSignUp,
-    setEmailSignUp: setEmailSignUp,
-    postData: postData,
+    loginSignIn,
+    setLoginSignIn,
+    password,
+    setPassword,
+    checkAuthorization,
+    pasError,
+    user,
+    loginSignUp,
+    setLoginSignUp,
+    passwordSignUp,
+    setPasswordSignUp,
+    emailSignUp,
+    setEmailSignUp,
   };
 
   return (
@@ -86,4 +88,9 @@ export const Provider = ({ children }) => {
       {children}
     </Context.Provider>
   );
+};
+
+Provider.propTypes = {
+  children: PropTypes.node.isRequired,
+
 };

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const H1 = styled.h1`
   margin-top: 2em;
@@ -44,4 +44,6 @@ const ButtonCustom = styled.button`
     cursor: pointer;
   }
 `;
-export { H1, H2, ButtonContainer, Container, ButtonCustom };
+export {
+  H1, H2, ButtonContainer, Container, ButtonCustom,
+};

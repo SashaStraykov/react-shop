@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import dataArtLogo from "../../images/LogoWhite.png";
-import PersonIcon from "@material-ui/icons/Person";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import PersonIcon from '@material-ui/icons/Person';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { makeStyles } from '@material-ui/core/styles';
 import {
   Nav,
   Img,
@@ -16,24 +16,23 @@ import {
   BucketItem,
   NavUlBucket,
   AmountItems,
-} from "./Styled.js";
-import { makeStyles } from "@material-ui/core/styles";
-import { AppContext } from "../../App/Context/Index";
-import { HOME_PAGE } from "../../constants/routes";
-import { PERSON_PAGE } from "../../constants/routes";
-import { AUTHORIZATION_PAGE } from "../../constants/routes";
-import { CHECKOUT_PAGE } from "../../constants/routes";
+} from './Styled';
+import dataArtLogo from '../../assets/images/LogoWhite.png';
+import { AppContext } from '../../App/Context/Index';
+import {
+  HOME_PAGE, PERSON_PAGE, AUTHORIZATION_PAGE, CHECKOUT_PAGE,
+} from '../../constants/routes';
 
 const useStyles = makeStyles({
   icon: {
-    color: "inherit",
-    fontSize: "3em",
-    transition: "0.5s",
+    color: 'inherit',
+    fontSize: '3em',
+    transition: '0.5s',
   },
   iconBucket: {
-    color: "inherit",
-    fontSize: "2.8em",
-    transition: "0.5s",
+    color: 'inherit',
+    fontSize: '2.8em',
+    transition: '0.5s',
   },
 });
 
@@ -44,8 +43,8 @@ function Header() {
 
   useEffect(() => {
     if (user) {
-      const getLS = localStorage.getItem(user.id).split(",");
-      if (getLS[0] === "") {
+      const getLS = localStorage.getItem(user.id).split(',');
+      if (getLS[0] === '') {
         setAmountItemsinBucket(0);
       } else {
         setAmountItemsinBucket(getLS.length);
@@ -68,7 +67,10 @@ function Header() {
             <Link to={PERSON_PAGE}>
               <NavLi>Person Page</NavLi>
             </Link>
-            <NavLi>{user ? user.typs : 0} typs</NavLi>
+            <NavLi>
+              {user ? user.typs : 0}
+              typs
+            </NavLi>
             <NavLiSign>
               <Link to={AUTHORIZATION_PAGE}>
                 {user ? (
@@ -84,7 +86,7 @@ function Header() {
           {user ? <AmountItems>{amountItemsinBucket}</AmountItems> : null}
           <ShoppingCartIcon className={classes.iconBucket} />
           <NavUlBucket>
-            <Link to={CHECKOUT_PAGE}>
+            <Link to={`${PERSON_PAGE}${CHECKOUT_PAGE}`}>
               <NavLi>Check out Page</NavLi>
             </Link>
           </NavUlBucket>

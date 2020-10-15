@@ -1,5 +1,6 @@
-import React from "react";
-import { Box, Img, H2 } from "./Styled";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Box, Img, H2 } from './Styled';
 
 function CategoryComponent({ img, title }) {
   return (
@@ -9,5 +10,11 @@ function CategoryComponent({ img, title }) {
     </Box>
   );
 }
+
+CategoryComponent.propTypes = {
+  img: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+
+};
 
 export default CategoryComponent;

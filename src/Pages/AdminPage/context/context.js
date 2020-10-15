@@ -1,4 +1,5 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
 export const Context = createContext();
 
@@ -10,7 +11,7 @@ export const Provider = ({ children }) => {
 
   useEffect(() => {
     const req = async () => {
-      await fetch("http://localhost:3000/items")
+      await fetch('http://localhost:3000/items')
         .then((res) => res.json())
         .then((data) => setItems(data))
         .catch(() => setError(true));
@@ -22,8 +23,9 @@ export const Provider = ({ children }) => {
 
   useEffect(() => {
     const unApprovedItemsArray = [];
-    for (let key of items) {
-      if (key.approved === "" || key.approved === null) {
+    // eslint-disable-next-line no-restricted-syntax
+    for (const key of items) {
+      if (key.approved === '' || key.approved === null) {
         unApprovedItemsArray.push(key);
       }
     }
@@ -31,11 +33,16 @@ export const Provider = ({ children }) => {
   }, [items]);
 
   const adminContextData = {
-    error: error,
-    loading: loading,
-    unApprovedItems: unApprovedItems,
+    error,
+    loading,
+    unApprovedItems,
   };
   return (
     <Context.Provider value={{ adminContextData }}>{children}</Context.Provider>
   );
+};
+Provider.propTypes = {
+
+  children: PropTypes.node.isRequired,
+
 };

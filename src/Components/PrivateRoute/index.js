@@ -1,11 +1,29 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { AppContext } from '../../App/Context/Index';
+import { AUTHORIZATION_PAGE } from '../../constants/routes';
 
-const PrivatRoute = () => {
-    return (
-        <div>
-            
-        </div>
+const PrivateRoute = ({ children, ...route }) => {
+  const { contextData } = useContext(AppContext);
+  const { user } = contextData;
+
+  return user
+    ? (
+      <Route {...route}>
+        {children}
+      </Route>
     )
-}
+    : <Redirect to={AUTHORIZATION_PAGE} />;
+};
 
-export default PrivatRoute
+PrivateRoute.propTypes = {
+  children: PropTypes.node.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  route: PropTypes.shape({
+    path: PropTypes.string.isRequired,
+  }),
+
+};
+
+export default PrivateRoute;

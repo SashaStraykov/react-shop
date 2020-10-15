@@ -1,4 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext } from 'react';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
+import { makeStyles } from '@material-ui/core/styles';
+import { AuthorizationPageContext } from '../../context';
 import {
   SignInBox,
   LoginPasswordSignIn,
@@ -8,12 +12,16 @@ import {
   PasswordBox,
   PasswordBoxIcon,
   InputP,
-} from "./Styled";
-import { AuthorizationPageContext } from "../../../AuthorizationPage/context";
-import VisibilityIcon from "@material-ui/icons/Visibility";
-import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
+} from './Styled';
+
+const useStyles = makeStyles({
+  icon: {
+    color: 'var(--icon-color)',
+  },
+});
 
 function SignIn() {
+  const classes = useStyles();
   const [vissiblePasword, setVissiblePassword] = useState(true);
   const { authorizationContextData } = useContext(AuthorizationPageContext);
   const {
@@ -31,22 +39,24 @@ function SignIn() {
         <InputC
           value={loginSignIn}
           onChange={(e) => setLoginSignIn(e.target.value)}
+
         />
         <LoginPasswordSignIn>Password</LoginPasswordSignIn>
         <PasswordBox>
           <InputP
-            type={vissiblePasword ? "password" : "text"}
+            type={vissiblePasword ? 'password' : 'text'}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <PasswordBoxIcon
             onClick={() => setVissiblePassword(!vissiblePasword)}
           >
-            {vissiblePasword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+            {vissiblePasword ? <VisibilityOffIcon className={classes.icon} />
+              : <VisibilityIcon className={classes.icon} />}
           </PasswordBoxIcon>
         </PasswordBox>
 
-        <ErrorSignIn>{pasError && `*incorrect password`}</ErrorSignIn>
+        <ErrorSignIn>{pasError && '*incorrect password'}</ErrorSignIn>
         <ButtonSignIn>SIGN IN</ButtonSignIn>
       </form>
     </SignInBox>
