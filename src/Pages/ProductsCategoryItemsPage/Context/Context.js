@@ -21,7 +21,7 @@ export const Provider = ({ children, category }) => {
         .then((response) => {
           // eslint-disable-next-line no-restricted-syntax
           for (const key of response) {
-            if (key.approved === true) {
+            if (key.approved === true && key.idCategory === category) {
               items.push(key);
             }
           }
@@ -31,12 +31,12 @@ export const Provider = ({ children, category }) => {
     };
     dataRequest();
     setLoading(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPost = posts
-    .filter((post) => post.idCategory === category)
     .slice(indexOfFirstPost, indexOfLastPost);
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
