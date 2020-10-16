@@ -14,6 +14,8 @@ export const Provider = ({ children }) => {
   const { contextData } = useContext(AppContext);
   const { user, setUser } = contextData;
   const [usersData, setUsersData] = useState([]);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   // signUp
   const [loginSignUp, setLoginSignUp] = useState('');
@@ -26,9 +28,11 @@ export const Provider = ({ children }) => {
     const dataRequest = async () => {
       await fetch('http://localhost:3000/users')
         .then((data) => data.json())
-        .then((dataRes) => setUsersData(dataRes));
+        .then((dataRes) => setUsersData(dataRes))
+        .catch(() => setError(true));
     };
     dataRequest();
+    setLoading(false);
   }, []);
 
   const checkAuthorization = (e) => {
@@ -81,6 +85,8 @@ export const Provider = ({ children }) => {
     setPasswordSignUp,
     emailSignUp,
     setEmailSignUp,
+    error,
+    loading,
   };
 
   return (

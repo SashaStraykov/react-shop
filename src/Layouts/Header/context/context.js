@@ -13,11 +13,13 @@ export const Provider = ({ children }) => {
 
   useEffect(() => {
     if (user) {
-      const getLS = localStorage.getItem(user.id).split(',');
-      if (getLS[0] === '') {
-        setAmountItemsinBucket(0);
-      } else {
-        setAmountItemsinBucket(getLS.length);
+      if (localStorage.getItem(user.id) !== null) {
+        const getLS = localStorage.getItem(user.id).split(',');
+        if (getLS[0] === '') {
+          setAmountItemsinBucket(0);
+        } else {
+          setAmountItemsinBucket(getLS.length);
+        }
       }
     }
   }, [cart, user]);

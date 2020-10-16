@@ -5,21 +5,13 @@ export const Context = createContext();
 
 export const Provider = ({ children }) => {
   const [cart, setCart] = useState(1);
-  const [user, setUser] = useState({
-    id: 3,
-    login: 'admin',
-    password: 'admin',
-    email: 'qwert@mail.ru',
-    typs: 10000,
-    role: 'admin',
-    userItems: ['cat2', 'cat4', 'cat7'],
-  });
+  const [user, setUser] = useState(null);
   const [bucketItems, setBucketItems] = useState(null);
   const [added, setAdded] = useState(false);
   const [checkoutUser, setCheckoutUser] = useState([]);
 
   useEffect(() => {
-    if (user) {
+    if (user && localStorage.getItem(user.id.toString()) !== null) {
       setBucketItems([...localStorage.getItem(user.id.toString()).split(',')]);
     }
   }, [user, cart]);
