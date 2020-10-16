@@ -21,6 +21,9 @@ const Container = styled.div`
   background: rgb(245, 245, 245);
   padding: 0;
   margin-bottom: 1em;
+  padding-bottom:1em;
 `;
-
-export { BackGroundGrey, H2, Container };
+const Wrapper = styled.div`
+margin-bottom:0.5em;
+`
+export { BackGroundGrey, H2, Container, Wrapper };

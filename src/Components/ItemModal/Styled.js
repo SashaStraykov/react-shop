@@ -44,8 +44,6 @@ const BoxFirstSectionRigthDescription = styled.div`
   align-self: center;
   justify-content: flex-start;
   align-items: center;
-  border-top: 1px solid rgb(66, 66, 66);
-  border-bottom: 1px solid rgb(66, 66, 66);
   overflow: scroll;
   padding: 1em;
   width: 100%;
@@ -72,8 +70,7 @@ const BoxSecondSectionPrice = styled.div`
   width: 50%;
   align-self: center;
   justify-content: center;
-  align-items: center;
-  border-left: 1px solid rgb(66, 66, 66);
+  align-items: center;  
   height: 100%;
 `;
 

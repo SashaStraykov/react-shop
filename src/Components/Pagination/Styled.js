@@ -7,6 +7,7 @@ const UlPagination = styled.ul`
 `;
 
 const LiPagination = styled.li`
+  margin:1em 0;
   list-style-type: none;
   border: 1px solid black;
   padding: 0.2em;

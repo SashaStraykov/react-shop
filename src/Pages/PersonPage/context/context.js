@@ -33,7 +33,7 @@ export const Provider = ({ children }) => {
       // eslint-disable-next-line no-restricted-syntax
       for (const key of user.userItems) {
         if (key === el.id) {
-          if (el.approved === false) {
+          if (el.approved === false || el.approved === '') {
             unApprovedItemsArray.push(el);
           }
           userItems.push(el);

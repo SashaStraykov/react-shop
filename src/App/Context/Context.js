@@ -5,7 +5,15 @@ export const Context = createContext();
 
 export const Provider = ({ children }) => {
   const [cart, setCart] = useState(1);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({
+    id: 3,
+    login: 'admin',
+    password: 'admin',
+    email: 'qwert@mail.ru',
+    typs: 10000,
+    role: 'admin',
+    userItems: ['cat2', 'cat4', 'cat7'],
+  });
   const [bucketItems, setBucketItems] = useState(null);
   const [added, setAdded] = useState(false);
   const [checkoutUser, setCheckoutUser] = useState([]);
@@ -55,6 +63,15 @@ export const Provider = ({ children }) => {
     setCheckoutUser(newCheckoutItems);
     localStorage.setItem(user.id.toString(), storage);
     setCart(cart - 1);
+  };
+
+  addItemToBucket.propTypes = {
+    id: PropTypes.string.isRequired,
+  };
+
+  cancelItem.propTypes = {
+    id: PropTypes.string.isRequired,
+    items: PropTypes.arrayOf(PropTypes.string).isRequired,
   };
 
   const contextData = {

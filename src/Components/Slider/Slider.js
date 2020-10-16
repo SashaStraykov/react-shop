@@ -1,23 +1,30 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import SwiperCore, {
+  Navigation, Pagination, Scrollbar, A11y,
+} from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { IMG } from './Styled';
+import 'swiper/swiper-bundle.css';
 
-import React, { useState } from 'react';
-import { SliderBox, SliderIMG, Arrow } from './Styled';
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
-function Slider({ img }) {
-  const [i, setI] = useState(0);
-  const nextItem = () => {
-    i === img.length - 1 ? setI(2) : setI(i + 1);
-  };
-  const prevItem = () => {
-    i === 0 ? setI(0) : setI(i - 1);
-  };
-  return (
-    <SliderBox>
-      <SliderIMG backGround={img[i]}>
-        <Arrow onClick={prevItem}>&#8249;</Arrow>
-        <Arrow onClick={nextItem}>&#8250;</Arrow>
-      </SliderIMG>
-    </SliderBox>
-  );
-}
+const Slider = ({ img }) => (
+  <Swiper
+    spaceBetween={10}
+    slidesPerView={1}
+    navigation
+    pagination={{ clickable: true }}
+  >
+    {img.map((item) => <SwiperSlide key={item}><IMG src={item} /></SwiperSlide>)}
+
+  </Swiper>
+);
+
+Slider.propTypes = {
+  img: PropTypes.arrayOf(
+    PropTypes.string,
+  ).isRequired,
+};
 
 export default Slider;

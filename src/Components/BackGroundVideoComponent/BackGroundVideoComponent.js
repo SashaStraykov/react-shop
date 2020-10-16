@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Intro, IntroMedia, IntroMediaVideo, IntroContent,
 } from './Styled';
@@ -20,5 +21,10 @@ function BackGroundVideoComponent({ children, video }) {
     </Intro>
   );
 }
+
+BackGroundVideoComponent.propTypes = {
+  children: PropTypes.node.isRequired,
+  video: PropTypes.string.isRequired,
+};
 
 export default BackGroundVideoComponent;

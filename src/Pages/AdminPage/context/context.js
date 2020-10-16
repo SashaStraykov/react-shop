@@ -8,6 +8,7 @@ export const Provider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [unApprovedItems, setUnApprovedItems] = useState([]);
+  const [modalConfirm, setModalConfirm] = useState(false);
 
   useEffect(() => {
     const req = async () => {
@@ -36,6 +37,8 @@ export const Provider = ({ children }) => {
     error,
     loading,
     unApprovedItems,
+    modalConfirm,
+    setModalConfirm,
   };
   return (
     <Context.Provider value={{ adminContextData }}>{children}</Context.Provider>

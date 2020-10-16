@@ -48,6 +48,7 @@ const CheckoutPageContent = () => {
         <PriceBox>
           Total value:
           {totalPrice}
+          {' '}
           typs
         </PriceBox>
       </Container>

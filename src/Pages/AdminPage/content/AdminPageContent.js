@@ -15,20 +15,22 @@ const AdminPageContent = () => {
     return <ErrorModal />;
   }
   return (
-    <BackGroundGrey>
-      <H2>Admin page</H2>
-      <Container>
-        <H2>
-          New Items
-          <span>&#8595;</span>
-        </H2>
-      </Container>
-      {unApprovedItems.map(({ id, ...rest }) => (
-        <Container key={id}>
-          <AdminRemarkForm id={id} {...rest} />
+    <>
+      <BackGroundGrey>
+        <H2>Admin page</H2>
+        <Container>
+          <H2>
+            New Items
+            <span>&#8595;</span>
+          </H2>
         </Container>
-      ))}
-    </BackGroundGrey>
+        {unApprovedItems.map(({ id, ...rest }) => (
+          <Container key={id}>
+            <AdminRemarkForm id={id} {...rest} />
+          </Container>
+        ))}
+      </BackGroundGrey>
+    </>
   );
 };
 

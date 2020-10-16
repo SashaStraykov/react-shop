@@ -19,11 +19,6 @@ const PrivateRoute = ({ children, ...route }) => {
 
 PrivateRoute.propTypes = {
   children: PropTypes.node.isRequired,
-  // eslint-disable-next-line react/require-default-props
-  route: PropTypes.shape({
-    path: PropTypes.string.isRequired,
-  }),
-
 };
 
 export default PrivateRoute;

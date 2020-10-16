@@ -13,11 +13,11 @@ export const Provider = ({ children }) => {
         .then((data) => data.json())
         .then((res) => {
           setCategory(res);
-          setLoading(false);
         })
         .catch(() => setError(true));
     };
     req();
+    setLoading(false);
   }, []);
   const productsCategoryPageContextData = {
     category,

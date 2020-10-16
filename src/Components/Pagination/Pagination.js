@@ -1,12 +1,11 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import { UlPagination, LiPagination, SpanPagination } from './Styled';
 
 const Pagination = ({
   postsPerPage,
   totalPosts,
   paginate,
-  category,
   currentPage,
 }) => {
   const pageNumbers = [];
@@ -27,6 +26,12 @@ const Pagination = ({
       ))}
     </UlPagination>
   );
+};
+Pagination.propTypes = {
+  postsPerPage: PropTypes.number.isRequired,
+  totalPosts: PropTypes.number.isRequired,
+  paginate: PropTypes.func.isRequired,
+  currentPage: PropTypes.number.isRequired,
 };
 
 export default Pagination;

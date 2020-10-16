@@ -1,39 +1,33 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import ItemModal from '../ItemModal';
 import {
   BoxBottom,
   BoxBottomTop,
-  BoxBottomInput,
   BoxBottomReject,
 
 } from './Styled';
+import ModalConfirm from '../ModalConfirm';
+import { AdminPageContext } from '../../Pages/AdminPage/context';
 
-const AdminRemarkForm = ({ id, ...rest }) => (
-
-  <>
-    <ItemModal {...rest} />
-    <BoxBottom>
-      <BoxBottomTop>Approved</BoxBottomTop>
-      <BoxBottomInput />
-      <BoxBottomReject>Reject</BoxBottomReject>
-    </BoxBottom>
-  </>
-);
+const AdminRemarkForm = ({ id, ...rest }) => {
+  const { adminContextData } = useContext(AdminPageContext);
+  const { setModalConfirm, modalConfirm } = adminContextData;
+  return (
+    <>
+      {modalConfirm && <ModalConfirm id={id} title={rest.title} />}
+      <ItemModal {...rest} />
+      <BoxBottom>
+        <BoxBottomTop> Approved</BoxBottomTop>
+        <BoxBottomReject onClick={() => setModalConfirm(!modalConfirm)}>Reject</BoxBottomReject>
+      </BoxBottom>
+    </>
+  );
+};
 
 AdminRemarkForm.propTypes = {
 
   id: PropTypes.string.isRequired,
-  rest: PropTypes.shape({
-    idCategory: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    price: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
-    img: PropTypes.arrayOf(
-      PropTypes.string,
-    ).isRequired,
-  }),
 
 };
 export default AdminRemarkForm;

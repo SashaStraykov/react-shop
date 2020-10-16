@@ -1,19 +1,23 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import Header from './Header/Header';
+import Header from './Header';
 import PublicLayout from './PublicLayout/PublicLayout';
 import DashboardLayout from './DashboardLayout';
 import { PERSON_PAGE, HOME_PAGE } from '../constants/routes';
+import { Wrapper } from './Styled';
 
 const Layouts = () => (
   <>
     <Header />
-    <Route path={HOME_PAGE}>
-      <PublicLayout />
-    </Route>
-    <Route path={PERSON_PAGE}>
-      <DashboardLayout />
-    </Route>
+    <Wrapper>
+      <Route path={HOME_PAGE}>
+        <PublicLayout />
+      </Route>
+      <Route path={PERSON_PAGE}>
+        <DashboardLayout />
+      </Route>
+    </Wrapper>
+
   </>
 );
 

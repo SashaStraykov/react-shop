@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import PersonIcon from '@material-ui/icons/Person';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
@@ -17,11 +17,12 @@ import {
   NavUlBucket,
   AmountItems,
 } from './Styled';
-import dataArtLogo from '../../assets/images/LogoWhite.png';
-import { AppContext } from '../../App/Context/Index';
+import dataArtLogo from '../../../assets/images/LogoWhite.png';
+import { AppContext } from '../../../App/Context/Index';
 import {
   HOME_PAGE, PERSON_PAGE, AUTHORIZATION_PAGE, CHECKOUT_PAGE,
-} from '../../constants/routes';
+} from '../../../constants/routes';
+import { HeaderContext } from '../context';
 
 const useStyles = makeStyles({
   icon: {
@@ -36,21 +37,12 @@ const useStyles = makeStyles({
   },
 });
 
-function Header() {
+function HeaderContent() {
   const { contextData } = useContext(AppContext);
-  const { user, setUser, cart } = contextData;
-  const [amountItemsinBucket, setAmountItemsinBucket] = useState(0);
+  const { user, setUser } = contextData;
 
-  useEffect(() => {
-    if (user) {
-      const getLS = localStorage.getItem(user.id).split(',');
-      if (getLS[0] === '') {
-        setAmountItemsinBucket(0);
-      } else {
-        setAmountItemsinBucket(getLS.length);
-      }
-    }
-  }, [cart, user]);
+  const { headerContextData } = useContext(HeaderContext);
+  const { amountItemsinBucket } = headerContextData;
 
   const classes = useStyles();
   return (
@@ -96,4 +88,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default HeaderContent;

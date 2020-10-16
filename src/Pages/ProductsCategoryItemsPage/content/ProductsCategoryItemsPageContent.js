@@ -39,10 +39,11 @@ function ProductsCategoryItemsPageContent() {
     return <ErrorModal />;
   }
   return (
-    <div>
+    <>
       <BackGroundGrey>
         <H2>
           Welcome to the
+          {' '}
           {category.toUpperCase()}
           {' '}
           category
@@ -54,7 +55,7 @@ function ProductsCategoryItemsPageContent() {
         />
 
         <Container>
-          {finalItems.map((item) => (
+          {finalItems.length === 0 ? <H2>No matches</H2> : finalItems.map((item) => (
             <Link key={item.id} to={`${url}/${item.id}`}>
               <ContainerItem>
                 <ProductsCategoryItem {...item} />
@@ -70,7 +71,7 @@ function ProductsCategoryItemsPageContent() {
           />
         </Container>
       </BackGroundGrey>
-    </div>
+    </>
   );
 }
 

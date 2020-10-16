@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Slider from '../Slider/Slider';
 import {
   RemarkFormBox,
@@ -38,5 +39,16 @@ const ItemModal = ({
     {remark && <BoxRemark>{remark}</BoxRemark>}
   </RemarkFormBox>
 );
+
+ItemModal.propTypes = {
+  img: PropTypes.arrayOf(
+    PropTypes.string,
+  ).isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  remark: PropTypes.string.isRequired,
+};
 
 export default ItemModal;

@@ -23,6 +23,7 @@ const PersonPageInfo = () => {
     <BackGroundGrey>
       <H2Title>
         Hello
+        {' '}
         {user.login}
       </H2Title>
       <Container>

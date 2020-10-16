@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 
 const BoxBottom = styled.form`
+  width:55%;
+  margin-left:auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content:center;
+
 `;
 
 const BoxBottomTop = styled.button`
@@ -14,6 +18,7 @@ const BoxBottomTop = styled.button`
   &:hover {
     background: rgb(66, 66, 66);
     color: rgb(245, 245, 245);
+    cursor:pointer;
   }
   &:focus {
     outline: none;
@@ -26,7 +31,7 @@ const BoxBottomInput = styled.input`
   padding-left: 1em;
 `;
 
-const BoxBottomReject = styled.button`
+const BoxBottomReject = styled.div`
   color: rgb(66, 66, 66);
   padding: 1em;
   border: none;
@@ -35,70 +40,17 @@ const BoxBottomReject = styled.button`
   &:hover {
     background: rgb(66, 66, 66);
     color: rgb(245, 245, 245);
+    cursor:pointer;
   }
   &:focus {
     outline: none;
   }
 `;
-// const RemarkFormBox = styled.div`
-//   display: grid;
-//   grid-template-columns: 1fr 1fr 1fr;
-//   grid-template-rows: 1fr 2fr 1fr 1fr 1fr;
-//   margin: 3em auto;
-// `;
 
-// const BoxSlider = styled.div`
-//   grid-column: 1/2;
-//   grid-row: 1/4;
-//   width: 30em;
-//   height: 20em;
-//   border: 2px solid red;
-// `;
-
-// const BoxTitle = styled.div`
-//   grid-column: 2/4;
-//   grid-row: 1/2;
-//   border: 1px solid black;
-// `;
-
-// const BoxDescription = styled.div`
-//   grid-column: 2/4;
-//   grid-row: 2/3;
-//   overflow: scroll;
-//   border: 1px solid black;
-// `;
-
-// const BoxDate = styled.div`
-//   grid-column: 2/3;
-//   grid-row: 3/4;
-//   border: 1px solid black;
-// `;
-
-// const BoxPrice = styled.div`
-//   grid-column: 3/4;
-//   grid-row: 3/4;
-//   border: 1px solid black;
-// `;
-// const BoxReamrkArea = styled.input`
-//   grid-column: 1/4;
-//   grid-row: 4/5;
-//   border: 1px solid black;
-// `;
-// const BoxSentButton = styled.button`
-//   grid-column: 1/2;
-//   grid-row: 5/6;
-// `;
 export {
 
   BoxBottom,
   BoxBottomTop,
   BoxBottomInput,
   BoxBottomReject,
-  // BoxSlider,
-  // BoxTitle,
-  // BoxDescription,
-  // BoxDate,
-  // BoxPrice,
-  // BoxReamrkArea,
-  // BoxSentButton,
 };

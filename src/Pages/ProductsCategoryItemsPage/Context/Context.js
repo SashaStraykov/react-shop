@@ -50,6 +50,13 @@ export const Provider = ({ children, category }) => {
     return items.filter((item) => item.title.toLowerCase().indexOf(search.toLowerCase()) > -1);
   };
 
+  searchItems.propTypes = {
+    items: PropTypes.arrayOf(
+      PropTypes.object,
+    ).isRequired,
+    search: PropTypes.string.isRequired,
+  };
+
   const finalItems = searchItems(currentPost, search);
 
   const ProductsCategoryItemsPageContextData = {

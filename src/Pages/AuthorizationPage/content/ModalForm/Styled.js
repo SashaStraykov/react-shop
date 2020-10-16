@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 const ModalBox = styled.div`
-  width: 50%;
+  max-width: 30%;
+  width:100%;
   margin: 50px auto;
   display: flex;
   flex-direction: column;

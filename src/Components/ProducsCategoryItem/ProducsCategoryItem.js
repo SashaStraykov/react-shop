@@ -1,5 +1,5 @@
 import React from 'react';
-import PropsTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import {
   ItemBox, Img, H2, Boxdate, BoxPrice,
 } from './Styled';
@@ -21,11 +21,11 @@ function ProducsCategoryItem({
 }
 
 ProducsCategoryItem.propTypes = {
-  title: PropsTypes.string.isRequired,
-  price: PropsTypes.string.isRequired,
-  date: PropsTypes.string.isRequired,
-  img: PropsTypes.arrayOf(
-    PropsTypes.string,
+  title: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  img: PropTypes.arrayOf(
+    PropTypes.string,
   ).isRequired,
 
 };
