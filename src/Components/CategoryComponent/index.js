@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, Img, H2 } from './Styled';
+import { Box, Img, H2 } from './styled';
 
 function CategoryComponent({ img, title }) {
   return (

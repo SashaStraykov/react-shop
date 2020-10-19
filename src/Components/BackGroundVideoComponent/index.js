@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Intro, IntroMedia, IntroMediaVideo, IntroContent,
-} from './Styled';
+} from './styled';
 
 // eslint-disable-next-line react/prop-types
 function BackGroundVideoComponent({ children, video }) {
