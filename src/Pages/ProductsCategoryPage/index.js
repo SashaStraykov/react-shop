@@ -3,12 +3,9 @@ import ProductsCategoryPageContent from './content/ProductsCategoryPageContent';
 import { ProductsCategoryPageContextProvider } from './context';
 
 const ProductsCategoryPage = () => (
-  <>
-    <ProductsCategoryPageContextProvider>
-      <ProductsCategoryPageContent />
-      ;
-    </ProductsCategoryPageContextProvider>
-  </>
+  <ProductsCategoryPageContextProvider>
+    <ProductsCategoryPageContent />
+  </ProductsCategoryPageContextProvider>
 );
 
 export default ProductsCategoryPage;
