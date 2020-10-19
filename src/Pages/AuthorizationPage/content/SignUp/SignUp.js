@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import {
   Logs, SignUpBox, ErrorSignUp, ButtonSignUp, InputC,
-} from './Styled';
+} from './styled';
 import { AuthorizationPageContext } from '../../context';
 
 const SignUp = () => {

@@ -6,7 +6,7 @@ import {
   BoxBottomTop,
   BoxBottomReject,
 
-} from './Styled';
+} from './styled';
 import ModalConfirm from '../ModalConfirm';
 import { AdminPageContext } from '../../Pages/AdminPage/context';
 

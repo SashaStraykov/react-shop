@@ -7,7 +7,6 @@ export const RemarkFormBox = styled.div`
   color: rgb(66, 66, 66);
   font-size: 1.1em;
   border: 1px solid rgb(66, 66, 66);
-  margin-bottom: 2em;
 `;
 
 export const BoxFirstSection = styled.div`

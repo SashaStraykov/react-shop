@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
-import CategoryComponent from '../../../Components/CategoryComponent/CategoryComponent';
+import CategoryComponent from '../../../Components/CategoryComponent';
 import { ProductsCategoryPageContext } from '../context';
-import Spinner from '../../../Components/Spinner/Spinner';
+import Spinner from '../../../Components/Spinner';
 import ErrorModal from '../../../Components/ErrorModal';
 
 import {
   DivGrid, BackGroundGrey, Container, H2,
-} from './Styled';
+} from './styled';
 
 const ProductsCategoryPageContent = () => {
   const { url } = useRouteMatch();

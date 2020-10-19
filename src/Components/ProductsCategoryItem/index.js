@@ -4,7 +4,7 @@ import {
   ItemBox, Img, H2, Boxdate, BoxPrice,
 } from './Styled';
 
-function ProducsCategoryItem({
+function ProductsCategoryItem({
   title, price, date, img,
 }) {
   return (
@@ -20,7 +20,7 @@ function ProducsCategoryItem({
   );
 }
 
-ProducsCategoryItem.propTypes = {
+ProductsCategoryItem.propTypes = {
   title: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
@@ -30,4 +30,4 @@ ProducsCategoryItem.propTypes = {
 
 };
 
-export default ProducsCategoryItem;
+export default ProductsCategoryItem;

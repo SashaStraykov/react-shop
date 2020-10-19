@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import Slider from '../../../Components/Slider/Slider';
+import Slider from '../../../Components/Slider';
 import { ItemPageContext } from '../Context/Index';
 import {
   BackGroundGrey,
@@ -12,8 +12,8 @@ import {
   H2,
   Button,
   ButtonSign,
-} from './Styled';
-import Spinner from '../../../Components/Spinner/Spinner';
+} from './styled';
+import Spinner from '../../../Components/Spinner';
 import ErrorModal from '../../../Components/ErrorModal';
 import { AUTHORIZATION_PAGE } from '../../../constants/routes';
 import Chat from '../../../Components/Chat';

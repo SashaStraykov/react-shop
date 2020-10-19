@@ -12,7 +12,7 @@ import PersonPageInfo from '../PersonPageInfo';
 import PersonPageRejectedItems from '../PersonPageRejectedItems';
 import CheckoutPage from '../../../CheckoutPage';
 import AddItemPage from '../../../AddItemPage';
-import { Nav, NavUl, NavLi } from './Styled';
+import { Nav, NavUl, NavLi } from './styled';
 import { AppContext } from '../../../../App/Context/Index';
 import PrivateLayoutAdminPage from '../../../../Layouts/PrivateLayoutAdminPage';
 import {

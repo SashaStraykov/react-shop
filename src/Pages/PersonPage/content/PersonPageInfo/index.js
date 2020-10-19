@@ -10,9 +10,9 @@ import {
   ItemBox,
   ButtonCancel,
   H2Title,
-} from './Styled';
-import ProductsCategoryItem from '../../../../Components/ProducsCategoryItem/ProducsCategoryItem';
-import Spinner from '../../../../Components/Spinner/Spinner';
+} from './styled';
+import ProductsCategoryItem from '../../../../Components/ProductsCategoryItem';
+import Spinner from '../../../../Components/Spinner';
 import { PersonPageContext } from '../../context';
 import { PRODUCTS_CATEGORY_PAGE } from '../../../../constants/routes';
 

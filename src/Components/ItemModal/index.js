@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Slider from '../Slider/Slider';
+import Slider from '../Slider';
 import {
   RemarkFormBox,
   BoxFirstSection,
@@ -12,7 +12,7 @@ import {
   BoxSecondSectionDate,
   BoxSecondSectionPrice,
   BoxRemark,
-} from './Styled';
+} from './styled';
 
 const ItemModal = ({
   img, title, description, date, price, remark,

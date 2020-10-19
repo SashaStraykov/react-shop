@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import BackGroundVideoMainPage from '../../../Components/BackGroundVideoComponent/BackGroundVideoComponent';
+import BackGroundVideoMainPage from '../../../Components/BackGroundVideoComponent';
 
 import night from '../../../assets/video/night.mp4';
 import {
   H1, H2, ButtonContainer, Container, ButtonCustom,
-} from './Styled';
+} from './styled';
 import { PERSON_PAGE, PRODUCTS_CATEGORY_PAGE, ADD_ANNOUNCMENT_PAGE } from '../../../constants/routes';
 
 function MainPageContent() {

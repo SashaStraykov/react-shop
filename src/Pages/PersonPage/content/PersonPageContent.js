@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { PersonPageContext } from '../context';
-import { PersonPageBox } from './Styled';
-import Spinner from '../../../Components/Spinner/Spinner';
+import { PersonPageBox } from './styled';
+import Spinner from '../../../Components/Spinner';
 import PersonPageHeader from './PersonPageHeader';
 import ErrorModal from '../../../Components/ErrorModal';
 

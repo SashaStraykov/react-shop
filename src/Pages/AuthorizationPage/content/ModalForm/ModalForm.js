@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
 import SignIn from '../SignIn/SignIn';
 import SignUp from '../SignUp/SignUp';
-import { ModalBox, ModalButtonBox, ModalButton } from './Styled';
+import { ModalBox, ModalButtonBox, ModalButton } from './styled';
 import ErrorModal from '../../../../Components/ErrorModal';
 import { AuthorizationPageContext } from '../../context';
-import Spinner from '../../../../Components/Spinner/Spinner';
+import Spinner from '../../../../Components/Spinner';
 
 function ModalForm() {
   const { authorizationContextData } = useContext(AuthorizationPageContext);

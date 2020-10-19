@@ -8,8 +8,8 @@ import {
   Box,
   H2,
   Container,
-} from './Styled';
-import Spinner from '../../../Components/Spinner/Spinner';
+} from './styled';
+import Spinner from '../../../Components/Spinner';
 import ErrorModal from '../../../Components/ErrorModal';
 import { AddItemPageContext } from '../context';
 

@@ -12,7 +12,7 @@ import {
   PasswordBox,
   PasswordBoxIcon,
   InputP,
-} from './Styled';
+} from './styled';
 
 const useStyles = makeStyles({
   icon: {

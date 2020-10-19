@@ -11,12 +11,17 @@ display:flex;
 flex-direction:row;
 width:80%;
 margin:0.2em auto;
+padding:0.5em;
+background:var(--container-color);
 `;
 
 export const InputComment = styled.input`
 width:90%;
 padding:0.5em;
 color: var(--font-color);
+background:var(--backGround-color);
+border:none;
+border-bottom:2px solid var(--font-color);
 &::placeholder{
 color:var(--font-color);
 };
@@ -27,8 +32,8 @@ color:var(--font-color);
 
 export const CommentButton = styled.button`
 width:10%;
-background:var(--container-color);
-border:1px solid var(--font-color);
+border:none;
+border-bottom:2px solid var(--font-color);
 &:focus{
     outline:none;
 }

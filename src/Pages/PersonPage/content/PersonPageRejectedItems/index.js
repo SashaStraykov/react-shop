@@ -7,7 +7,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import {
   BackGroundGrey, H2, Container, Wrapper,
-} from './Styled';
+} from './styled';
 import { PersonPageContext } from '../../context';
 import ItemModal from '../../../../Components/ItemModal';
 

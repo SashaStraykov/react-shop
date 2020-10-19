@@ -1,16 +1,16 @@
 import React, { useContext } from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
-import ProductsCategoryItem from '../../../Components/ProducsCategoryItem/ProducsCategoryItem';
-import Pagination from '../../../Components/Pagination/Pagination';
+import ProductsCategoryItem from '../../../Components/ProductsCategoryItem';
+import Pagination from '../../../Components/Pagination';
 import {
   BackGroundGrey,
   Container,
   H2,
   ContainerItem,
   SearchPannel,
-} from './Styled';
+} from './styled';
 import { ProductsCategoryItemsPageContext } from '../Context/Index';
-import Spinner from '../../../Components/Spinner/Spinner';
+import Spinner from '../../../Components/Spinner';
 import ErrorModal from '../../../Components/ErrorModal';
 
 function ProductsCategoryItemsPageContent() {

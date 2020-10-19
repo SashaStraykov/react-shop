@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CheckoutPageContext } from '../context';
-import ProductsCategoryItem from '../../../Components/ProducsCategoryItem/ProducsCategoryItem';
-import Spinner from '../../../Components/Spinner/Spinner';
+import ProductsCategoryItem from '../../../Components/ProductsCategoryItem';
+import Spinner from '../../../Components/Spinner';
 import {
   BackGroundGrey,
   H2,
@@ -10,7 +10,7 @@ import {
   ItemBox,
   ButtonCancel,
   PriceBox,
-} from './Styled';
+} from './styled';
 import ErrorModal from '../../../Components/ErrorModal';
 import { PRODUCTS_CATEGORY_PAGE } from '../../../constants/routes';
 

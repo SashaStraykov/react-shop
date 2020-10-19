@@ -10,6 +10,7 @@ export const BoxBottom = styled.form`
 `;
 
 export const BoxBottomTop = styled.button`
+  width:50%;
   color: rgb(66, 66, 66);
   padding: 1em;
   border: none;
@@ -32,6 +33,7 @@ export const BoxBottomInput = styled.input`
 `;
 
 export const BoxBottomReject = styled.div`
+  width:50%;
   color: rgb(66, 66, 66);
   padding: 1em;
   border: none;

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 import ModalForm from './ModalForm/ModalForm';
-import { BackGroundGrey, H2 } from './Styled';
+import { BackGroundGrey, H2 } from './styled';
 import { AppContext } from '../../../App/Context/Index';
 import { PERSON_PAGE } from '../../../constants/routes';
 
