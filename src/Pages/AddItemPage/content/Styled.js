@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-const Span = styled.span`
+export const Span = styled.span`
   color: rgb(66, 66, 66);
   font-size: 1.6em;
   margin: 1em 0;
 `;
-const Form = styled.form`
+export const Form = styled.form`
   width: 70%;
   display: flex;
   flex-direction: column;
@@ -17,7 +17,7 @@ const Form = styled.form`
   margin: 0 auto;
 `;
 
-const InputC = styled.input`
+export const InputC = styled.input`
   width: 40%;
   height: 2em;
   border: none;
@@ -36,7 +36,7 @@ const InputC = styled.input`
   }
 `;
 
-const Select = styled.select`
+export const Select = styled.select`
   width: 40%;
   background: rgb(238, 238, 238);
   font-size: 1.6em;
@@ -51,7 +51,7 @@ const Select = styled.select`
   }
 `;
 
-const InputDescription = styled.input`
+export const InputDescription = styled.input`
   width: 40%;
   height: 6em;
   border: none;
@@ -70,12 +70,12 @@ const InputDescription = styled.input`
   }
 `;
 
-const Box = styled.div`
+export const Box = styled.div`
   padding: 2em;
   width: 100%;
   background: rgb(238, 238, 238);
 `;
-const H2 = styled.h2`
+export const H2 = styled.h2`
   font-size: 2em;
   margin: 1em;
   margin-top: 1em;
@@ -83,13 +83,9 @@ const H2 = styled.h2`
   color: rgb(66, 66, 66);
 `;
 
-const Container = styled.div`
+export const Container = styled.div`
   width: 70%;
   margin: 1.5em auto;
   background: rgb(245, 245, 245);
   padding: 0;
 `;
-
-export {
-  Span, Form, InputC, Select, InputDescription, Box, H2, Container,
-};

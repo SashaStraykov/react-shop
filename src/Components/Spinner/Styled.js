@@ -9,7 +9,7 @@ to {
 }
 `;
 
-const SpinnerDiv = styled.div`
+export const SpinnerDiv = styled.div`
   border: 10px solid #f3f3f3;
   border-top: 10px solid black;
   border-radius: 50%;
@@ -18,5 +18,3 @@ const SpinnerDiv = styled.div`
   animation: ${rotate} 1s linear infinite;
   margin: 250px auto;
 `;
-
-export { SpinnerDiv };

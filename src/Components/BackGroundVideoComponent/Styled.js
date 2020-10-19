@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Intro = styled.div`
+export const Intro = styled.div`
   height: 100vh;
   position: relative;
   display: flex;
@@ -8,7 +8,7 @@ const Intro = styled.div`
   justify-items: center;
 `;
 
-const IntroMedia = styled.div`
+export const IntroMedia = styled.div`
   position: absolute;
   left: 0;
   top: 0;
@@ -17,7 +17,7 @@ const IntroMedia = styled.div`
   overflow: hidden;
 `;
 
-const IntroMediaVideo = styled.video`
+export const IntroMediaVideo = styled.video`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -27,11 +27,7 @@ const IntroMediaVideo = styled.video`
   object-fit: cover;
 `;
 
-const IntroContent = styled.div`
+export const IntroContent = styled.div`
   z-index: 2;
   width: 100%;
 `;
-
-export {
-  Intro, IntroMedia, IntroMediaVideo, IntroContent,
-};

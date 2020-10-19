@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const RemarkFormBox = styled.div`
+export const RemarkFormBox = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -10,18 +10,18 @@ const RemarkFormBox = styled.div`
   margin-bottom: 2em;
 `;
 
-const BoxFirstSection = styled.div`
+export const BoxFirstSection = styled.div`
   display: flex;
   flex-direction: row;
 `;
 
-const BoxFirstSectionSlider = styled.div`
+export const BoxFirstSectionSlider = styled.div`
   display: flex;
   width: 45%;
   height: 25em;
 `;
 
-const BoxFirstSectionRight = styled.div`
+export const BoxFirstSectionRight = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: stretch;
@@ -30,7 +30,7 @@ const BoxFirstSectionRight = styled.div`
   width: 55%;
 `;
 
-const BoxFirstSectionRightTitle = styled.div`
+export const BoxFirstSectionRightTitle = styled.div`
   display: flex;
   height: 20%;
   align-self: center;
@@ -38,7 +38,7 @@ const BoxFirstSectionRightTitle = styled.div`
   align-items: center;
 `;
 
-const BoxFirstSectionRigthDescription = styled.div`
+export const BoxFirstSectionRigthDescription = styled.div`
   display: flex;
   height: 60%;
   align-self: center;
@@ -51,13 +51,13 @@ const BoxFirstSectionRigthDescription = styled.div`
   padding-top: 4em;
 `;
 
-const BoxSecondSection = styled.div`
+export const BoxSecondSection = styled.div`
   display: flex;
   flex-direction: row;
   height: 20%;
 `;
 
-const BoxSecondSectionDate = styled.div`
+export const BoxSecondSectionDate = styled.div`
   display: flex;
   width: 50%;
   align-self: center;
@@ -65,7 +65,7 @@ const BoxSecondSectionDate = styled.div`
   align-items: center;
 `;
 
-const BoxSecondSectionPrice = styled.div`
+export const BoxSecondSectionPrice = styled.div`
   display: flex;
   width: 50%;
   align-self: center;
@@ -74,20 +74,8 @@ const BoxSecondSectionPrice = styled.div`
   height: 100%;
 `;
 
-const BoxRemark = styled.div`
+export const BoxRemark = styled.div`
   color: red;
   padding: 1em;
   border-top: 1px solid rgb(66, 66, 66);
 `;
-export {
-  RemarkFormBox,
-  BoxFirstSection,
-  BoxFirstSectionSlider,
-  BoxFirstSectionRight,
-  BoxFirstSectionRightTitle,
-  BoxFirstSectionRigthDescription,
-  BoxSecondSection,
-  BoxSecondSectionDate,
-  BoxSecondSectionPrice,
-  BoxRemark,
-};

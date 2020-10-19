@@ -1,20 +1,20 @@
 import styled from 'styled-components';
 
-const BackGroundGrey = styled.div`
+export const BackGroundGrey = styled.div`
   width: 100%;
   min-height: 100vh;
   background: rgb(238, 238, 238);
   margin-top: 0;
   border: 1px solid rgb(238, 238, 238);
 `;
-const H2 = styled.h2`
+export const H2 = styled.h2`
   font-size: 2em;
   margin: 1em;
   margin-top: 1em;
   display: inline-block;
   color: rgb(66, 66, 66);
 `;
-const Container = styled.div`
+export const Container = styled.div`
   width: 80%;
   margin: 2em auto;
   background: rgb(245, 245, 245);
@@ -22,7 +22,7 @@ const Container = styled.div`
   margin-bottom: 1em;
 `;
 
-const GridBox = styled.div`
+export const GridBox = styled.div`
   width: 100%;
   margin: 1em auto;
   margin-bottom: 2em;
@@ -34,14 +34,14 @@ const GridBox = styled.div`
   padding: 2.5em;
 `;
 
-const GridSlider = styled.div`
+export const GridSlider = styled.div`
   grid-column: 1/3;
   grid-row: 1/4;
   width: 30em;
   height: 25em;
 `;
 
-const ItemDescription = styled.div`
+export const ItemDescription = styled.div`
   grid-column: 3/5;
   grid-row: 1/3;
   min-height: 12em;
@@ -54,11 +54,11 @@ const ItemDescription = styled.div`
   padding: 1em;
 `;
 
-const ItemPrice = styled.span`
+export const ItemPrice = styled.span`
   margin: auto auto;
 `;
 
-const Button = styled.button`
+export const Button = styled.button`
   background: white;
   color: black;
   padding: 0.5em 2em;
@@ -75,7 +75,7 @@ const Button = styled.button`
     color: white;
   }
 `;
-const ButtonSign = styled.button`
+export const ButtonSign = styled.button`
   background: red;
   color: black;
   padding: 0.5em 2em;
@@ -94,15 +94,3 @@ const ButtonSign = styled.button`
     color: white;
   }
 `;
-
-export {
-  BackGroundGrey,
-  Container,
-  H2,
-  GridBox,
-  GridSlider,
-  ItemDescription,
-  ItemPrice,
-  Button,
-  ButtonSign,
-};

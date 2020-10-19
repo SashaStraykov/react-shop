@@ -5,6 +5,7 @@ import PublicLayout from './PublicLayout/PublicLayout';
 import DashboardLayout from './DashboardLayout';
 import { PERSON_PAGE, HOME_PAGE } from '../constants/routes';
 import { Wrapper } from './Styled';
+import Footer from './Footer';
 
 const Layouts = () => (
   <>
@@ -17,7 +18,7 @@ const Layouts = () => (
         <DashboardLayout />
       </Route>
     </Wrapper>
-
+    <Footer />
   </>
 );
 

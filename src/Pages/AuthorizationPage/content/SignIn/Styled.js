@@ -1,21 +1,21 @@
 import styled from 'styled-components';
 
-const SignInBox = styled.div``;
+export const SignInBox = styled.div``;
 
-const LoginPasswordSignIn = styled.div`
+export const LoginPasswordSignIn = styled.div`
   font-size: 1.5em;
   margin-top: 1em;
   font-weight: bold;
   color: var(--icon-color);
 `;
 
-const ErrorSignIn = styled.div`
+export const ErrorSignIn = styled.div`
   margin-top: 0.8em;
   color: var(  --red-color);
   font-size: 1.1em;
 `;
 
-const ButtonSignIn = styled.button`
+export const ButtonSignIn = styled.button`
   padding: 1em;
   width: 40%;
   margin: 1.2em auto;
@@ -33,7 +33,7 @@ const ButtonSignIn = styled.button`
   }
 `;
 
-const InputC = styled.input`
+export const InputC = styled.input`
   height: 2em;
   width: 60%;
   margin-top: 0.5em;
@@ -51,7 +51,7 @@ const InputC = styled.input`
   }
 
 `;
-const InputP = styled.input`
+export const InputP = styled.input`
   height: 2em;
   width: 75%;
   margin-top: 0.5em;
@@ -69,24 +69,14 @@ const InputP = styled.input`
   }
 `;
 
-const PasswordBox = styled.div`
+export const PasswordBox = styled.div`
   padding-left: 20%;
   display: flex;
   justify-content: stretch;
   margin: 0 auto;
 `;
-const PasswordBoxIcon = styled.div`
+export const PasswordBoxIcon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
 `;
-export {
-  SignInBox,
-  LoginPasswordSignIn,
-  ErrorSignIn,
-  ButtonSignIn,
-  InputC,
-  PasswordBox,
-  PasswordBoxIcon,
-  InputP,
-};

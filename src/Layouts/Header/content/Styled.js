@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Nav = styled.nav`
+export const Nav = styled.nav`
   background: rgb(33, 33, 33);
   width: 100%;
   display: flex;
@@ -8,12 +8,12 @@ const Nav = styled.nav`
   justify-content: space-between;
 `;
 
-const Img = styled.img.attrs((props) => ({ src: props.src, alt: props.src }))`
+export const Img = styled.img.attrs((props) => ({ src: props.src, alt: props.src }))`
   height: 3em;
   width: 17em;
 `;
 
-const Container = styled.div`
+export const Container = styled.div`
   display: flex;
   height: 100%;
   padding: 1em 0;
@@ -23,7 +23,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-const NavUl = styled.ul`
+export const NavUl = styled.ul`
   width: 9em;
   display: none;
   flex-direction: column;
@@ -36,7 +36,7 @@ const NavUl = styled.ul`
   z-index: 10;
 `;
 
-const NavLi = styled.li`
+export const NavLi = styled.li`
   padding: 0.5em 1em;
   font-size: 1.2em;
   color: var(--icon-color);
@@ -50,7 +50,7 @@ const NavLi = styled.li`
   }
 `;
 
-const ContainerRight = styled.div`
+export const ContainerRight = styled.div`
   width: 20%;
   display: flex;
   justify-content: space-around;
@@ -58,7 +58,7 @@ const ContainerRight = styled.div`
   margin-right: 6em;
 `;
 
-const PersonItem = styled.div`
+export const PersonItem = styled.div`
   padding: 1.5em;
   position: relative;
   color: var(--container-color);
@@ -71,7 +71,7 @@ const PersonItem = styled.div`
   }
 `;
 
-const NavUlBucket = styled.ul`
+export const NavUlBucket = styled.ul`
   width: 9em;
   display: none;
   flex-direction: column;
@@ -83,7 +83,7 @@ const NavUlBucket = styled.ul`
   right: -1.7em;
   z-index: 10;
 `;
-const BucketItem = styled.div`
+export const BucketItem = styled.div`
   padding: 1.5em;
   position: relative;
   cursor: pointer;
@@ -96,7 +96,7 @@ const BucketItem = styled.div`
   }
 `;
 
-const NavLiSign = styled.li`
+export const NavLiSign = styled.li`
   background: #263238;
   padding: 0.5em 1em;
   font-size: 1.2em;
@@ -111,11 +111,11 @@ const NavLiSign = styled.li`
   }
 `;
 
-const SignBox = styled.div`
+export const SignBox = styled.div`
   color: white;
 `;
 
-const AmountItems = styled.div`
+export const AmountItems = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -128,17 +128,3 @@ const AmountItems = styled.div`
   height: 1.5em;
   border-radius: 100%;
 `;
-export {
-  Nav,
-  Img,
-  Container,
-  ContainerRight,
-  NavUl,
-  NavLi,
-  PersonItem,
-  NavLiSign,
-  SignBox,
-  BucketItem,
-  NavUlBucket,
-  AmountItems,
-};

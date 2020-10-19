@@ -30,7 +30,9 @@ const PersonPageInfo = () => {
         <TypsBox>
           <TypsBoxLeft>
             You have
+            {' '}
             {user.typs}
+            {' '}
             typs
           </TypsBoxLeft>
           <TypsBoxRight>Buy more Typs</TypsBoxRight>

@@ -16,6 +16,7 @@ import {
 import Spinner from '../../../Components/Spinner/Spinner';
 import ErrorModal from '../../../Components/ErrorModal';
 import { AUTHORIZATION_PAGE } from '../../../constants/routes';
+import Chat from '../../../Components/Chat';
 
 function ItemPageContent() {
   const { contextDataItem } = useContext(ItemPageContext);
@@ -27,7 +28,6 @@ function ItemPageContent() {
     added,
     error,
   } = contextDataItem;
-
   if (loading) {
     return <Spinner />;
   }
@@ -62,6 +62,9 @@ function ItemPageContent() {
               )}
             </GridBox>
           </Container>
+
+          <Chat item={item} />
+
         </div>
       ))}
     </BackGroundGrey>

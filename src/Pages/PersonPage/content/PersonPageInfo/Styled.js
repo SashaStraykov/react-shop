@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const BackGroundGrey = styled.div`
+export const BackGroundGrey = styled.div`
   width: 100%;
   min-height: 100vh;
   background: rgb(238, 238, 238);
@@ -8,7 +8,7 @@ const BackGroundGrey = styled.div`
   max-height: 90vh;
   overflow: scroll;
 `;
-const H2 = styled.h2`
+export const H2 = styled.h2`
   font-size: 2em;
   margin: 1em;
   margin-top: 1em;
@@ -16,13 +16,13 @@ const H2 = styled.h2`
   color: rgb(66, 66, 66);
 `;
 
-const H2Title = styled.h2`
+export const H2Title = styled.h2`
   font-size: 2em;
   margin: 1em;
   margin-top: 1em;
   color: rgb(66, 66, 66);
 `;
-const Container = styled.div`
+export const Container = styled.div`
   width: 80%;
   margin: 2em auto;
   background: rgb(245, 245, 245);
@@ -30,21 +30,21 @@ const Container = styled.div`
   margin-bottom: 1em;
 `;
 
-const TypsBox = styled.div`
+export const TypsBox = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 2em;
   align-items: center;
 `;
-const TypsBoxLeft = styled.div`
+export const TypsBoxLeft = styled.div`
   color: rgb(66, 66, 66);
   font-size: 1.2em;
   font-weight: bold;
   margin-left: 1.5em;
 `;
 
-const TypsBoxRight = styled.div`
+export const TypsBoxRight = styled.div`
   color: var(--nav-color);
   border: 2px solid var(--nav-color);
   padding: 1em 2em;
@@ -56,13 +56,13 @@ const TypsBoxRight = styled.div`
     cursor: pointer;
   }
 `;
-const ItemBox = styled.div`
+export const ItemBox = styled.div`
   display: grid;
   grid-template-columns: 6fr 1fr;
   border-top: 1.5em solid rgb(238, 238, 238);
 `;
 
-const ButtonCancel = styled.button`
+export const ButtonCancel = styled.button`
   background: var(--red-color);
   font-size: 2em;
   color: var(--icon-color);
@@ -77,14 +77,3 @@ const ButtonCancel = styled.button`
     cursor: pointer;
   }
 `;
-export {
-  BackGroundGrey,
-  H2,
-  Container,
-  TypsBox,
-  TypsBoxLeft,
-  TypsBoxRight,
-  ItemBox,
-  ButtonCancel,
-  H2Title,
-};

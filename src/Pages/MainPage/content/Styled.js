@@ -1,31 +1,31 @@
 import styled from 'styled-components';
 
-const H1 = styled.h1`
+export const H1 = styled.h1`
   margin-top: 2em;
   color: aliceblue;
   font-size: 6.25em;
   font-family: Arial, Helvetica, sans-serif;
 `;
 
-const H2 = styled.h2`
+export const H2 = styled.h2`
   margin-top: 2.2em;
   color: aliceblue;
   font-size: 2.5em;
 `;
 
-const ButtonContainer = styled.div`
+export const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 5.5em;
 `;
 
-const Container = styled.div`
+export const Container = styled.div`
   width: 80%;
   margin: 0 auto;
   padding: 10px;
 `;
 
-const ButtonCustom = styled.button`
+export const ButtonCustom = styled.button`
   padding: 1em;
   border: 2px solid aliceblue;
   color: aliceblue;
@@ -44,6 +44,3 @@ const ButtonCustom = styled.button`
     cursor: pointer;
   }
 `;
-export {
-  H1, H2, ButtonContainer, Container, ButtonCustom,
-};

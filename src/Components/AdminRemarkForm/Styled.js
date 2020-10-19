@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const BoxBottom = styled.form`
+export const BoxBottom = styled.form`
   width:55%;
   margin-left:auto;
   display: flex;
@@ -9,7 +9,7 @@ const BoxBottom = styled.form`
 
 `;
 
-const BoxBottomTop = styled.button`
+export const BoxBottomTop = styled.button`
   color: rgb(66, 66, 66);
   padding: 1em;
   border: none;
@@ -25,13 +25,13 @@ const BoxBottomTop = styled.button`
   }
 `;
 
-const BoxBottomInput = styled.input`
+export const BoxBottomInput = styled.input`
   height: 3em;
   font-size: 1em;
   padding-left: 1em;
 `;
 
-const BoxBottomReject = styled.div`
+export const BoxBottomReject = styled.div`
   color: rgb(66, 66, 66);
   padding: 1em;
   border: none;
@@ -46,11 +46,3 @@ const BoxBottomReject = styled.div`
     outline: none;
   }
 `;
-
-export {
-
-  BoxBottom,
-  BoxBottomTop,
-  BoxBottomInput,
-  BoxBottomReject,
-};

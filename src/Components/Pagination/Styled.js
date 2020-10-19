@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-const UlPagination = styled.ul`
+export const UlPagination = styled.ul`
   display: flex;
   flex-direction: row;
   justify-content: center;
 `;
 
-const LiPagination = styled.li`
+export const LiPagination = styled.li`
   margin:1em 0;
   list-style-type: none;
   border: 1px solid black;
@@ -17,8 +17,7 @@ const LiPagination = styled.li`
     cursor: pointer;
   }
 `;
-const SpanPagination = styled.span`
+export const SpanPagination = styled.span`
   text-decoration: none;
   color: black;
 `;
-export { UlPagination, LiPagination, SpanPagination };

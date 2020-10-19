@@ -1,23 +1,23 @@
 import styled from 'styled-components';
 
-const SignUpBox = styled.div`
+export const SignUpBox = styled.div`
   margin-bottom: 3em;
 `;
 
-const Logs = styled.div`
+export const Logs = styled.div`
   font-size: 1.5em;
   margin-top: 1em;
   font-weight: bold;
   color: rgb(66, 66, 66);
 `;
 
-const ErrorSignUp = styled.div`
+export const ErrorSignUp = styled.div`
   margin-top: 0.8em;
   color: red;
   font-size: 1.1em;
 `;
 
-const ButtonSignUp = styled.button`
+export const ButtonSignUp = styled.button`
   padding: 1em;
   width: 40%;
   margin: 1.2em auto;
@@ -32,7 +32,7 @@ const ButtonSignUp = styled.button`
   }
 `;
 
-const InputC = styled.input`
+export const InputC = styled.input`
   height: 2em;
   width: 60%;
   margin-top: 0.5em;
@@ -48,7 +48,3 @@ const InputC = styled.input`
     outline: none;
   }
 `;
-
-export {
-  Logs, SignUpBox, ErrorSignUp, ButtonSignUp, InputC,
-};

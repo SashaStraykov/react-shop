@@ -36,6 +36,7 @@ const ProductsCategoryPageContent = () => {
           </DivGrid>
         </Container>
       </BackGroundGrey>
+
     </>
   );
 };

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
 position:absolute;
 top:0;
 left:0;
@@ -9,7 +9,7 @@ height:110vh;
 background: rgba(33,33,33, .5);
 z-index:100;
 `;
-const WrapperBox = styled.div`
+export const WrapperBox = styled.div`
 position:relative;
 margin: auto auto;
 top:50%;
@@ -20,7 +20,7 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 `;
-const WrapperInput = styled.input`
+export const WrapperInput = styled.input`
 width:80%;
 height:2.5em;
 padding:0.5em 1em;
@@ -32,7 +32,7 @@ margin-top:2em;
     outline:none;
 }
 `;
-const WrapperConfirmButton = styled.button`
+export const WrapperConfirmButton = styled.button`
 display:flex;
 padding:1em 3em;
 justify-content:center;
@@ -52,7 +52,7 @@ transition:0.3s;
 }
 `;
 
-const WrapperCancel = styled.div`
+export const WrapperCancel = styled.div`
 position:absolute;
 top:0;
 right:0;
@@ -64,7 +64,7 @@ cursor:pointer;
 }
 `;
 
-const WrapperTitle = styled.div`
+export const WrapperTitle = styled.div`
 font-size:1.5em;
 display:flex;
 justify-content:flex-start;
@@ -73,7 +73,3 @@ margin-top:1.5em;
 color:var(--font-color);
 
 `;
-export {
-  Wrapper, WrapperBox, WrapperInput, WrapperConfirmButton,
-  WrapperCancel, WrapperTitle,
-};

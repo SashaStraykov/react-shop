@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-const Nav = styled.nav`
+export const Nav = styled.nav`
   background: rgb(33, 33, 33);
   display: flex;
   align-items: center;
 `;
-const NavUl = styled.ul`
+export const NavUl = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,7 +13,7 @@ const NavUl = styled.ul`
   justify-self: center;
   margin-bottom: 15em;
 `;
-const NavLi = styled.li`
+export const NavLi = styled.li`
   list-style: none;
   padding: 1.5em;
   background: ${(props) => (props.active ? 'var(--brand-color)' : 'none')};
@@ -23,4 +23,3 @@ const NavLi = styled.li`
     background: var(--brand-color);
   }
 `;
-export { Nav, NavUl, NavLi };

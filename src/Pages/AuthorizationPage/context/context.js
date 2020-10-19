@@ -15,7 +15,7 @@ export const Provider = ({ children }) => {
   const { user, setUser } = contextData;
   const [usersData, setUsersData] = useState([]);
   const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   // signUp
   const [loginSignUp, setLoginSignUp] = useState('');
@@ -26,6 +26,7 @@ export const Provider = ({ children }) => {
 
   useEffect(() => {
     const dataRequest = async () => {
+      setLoading(true);
       await fetch('http://localhost:3000/users')
         .then((data) => data.json())
         .then((dataRes) => setUsersData(dataRes))
