@@ -1,11 +1,14 @@
 import React, { useContext } from 'react';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { useRouteMatch } from 'react-router-dom';
 import CategoryComponent from '../../../Components/CategoryComponent';
 import { ProductsCategoryPageContext } from '../context';
 import Spinner from '../../../Components/Spinner';
 import ErrorModal from '../../../Components/ErrorModal';
 import {
-  DivGrid, BackGroundGrey, Container, H2,
+  DivGrid,
+  BackGroundGrey,
+  Container,
+  H2,
 } from './styled';
 
 const ProductsCategoryPageContent = () => {
@@ -18,25 +21,27 @@ const ProductsCategoryPageContent = () => {
   if (loading) {
     return <Spinner />;
   }
+
   if (error) {
     return <ErrorModal />;
   }
-  return (
-    <>
-      <BackGroundGrey>
-        <H2>Choice Product Category</H2>
-        <Container>
-          <DivGrid>
-            {category.map(({ idCategory, title, img }) => (
-              <Link key={idCategory} to={`${url}/${title}`}>
-                <CategoryComponent img={img} title={title} />
-              </Link>
-            ))}
-          </DivGrid>
-        </Container>
-      </BackGroundGrey>
 
-    </>
+  return (
+    <BackGroundGrey>
+      <Container>
+        <H2>Select Category</H2>
+        <DivGrid>
+          {category.map(({ idCategory, title, img }) => (
+            <CategoryComponent
+              key={idCategory}
+              url={`${url}/${title}`}
+              img={img}
+              title={title}
+            />
+          ))}
+        </DivGrid>
+      </Container>
+    </BackGroundGrey>
   );
 };
 

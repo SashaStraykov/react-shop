@@ -2,22 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {
-  Box, Img, H2,
+  Box,
+  Title,
+  ImgWrapper,
 } from './styled';
 
-function CategoryComponent({ img, title }) {
-  return (
-    <Box>
-      <Img src={img} alt={img} />
-      <H2 className="categoryComponentTitle">{title.toUpperCase()}</H2>
-    </Box>
-  );
-}
+const CategoryComponent = ({ img, title, url }) => (
+  <Box to={url}>
+    <ImgWrapper img={img} />
+    <Title className="categoryComponentTitle">
+      {title.toUpperCase()}
+    </Title>
+  </Box>
+);
 
 CategoryComponent.propTypes = {
   img: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-
+  url: PropTypes.string.isRequired,
 };
 
 export default CategoryComponent;

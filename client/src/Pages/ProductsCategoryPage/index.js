@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductsCategoryPageContent from './content/ProductsCategoryPageContent';
+import ProductsCategoryPageContent from './content';
 import { ProductsCategoryPageContextProvider } from './context';
 
 const ProductsCategoryPage = () => (

@@ -9,20 +9,19 @@ export const Nav = styled.nav`
 `;
 
 export const Img = styled.img.attrs((props) => ({ src: props.src, alt: props.src }))`
-  height: 3em;
-  width: 17em;
+  height: 2em;
 `;
 
 export const NavUl = styled.ul`
-  width: 9em;
   display: none;
   flex-direction: column;
+  
   position: absolute;
-  list-style: none;
-  margin-top: 1em;
+  top: 100%;
+  right: 0;
+  
   background: var(--nav-color);
-  top: 5.25em;
-  right: -1.7em;
+  list-style: none;
   z-index: 10;
 `;
 
@@ -46,39 +45,42 @@ export const ContainerRight = styled.div`
 `;
 
 export const PersonItem = styled.div`
-  padding: 1.5em;
-  position: relative;
-  color: var(--container-color);
   cursor: pointer;
+  color: var(--container-color);
+  padding: 1em;
+  position: relative;
+
   &:hover ${NavUl} {
     display: flex;
   }
+
   &:hover {
     color: var(--brand-color);
   }
 `;
 
 export const NavUlBucket = styled.ul`
-  width: 9em;
   display: none;
   flex-direction: column;
   position: absolute;
-  list-style: none;
-  margin-top: 1em;
+  top: 100%;
+  right: 0;
+
   background: var(--nav-color);
-  top: 5.12em;
-  right: -1.7em;
-  z-index: 10;
+  list-style: none;
+  z-index: 999;
 `;
 
 export const BucketItem = styled.div`
-  padding: 1.5em;
-  position: relative;
   cursor: pointer;
   color: var(--container-color);
+  padding: 1em;
+  position: relative;
+
   &:hover {
     color: var(--brand-color);
   }
+
   &:hover ${NavUlBucket} {
     display: flex;
   }
