@@ -9,6 +9,7 @@ export const Provider = ({ children, category }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(5);
   const [totalPosts, setTotalPosts]=useState(0);
+  const [finalItems, setFinalItems]=useState([]);
 
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
@@ -37,15 +38,15 @@ export const Provider = ({ children, category }) => {
   };
 
   // eslint-disable-next-line no-shadow
-
+useEffect(()=> {
   const searchItems = (items, search) => {
     if (search.length === 0) {
       console.log(items)
       return items
-
     }
     return items.filter((item) => item.title.toLowerCase().indexOf(search.toLowerCase()) > -1);
   };
+  setFinalItems(searchItems(posts, search))
 
   searchItems.propTypes = {
     items: PropTypes.arrayOf(
@@ -54,8 +55,11 @@ export const Provider = ({ children, category }) => {
     search: PropTypes.string.isRequired,
   };
 
-  const finalItems = searchItems(posts, search);
-  console.log(finalItems)
+},[posts, search])
+
+
+
+
 
   const ProductsCategoryItemsPageContextData = {
     posts,
