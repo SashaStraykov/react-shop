@@ -16,7 +16,7 @@ export const Provider = ({ children, category }) => {
   useEffect(() => {
     const items = [];
     const dataRequest = async () => {
-      await fetch(`${process.env.REACT_APP_API_ITEMS}/${category}`)
+      await fetch(`${process.env.REACT_APP_API_ITEMS}/${category}?postsperpage=${postsPerPage}&&currentpage=${currentPage}`)
         .then((data) => data.json())
         .then((response) => {
           // eslint-disable-next-line no-restricted-syntax
@@ -28,6 +28,7 @@ export const Provider = ({ children, category }) => {
           setPosts(items);
         })
         .catch(() => setError(true));
+  
     };
     dataRequest();
     setLoading(false);

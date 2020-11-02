@@ -38,7 +38,13 @@ export const Provider = ({ children }) => {
           body: JSON.stringify(userToken),
         })
           .then((data) => data.json())
-          .then((res) => setUser(res));
+          .then((res) => {
+            if(res.message) {
+              return;
+            } else {
+              setUser(res)
+            }
+           });
       };
       req();
     }
