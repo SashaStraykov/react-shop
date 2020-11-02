@@ -71,8 +71,17 @@ exports.DeleteItem = async (req,res)=> {
     // console.log(req.url)
 
       try {
+        console.log(req.query)
+        const postsPerPage = req.query.postsperpage;
+        const currentPage = req.query.currentpage;
       const categoryItems = req.params.category;
+      const lastPost = +postsPerPage*+currentPage;
+      const firstPost = +lastPost- +postsPerPage;
+      console.log(firstPost)
+      console.log(lastPost)
+      // console.log(+postsPerPage*currentPage+postsPerPage)
       const item = await Item.find({idCategory: categoryItems});
+      const items = item.slice(postsPerPage*currentPage+postsPerPage*currentPage+postsPerPage)
       res.status(200).json(item);
       } catch (e) {
       res.status(500).json({ message: e });
