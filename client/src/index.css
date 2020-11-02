@@ -1,3 +1,9 @@
+html, body {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
 body {
   font-size: 16px;
   margin: 0;
@@ -14,6 +20,12 @@ body {
   --red-color: #e53935;
   --font-color: #424242;
   --backGround-color: #eeeeee;
+}
+
+#root {
+  display: flex;
+  flex-flow: column;
+  flex: 1 1 auto;
 }
 
 code {

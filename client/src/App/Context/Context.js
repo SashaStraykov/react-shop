@@ -9,6 +9,20 @@ export const Provider = ({ children }) => {
   const [bucketItems, setBucketItems] = useState(null);
   const [added, setAdded] = useState(false);
   const [checkoutUser, setCheckoutUser] = useState([]);
+  const [amountItemsinBucket, setAmountItemsinBucket] = useState(0);
+
+  useEffect(() => {
+    if (user) {
+      if (localStorage.getItem(user.id) !== null) {
+        const getLS = localStorage.getItem(user.id).split(',');
+        if (getLS[0] === '') {
+          setAmountItemsinBucket(0);
+        } else {
+          setAmountItemsinBucket(getLS.length);
+        }
+      }
+    }
+  }, [cart, user]);
 
   useEffect(() => {
     if (localStorage.getItem('DataUser')) {
@@ -98,6 +112,7 @@ export const Provider = ({ children }) => {
     setCart,
     addItemToBucket,
     bucketItems,
+    amountItemsinBucket,
     setBucketItems,
     added,
     setAdded,

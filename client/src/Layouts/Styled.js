@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-text-align:center
+  display: flex;
+  flex-flow: column;
+  flex: 1 1 auto;
 `;

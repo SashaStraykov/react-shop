@@ -6,10 +6,6 @@ const helmet = require('helmet');
 const cors = require('cors');
 require('dotenv/config');
 
-
-
-
-
 const app = express();
 const PORT = process.env.PORT || 3000
 
@@ -17,9 +13,6 @@ app.use(helmet())
 app.disable('x-powered-by');
 app.use(fileUpload())
 app.use(express.json({ extended: true }))
-
-
-
 
 app.use(bodyParser.json());
 
@@ -31,19 +24,15 @@ const corsConfig = {
 }
 app.use(cors(corsConfig));
 
-
 // import routes
-
 const postsRoutes = require('./routes/users');
 const getCategory = require ('./routes/category')
 const itemsRoutes = require('./routes/item')
 
 // midleWare
-
 app.use('/users', postsRoutes);
 app.use('/category', getCategory);
 app.use('/items', itemsRoutes)
-
 
 async function startServer(){
   try{

@@ -5,13 +5,11 @@ import { MainPageContextProvider } from './context';
 import { HOME_PAGE } from '../../constants/routes';
 
 const MainPage = () => (
-  <>
-    <Route exact path={HOME_PAGE}>
-      <MainPageContextProvider>
-        <MainPageContent />
-      </MainPageContextProvider>
-    </Route>
-  </>
+  <Route exact path={HOME_PAGE}>
+    <MainPageContextProvider>
+      <MainPageContent />
+    </MainPageContextProvider>
+  </Route>
 );
 
 export default MainPage;

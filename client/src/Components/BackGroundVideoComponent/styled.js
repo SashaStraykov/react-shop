@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 export const Intro = styled.div`
-  height: 100vh;
-  position: relative;
   display: flex;
+  flex: 1 1 auto;
   justify-content: center;
   justify-items: center;
+  position: relative;
 `;
 
 export const IntroMedia = styled.div`
@@ -28,6 +28,7 @@ export const IntroMediaVideo = styled.video`
 `;
 
 export const IntroContent = styled.div`
-  z-index: 2;
-  width: 100%;
+  display: flex;
+  flex-flow: column;
+  position: relative;
 `;

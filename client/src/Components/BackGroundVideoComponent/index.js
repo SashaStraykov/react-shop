@@ -5,22 +5,20 @@ import {
 } from './styled';
 
 // eslint-disable-next-line react/prop-types
-function BackGroundVideoComponent({ children, video }) {
-  return (
-    <Intro>
-      <IntroMedia>
-        <IntroMediaVideo
-          src={video}
-          autoPlay
-          muted
-          loop
-          className="introMediaVideo"
-        />
-      </IntroMedia>
-      <IntroContent>{children}</IntroContent>
-    </Intro>
-  );
-}
+const BackGroundVideoComponent = ({ children, video }) => (
+  <Intro>
+    <IntroMedia>
+      <IntroMediaVideo
+        src={video}
+        autoPlay
+        muted
+        loop
+        className="introMediaVideo"
+      />
+    </IntroMedia>
+    <IntroContent>{children}</IntroContent>
+  </Intro>
+);
 
 BackGroundVideoComponent.propTypes = {
   children: PropTypes.node.isRequired,

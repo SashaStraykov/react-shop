@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 export const Nav = styled.nav`
-  background: rgb(33, 33, 33);
-  width: 100%;
   display: flex;
-  justify-items: center;
+  align-items: center;
   justify-content: space-between;
+  background: rgb(33, 33, 33);
+  padding: 0 3em;
 `;
 
 export const Img = styled.img.attrs((props) => ({ src: props.src, alt: props.src }))`
@@ -13,16 +13,6 @@ export const Img = styled.img.attrs((props) => ({ src: props.src, alt: props.src
   width: 17em;
 `;
 
-export const Container = styled.div`
-  display: flex;
-  height: 100%;
-  padding: 1em 0;
-  width: 80%;
-  margin: auto auto;
-  margin-left: 6em;
-  justify-content: space-between;
-  align-items: center;
-`;
 export const NavUl = styled.ul`
   width: 9em;
   display: none;
@@ -51,11 +41,8 @@ export const NavLi = styled.li`
 `;
 
 export const ContainerRight = styled.div`
-  width: 20%;
   display: flex;
-  justify-content: space-around;
   align-items: center;
-  margin-right: 6em;
 `;
 
 export const PersonItem = styled.div`
@@ -83,6 +70,7 @@ export const NavUlBucket = styled.ul`
   right: -1.7em;
   z-index: 10;
 `;
+
 export const BucketItem = styled.div`
   padding: 1.5em;
   position: relative;
