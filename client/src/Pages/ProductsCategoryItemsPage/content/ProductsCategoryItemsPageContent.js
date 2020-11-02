@@ -22,7 +22,7 @@ function ProductsCategoryItemsPageContent() {
   const {
     currentPage,
     postsPerPage,
-    posts,
+    totalPosts,
     paginate,
     category,
     loading,
@@ -64,7 +64,7 @@ function ProductsCategoryItemsPageContent() {
           ))}
           <Pagination
             postsPerPage={postsPerPage}
-            totalPosts={posts.length}
+            totalPosts={totalPosts}
             paginate={paginate}
             category={category}
             currentPage={currentPage}
