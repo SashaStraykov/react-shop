@@ -19,7 +19,7 @@ export const InputComment = styled.input`
 width:90%;
 padding:0.5em;
 color: var(--font-color);
-background:var(--backGround-color);
+background:var(--background-color);
 border:none;
 border-bottom:2px solid var(--font-color);
 &::placeholder{

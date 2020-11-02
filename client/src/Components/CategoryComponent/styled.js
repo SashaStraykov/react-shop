@@ -1,28 +1,39 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-export const Img = styled.img`
-  height: 100%;
-  width: 100%;
-  margin-top: 2em;
-  object-fit: cover;
-  border: 1px solid black;
+export const ImgWrapper = styled.div`
+  border: 1px solid var(--border-color);
+  border-radius: 500rem;
+  background-image: ${(props) => `url(${props.img})`};
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 160px;
+  height: 160px;
+  margin-bottom: 1em;
 `;
-export const Box = styled.div`
+
+export const Box = styled(Link)`
   display: flex;
-  flex-direction: column;
+  flex-flow: column nowrap;
   justify-content: center;
-  justify-items: center;
+  align-items: center;
+  
+  background: white;
+  border: 1px solid var(--border-color);
+  flex: 0 0 250px;
   padding: 2em;
-  width: 16em;
-  height: 100%;
-  transition: 0.5s;
+  margin: 0 1em 1em 0;
+  
+  transition: all 0.3s ease;
+
   &:hover {
-    background: rgb(238, 238, 238);
+    transform: scale(1.1);
   }
 `;
 
-export const H2 = styled.h2`
-  font-size: 1.5em;
-  margin: 0.2em;
-  color: rgb(66, 66, 66);
+export const Title = styled.h2`
+  font-size: 1.4em;
+  margin: 0;
+  color: var(--text-color);
 `;
