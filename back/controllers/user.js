@@ -80,10 +80,15 @@ exports.authorization = async (req, res) => {
     exports.checkUser = async (req, res) => {
 
         // if(req.body.tokenUser) {
-          const userToken = req.headers.authorization.split(' ')[1];
-          const decoded =   jwt.verify(userToken, process.env.JWT_SECRET);
-          const user = await User.findOne({id: decoded.userID});
-          res.json(user)
+          try{
+            const userToken = req.headers.authorization.split(' ')[1];
+            const decoded =   jwt.verify(userToken, process.env.JWT_SECRET);
+            const user = await User.findOne({id: decoded.userID});
+            res.status(200).json(user)
+          } catch(e) {
+            res.status().json({message: e})
+          }
+
 
 
 

@@ -5,9 +5,9 @@ const { v4: uuidv4 } = require('uuid');
 exports.getItems = async (req, res) => {
     try {
       const item = await Item.find();
-      res.json(item);
+      res.status(200).json(item);
     } catch (e) {
-      res.json({ message: e });
+      res.status(500).json({ message: e });
     }
   }
 
@@ -38,7 +38,6 @@ exports.DeleteItem = async(req,res)=> {
   exports.AddComment = async ( req, res ) => {
     try { 
       const { itemId } = req.body;
-      console.log('itemId ', itemId)
       const comment = new Comment({...req.body, id: uuidv4()})
       console.log(comment)
       await Item.findOneAndUpdate( { id: itemId}, { 
@@ -46,9 +45,9 @@ exports.DeleteItem = async(req,res)=> {
           comments: comment
         }
       })
-      res.status(200).json({message:'Comment added '})
+      res.status(201).json({message:'Comment added '})
     } catch( e ) {
-      res.status(500).json({message: e})
+      res.status(501).json({message: e})
     }
   }
 
@@ -60,9 +59,9 @@ exports.DeleteItem = async(req,res)=> {
           approved: approved
         }
       })
-      res.status(200).json({message:'Item approved '})
+      res.status(201).json({message:'Item approved '})
     } catch( e ) {
-      res.status(500).json({message: e})
+      res.status(501).json({message: e})
     }
   }
 
