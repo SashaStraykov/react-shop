@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload')
+const helmet = require('helmet');
 const cors = require('cors');
 require('dotenv/config');
 
@@ -12,8 +13,11 @@ require('dotenv/config');
 const app = express();
 const PORT = process.env.PORT || 3000
 
-app.use(fileUpload({}))
+app.use(helmet())
+app.disable('x-powered-by');
+app.use(fileUpload())
 app.use(express.json({ extended: true }))
+
 
 
 
@@ -34,7 +38,7 @@ const postsRoutes = require('./routes/users');
 const getCategory = require ('./routes/category')
 const itemsRoutes = require('./routes/item')
 
-// midleWere
+// midleWare
 
 app.use('/users', postsRoutes);
 app.use('/category', getCategory);

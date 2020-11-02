@@ -60,7 +60,7 @@ exports.authorization = async (req, res) => {
         const token = jwt.sign(
           {userID: regUser.id},
           process.env.JWT_SECRET,
-          {expiresIn: '1h'}
+          {expiresIn: '30s'}
         )
     
         const finalUser= {
@@ -86,7 +86,7 @@ exports.authorization = async (req, res) => {
             const user = await User.findOne({id: decoded.userID});
             res.status(200).json(user)
           } catch(e) {
-            res.status().json({message: e})
+            res.status(511).json({message: e})
           }
 
 

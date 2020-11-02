@@ -23,8 +23,7 @@ exports.DeclarateItem = async (req, res) => {
     }
 }
 
-exports.DeleteItem = async(req,res)=> {
-
+exports.DeleteItem = async (req,res)=> {
     try {
       const {id} = req.body
       const deletedItem = await Item.findOne({id: id})
@@ -39,7 +38,6 @@ exports.DeleteItem = async(req,res)=> {
     try { 
       const { itemId } = req.body;
       const comment = new Comment({...req.body, id: uuidv4()})
-      console.log(comment)
       await Item.findOneAndUpdate( { id: itemId}, { 
         $push: {
           comments: comment
@@ -66,9 +64,14 @@ exports.DeleteItem = async(req,res)=> {
   }
 
   exports.CategoryItems = async (req, res) => {
+    // const url =req.url
+    // // const numberMatch=/[0-9]./
+    // // const a =url.match(numberMatch);
+    // // console.log(a[0])
+    // console.log(req.url)
 
-    const categoryItems = req.params.category;
       try {
+      const categoryItems = req.params.category;
       const item = await Item.find({idCategory: categoryItems});
       res.status(200).json(item);
       } catch (e) {
@@ -76,9 +79,10 @@ exports.DeleteItem = async(req,res)=> {
     }
   }
 
-  exports.FinalItem = async(req, res) => {
-   const itemId = req.params.itemid;
+  exports.FinalItem = async (req, res) => {
+
     try {
+      const itemId = req.params.itemid;
       const item = await Item.findOne({id: itemId});
       res.status(200).json(item);
       } catch (e) {
