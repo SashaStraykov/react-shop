@@ -77,12 +77,14 @@ exports.DeleteItem = async (req,res)=> {
       const categoryItems = req.params.category;
       const lastPost = +postsPerPage*+currentPage;
       const firstPost = +lastPost- +postsPerPage;
-      console.log(firstPost)
-      console.log(lastPost)
-      // console.log(+postsPerPage*currentPage+postsPerPage)
       const item = await Item.find({idCategory: categoryItems});
-      const items = item.slice(postsPerPage*currentPage+postsPerPage*currentPage+postsPerPage)
-      res.status(200).json(item);
+      const totalApprovedItems = item.filter(el=>el.approved==='approved');
+      const finalItems = totalApprovedItems.slice(firstPost, lastPost)
+      const sentData = {
+        finalItems,
+         totalAmount: totalApprovedItems.length
+      }
+      res.status(200).json(sentData);
       } catch (e) {
       res.status(500).json({ message: e });
     }
