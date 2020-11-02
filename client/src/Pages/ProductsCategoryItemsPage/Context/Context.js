@@ -8,6 +8,7 @@ export const Provider = ({ children, category }) => {
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(5);
+  const [totalPosts, setTotalPosts]=useState(0);
 
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
@@ -18,35 +19,30 @@ export const Provider = ({ children, category }) => {
     const dataRequest = async () => {
       await fetch(`${process.env.REACT_APP_API_ITEMS}/${category}?postsperpage=${postsPerPage}&&currentpage=${currentPage}`)
         .then((data) => data.json())
-        .then((response) => {
+        .then((res) => {
           // eslint-disable-next-line no-restricted-syntax
-          for (const key of response) {
-            if (key.approved === 'approved') {
-              items.push(key);
-            }
-          }
-          setPosts(items);
+          setTotalPosts(res.totalAmount)
+          setPosts(res.finalItems);
         })
         .catch(() => setError(true));
-  
+        setLoading(false);
     };
     dataRequest();
-    setLoading(false);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPost = posts
-    .slice(indexOfFirstPost, indexOfLastPost);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentPage]);
+
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
   // eslint-disable-next-line no-shadow
+
   const searchItems = (items, search) => {
     if (search.length === 0) {
-      return items;
+      console.log(items)
+      return items
+
     }
     return items.filter((item) => item.title.toLowerCase().indexOf(search.toLowerCase()) > -1);
   };
@@ -58,7 +54,8 @@ export const Provider = ({ children, category }) => {
     search: PropTypes.string.isRequired,
   };
 
-  const finalItems = searchItems(currentPost, search);
+  const finalItems = searchItems(posts, search);
+  console.log(finalItems)
 
   const ProductsCategoryItemsPageContextData = {
     posts,
@@ -66,12 +63,12 @@ export const Provider = ({ children, category }) => {
     paginate,
     category,
     currentPage,
-    currentPost,
     loading,
     search,
     setSearch,
     finalItems,
     error,
+    totalPosts
   };
 
   return (
