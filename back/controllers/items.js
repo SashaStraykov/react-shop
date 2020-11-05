@@ -64,25 +64,24 @@ exports.DeleteItem = async (req,res)=> {
   }
 
   exports.CategoryItems = async (req, res) => {
-    // const url =req.url
-    // // const numberMatch=/[0-9]./
-    // // const a =url.match(numberMatch);
-    // // console.log(a[0])
-    // console.log(req.url)
-
       try {
-        console.log(req.query)
+
+        const search = req.query.searchmatch;
         const postsPerPage = req.query.postsperpage;
         const currentPage = req.query.currentpage;
-      const categoryItems = req.params.category;
-      const lastPost = +postsPerPage*+currentPage;
+        const categoryItems = req.params.category;
+
+      const lastPost = +postsPerPage* +currentPage;
       const firstPost = +lastPost- +postsPerPage;
       const item = await Item.find({idCategory: categoryItems});
       const totalApprovedItems = item.filter(el=>el.approved==='approved');
-      const finalItems = totalApprovedItems.slice(firstPost, lastPost)
+      const totalEndItems  = totalApprovedItems.filter(el=>el.title.toLowerCase().indexOf(search.toLowerCase()) > -1)
+
+      const finalItems = totalEndItems.slice(firstPost, lastPost)
+      
       const sentData = {
         finalItems,
-         totalAmount: totalApprovedItems.length
+         totalAmount: totalEndItems.length
       }
       res.status(200).json(sentData);
       } catch (e) {

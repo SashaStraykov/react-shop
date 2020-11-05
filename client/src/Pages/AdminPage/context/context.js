@@ -1,9 +1,12 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
+import {AppContext} from '../../../App/Context/Index'
 
 export const Context = createContext();
 
 export const Provider = ({ children }) => {
+  const {contextData} = useContext(AppContext)
+  const { setUser} = contextData;
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -36,21 +39,40 @@ export const Provider = ({ children }) => {
 
   const statementItem = async (e, id) => {
     e.preventDefault();
+    setModalConfirm(false)
+    setRejectedInput('')
+
+    const a=[];
+    unApprovedItems.forEach((el)=>{
+      if(el.id!==id) {
+        a.push(el)
+      }
+    })
+    setUnApprovedItems(a)
+  
     const postData = {
       itemId: id,
       approved: e.target.name,
     };
-    console.log(postData);
 
     await fetch(`${process.env.REACT_APP_API_ITEMS}/statement`, {
       method: 'put',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('DataUser')}`,
+        
       },
       body: JSON.stringify(postData),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        if(data.message.name === "TokenExpiredError") {
+          setUser(null)
+        }
+        else {
+          console.log(data)
+        }
+      });
   };
 
   const adminContextData = {

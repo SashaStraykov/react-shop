@@ -11,8 +11,9 @@ import {
   ButtonCancel,
   H2Title,
   FlexBox,
-  FlexBoxItems,
+  FlexBoxItems,   
   CommentBox,
+
 } from './styled';
 import ProductsCategoryItem from '../../../../Components/ProductsCategoryItem';
 import Spinner from '../../../../Components/Spinner';
@@ -22,25 +23,30 @@ import { PRODUCTS_CATEGORY_PAGE } from '../../../../constants/routes';
 const PersonPageInfo = () => {
   const { contextdataPersonPage } = useContext(PersonPageContext);
   const {
-    user, onDelete,
+    user, onDelete, madePosts, loading
   } = contextdataPersonPage;
-  const [loading, setLoading] = useState(false);
-  const [madePosts, setMadeposts] = useState([]);
+  // const [loading, setLoading] = useState(false);
+  // const [madePosts, setMadeposts] = useState([]);
 
-  useEffect(() => {
-    setLoading(true);
-    const req = async () => {
-      await fetch('http://localhost:3000/items')
-        .then((response) => response.json())
-        .then((data) => {
-          const newItems = data.filter((el) => el.userId === user.id);
-          setMadeposts(newItems);
-          setLoading(false);
-        });
-    };
-    req();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   setLoading(true);
+  //   const req = async () => {
+  //     await fetch('http://localhost:3000/items', {
+  //       method:'GET',
+  //       headers: {
+  //         Authorization: `Bearer ${localStorage.getItem('DataUser')}`,
+  //       }
+  //     })
+  //       .then((response) => response.json())
+  //       .then((data) => {
+  //         const newItems = data.filter((el) => el.userId === user.id);
+  //         setMadeposts(newItems);
+  //         setLoading(false);
+  //       });
+  //   };
+  //   req();
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   return (
     <BackGroundGrey>

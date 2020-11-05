@@ -9,19 +9,18 @@ export const Provider = ({ children, category }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(5);
   const [totalPosts, setTotalPosts]=useState(0);
-  const [finalItems, setFinalItems]=useState([]);
+  const [cart, setCart]=useState(1)
+
 
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    const items = [];
     const dataRequest = async () => {
-      await fetch(`${process.env.REACT_APP_API_ITEMS}/${category}?postsperpage=${postsPerPage}&&currentpage=${currentPage}`)
+      await fetch(`${process.env.REACT_APP_API_ITEMS}/${category}?postsperpage=${postsPerPage}&&currentpage=${currentPage}&&searchmatch=${search}`)
         .then((data) => data.json())
         .then((res) => {
-          // eslint-disable-next-line no-restricted-syntax
           setTotalPosts(res.totalAmount)
           setPosts(res.finalItems);
         })
@@ -31,31 +30,32 @@ export const Provider = ({ children, category }) => {
     dataRequest();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentPage]);
+  }, [currentPage, cart]);
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
-  // eslint-disable-next-line no-shadow
-useEffect(()=> {
-  const searchItems = (items, search) => {
-    if (search.length === 0) {
-      console.log(items)
-      return items
-    }
-    return items.filter((item) => item.title.toLowerCase().indexOf(search.toLowerCase()) > -1);
-  };
-  setFinalItems(searchItems(posts, search))
+// useEffect(()=> {
+ 
+//   const searchItems = (items, search) => {
+//     if (search.length === 0) {
+//       return items
+//     }
+//     const result =items.filter((item) => item.title.toLowerCase().indexOf(search.toLowerCase()) > -1);
+//     setTotalPosts(result.length)
+//     return result;
+//   };
+//   setFinalItems(searchItems(posts, search))
 
-  searchItems.propTypes = {
-    items: PropTypes.arrayOf(
-      PropTypes.object,
-    ).isRequired,
-    search: PropTypes.string.isRequired,
-  };
+//   searchItems.propTypes = {
+//     items: PropTypes.arrayOf(
+//       PropTypes.object,
+//     ).isRequired,
+//     search: PropTypes.string.isRequired,
+//   };
 
-},[posts, search])
+// },[posts, search])
 
 
 
@@ -70,9 +70,10 @@ useEffect(()=> {
     loading,
     search,
     setSearch,
-    finalItems,
     error,
-    totalPosts
+    totalPosts,
+    cart,
+    setCart
   };
 
   return (

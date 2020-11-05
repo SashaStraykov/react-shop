@@ -8,7 +8,7 @@ export const Context = createContext();
 
 export const Provider = ({ children }) => {
   const { contextData } = useContext(AppContext);
-  const { user } = contextData;
+  const { user, setUser } = contextData;
   const { id } = user;
 
   const [loading, setLoading] = useState(true);
@@ -63,11 +63,20 @@ export const Provider = ({ children }) => {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('DataUser')}`,
       },
       body: JSON.stringify(itemData),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        if(data.message.name === "TokenExpiredError") {
+          setUser(null)
+        } else {
+          console.log(data)
+        }
+    
+      }
+      );
   };
 
   const contextDataAddItemPage = {

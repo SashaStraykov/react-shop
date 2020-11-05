@@ -28,13 +28,11 @@ export const ContainerItem = styled.div`
 `;
 
 export const SearchPannel = styled.input`
-  display: block;
-  margin: 2em auto;
+  display: flex;
   width: 30em;
   background: transparent;
   color: rgb(66, 66, 66);
   border: none;
-  margin-bottom: 5em;
   padding: 0.5em;
   font-size: 1.5em;
   font-weight: bold;
@@ -43,3 +41,23 @@ export const SearchPannel = styled.input`
     outline: none;
   }
 `;
+
+export const FlexSearch = styled.form`
+display:flex;
+flex-direction:row;
+justify-content:center;
+align-items:center;
+margin-bottom:3em;
+`
+
+export const SearchButton = styled.button`
+display:flex;
+align-items:center;
+border:none;
+&:focus{
+  outline:none;
+},
+&:hover {
+cursor:pointer,
+}
+`

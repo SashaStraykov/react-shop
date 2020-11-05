@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const ImgWrapper = styled.div`
   border: 1px solid var(--border-color);
-  border-radius: 500rem;
+  border-radius: 5px;
   background-image: ${(props) => `url(${props.img})`};
   background-position: center;
   background-repeat: no-repeat;
@@ -18,6 +18,7 @@ export const Box = styled(Link)`
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
   
   background: white;
   border: 1px solid var(--border-color);

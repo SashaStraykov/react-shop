@@ -9,14 +9,14 @@ import { AdminPageContext } from '../../Pages/AdminPage/context';
 const ModalConfirm = ({ id, title }) => {
   const { adminContextData } = useContext(AdminPageContext);
   const {
-    setModalConfirm, modalConfirm, statementItem, rejectedInput, setRejectedInput,
+    setModalConfirm, statementItem, rejectedInput, setRejectedInput,
   } = adminContextData;
 
   return (
     <Wrapper>
       <WrapperBox>
-        <WrapperCancel onClick={() => setModalConfirm(!modalConfirm)}>X</WrapperCancel>
-        <form name="rejected" onSubmit={(e) => statementItem(e, id)}>
+        <WrapperCancel onClick={() => setModalConfirm(false)}>X</WrapperCancel>
+        <form name="rejected" onSubmit={(e) => { statementItem(e, id)}}>
           <WrapperTitle>
             The reason for rejection of
             {' '}

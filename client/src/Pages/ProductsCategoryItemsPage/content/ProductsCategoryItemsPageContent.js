@@ -8,16 +8,27 @@ import {
   H2,
   ContainerItem,
   SearchPannel,
+  FlexSearch,
+  SearchButton
 } from './styled';
 import { ProductsCategoryItemsPageContext } from '../Context/Index';
 import Spinner from '../../../Components/Spinner';
 import ErrorModal from '../../../Components/ErrorModal';
+import SearchIcon from '@material-ui/icons/Search';
+import { makeStyles } from '@material-ui/core/styles';
 
-function ProductsCategoryItemsPageContent() {
+const useStyles = makeStyles({
+  icon: {
+    fontSize: '2em',
+  },
+});
+
+const ProductsCategoryItemsPageContent = () => {
   const { url } = useRouteMatch();
   const { ProductsCategoryItemsPageContextData } = useContext(
     ProductsCategoryItemsPageContext,
   );
+  const classes = useStyles();
 
   const {
     currentPage,
@@ -28,8 +39,10 @@ function ProductsCategoryItemsPageContent() {
     loading,
     search,
     setSearch,
-    finalItems,
+    posts,
     error,
+    cart,
+    setCart
   } = ProductsCategoryItemsPageContextData;
 
   if (loading) {
@@ -39,7 +52,6 @@ function ProductsCategoryItemsPageContent() {
     return <ErrorModal />;
   }
   return (
-    <>
       <BackGroundGrey>
         <H2>
           Welcome to the
@@ -48,14 +60,19 @@ function ProductsCategoryItemsPageContent() {
           {' '}
           category
         </H2>
-
-        <SearchPannel
+        <FlexSearch onSubmit={(e)=> { e.preventDefault();setCart(cart+1)}}>
+          <SearchPannel
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-        />
+          />
+          <SearchButton>
+          <SearchIcon className={classes.icon} />
+          </SearchButton>
+
+        </FlexSearch>
 
         <Container>
-          {finalItems.length === 0 ? <H2>No matches</H2> : finalItems.map((item) => (
+          {posts.length === 0 ? <H2>No matches</H2> : posts.map((item) => (
             <Link key={item.id} to={`${url}/${item.id}`}>
               <ContainerItem>
                 <ProductsCategoryItem {...item} />
@@ -71,7 +88,6 @@ function ProductsCategoryItemsPageContent() {
           />
         </Container>
       </BackGroundGrey>
-    </>
   );
 }
 

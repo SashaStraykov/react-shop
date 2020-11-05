@@ -40,7 +40,6 @@ exports.authorization = async (req, res) => {
         //   })
         // }
         // console.log(req.body)
-
             const {login, password } = req.body;
     
             const regUser = await User.findOne({login: login})
@@ -60,7 +59,7 @@ exports.authorization = async (req, res) => {
         const token = jwt.sign(
           {userID: regUser.id},
           process.env.JWT_SECRET,
-          {expiresIn: '30s'}
+          {expiresIn: '1h'}
         )
     
         const finalUser= {

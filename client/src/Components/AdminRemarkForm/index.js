@@ -14,16 +14,13 @@ const AdminRemarkForm = ({ id, ...rest }) => {
   const { adminContextData } = useContext(AdminPageContext);
   const { setModalConfirm, modalConfirm, statementItem } = adminContextData;
 
-
-
-
   return (
     <>
       {modalConfirm && <ModalConfirm id={id} title={rest.title} />}
       <ItemModal {...rest} />
       <BoxBottom>
         <BoxBottomTop name="approved" onClick={(e) => statementItem(e, id)}> Approved</BoxBottomTop>
-        <BoxBottomReject onClick={() => setModalConfirm(!modalConfirm)}>Reject</BoxBottomReject>
+        <BoxBottomReject onClick={() => setModalConfirm(true)}>Reject</BoxBottomReject>
       </BoxBottom>
     </>
   );
