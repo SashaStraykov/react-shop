@@ -21,8 +21,7 @@ export const Provider = ({ children }) => {
   const [category, setCategory] = useState('');
   const [price, setPrice] = useState(0);
   const [imgs, setImgs] = useState([]);
-
-  const [lol, setLol] = useState([])
+  
 
   useEffect(() => {
     const req = async () => {

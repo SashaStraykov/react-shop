@@ -36,30 +36,6 @@ export const Provider = ({ children, category }) => {
     setCurrentPage(pageNumber);
   };
 
-// useEffect(()=> {
- 
-//   const searchItems = (items, search) => {
-//     if (search.length === 0) {
-//       return items
-//     }
-//     const result =items.filter((item) => item.title.toLowerCase().indexOf(search.toLowerCase()) > -1);
-//     setTotalPosts(result.length)
-//     return result;
-//   };
-//   setFinalItems(searchItems(posts, search))
-
-//   searchItems.propTypes = {
-//     items: PropTypes.arrayOf(
-//       PropTypes.object,
-//     ).isRequired,
-//     search: PropTypes.string.isRequired,
-//   };
-
-// },[posts, search])
-
-
-
-
 
   const ProductsCategoryItemsPageContextData = {
     posts,

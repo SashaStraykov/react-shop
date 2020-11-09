@@ -50,9 +50,10 @@ exports.getItems = async (req, res) => {
 
 exports.DeclarateItem = async (req, res) => {
     try{
+      console.log(req.files)
         const imgArray =[]
         for(let i=0; i< req.files.imgs.length; i++) {
-          imgArray.push(req.files.imgs[i].id)
+          imgArray.push(req.files.imgs[i].filename)
         }
         const item = new Item ({...req.body, id:uuidv4(), img: imgArray})
         await item.save()
@@ -116,29 +117,38 @@ exports.DeleteItem = async (req,res)=> {
       const totalEndItems  = totalApprovedItems.filter(el=>el.title.toLowerCase().indexOf(search.toLowerCase()) > -1)
 
       const finalItems = totalEndItems.slice(firstPost, lastPost)
-const a =[]
-      finalItems.forEach(item=> {
+      const b = await gfs.gfs.files.find().toArray();
 
-        item.img.forEach((el, i)=> {
+      // finalItems.forEach(item=> {
 
-           gfs.gfs.files.find().toArray((err, files) => {
-            files.forEach(file=> {
-              if(el==file._id.valueOf()) {
-                console.log('file', file)
-               a.push(file)
-              }
-            })
+      //   item.img.forEach((el, i)=> {
+      //     b.forEach(file=> {
+      //       if(file.filename===el) {
+      //         const readstream = gfs.gfs.createReadStream(file)
+      //         readStream.on('data',  (chunk) => {
+              
+      //         });
+      //       }
+      //     })
+      //     //  gfs.gfs.files.find().toArray((err, files) => {
+      //     //   files.forEach(file=> {
+      //     //     if(el==file._id.valueOf()) {
+      //     //       console.log('file', file)
+      //     //      a.push(file)
+      //     //      finalItems.img.splice(i, 1, file)
+      //     //     }
+      //     //   })
 
+      //     //     });
+      //   })
 
+      // })
 
-              });
-        })
-      })
-finalItems.img = a;
-console.log(finalItems)
+    console.log(finalItems)
+
       const sentData = {
         finalItems,
-         totalAmount: totalEndItems.length
+        totalAmount: totalEndItems.length
       }
       res.status(200).json(sentData);
      
