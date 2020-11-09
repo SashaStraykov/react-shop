@@ -44,7 +44,6 @@ const ProductsCategoryItemsPageContent = () => {
     cart,
     setCart
   } = ProductsCategoryItemsPageContextData;
-
   if (loading) {
     return <Spinner />;
   }

@@ -4,6 +4,8 @@ import React, {
 import PropTypes from 'prop-types';
 import { AppContext } from '../../../App/Context/Index';
 
+import axios from 'axios';
+
 export const Context = createContext();
 
 export const Provider = ({ children }) => {
@@ -19,6 +21,8 @@ export const Provider = ({ children }) => {
   const [category, setCategory] = useState('');
   const [price, setPrice] = useState(0);
   const [imgs, setImgs] = useState([]);
+
+  const [lol, setLol] = useState([])
 
   useEffect(() => {
     const req = async () => {
@@ -43,40 +47,64 @@ export const Provider = ({ children }) => {
 
   const postData = async (e) => {
     e.preventDefault();
-    console.log('onChange: ', imgs);
 
     const formData = new FormData();
-    formData.append('file', imgs);
-    const itemData = {
-      idCategory: category,
-      title,
-      description,
-      userId: id,
-      price,
-      img: formData,
-      date: date(),
+for (let i=0; i<imgs.length; i++) {
+  formData.append('imgs', imgs[i]);
+}
+      
+   
+    // formData.append('imgs', imgs[0]);
+    formData.set('idCategory', category);
+    formData.set('title', title);
+    formData.set('description', description);
+    formData.set('userId', id);
+    formData.set('price', price);
+    formData.set('date', date());
 
-    };
-    console.log(itemData);
+    console.log(formData.get('imgs'))
 
-    await fetch('http://localhost:3000/items', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('DataUser')}`,
-      },
-      body: JSON.stringify(itemData),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if(data.message.name === "TokenExpiredError") {
-          setUser(null)
-        } else {
-          console.log(data)
-        }
+  //   for (var pair of formData.entries()) {
+  //     console.log(pair[0]+ ', ' + pair[1]); 
+  // }
+  console.log(...formData)
+
+    // const itemData = {
+    //   idCategory: category,
+    //   title,
+    //   description,
+    //   userId: id,
+    //   price,
+    //   img: formData,
+    //   date: date(),
+
+    // };
+    // console.log(itemData);
+
+    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('DataUser')}` 
+    axios.defaults.headers.common['Content-Type']= 'multipart/form-data'
+    axios.post(process.env.REACT_APP_API_ITEMS, formData)
+    .then(res=>console.log(res))
+    // await fetch('http://localhost:3000/items', {
+    //   method: 'post',
+    //   headers: {
+    //     // 'Content-Type': 'application/json',
+    //     'Content-Type': 'multipart/form-data',
+    //   'Accept': 'application/json, text/plain, */*',
+    //     Authorization: `Bearer ${localStorage.getItem('DataUser')}`,
+    //   },
+    //   body: formData,
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     if(data.message.name === "TokenExpiredError") {
+    //       setUser(null)
+    //     } else {
+    //       console.log(data)
+    //     }
     
-      }
-      );
+    //   }
+    //   );
   };
 
   const contextDataAddItemPage = {

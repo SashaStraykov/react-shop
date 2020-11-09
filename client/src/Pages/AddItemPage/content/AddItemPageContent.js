@@ -36,11 +36,11 @@ const AddItemPageContent = () => {
       <Form enctype="multipart/form-data" onSubmit={postData}>
         <BoxInfo>
           <Span>Title</Span>
-          <InputC value={title} onChange={(e) => setTitle(e.target.value)} />
+          <InputC  value={title} onChange={(e) => setTitle(e.target.value)} />
         </BoxInfo>
         <BoxInfo>
           <Span>Category</Span>
-          <Select value={category} onChange={(e) => setCategory(e.target.value)}>
+          <Select  value={category} onChange={(e) => setCategory(e.target.value)}>
             {items.map(({ idCategory }) => (
               <option key={idCategory}>{idCategory}</option>
             ))}
@@ -48,7 +48,7 @@ const AddItemPageContent = () => {
         </BoxInfo>
         <BoxInfo>
           <Span>Description</Span>
-          <InputDescription value={description} onChange={(e) => setDescription(e.target.value)} />
+          <InputDescription  value={description} onChange={(e) => setDescription(e.target.value)} />
         </BoxInfo>
         <BoxInfo>
           <Span>Price</Span>

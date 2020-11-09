@@ -32,7 +32,7 @@ const ItemSchema = new Schema({
     },
     img: {
         // type: [String],
-        type: [Object],
+        type: [String],
     },
     approved:{
         type: String,

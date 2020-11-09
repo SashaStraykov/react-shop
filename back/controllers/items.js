@@ -1,6 +1,43 @@
 const Item = require('../models/item');
 const Comment = require( '../models/comment' );
 const { v4: uuidv4 } = require('uuid');
+const gfs = require('../index')
+
+const path = require('path');
+const crypto = require('crypto');
+const multer = require('multer');
+const GridFsStorage = require('multer-gridfs-storage');
+const Grid = require('gridfs-stream');
+const methodOverride = require('method-override')
+const fs = require('fs');
+
+const formidable = require('formidable');
+const { type } = require('os');
+const e = require('express');
+
+
+
+// const storage = multer.diskStorage({
+
+//   destination: (req, res, cb) => {
+//     cb(null, 'uploads')
+//   },
+//   filename: (req, file, cb) => {
+//     cb(null, file.fieldname + '-' + Date.now()+path.extname(file.originalname))
+//   }
+// })
+
+// const upload = multer({
+//   storage,  
+//   limits: {fieldSize: 2*1024*1024},
+//   fileFilter: (req, res, cb) => {
+//     const ext = path.extname(file.originalname);  
+//     if(ext !== '.jpg' && ext !== '.jpeg' && ext !== '.png') {
+//       res.status(415).json({message: 'require format of jpeg'})
+//     }
+//     cb(null, true)
+//   }
+// }).single('file')
 
 exports.getItems = async (req, res) => {
     try {
@@ -13,9 +50,11 @@ exports.getItems = async (req, res) => {
 
 exports.DeclarateItem = async (req, res) => {
     try{
-        console.log(req.files)
-        console.log(req.body)
-        const item = new Item ({...req.body, id:uuidv4()})
+        const imgArray =[]
+        for(let i=0; i< req.files.imgs.length; i++) {
+          imgArray.push(req.files.imgs[i].id)
+        }
+        const item = new Item ({...req.body, id:uuidv4(), img: imgArray})
         await item.save()
         res.status(201).json({message:'item declarated'})
     } catch(e) {  
@@ -58,18 +97,17 @@ exports.DeleteItem = async (req,res)=> {
         }
       })
       res.status(201).json({message:'Item approved '})
-    } catch( e ) {
+    } catch (e) {
       res.status(501).json({message: e})
     }
   }
 
   exports.CategoryItems = async (req, res) => {
       try {
-
-        const search = req.query.searchmatch;
-        const postsPerPage = req.query.postsperpage;
-        const currentPage = req.query.currentpage;
-        const categoryItems = req.params.category;
+      const search = req.query.searchmatch;
+      const postsPerPage = req.query.postsperpage;
+      const currentPage = req.query.currentpage;
+      const categoryItems = req.params.category;
 
       const lastPost = +postsPerPage* +currentPage;
       const firstPost = +lastPost- +postsPerPage;
@@ -78,12 +116,33 @@ exports.DeleteItem = async (req,res)=> {
       const totalEndItems  = totalApprovedItems.filter(el=>el.title.toLowerCase().indexOf(search.toLowerCase()) > -1)
 
       const finalItems = totalEndItems.slice(firstPost, lastPost)
-      
+const a =[]
+      finalItems.forEach(item=> {
+
+        item.img.forEach((el, i)=> {
+
+           gfs.gfs.files.find().toArray((err, files) => {
+            files.forEach(file=> {
+              if(el==file._id.valueOf()) {
+                console.log('file', file)
+               a.push(file)
+              }
+            })
+
+
+
+              });
+        })
+      })
+finalItems.img = a;
+console.log(finalItems)
       const sentData = {
         finalItems,
          totalAmount: totalEndItems.length
       }
       res.status(200).json(sentData);
+     
+    
       } catch (e) {
       res.status(500).json({ message: e });
     }

@@ -52,11 +52,9 @@ function HeaderContent() {
             <Link to={PERSON_PAGE}>
               <NavLi>Person Page</NavLi>
             </Link>
-            <NavLi>
-              {user ? user.typs : 0}
-              {' '}
-              typs
-            </NavLi>
+            { user && <NavLi>
+              {user.typs} typs
+            </NavLi>}
             <NavLiSign>
               <Link to={AUTHORIZATION_PAGE}>
                 {user ? (
