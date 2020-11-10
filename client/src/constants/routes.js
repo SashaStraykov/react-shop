@@ -6,3 +6,4 @@ export const PRODUCTS_CATEGORY_PAGE = '/products-category-page';
 export const ADMIN_PAGE = '/admin-page';
 export const ADD_ANNOUNCMENT_PAGE = '/add-announcment';
 export const REJECT_ITEMS_PAGE = '/reject-items';
+export const INFO_PAGE = '/info-page'

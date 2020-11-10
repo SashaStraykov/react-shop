@@ -11,9 +11,11 @@ const Grid = require('gridfs-stream');
 const methodOverride = require('method-override')
 const fs = require('fs');
 
-const formidable = require('formidable');
-const { type } = require('os');
-const e = require('express');
+
+
+// const formidable = require('formidable');
+// const { type } = require('os');
+// const e = require('express');
 
 
 
@@ -50,10 +52,9 @@ exports.getItems = async (req, res) => {
 
 exports.DeclarateItem = async (req, res) => {
     try{
-      console.log(req.files)
         const imgArray =[]
         for(let i=0; i< req.files.imgs.length; i++) {
-          imgArray.push(req.files.imgs[i].filename)
+          imgArray.push(`/${req.files.imgs[i].path}`)
         }
         const item = new Item ({...req.body, id:uuidv4(), img: imgArray})
         await item.save()
@@ -116,8 +117,16 @@ exports.DeleteItem = async (req,res)=> {
       const totalApprovedItems = item.filter(el=>el.approved==='approved');
       const totalEndItems  = totalApprovedItems.filter(el=>el.title.toLowerCase().indexOf(search.toLowerCase()) > -1)
 
+
+
       const finalItems = totalEndItems.slice(firstPost, lastPost)
-      const b = await gfs.gfs.files.find().toArray();
+      // finalItems.forEach(el=> {
+      //   el.img.forEach( (el, i)=> {
+      //     el = fs.createReadStream(el)
+      //     console.log(el)
+      //   } )
+      // })
+      // const b = await gfs.gfs.files.find().toArray();
 
       // finalItems.forEach(item=> {
 
@@ -125,26 +134,23 @@ exports.DeleteItem = async (req,res)=> {
       //     b.forEach(file=> {
       //       if(file.filename===el) {
       //         const readstream = gfs.gfs.createReadStream(file)
-      //         readStream.on('data',  (chunk) => {
-              
-      //         });
+      //         console.log(readstream)
       //       }
       //     })
-      //     //  gfs.gfs.files.find().toArray((err, files) => {
-      //     //   files.forEach(file=> {
-      //     //     if(el==file._id.valueOf()) {
-      //     //       console.log('file', file)
-      //     //      a.push(file)
-      //     //      finalItems.img.splice(i, 1, file)
-      //     //     }
-      //     //   })
+      //      gfs.gfs.files.find().toArray((err, files) => {
+      //       files.forEach(file=> {
+      //         if(el==file._id.valueOf()) {
+      //           console.log('file', file)
+      //          a.push(file)
+      //          finalItems.img.splice(i, 1, file)
+      //         }
+      //       })
 
-      //     //     });
+      //         });
       //   })
 
       // })
 
-    console.log(finalItems)
 
       const sentData = {
         finalItems,

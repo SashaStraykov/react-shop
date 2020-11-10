@@ -8,8 +8,8 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import {
   BackGroundGrey, H2, Container, Wrapper,
 } from './styled';
-import { PersonPageContext } from '../../context';
-import ItemModal from '../../../../Components/ItemModal';
+import { PersonPageContext } from '../../PersonPage/context';
+import ItemModal from '../../../Components/ItemModal';
 
 const useStyles = makeStyles((theme) => ({
   heading: {

@@ -8,15 +8,15 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import CancelPresentationIcon from '@material-ui/icons/CancelPresentation';
 import { makeStyles } from '@material-ui/core/styles';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
-import PersonPageInfo from '../PersonPageInfo';
-import PersonPageRejectedItems from '../PersonPageRejectedItems';
+import InfoPage from '../../../InfoPage';
+import RejectedItemsPage from '../../../RejectdItemsPage';
 import CheckoutPage from '../../../CheckoutPage';
 import AddItemPage from '../../../AddItemPage';
 import { Nav, NavUl, NavLi } from './styled';
 import { AppContext } from '../../../../App/Context/Index';
 import PrivateLayoutAdminPage from '../../../../Layouts/PrivateLayoutAdminPage';
 import {
-  ADMIN_PAGE, CHECKOUT_PAGE, ADD_ANNOUNCMENT_PAGE, REJECT_ITEMS_PAGE,
+  ADMIN_PAGE, CHECKOUT_PAGE, ADD_ANNOUNCMENT_PAGE, REJECT_ITEMS_PAGE, INFO_PAGE
 } from '../../../../constants/routes';
 
 const useStyles = makeStyles({
@@ -63,7 +63,7 @@ const PersonPageHeader = () => {
             </Link>
           ) : null}
 
-          <Link to={`${url}`}>
+          <Link to={`${url}${INFO_PAGE}`}>
             <NavLi
               active={active.dash}
               onClick={() => setActive({
@@ -126,13 +126,13 @@ const PersonPageHeader = () => {
           <AddItemPage />
         </Route>
         <Route path={`${path}${REJECT_ITEMS_PAGE}`}>
-          <PersonPageRejectedItems />
+          <RejectedItemsPage />
         </Route>
         <Route path={`${path}${ADMIN_PAGE}`}>
           <PrivateLayoutAdminPage />
         </Route>
-        <Route path={`${path}`}>
-          <PersonPageInfo user={user} />
+        <Route path={`${path}${INFO_PAGE}`}>
+          <InfoPage user={user} />
         </Route>
       </Switch>
     </>

@@ -15,12 +15,12 @@ import {
   CommentBox,
 
 } from './styled';
-import ProductsCategoryItem from '../../../../Components/ProductsCategoryItem';
-import Spinner from '../../../../Components/Spinner';
-import { PersonPageContext } from '../../context';
-import { PRODUCTS_CATEGORY_PAGE } from '../../../../constants/routes';
+import ProductsCategoryItem from '../../../Components/ProductsCategoryItem';
+import Spinner from '../../../Components/Spinner';
+import { PersonPageContext } from '../../PersonPage/context';
+import { PRODUCTS_CATEGORY_PAGE } from '../../../constants/routes';
 
-const PersonPageInfo = () => {
+const InfoPageContent = () => {
   const { contextdataPersonPage } = useContext(PersonPageContext);
   const {
     user, onDelete, madePosts, loading
@@ -93,4 +93,4 @@ const PersonPageInfo = () => {
   );
 };
 
-export default PersonPageInfo;
+export default InfoPageContent;

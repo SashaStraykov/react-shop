@@ -19,7 +19,7 @@ import {
 import dataArtLogo from '../../assets/images/LogoWhite.png';
 import { AppContext } from '../../App/Context/Index';
 import {
-  HOME_PAGE, PERSON_PAGE, AUTHORIZATION_PAGE, CHECKOUT_PAGE,
+  HOME_PAGE, PERSON_PAGE, AUTHORIZATION_PAGE, CHECKOUT_PAGE, INFO_PAGE,
 } from '../../constants/routes';
 
 const useStyles = makeStyles({
@@ -49,7 +49,7 @@ function HeaderContent() {
         <PersonItem>
           <PersonIcon className={classes.icon} />
           <NavUl>
-            <Link to={PERSON_PAGE}>
+            <Link to={`${PERSON_PAGE}${INFO_PAGE}`}>
               <NavLi>Person Page</NavLi>
             </Link>
             { user && <NavLi>
