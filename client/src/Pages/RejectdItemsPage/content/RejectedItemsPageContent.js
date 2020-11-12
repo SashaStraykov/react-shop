@@ -8,8 +8,10 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import {
   BackGroundGrey, H2, Container, Wrapper,
 } from './styled';
-import { PersonPageContext } from '../../PersonPage/context';
+import { RejectedItemsPageContext } from '../context';
 import ItemModal from '../../../Components/ItemModal';
+import Spinner from '../../../Components/Spinner'
+import ErrorModal from '../../../Components/ErrorModal'
 
 const useStyles = makeStyles((theme) => ({
   heading: {
@@ -31,18 +33,24 @@ const useStyles = makeStyles((theme) => ({
 const PersonPageRejectedItems = () => {
   const classes = useStyles();
 
-  const { contextdataPersonPage } = useContext(PersonPageContext);
-  const { unApprovedItems } = contextdataPersonPage;
+  const { rejectedItemsContextData } = useContext(RejectedItemsPageContext);
+  const { rejectedItems, loading, error } = rejectedItemsContextData;
+  if(loading) {
+    return <Spinner/>
+  }
+  if(error) {
+    return <ErrorModal/>
+  }
   return (
     <BackGroundGrey>
       <Container>
-        {unApprovedItems && (
+        {rejectedItems && (
           <Container>
             <H2>
               Unapproved announcment
               <span>&#8595;</span>
             </H2>
-            {unApprovedItems.map(({ id, ...rest }) => (
+            {rejectedItems.map(({ id, ...rest }) => (
               <Wrapper key={id}>
                 <Accordion>
                   <AccordionSummary

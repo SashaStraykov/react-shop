@@ -13,9 +13,3 @@ export const Container = styled.div`
   background: rgb(245, 245, 245);
   padding: 1em;
 `;
-export const H2 = styled.h2`
-  display: block;
-  font-size: 2em;
-  color: rgb(66, 66, 66);
-  margin: 1em auto;
-`;

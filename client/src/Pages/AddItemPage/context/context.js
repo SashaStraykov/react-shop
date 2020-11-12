@@ -3,14 +3,13 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { AppContext } from '../../../App/Context/Index';
-
 import axios from 'axios';
 
 export const Context = createContext();
 
 export const Provider = ({ children }) => {
   const { contextData } = useContext(AppContext);
-  const { user, setUser } = contextData;
+  const { user } = contextData;
   const { id } = user;
 
   const [loading, setLoading] = useState(true);
@@ -67,7 +66,6 @@ for (let i=0; i<imgs.length; i++) {
   //     console.log(pair[0]+ ', ' + pair[1]); 
   // }
   console.log(...formData)
-
     // const itemData = {
     //   idCategory: category,
     //   title,

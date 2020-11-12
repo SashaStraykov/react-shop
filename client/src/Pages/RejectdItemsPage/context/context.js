@@ -1,30 +1,34 @@
 import React, {
-    createContext, useEffect, useState, useContext,
+    createContext, useEffect, useState, 
   } from 'react';
+  import axios from 'axios';
   import PropTypes from 'prop-types';
 
   export const Context = createContext();
 
   export const Provider = ({ children }) => {
     const [rejectedItems, setRejectedItems] = useState([]);
-    const [madePosts, setMadePosts] = useState([]);
     const [loading, setLoading] = useState(true);
-
     const [error, setError] = useState(false);
-    // useEffect(()=> {
-    //   const req = async () => {
-    //     await fetch(`${process.env.REACT_APP_API_ITEMS}`)
-    //       .then((res) => res.json())
-    //       .then((data) => setItems(data))
-    //       .catch(() => setError(true));
-    //   };
 
-    //   req();
-    //   setLoading(false);
-    // }, []);
+
+    useEffect(()=> {
+      const req = async () => {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('DataUser')}` 
+        await axios.get(`${process.env.REACT_APP_API_REJECTED_ITEMS}`)
+          .then((res) => {
+            setRejectedItems(res.data)
+          })
+          .catch(() => setError(true));
+      };
+      req();
+      setLoading(false);
+    }, []);
 
     const rejectedItemsContextData = {
-
+        rejectedItems,
+        loading,
+        error
     }
     return (
         <Context.Provider value={{ rejectedItemsContextData }}>{children}</Context.Provider>

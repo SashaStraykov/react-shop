@@ -3,17 +3,17 @@ const Item = require('../models/item');
 const bcrypt = require('bcryptjs')
 const { v4: uuidv4 } = require('uuid');
 const jwt = require('jsonwebtoken')
+const { validationResult } = require('express-validator');
 
 exports.registration = async (req, res) => {
     try {
-    //   const errors = validationResult(req)
-    //   if(!errors.isEmpty()) {
-    //     return res.status(400).json({errors:errors.array(),
-    //                                 message: 'uncorrect registration data'
-    //     })
-    //   }
+      const errors = validationResult(req)
+      if(!errors.isEmpty()) {
+        return res.status(400).json({errors:errors.array(),
+                                    message: 'uncorrect registration data'
+        })
+      }
       const {login, password }=req.body;
-  
       const candidate = await User.findOne({login: login})
       if( candidate) {
        return   res.status(400).json({message: 'Such login has already declarated'})
@@ -33,16 +33,17 @@ exports.registration = async (req, res) => {
 
 exports.authorization = async (req, res) => {
       try {
-        // const errors = validationResult(req)
-        // if(!errors.isEmpty()) {
-        //   return res.status(400).json({errors:errors.array(),
-        //                               message: 'uncorrect authorization data'
-        //   })
-        // }
-        console.log(req.body)
+        const errors = validationResult(req)
+        if(!errors.isEmpty()) {
+          return res.status(400).json({errors:errors.array(),
+                                      message: 'uncorrect authorization data'
+          })
+        }
+
             const {login, password } = req.body;
     
             const regUser = await User.findOne({login: login})
+            console.log(regUser)
             if( !regUser ) {
              return   res.status(400).json( { message: 'Such user is not found' } )
             }

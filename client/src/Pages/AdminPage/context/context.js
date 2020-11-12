@@ -1,41 +1,30 @@
 import React, { createContext, useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import {AppContext} from '../../../App/Context/Index'
+import axios from 'axios'
 
 export const Context = createContext();
 
 export const Provider = ({ children }) => {
   const {contextData} = useContext(AppContext)
   const { setUser} = contextData;
-  const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [unApprovedItems, setUnApprovedItems] = useState([]);
   const [modalConfirm, setModalConfirm] = useState(false);
   const [rejectedInput, setRejectedInput] = useState('');
-
   useEffect(() => {
     const req = async () => {
-      await fetch(`${process.env.REACT_APP_API_ITEMS}`)
-        .then((res) => res.json())
-        .then((data) => setItems(data))
+      axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('DataUser')}` 
+      await axios.get(`${process.env.REACT_APP_API_ITEMS_APPROVING}`)
+        .then((res) => {
+          setUnApprovedItems(res.data)})
         .catch(() => setError(true));
-
-      setLoading(false);
     };
     req();
+    setLoading(false);
   }, []);
 
-  useEffect(() => {
-    const unApprovedItemsArray = [];
-    // eslint-disable-next-line no-restricted-syntax
-    for (const key of items) {
-      if (key.approved === '' || key.approved === null) {
-        unApprovedItemsArray.push(key);
-      }
-    }
-    setUnApprovedItems(unApprovedItemsArray);
-  }, [items]);
 
   const statementItem = async (e, id) => {
     e.preventDefault();

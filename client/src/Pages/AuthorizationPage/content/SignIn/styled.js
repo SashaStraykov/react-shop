@@ -1,12 +1,29 @@
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 
-export const SignInBox = styled.div``;
+const move = keyframes`
+0% {
+    left:60%;
+    opacity:0;
+}
+50% {
+  opacity:0;
+  left:30%;
+}
+100% {
+    opacity:1;
+    left:0%;
 
-export const LoginPasswordSignIn = styled.div`
-  font-size: 1.5em;
-  margin-top: 1em;
-  font-weight: bold;
-  color: var(--icon-color);
+}
+`;
+
+
+
+export const SignInBox = styled.div`
+margin:auto 0;
+width:100%;
+position:relative;
+left:60%;
+animation: ${move} .5s ease-in-out forwards;
 `;
 
 export const ErrorSignIn = styled.div`
@@ -16,17 +33,21 @@ export const ErrorSignIn = styled.div`
 `;
 
 export const ButtonSignIn = styled.button`
-  padding: 1em;
+  position:relative;
+  left:10%;
+  padding: 0.5em 1em;
   width: 40%;
-  margin: 1.2em auto;
+  margin: 1.2em 0;
   font-size: 1.3em;
   font-weight:bold;
-  background: var(--brand-color);
+  background: var(--nav-color);
   border: 2px solid var(--icon-color);
   border-radius: 0.2em;
   color:var(--icon-color);
+  transition: 0.3s;
   &:hover {
     cursor: pointer;
+    background: var(--brand-color);
   }
   &:focus{
     outline:none;
@@ -44,16 +65,20 @@ export const InputC = styled.input`
   font-size: 1.3em;
   font-weight: bold;
   color:var(--brand-color);
+
   &:focus {
     border: none;
     border-bottom: 3px solid var(--brand-color);
     outline: none;
+  };
+  &::placeholder {
+    color:var(--icon-color);
   }
 
 `;
 export const InputP = styled.input`
   height: 2em;
-  width: 75%;
+  width: 60%;
   margin-top: 0.5em;
   background: transparent;
   border: none;
@@ -66,17 +91,26 @@ export const InputP = styled.input`
     border: none;
     border-bottom: 3px solid var(--brand-color);
     outline: none;
+  };
+  &::placeholder {
+    color:var(--icon-color);
   }
 `;
 
 export const PasswordBox = styled.div`
-  padding-left: 20%;
   display: flex;
-  justify-content: stretch;
-  margin: 0 auto;
 `;
 export const PasswordBoxIcon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
 `;
+export const Form = styled.form`
+display:flex;
+flex-direction:column;
+position:relative;
+left:20%;
+
+`
+
+

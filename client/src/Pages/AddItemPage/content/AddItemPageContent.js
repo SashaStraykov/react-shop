@@ -7,7 +7,6 @@ import {
   InputDescription,
   Box,
   H2,
-  Container,
   Button,
   BoxInfo,
 } from './styled';

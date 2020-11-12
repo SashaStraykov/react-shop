@@ -43,7 +43,7 @@ const fs = require('fs');
 
 exports.getItems = async (req, res) => {
     try {
-      const item = await Item.find();
+      const item = await Item.find({userId: req.query.id, approved: 'approved'});
       res.status(200).json(item);
     } catch (e) {
       res.status(500).json({ message: e });
@@ -171,6 +171,34 @@ exports.DeleteItem = async (req,res)=> {
       const item = await Item.findOne({id: itemId});
       res.status(200).json(item);
       } catch (e) {
+      res.status(500).json({ message: e });
+    }
+  }
+
+  exports.RejectedItems = async (req, res) => {
+    try {
+      const item = await Item.find({approved: ['rejected', '']});
+      res.status(200).json(item);
+    } catch (e) {
+      res.status(500).json({ message: e });
+    }
+  }
+
+  exports.ApprovingItems = async (req, res) => {
+    try {
+      const item = await Item.find({approved: ''});
+      res.status(200).json(item);
+    } catch (e) {
+      res.status(500).json({ message: e });
+    }
+  }
+
+  exports.BucketItems = async (req, res) => {
+    try {
+      const bucketItems = req.body.bucketItems.split(',')
+      const item = await Item.find({id: bucketItems});
+      res.status(200).json(item);
+    } catch (e) {
       res.status(500).json({ message: e });
     }
   }

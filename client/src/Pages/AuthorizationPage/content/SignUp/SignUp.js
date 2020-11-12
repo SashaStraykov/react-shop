@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import {
-  Logs, SignUpBox, ErrorSignUp, ButtonSignUp, InputC,
+   SignUpBox, ButtonSignUp, InputC, Form
 } from './styled';
 import { AuthorizationPageContext } from '../../context';
+
 
 const SignUp = () => {
   const { authorizationContextData } = useContext(AuthorizationPageContext);
@@ -17,29 +18,27 @@ const SignUp = () => {
   } = authorizationContextData;
   return (
     <SignUpBox>
-      <form onSubmit={postData}>
-        <Logs>Email or phone number</Logs>
+      <Form onSubmit={postData}>
         <InputC
           value={emailSignUp}
           onChange={(e) => setEmailSignUp(e.target.value)}
+          placeholder='Email...'
         />
-        <ErrorSignUp>*error</ErrorSignUp>
-        <Logs>Your login</Logs>
         <InputC
           value={loginSignUp}
           onChange={(e) => setLoginSignUp(e.target.value)}
+          placeholder='Login...'
         />
-        <ErrorSignUp>*error</ErrorSignUp>
-        <Logs> your password</Logs>
         <InputC
           value={passwordSignUp}
           onChange={(e) => setPasswordSignUp(e.target.value)}
+          placeholder='Password...'
         />
-        <ErrorSignUp>*error</ErrorSignUp>
         <ButtonSignUp onClick={() => postData}> Sign up</ButtonSignUp>
-      </form>
+      </Form>
     </SignUpBox>
   );
 };
 
 export default SignUp;
+

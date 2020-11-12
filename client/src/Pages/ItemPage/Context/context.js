@@ -59,6 +59,7 @@ export const Provider = ({ children, itemid, category }) => {
       method: 'put',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('DataUser')}`,
       },
       body: JSON.stringify(postData),
     })

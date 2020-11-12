@@ -14,19 +14,18 @@ export const Provider = ({ children }) => {
   const { user, setUser } = contextData;
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-
+  const [errorMessage, setErrorMessage] = useState('')
+  const [openToast, setOpenToast] = useState(false);
   // signUp
   const [loginSignUp, setLoginSignUp] = useState('');
   const [emailSignUp, setEmailSignUp] = useState('');
   const [passwordSignUp, setPasswordSignUp] = useState('');
-  // const [logErrorSignUp, setLogErrorSignUp] = useState(false);
-  // const [pasErrorSignUp, setPasErrorSignUp] = useState(false);
 
   const checkAuthorization = async (e) => {
     e.preventDefault();
     const personData = {
-      login: loginSignIn,
-      password,
+      login: loginSignIn.trim(),
+      password: password.trim(),
     };
     setLoading(true);
     await fetch(`${process.env.REACT_APP_API_USERS}/authorization`, {
@@ -36,10 +35,12 @@ export const Provider = ({ children }) => {
       },
       body: JSON.stringify(personData),
     })
-      .then((response) => response.json())
-      .then((data) => {
+    .then((response) => response.json())
+      .then((data) => { 
         if (data.message) {
-          console.log(data.message);
+          setLoading(false);
+          setErrorMessage(data.message)
+          setOpenToast(true)
         } else {
           setLoading(false);
           setUser(data);
@@ -51,11 +52,11 @@ export const Provider = ({ children }) => {
 
   const postData = async (e) => {
     e.preventDefault();
+    setLoading(true)
     const personData = {
-
-      login: loginSignUp,
-      password: passwordSignUp,
-      email: emailSignUp,
+      login: loginSignUp.trim(),
+      password: passwordSignUp.trim(),
+      email: emailSignUp.trim(),
     };
     await fetch(`${process.env.REACT_APP_API_USERS}/registration`, {
       method: 'post',
@@ -65,7 +66,19 @@ export const Provider = ({ children }) => {
       body: JSON.stringify(personData),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then(data => {
+        console.log(data)
+        if(data.message) {
+          setErrorMessage(data.message)
+        }
+        if(data.message==='User has declarated') {
+          setLoginSignUp('');
+          setEmailSignUp('');
+          setPasswordSignUp('');
+        }
+        });
+        setLoading(false);
+        setOpenToast(true)
   };
 
   const authorizationContextData = {
@@ -84,6 +97,9 @@ export const Provider = ({ children }) => {
     error,
     loading,
     postData,
+    errorMessage,
+    openToast,
+    setOpenToast
   };
 
   return (

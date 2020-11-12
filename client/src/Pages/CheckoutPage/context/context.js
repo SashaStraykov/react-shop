@@ -3,6 +3,7 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { AppContext } from '../../../App/Context/Index';
+import axios from 'axios'
 
 export const Context = createContext();
 
@@ -18,13 +19,17 @@ export const Provider = ({ children }) => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    const req = async () => {
-      await fetch(`${process.env.REACT_APP_API_ITEMS}`)
-        .then((res) => res.json())
-        .then((data) => setItems(data))
-        .catch(() => setError(true));
-    };
-    req();
+    const bucketItems = localStorage.getItem(user.id)
+    if(bucketItems) {
+      const req = async () => {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('DataUser')}` 
+        await axios.post(`${process.env.REACT_APP_API_ITEMS_BUCKET}`, {bucketItems})
+          .then((res) => {console.log(res);setItems(res.data)})
+          .catch(() => setError(true));
+      };
+      req();
+    }
+
     setLoading(false);
     return setLoading(false);
   }, []);

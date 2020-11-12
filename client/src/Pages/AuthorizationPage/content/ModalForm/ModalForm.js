@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react';
 import SignIn from '../SignIn/SignIn';
 import SignUp from '../SignUp/SignUp';
-import { ModalBox, ModalButtonBox, ModalButton } from './styled';
+import { ModalBox, ModalButtonBox, ModalButton, SignInBox, SignUpBox, TextArea,
+} from './styled';
 import ErrorModal from '../../../../Components/ErrorModal';
 import { AuthorizationPageContext } from '../../context';
 import Spinner from '../../../../Components/Spinner';
@@ -19,15 +20,20 @@ function ModalForm() {
   }
   return (
     <ModalBox>
-      <ModalButtonBox>
-        <ModalButton sign={sign} onClick={() => setSign(true)}>
-          Sign in
-        </ModalButton>
-        <ModalButton onClick={() => setSign(false)} sign={!sign}>
-          Sign up
+      <ModalButtonBox sign={sign} >
+        <ModalButton  onClick={() => setSign(!sign)} sign={!sign}>
+          {sign?'Sign in' : 'Sign up'}
         </ModalButton>
       </ModalButtonBox>
-      {sign ? <SignIn /> : <SignUp />}
+      <SignInBox sign={sign}>
+        <TextArea>Sign in to Typ's Shop</TextArea>
+        <SignIn />
+      </SignInBox>
+      <SignUpBox sign={sign}>
+      <TextArea>Create Account</TextArea>
+        <SignUp />
+      </SignUpBox>
+
     </ModalBox>
   );
 }

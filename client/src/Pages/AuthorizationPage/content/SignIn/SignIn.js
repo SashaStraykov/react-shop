@@ -5,18 +5,21 @@ import { makeStyles } from '@material-ui/core/styles';
 import { AuthorizationPageContext } from '../../context';
 import {
   SignInBox,
-  LoginPasswordSignIn,
   ErrorSignIn,
   ButtonSignIn,
   InputC,
   PasswordBox,
   PasswordBoxIcon,
   InputP,
+  Form,
 } from './styled';
 
 const useStyles = makeStyles({
   icon: {
     color: 'var(--icon-color)',
+    "&:hover": {
+      cursor: 'pointer'
+    }
   },
 });
 
@@ -33,20 +36,20 @@ function SignIn() {
     pasError,
   } = authorizationContextData;
   return (
-    <SignInBox>
-      <form onSubmit={checkAuthorization}>
-        <LoginPasswordSignIn>Login</LoginPasswordSignIn>
+    <SignInBox >
+      <Form onSubmit={checkAuthorization}>
         <InputC
           value={loginSignIn}
           onChange={(e) => setLoginSignIn(e.target.value)}
+          placeholder='Login...'
 
         />
-        <LoginPasswordSignIn>Password</LoginPasswordSignIn>
         <PasswordBox>
           <InputP
             type={vissiblePasword ? 'password' : 'text'}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder='Password...'
           />
           <PasswordBoxIcon
             onClick={() => setVissiblePassword(!vissiblePasword)}
@@ -58,9 +61,10 @@ function SignIn() {
 
         <ErrorSignIn>{pasError && '*incorrect password'}</ErrorSignIn>
         <ButtonSignIn>SIGN IN</ButtonSignIn>
-      </form>
+      </Form>
     </SignInBox>
   );
 }
 
 export default SignIn;
+

@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState} from 'react';
 import {
   BackGroundGrey,
   H2,
@@ -13,41 +12,33 @@ import {
   FlexBox,
   FlexBoxItems,   
   CommentBox,
+  SettingsBox,
+  LinkTo
 
 } from './styled';
 import ProductsCategoryItem from '../../../Components/ProductsCategoryItem';
 import Spinner from '../../../Components/Spinner';
-import { PersonPageContext } from '../../PersonPage/context';
+import { InfoPageContext} from '../context';
 import { PRODUCTS_CATEGORY_PAGE } from '../../../constants/routes';
+import ErrorModal from '../../../Components/ErrorModal'
+
 
 const InfoPageContent = () => {
-  const { contextdataPersonPage } = useContext(PersonPageContext);
+  const { infoContextData } = useContext(InfoPageContext);
   const {
-    user, onDelete, madePosts, loading
-  } = contextdataPersonPage;
-  // const [loading, setLoading] = useState(false);
-  // const [madePosts, setMadeposts] = useState([]);
-
-  // useEffect(() => {
-  //   setLoading(true);
-  //   const req = async () => {
-  //     await fetch('http://localhost:3000/items', {
-  //       method:'GET',
-  //       headers: {
-  //         Authorization: `Bearer ${localStorage.getItem('DataUser')}`,
-  //       }
-  //     })
-  //       .then((response) => response.json())
-  //       .then((data) => {
-  //         const newItems = data.filter((el) => el.userId === user.id);
-  //         setMadeposts(newItems);
-  //         setLoading(false);
-  //       });
-  //   };
-  //   req();
-  // // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
-
+    user, onDelete, myItems, loading, error
+  } = infoContextData;
+const [itemComments, setItemComments] = useState([])
+const getComments = (comments) => {
+setItemComments(comments)
+console.log(comments)
+}
+  if(loading) {
+    return <Spinner/>
+  }
+  if(error) {
+    return <ErrorModal/>
+  }
   return (
     <BackGroundGrey>
       <H2Title>
@@ -75,17 +66,26 @@ const InfoPageContent = () => {
             {loading ? (
               <Spinner />
             ) : (
-              madePosts.map(({ id, ...el }) => (
+              myItems.map(({ id, comments, ...el }) => (
                 <ItemBox key={id}>
-                  <Link to={`${PRODUCTS_CATEGORY_PAGE}/${el.idCategory}/${id}`}>
-                    <ProductsCategoryItem {...el} id={id} />
-                  </Link>
-                  <ButtonCancel onClick={(e) => onDelete(e, id)}>x</ButtonCancel>
+                  <div onClick={()=>getComments(comments)}>
+                  <ProductsCategoryItem {...el} comments={comments} id={id}  />
+                  </div>
+                  <SettingsBox>
+                  <ButtonCancel onClick={(e) => onDelete(e, id)}>DELETE</ButtonCancel>
+                    <LinkTo to={`${PRODUCTS_CATEGORY_PAGE}/${el.idCategory}/${id}`}>
+                      Link to
+                    </LinkTo>
+                  </SettingsBox>
                 </ItemBox>
               ))
             )}
           </FlexBoxItems>
-          <CommentBox><h1>comment</h1></CommentBox>
+              <CommentBox>
+                {itemComments && itemComments.map(comment=> {
+                    return<span key={comment.id}>{comment.comment}</span>
+              })}
+              </CommentBox>
         </FlexBox>
 
       </Container>

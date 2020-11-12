@@ -17,7 +17,7 @@ const Slider = ({ img }) => (
     navigation
     pagination={{ clickable: true }}
   >
-    {img.length > 0 ? img.map((item) => <SwiperSlide key={item}><IMG src={item} /></SwiperSlide>) : <SwiperSlide key={img.length}><IMG src={emptyPhoto} /></SwiperSlide>}
+    {img.length > 0 ? img.map((item) => <SwiperSlide key={item}><IMG src={`${process.env.REACT_APP_API_SERVER_PORT}${item}`} /></SwiperSlide>) : <SwiperSlide key={img.length}><IMG src={emptyPhoto} /></SwiperSlide>}
 
   </Swiper>
 );

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const BackGroundGrey = styled.div`
   width: 100%;
@@ -63,11 +64,13 @@ export const ItemBox = styled.div`
 `;
 
 export const ButtonCancel = styled.button`
-  background: var(--red-color);
-  font-size: 2em;
-  color: var(--icon-color);
+  font-size: 1em;
+  color: var(--nav-color);
   border: none;
   transition: 0.3s;
+  border: 1px solid var(--nav-color);
+  padding:0.5em 1em;
+  margin:0 auto;
   &:focus {
     outline: none;
   }
@@ -87,5 +90,20 @@ flex-direction:column;
 width:50%;
 `;
 export const CommentBox = styled.div`
-width:50%;
+width:40%;
+margin-left:1em;
 `;
+
+export const SettingsBox = styled.div`
+display: flex;
+flex-direction:column;
+justify-content: flex-start;
+`
+export const LinkTo = styled(Link)`
+margin:1em auto;
+transition:0.3s;    
+&:hover {
+  cursor:pointer;
+  color:var(--brand-color)
+}
+`
