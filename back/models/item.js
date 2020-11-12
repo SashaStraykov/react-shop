@@ -31,7 +31,6 @@ const ItemSchema = new Schema({
         default: Date.now,
     },
     img: {
-        // type: [String],
         type: [String],
     },
     approved:{

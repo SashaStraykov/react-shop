@@ -10,6 +10,8 @@ export const Provider = ({ children }) => {
   const [added, setAdded] = useState(false);
   const [checkoutUser, setCheckoutUser] = useState([]);
   const [amountItemsinBucket, setAmountItemsinBucket] = useState(0);
+  const [openToast, setOpenToast] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(() => {
     if (user) {
@@ -115,7 +117,6 @@ export const Provider = ({ children }) => {
     id: PropTypes.string.isRequired,
     items: PropTypes.arrayOf(PropTypes.string).isRequired,
   };
-
   const contextData = {
     user,
     setUser,
@@ -131,6 +132,10 @@ export const Provider = ({ children }) => {
     checkoutUser,
     setCheckoutUser,
     signOut,
+    openToast,
+    setOpenToast,
+    errorMessage,
+    setErrorMessage
   };
   return (
     <Context.Provider value={{ contextData }}>{children}</Context.Provider>

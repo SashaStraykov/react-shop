@@ -20,7 +20,17 @@ import ProductsCategoryItem from '../../../Components/ProductsCategoryItem';
 import Spinner from '../../../Components/Spinner';
 import { InfoPageContext} from '../context';
 import { PRODUCTS_CATEGORY_PAGE } from '../../../constants/routes';
-import ErrorModal from '../../../Components/ErrorModal'
+import ErrorModal from '../../../Components/ErrorModal';
+import CommentComponent from '../../../Components/CommentComponent'
+import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  icon: {
+    fontSize: '2em',
+  },
+});
 
 
 const InfoPageContent = () => {
@@ -31,8 +41,8 @@ const InfoPageContent = () => {
 const [itemComments, setItemComments] = useState([])
 const getComments = (comments) => {
 setItemComments(comments)
-console.log(comments)
 }
+const classes = useStyles();
   if(loading) {
     return <Spinner/>
   }
@@ -58,11 +68,12 @@ console.log(comments)
           <TypsBoxRight>Buy more Typs</TypsBoxRight>
         </TypsBox>
       </Container>
-      <Container>
         <H2>Your announcement</H2>
+      <Container>
+
+
         <FlexBox>
           <FlexBoxItems>
-
             {loading ? (
               <Spinner />
             ) : (
@@ -72,9 +83,11 @@ console.log(comments)
                   <ProductsCategoryItem {...el} comments={comments} id={id}  />
                   </div>
                   <SettingsBox>
-                  <ButtonCancel onClick={(e) => onDelete(e, id)}>DELETE</ButtonCancel>
+                    <ButtonCancel onClick={(e) => onDelete(e, id)}>
+                      <DeleteForeverIcon className={classes.icon}/>
+                    </ButtonCancel>
                     <LinkTo to={`${PRODUCTS_CATEGORY_PAGE}/${el.idCategory}/${id}`}>
-                      Link to
+                      <KeyboardArrowRightIcon className={classes.icon}/>
                     </LinkTo>
                   </SettingsBox>
                 </ItemBox>
@@ -82,13 +95,13 @@ console.log(comments)
             )}
           </FlexBoxItems>
               <CommentBox>
-                {itemComments && itemComments.map(comment=> {
-                    return<span key={comment.id}>{comment.comment}</span>
+                {itemComments && itemComments.map(({id, ...rest})=> {
+                    return <div key={id}><CommentComponent {...rest}/></div>
               })}
               </CommentBox>
         </FlexBox>
+        </Container>
 
-      </Container>
     </BackGroundGrey>
   );
 };

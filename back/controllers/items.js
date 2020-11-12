@@ -13,34 +13,6 @@ const fs = require('fs');
 
 
 
-// const formidable = require('formidable');
-// const { type } = require('os');
-// const e = require('express');
-
-
-
-// const storage = multer.diskStorage({
-
-//   destination: (req, res, cb) => {
-//     cb(null, 'uploads')
-//   },
-//   filename: (req, file, cb) => {
-//     cb(null, file.fieldname + '-' + Date.now()+path.extname(file.originalname))
-//   }
-// })
-
-// const upload = multer({
-//   storage,  
-//   limits: {fieldSize: 2*1024*1024},
-//   fileFilter: (req, res, cb) => {
-//     const ext = path.extname(file.originalname);  
-//     if(ext !== '.jpg' && ext !== '.jpeg' && ext !== '.png') {
-//       res.status(415).json({message: 'require format of jpeg'})
-//     }
-//     cb(null, true)
-//   }
-// }).single('file')
-
 exports.getItems = async (req, res) => {
     try {
       const item = await Item.find({userId: req.query.id, approved: 'approved'});
@@ -53,9 +25,11 @@ exports.getItems = async (req, res) => {
 exports.DeclarateItem = async (req, res) => {
     try{
         const imgArray =[]
-        for(let i=0; i< req.files.imgs.length; i++) {
-          imgArray.push(`/${req.files.imgs[i].path}`)
-        }
+        if(req.files.imgs) {
+          for(let i=0; i< req.files.imgs.length; i++) {
+            imgArray.push(`/${req.files.imgs[i].path}`)
+          }
+        } 
         const item = new Item ({...req.body, id:uuidv4(), img: imgArray})
         await item.save()
         res.status(201).json({message:'item declarated'})

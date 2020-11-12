@@ -15,6 +15,7 @@ function ProductsCategoryItem({
       <Boxdate>{date}</Boxdate>
       <BoxPrice>
         {price}
+        {' '}
         typs
       </BoxPrice>
     </ItemBox>

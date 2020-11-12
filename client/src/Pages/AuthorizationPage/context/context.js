@@ -11,11 +11,10 @@ export const Provider = ({ children }) => {
   const [loginSignIn, setLoginSignIn] = useState('');
   const [password, setPassword] = useState('');
   const { contextData } = useContext(AppContext);
-  const { user, setUser } = contextData;
+  const { user, setUser, setOpenToast, setErrorMessage } = contextData;
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('')
-  const [openToast, setOpenToast] = useState(false);
+
   // signUp
   const [loginSignUp, setLoginSignUp] = useState('');
   const [emailSignUp, setEmailSignUp] = useState('');
@@ -47,7 +46,7 @@ export const Provider = ({ children }) => {
           localStorage.setItem('DataUser', data.token);
         }
       })
-      .catch(() => setError(true));
+      .catch((e) =>setError(true));
   };
 
   const postData = async (e) => {
@@ -67,7 +66,6 @@ export const Provider = ({ children }) => {
     })
       .then((response) => response.json())
       .then(data => {
-        console.log(data)
         if(data.message) {
           setErrorMessage(data.message)
         }
@@ -97,9 +95,6 @@ export const Provider = ({ children }) => {
     error,
     loading,
     postData,
-    errorMessage,
-    openToast,
-    setOpenToast
   };
 
   return (

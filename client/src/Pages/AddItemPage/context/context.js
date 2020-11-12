@@ -9,7 +9,7 @@ export const Context = createContext();
 
 export const Provider = ({ children }) => {
   const { contextData } = useContext(AppContext);
-  const { user } = contextData;
+  const { user, setOpenToast, setErrorMessage} = contextData;
   const { id } = user;
 
   const [loading, setLoading] = useState(true);
@@ -45,14 +45,12 @@ export const Provider = ({ children }) => {
 
   const postData = async (e) => {
     e.preventDefault();
-
+    setLoading(true)
     const formData = new FormData();
-for (let i=0; i<imgs.length; i++) {
-  formData.append('imgs', imgs[i]);
-}
+  for (let i=0; i<imgs.length; i++) {
+    formData.append('imgs', imgs[i]);
+  }
       
-   
-    // formData.append('imgs', imgs[0]);
     formData.set('idCategory', category);
     formData.set('title', title);
     formData.set('description', description);
@@ -60,48 +58,15 @@ for (let i=0; i<imgs.length; i++) {
     formData.set('price', price);
     formData.set('date', date());
 
-    console.log(formData.get('imgs'))
-
-  //   for (var pair of formData.entries()) {
-  //     console.log(pair[0]+ ', ' + pair[1]); 
-  // }
-  console.log(...formData)
-    // const itemData = {
-    //   idCategory: category,
-    //   title,
-    //   description,
-    //   userId: id,
-    //   price,
-    //   img: formData,
-    //   date: date(),
-
-    // };
-    // console.log(itemData);
-
     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('DataUser')}` 
     axios.defaults.headers.common['Content-Type']= 'multipart/form-data'
     axios.post(process.env.REACT_APP_API_ITEMS, formData)
-    .then(res=>console.log(res))
-    // await fetch('http://localhost:3000/items', {
-    //   method: 'post',
-    //   headers: {
-    //     // 'Content-Type': 'application/json',
-    //     'Content-Type': 'multipart/form-data',
-    //   'Accept': 'application/json, text/plain, */*',
-    //     Authorization: `Bearer ${localStorage.getItem('DataUser')}`,
-    //   },
-    //   body: formData,
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     if(data.message.name === "TokenExpiredError") {
-    //       setUser(null)
-    //     } else {
-    //       console.log(data)
-    //     }
-    
-    //   }
-    //   );
+    .then(({data})=>{
+      setLoading(false)
+      setErrorMessage(data.message)
+      setOpenToast(true)
+      console.log(data)
+    })
   };
 
   const contextDataAddItemPage = {

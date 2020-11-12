@@ -4,15 +4,12 @@ import ModalForm from './ModalForm/ModalForm';
 import { BackGroundGrey } from './styled';
 import { AppContext } from '../../../App/Context/Index';
 import { INFO_PAGE, PERSON_PAGE } from '../../../constants/routes';
-import Toast from '../../../Components/Toast'
-import {AuthorizationPageContext} from '../context'
+import Toast from '../../../Components/Toast';
 
 
 function AuthorizationPageContent() {
   const { contextData } = useContext(AppContext);
-  const { user } = contextData;
-  const {authorizationContextData} = useContext(AuthorizationPageContext);
-  const {errorMessage} = authorizationContextData;
+  const { user, errorMessage } = contextData;    
 
   if (user) {
     return <Redirect to={`${PERSON_PAGE}${INFO_PAGE}`} />;

@@ -13,6 +13,8 @@ import {
 import Spinner from '../../../Components/Spinner';
 import ErrorModal from '../../../Components/ErrorModal';
 import { AddItemPageContext } from '../context';
+import {AppContext} from '../../../App/Context/Index'
+import Toast from '../../../Components/Toast'
 
 const AddItemPageContent = () => {
   const { contextDataAddItemPage } = useContext(AddItemPageContext);
@@ -20,6 +22,8 @@ const AddItemPageContent = () => {
     loading, error, items, title, setTitle, description, setDescription,
     category, setCategory, setImgs, postData, price, setPrice,
   } = contextDataAddItemPage;
+  const { contextData } = useContext(AppContext)
+  const { errorMessage } = contextData;
 
   if (loading) {
     return <Spinner />;
@@ -29,7 +33,7 @@ const AddItemPageContent = () => {
   }
   return (
     <Box>
-
+      {errorMessage && <Toast message={errorMessage}/>}
       <H2>Add new announcment</H2>
 
       <Form enctype="multipart/form-data" onSubmit={postData}>

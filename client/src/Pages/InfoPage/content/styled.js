@@ -61,6 +61,7 @@ export const ItemBox = styled.div`
   display: grid;
   grid-template-columns: 6fr 1fr;
   border-top: 1.5em solid rgb(238, 238, 238);
+  border-right: 1.5em solid rgb(238, 238, 238);
 `;
 
 export const ButtonCancel = styled.button`
@@ -68,10 +69,11 @@ export const ButtonCancel = styled.button`
   color: var(--nav-color);
   border: none;
   transition: 0.3s;
-  border: 1px solid var(--nav-color);
   padding:0.5em 1em;
   margin:0 auto;
-  &:focus {
+  width:100%;
+  background:var(--container-color);
+    &:focus {
     outline: none;
   }
   &:hover {
@@ -90,8 +92,9 @@ flex-direction:column;
 width:50%;
 `;
 export const CommentBox = styled.div`
-width:40%;
-margin-left:1em;
+width:50%;
+border-top: 1.5em solid rgb(238, 238, 238);
+overflow:scroll;  
 `;
 
 export const SettingsBox = styled.div`
@@ -100,10 +103,16 @@ flex-direction:column;
 justify-content: flex-start;
 `
 export const LinkTo = styled(Link)`
+display:flex;
+justify-content:center;
+width:100%;
 margin:1em auto;
 transition:0.3s;    
+padding:0.5em 1em;
+margin:0;
 &:hover {
   cursor:pointer;
-  color:var(--brand-color)
+  background:var(--brand-color);
+  color:var(--container-color);
 }
 `
