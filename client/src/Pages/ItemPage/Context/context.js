@@ -9,7 +9,7 @@ export const Context = createContext();
 export const Provider = ({ children, itemid, category }) => {
   const { contextData } = useContext(AppContext);
   const {
-    user, addItemToBucket, bucketItems, added, setAdded,
+    user, addItemToBucket, bucketItems, added, setAdded, cart, setCart
   } = contextData;
 
   const [item, setItem] = useState([]);
@@ -18,7 +18,6 @@ export const Provider = ({ children, itemid, category }) => {
   const [error, setError] = useState(false);
   const [comment, setComment] = useState('');
   const [rejectedInput, setRejectedInput] = useState('');
-  const [update, setUpdate] = useState(1);
 
   useEffect(() => {
     const req = async () => {
@@ -32,7 +31,7 @@ export const Provider = ({ children, itemid, category }) => {
 
     return setAdded(false);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [update]);
+  }, [cart]);
 
   useEffect(() => {
     if (user && item) {
@@ -66,7 +65,7 @@ export const Provider = ({ children, itemid, category }) => {
       .then((res) => res.json())
       .then((data) => {
         setComment('');
-        setUpdate(update + 1);
+        setCart(cart + 1);
       });
   };
 

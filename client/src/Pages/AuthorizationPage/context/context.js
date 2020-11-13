@@ -19,6 +19,7 @@ export const Provider = ({ children }) => {
   const [loginSignUp, setLoginSignUp] = useState('');
   const [emailSignUp, setEmailSignUp] = useState('');
   const [passwordSignUp, setPasswordSignUp] = useState('');
+  const [passwordSignUpCheck, setPasswordSignUpCheck] = useState('');
 
   const checkAuthorization = async (e) => {
     e.preventDefault();
@@ -52,6 +53,10 @@ export const Provider = ({ children }) => {
 
   const postData = async (e) => {
     e.preventDefault();
+    if(passwordSignUp.trim()!==passwordSignUpCheck) {
+      setErrorMessage('Password doesn\'t match')
+      return  setOpenToast(true)
+    }
     setLoading(true)
     const personData = {
       login: loginSignUp.trim(),
@@ -96,6 +101,8 @@ export const Provider = ({ children }) => {
     error,
     loading,
     postData,
+    passwordSignUpCheck, 
+    setPasswordSignUpCheck
   };
 
   return (

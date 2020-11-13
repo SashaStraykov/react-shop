@@ -15,6 +15,8 @@ const SignUp = () => {
     emailSignUp,
     setEmailSignUp,
     postData,
+    passwordSignUpCheck,
+    setPasswordSignUpCheck
   } = authorizationContextData;
   return (
     <SignUpBox>
@@ -32,6 +34,11 @@ const SignUp = () => {
         <InputC
           value={passwordSignUp}
           onChange={(e) => setPasswordSignUp(e.target.value)}
+          placeholder='Password...'
+        />
+        <InputC
+          value={passwordSignUpCheck}
+          onChange={(e) => setPasswordSignUpCheck(e.target.value)}
           placeholder='Password...'
         />
         <ButtonSignUp onClick={() => postData}> Sign up</ButtonSignUp>

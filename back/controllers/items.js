@@ -1,17 +1,6 @@
 const Item = require('../models/item');
 const Comment = require( '../models/comment' );
 const { v4: uuidv4 } = require('uuid');
-const gfs = require('../index')
-
-const path = require('path');
-const crypto = require('crypto');
-const multer = require('multer');
-const GridFsStorage = require('multer-gridfs-storage');
-const Grid = require('gridfs-stream');
-const methodOverride = require('method-override')
-const fs = require('fs');
-
-
 
 exports.getItems = async (req, res) => {
     try {
@@ -32,7 +21,7 @@ exports.DeclarateItem = async (req, res) => {
         } 
         const item = new Item ({...req.body, id:uuidv4(), img: imgArray})
         await item.save()
-        res.status(201).json({message:'item declarated'})
+        res.status(200).json({message:'item declarated'})
     } catch(e) {  
         res.status(500).json({message: e})
     }
@@ -144,14 +133,15 @@ exports.DeleteItem = async (req,res)=> {
 
   exports.DeleteComment = async (req, res) => {
     try {
-      const item = await Item.findOne( {id: req.body.userId})
-      let index;
-      item.comments.forEach((el, i) => {
-        if(el.id===req.body.comment.id) {
-        index=i;
-        }
-      })
-      console.log(index)
+       await Item.findOneAndUpdate( {id: req.body.itemId}, 
+        { 
+          $pull: {
+            comments: {
+              id: req.body.commentId
+            }
+          }
+        })
+      res.status(200).json({message:'Comment deleted '})
     } catch(e) {
       res.status(500).json({ message: e });
     }

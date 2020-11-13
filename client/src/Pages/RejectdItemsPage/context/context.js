@@ -27,6 +27,7 @@ import React, {
       };
       req();
       setLoading(false);
+      // eslint-disable-next-line
     }, []);
 
     const rejectedItemsContextData = {

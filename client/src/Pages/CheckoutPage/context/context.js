@@ -24,7 +24,7 @@ export const Provider = ({ children }) => {
       const req = async () => {
         axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('DataUser')}` 
         await axios.post(`${process.env.REACT_APP_API_ITEMS_BUCKET}`, {bucketItems})
-          .then((res) => {console.log(res);setItems(res.data)})
+          .then((res) => setItems(res.data))
           .catch(() => setError(true));
       };
       req();
@@ -32,6 +32,7 @@ export const Provider = ({ children }) => {
 
     setLoading(false);
     return setLoading(false);
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {

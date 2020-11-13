@@ -1,4 +1,4 @@
-import React, { useContext, useState} from 'react';
+import React, { useContext} from 'react';
 import {
   BackGroundGrey,
   H2,
@@ -39,7 +39,6 @@ import {AppContext} from '../../../App/Context/Index';
 import { FiFilePlus } from "react-icons/fi";
 import SendIcon from '@material-ui/icons/Send';
 import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
 
 const useStyles = makeStyles({
   icon: {
@@ -62,14 +61,10 @@ const InfoPageContent = () => {
   const { infoContextData } = useContext(InfoPageContext);
   const {
     user,  myItems, loading, error, confirmComponent,
-    addConfirmComponent, confirmInfo
+    addConfirmComponent, confirmInfo, getComments, itemComments
   } = infoContextData;
   const { contextData } = useContext(AppContext);
-  const { openToast, errorMessage } = contextData;
-const [itemComments, setItemComments] = useState([])
-const getComments = (comments) => {
-setItemComments(comments)
-}
+  const { openToast, errorMessage} = contextData;
 
 const classes = useStyles();
 
@@ -106,7 +101,6 @@ const classes = useStyles();
             <Button
               className={classes.iconLink}
               variant="contained"
-              className={classes.button}
               endIcon={<FiFilePlus/>}>
                 New announcement
             </Button>
@@ -122,7 +116,7 @@ const classes = useStyles();
             ) : (
               myItems.map(({ id, comments, ...el }) => (
                 <ItemBox key={id}>
-                  <div onClick={()=>getComments(comments)}>
+                  <div onClick={()=>getComments(comments, id)}>
                   <ProductsCategoryItem {...el} comments={comments} id={id}  />
                   </div>
                   <SettingsBox>
@@ -139,9 +133,10 @@ const classes = useStyles();
           </FlexBoxItems>
           <ChatBox>
           <CommentBox>
-            { itemComments.length===0? <NoComments>No Comments</NoComments>: null}
-            {itemComments && itemComments.map(({id, ...rest})=> {
-                return <CommentWrapper key={id}><CommentComponent {...rest}/></CommentWrapper>
+
+            {itemComments.comments.length===0? <NoComments>No Comments</NoComments>: null}
+            {itemComments && itemComments.comments.map(({id, ...rest})=> {
+                return <CommentWrapper key={id}><CommentComponent item={itemComments.itemId}  id={id} {...rest}/></CommentWrapper>
           })}
           </CommentBox>
           <FormBox >

@@ -55,11 +55,11 @@ const AddItemPageContent = () => {
         </BoxInfo>
         <BoxInfo>
           <Span>Price</Span>
-          <InputC value={price} onChange={(e) => setPrice(e.target.value)} />
+          <InputC type='number' value={price} onChange={(e) => setPrice(e.target.value)} />
         </BoxInfo>
         <BoxInfo>
           <Span>Photos</Span>
-          <InputC name="file" onChange={(e) => setImgs(e.target.files)} type="file" multiple />
+          <InputC name='file' onChange={(e) => setImgs(e.target.files)} type="file" multiple />
         </BoxInfo>
         <Button>SEND</Button>
       </Form>

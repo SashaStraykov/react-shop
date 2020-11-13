@@ -65,7 +65,6 @@ export const Provider = ({ children }) => {
       setLoading(false)
       setErrorMessage(data.message)
       setOpenToast(true)
-      console.log(data)
     })
   };
 

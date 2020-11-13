@@ -12,9 +12,11 @@ import React, {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const [confirmInfo, setConfirmInfo] = useState(null);
+    const [itemComments, setItemComments] = useState({comments:[],itemId: null})
+
 
   const {contextData} = useContext(AppContext);
-  const {user, setUser, setErrorMessage, setOpenToast, confirmComponent, setConfirmComponent} = contextData;
+  const {user, setUser, setErrorMessage, setOpenToast, confirmComponent, setConfirmComponent, cart} = contextData;
 
     useEffect(()=> {
       const req = async () => {
@@ -27,7 +29,19 @@ import React, {
       };
       req();
       setLoading(false);
-    }, []);
+      // eslint-disable-next-line
+    }, [cart]);
+
+    useEffect(()=> {
+      if(itemComments.comments.length>0) {
+        myItems.forEach(el=> {
+          if(el.id===itemComments.itemId) {
+            setItemComments({...itemComments, comments: el.comments})
+          }
+        })
+      }
+    // eslint-disable-next-line
+    }, [myItems])
 
     const onDelete = async (e, id) => {
       e.preventDefault();
@@ -68,6 +82,9 @@ import React, {
       setConfirmComponent(true)
     }
 
+    const getComments = (comments, id) => {
+      setItemComments({comments, itemId: id})
+    }
 
     const infoContextData = {
       myItems,
@@ -78,7 +95,10 @@ import React, {
       confirmComponent,
       setConfirmComponent,
       addConfirmComponent,
-      confirmInfo
+      confirmInfo,
+      getComments, 
+      itemComments, 
+      setItemComments
     }
     return (
         <Context.Provider value={{ infoContextData }}>{children}</Context.Provider>

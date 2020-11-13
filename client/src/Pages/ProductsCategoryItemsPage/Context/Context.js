@@ -9,7 +9,8 @@ export const Provider = ({ children, category }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(5);
   const [totalPosts, setTotalPosts]=useState(0);
-  const [cart, setCart]=useState(1)
+  const [cart, setCart]=useState(1);
+  const [searchValue, setSearchValue] = useState('');
 
 
   const [search, setSearch] = useState('');
@@ -17,12 +18,16 @@ export const Provider = ({ children, category }) => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    setSearchValue(search)
     const dataRequest = async () => {
       await fetch(`${process.env.REACT_APP_API_ITEMS}/${category}?postsperpage=${postsPerPage}&&currentpage=${currentPage}&&searchmatch=${search}`)
         .then((data) => data.json())
         .then((res) => {
           setTotalPosts(res.totalAmount)
           setPosts(res.finalItems);
+          if(search.trim().length>0 && searchValue!==search) {
+            setCurrentPage(1);
+          }
         })
         .catch(() => setError(true));
         setLoading(false);

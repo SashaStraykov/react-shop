@@ -47,7 +47,8 @@ export const ItemBox = styled.div`
 
 export const PriceBox = styled.div`
   padding: 1em 2em;
-  width: 10em;
+  display:flex;
+  justify-content:flex-end;
   margin-left: auto;
   font-weight: bold;
   font-size: 1.2em;

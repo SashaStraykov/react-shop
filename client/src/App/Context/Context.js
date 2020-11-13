@@ -122,9 +122,9 @@ export const Provider = ({ children }) => {
     items: PropTypes.arrayOf(PropTypes.string).isRequired,
   };
 
-  const deleteComment =  async(userId, commentId) => {
+  const deleteComment =  async(itemId, commentId) => {
 const postData = {
-  userId,
+  itemId,
   commentId
 }
     await fetch(`${process.env.REACT_APP_API_ITEMS}/deletecomment`, {
@@ -136,6 +136,8 @@ const postData = {
       },
       body: JSON.stringify(postData),
     })
+    .then(data=>data.json())
+    .then(res=>setCart(cart+1))
   }
   const contextData = {
     user,

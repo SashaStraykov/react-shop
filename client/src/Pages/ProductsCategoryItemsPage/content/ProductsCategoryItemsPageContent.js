@@ -6,7 +6,6 @@ import {
   BackGroundGrey,
   Container,
   H2,
-  ContainerItem,
   SearchPannel,
   FlexSearch,
   SearchButton

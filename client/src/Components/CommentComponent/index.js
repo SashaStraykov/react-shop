@@ -29,7 +29,7 @@ const CommentComponent = ({ login, comment, timeStamp, id, item }) => {
       <CommentBox>
         <CommentTimeStamp>{timeStamp}</CommentTimeStamp>
         <Comment>{comment}</Comment>
-        {user && login===user.login? <DeleteButton onClick={()=> deleteComment(item.id, id)}><FiX/></DeleteButton> : null}
+        {user && login===user.login? <DeleteButton onClick={()=> deleteComment(item, id)}><FiX/></DeleteButton> : null}
       </CommentBox>
     </ChatBox>
   );

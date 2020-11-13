@@ -1,6 +1,5 @@
 import React, {useContext} from 'react'
 import { Wrapper, Box, ConfirmButton, Title, CancelButton } from './styled'
-import {InfoPageContext} from '../../Pages/InfoPage/context';
 import {AppContext} from '../../App/Context/Index'
 
 
