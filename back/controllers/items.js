@@ -90,42 +90,7 @@ exports.DeleteItem = async (req,res)=> {
       const item = await Item.find({idCategory: categoryItems});
       const totalApprovedItems = item.filter(el=>el.approved==='approved');
       const totalEndItems  = totalApprovedItems.filter(el=>el.title.toLowerCase().indexOf(search.toLowerCase()) > -1)
-
-
-
       const finalItems = totalEndItems.slice(firstPost, lastPost)
-      // finalItems.forEach(el=> {
-      //   el.img.forEach( (el, i)=> {
-      //     el = fs.createReadStream(el)
-      //     console.log(el)
-      //   } )
-      // })
-      // const b = await gfs.gfs.files.find().toArray();
-
-      // finalItems.forEach(item=> {
-
-      //   item.img.forEach((el, i)=> {
-      //     b.forEach(file=> {
-      //       if(file.filename===el) {
-      //         const readstream = gfs.gfs.createReadStream(file)
-      //         console.log(readstream)
-      //       }
-      //     })
-      //      gfs.gfs.files.find().toArray((err, files) => {
-      //       files.forEach(file=> {
-      //         if(el==file._id.valueOf()) {
-      //           console.log('file', file)
-      //          a.push(file)
-      //          finalItems.img.splice(i, 1, file)
-      //         }
-      //       })
-
-      //         });
-      //   })
-
-      // })
-
-
       const sentData = {
         finalItems,
         totalAmount: totalEndItems.length
@@ -151,7 +116,7 @@ exports.DeleteItem = async (req,res)=> {
 
   exports.RejectedItems = async (req, res) => {
     try {
-      const item = await Item.find({approved: ['rejected', '']});
+      const item = await Item.find({ userId: req.query.id, approved: ['rejected', '']});
       res.status(200).json(item);
     } catch (e) {
       res.status(500).json({ message: e });
@@ -173,6 +138,21 @@ exports.DeleteItem = async (req,res)=> {
       const item = await Item.find({id: bucketItems});
       res.status(200).json(item);
     } catch (e) {
+      res.status(500).json({ message: e });
+    }
+  }
+
+  exports.DeleteComment = async (req, res) => {
+    try {
+      const item = await Item.findOne( {id: req.body.userId})
+      let index;
+      item.comments.forEach((el, i) => {
+        if(el.id===req.body.comment.id) {
+        index=i;
+        }
+      })
+      console.log(index)
+    } catch(e) {
       res.status(500).json({ message: e });
     }
   }

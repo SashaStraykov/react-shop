@@ -1,23 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  ItemBox, Img, H2, Boxdate, BoxPrice,
-} from './Styled';
+  ItemBox, Img, TitleBox, Boxdate, BoxPrice, InfoBox,
+  InfoBoxBottom, DescriptionBox
+} from './styled';
 import emptyPhoto from '../../assets/images/emptyPhoto.jpg';
+import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
+import DateRangeIcon from '@material-ui/icons/DateRange';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  icon: {
+    marginRight: '0.2em'
+  },
+});
 
 function ProductsCategoryItem({
-  title, price, date, img,
+  title, price, date, img, description
 }) {
+  const classes = useStyles();
   return (
     <ItemBox>
       <Img src={img.length > 0 ? `${process.env.REACT_APP_API_SERVER_PORT}${img[0]}` : emptyPhoto} alt={img.length > 0 ? img[0] : emptyPhoto} />
-      <H2>{title.slice(0, 1).toUpperCase() + title.slice(1).toLowerCase()}</H2>
-      <Boxdate>{date}</Boxdate>
-      <BoxPrice>
-        {price}
-        {' '}
-        typs
-      </BoxPrice>
+      <InfoBox>
+        <TitleBox>{title.slice(0, 1).toUpperCase() + title.slice(1).toLowerCase()}</TitleBox>
+        <DescriptionBox>
+          {description}
+        </DescriptionBox>
+        <InfoBoxBottom>
+          <Boxdate>
+            <DateRangeIcon className={classes.icon}/>
+            {date}
+          </Boxdate>
+          <BoxPrice>
+            <MonetizationOnIcon className={classes.icon}/>
+            {price}
+            {' '}
+            typs
+          </BoxPrice>
+        </InfoBoxBottom>
+      </InfoBox>
     </ItemBox>
   );
 }

@@ -18,7 +18,7 @@ export const NavUl = styled.ul`
   
   position: absolute;
   top: 100%;
-  right: 0;
+  right: -2em;
   
   background: var(--nav-color);
   list-style: none;
@@ -64,7 +64,7 @@ export const NavUlBucket = styled.ul`
   flex-direction: column;
   position: absolute;
   top: 100%;
-  right: 0;
+  right: -3em;
 
   background: var(--nav-color);
   list-style: none;

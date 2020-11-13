@@ -11,7 +11,7 @@ export const Container = styled.div`
   width: 70%;
   margin: 1em auto;
   background: rgb(245, 245, 245);
-  padding: 0;
+  padding: 1em;
   margin-bottom: 1em;
 `;
 export const H2 = styled.h2`
@@ -23,8 +23,8 @@ export const H2 = styled.h2`
 `;
 
 export const ContainerItem = styled.div`
-  width: 100%;
-  border-bottom: 1em solid rgb(238, 238, 238);
+  /* width: 100%;
+  border-bottom: 1em solid rgb(238, 238, 238); */
 `;
 
 export const SearchPannel = styled.input`

@@ -7,7 +7,7 @@ export const Context = createContext();
 
 export const Provider = ({ children }) => {
   const {contextData} = useContext(AppContext)
-  const { setUser} = contextData;
+  const { setUser, setErrorMessage, setOpenToast} = contextData;
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [unApprovedItems, setUnApprovedItems] = useState([]);
@@ -17,8 +17,8 @@ export const Provider = ({ children }) => {
     const req = async () => {
       axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('DataUser')}` 
       await axios.get(`${process.env.REACT_APP_API_ITEMS_APPROVING}`)
-        .then((res) => {
-          setUnApprovedItems(res.data)})
+        .then(({data}) => {
+          setUnApprovedItems(data)})
         .catch(() => setError(true));
     };
     req();
@@ -59,7 +59,8 @@ export const Provider = ({ children }) => {
           setUser(null)
         }
         else {
-          console.log(data)
+          setErrorMessage(data.message)
+          setOpenToast(true);
         }
       });
   };

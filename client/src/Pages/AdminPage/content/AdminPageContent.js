@@ -4,10 +4,14 @@ import { AdminPageContext } from '../context';
 import ErrorModal from '../../../Components/ErrorModal';
 import Spinner from '../../../Components/Spinner';
 import { BackGroundGrey, H2, Container } from './styled';
+import { AppContext } from '../../../App/Context/Index';
+import Toast from '../../../Components/Toast'
 
 const AdminPageContent = () => {
   const { adminContextData } = useContext(AdminPageContext);
   const { error, loading, unApprovedItems } = adminContextData;
+  const { contextData } = useContext(AppContext);
+  const { errorMessage } = contextData;
   if (loading) {
     return <Spinner />;
   }
@@ -16,6 +20,7 @@ const AdminPageContent = () => {
   }
   return (
     <>
+      {errorMessage && <Toast message={errorMessage}/>}
       <BackGroundGrey>
         <H2>Admin page</H2>
         <Container>

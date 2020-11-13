@@ -11,9 +11,10 @@ import React, {
     const [myItems, setMyItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
+    const [confirmInfo, setConfirmInfo] = useState(null);
 
   const {contextData} = useContext(AppContext);
-  const {user, setUser} = contextData;
+  const {user, setUser, setErrorMessage, setOpenToast, confirmComponent, setConfirmComponent} = contextData;
 
     useEffect(()=> {
       const req = async () => {
@@ -30,6 +31,7 @@ import React, {
 
     const onDelete = async (e, id) => {
       e.preventDefault();
+      setConfirmComponent(false)
       const newPosts = [];
   
       myItems.forEach((el)=> {
@@ -52,11 +54,19 @@ import React, {
          if(data.message.name === "TokenExpiredError") {
            setUser(null)
          } else {
-           console.log(data)
+          setErrorMessage(data.message)
+           setOpenToast(true)
+           console.log(data.message)
+
          }
   
         });
     };
+
+    const addConfirmComponent = (id, title) => {
+      setConfirmInfo({id, title, onDelete})
+      setConfirmComponent(true)
+    }
 
 
     const infoContextData = {
@@ -64,7 +74,11 @@ import React, {
       loading,
       error,
       user,
-      onDelete
+      onDelete,
+      confirmComponent,
+      setConfirmComponent,
+      addConfirmComponent,
+      confirmInfo
     }
     return (
         <Context.Provider value={{ infoContextData }}>{children}</Context.Provider>

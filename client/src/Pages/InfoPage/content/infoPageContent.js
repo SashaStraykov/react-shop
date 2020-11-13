@@ -2,76 +2,119 @@ import React, { useContext, useState} from 'react';
 import {
   BackGroundGrey,
   H2,
-  Container,
-  TypsBox,
-  TypsBoxLeft,
-  TypsBoxRight,
   ItemBox,
-  ButtonCancel,
-  H2Title,
+  ButtonCancel, 
   FlexBox,
   FlexBoxItems,   
   CommentBox,
   SettingsBox,
-  LinkTo
+  LinkTo,
+  BoxContainer,
+  TopContainer,
+  TopContainerItem,
+  TopContainerItemEnd,
+  ItemDigit,
+  ButtonL,
+  NoComments,
+  FormBox,
+  InputComment, 
+  CommentButton,
+  ChatBox,
+  CommentWrapper,
+
 
 } from './styled';
 import ProductsCategoryItem from '../../../Components/ProductsCategoryItem';
 import Spinner from '../../../Components/Spinner';
 import { InfoPageContext} from '../context';
-import { PRODUCTS_CATEGORY_PAGE } from '../../../constants/routes';
+import { PRODUCTS_CATEGORY_PAGE, ADD_ANNOUNCMENT_PAGE, PERSON_PAGE } from '../../../constants/routes';
 import ErrorModal from '../../../Components/ErrorModal';
 import CommentComponent from '../../../Components/CommentComponent'
-import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { makeStyles } from '@material-ui/core/styles';
+import ConfirmComponent from '../../../Components/ConfirmComponent';
+import Toast from '../../../Components/Toast';
+import {AppContext} from '../../../App/Context/Index';
+import { FiFilePlus } from "react-icons/fi";
+import SendIcon from '@material-ui/icons/Send';
+import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
 
 const useStyles = makeStyles({
   icon: {
     fontSize: '2em',
+    color:'var(--nav-color)',
   },
+  iconLink: {
+    root:{
+      contained:{
+        background: 'var(--brand-color)',
+      }
+
+    }
+
+  }
 });
 
 
 const InfoPageContent = () => {
   const { infoContextData } = useContext(InfoPageContext);
   const {
-    user, onDelete, myItems, loading, error
+    user,  myItems, loading, error, confirmComponent,
+    addConfirmComponent, confirmInfo
   } = infoContextData;
+  const { contextData } = useContext(AppContext);
+  const { openToast, errorMessage } = contextData;
 const [itemComments, setItemComments] = useState([])
 const getComments = (comments) => {
 setItemComments(comments)
 }
+
 const classes = useStyles();
+
   if(loading) {
-    return <Spinner/>
+    return <Spinner/> 
   }
   if(error) {
     return <ErrorModal/>
   }
   return (
     <BackGroundGrey>
-      <H2Title>
-        Hello
-        {' '}
-        {user.login}
-      </H2Title>
-      <Container>
-        <TypsBox>
-          <TypsBoxLeft>
-            You have
-            {' '}
-            {user.typs}
-            {' '}
-            typs
-          </TypsBoxLeft>
-          <TypsBoxRight>Buy more Typs</TypsBoxRight>
-        </TypsBox>
-      </Container>
-        <H2>Your announcement</H2>
-      <Container>
-
-
+      {openToast && <Toast message={errorMessage}/>}
+      {confirmComponent && <ConfirmComponent {...confirmInfo} />}
+      <TopContainer>
+        <TopContainerItem>
+          Hello
+          <br/>
+          {user.login}
+        </TopContainerItem>
+        <TopContainerItem>
+          <ItemDigit>
+          {user.typs}
+          </ItemDigit>
+          TYPS
+        </TopContainerItem>
+        <TopContainerItem>
+          <ItemDigit>
+          {myItems.length}
+          </ItemDigit>
+          ITEMS
+        </TopContainerItem>
+        <TopContainerItemEnd >
+          <ButtonL to ={`${PERSON_PAGE}${ADD_ANNOUNCMENT_PAGE}`}>
+            <Button
+              className={classes.iconLink}
+              variant="contained"
+              className={classes.button}
+              endIcon={<FiFilePlus/>}>
+                New announcement
+            </Button>
+          </ButtonL>
+        </TopContainerItemEnd>
+      </TopContainer>
+      <H2>Your announcement  <span>&#8595;</span></H2>
+      <BoxContainer>
         <FlexBox>
           <FlexBoxItems>
             {loading ? (
@@ -83,24 +126,33 @@ const classes = useStyles();
                   <ProductsCategoryItem {...el} comments={comments} id={id}  />
                   </div>
                   <SettingsBox>
-                    <ButtonCancel onClick={(e) => onDelete(e, id)}>
+                    <ButtonCancel onClick={()=>addConfirmComponent(id, el.title)}>
                       <DeleteForeverIcon className={classes.icon}/>
                     </ButtonCancel>
                     <LinkTo to={`${PRODUCTS_CATEGORY_PAGE}/${el.idCategory}/${id}`}>
-                      <KeyboardArrowRightIcon className={classes.icon}/>
+                      <VisibilityIcon className={classes.icon}/>
                     </LinkTo>
                   </SettingsBox>
                 </ItemBox>
               ))
             )}
           </FlexBoxItems>
-              <CommentBox>
-                {itemComments && itemComments.map(({id, ...rest})=> {
-                    return <div key={id}><CommentComponent {...rest}/></div>
-              })}
-              </CommentBox>
+          <ChatBox>
+          <CommentBox>
+            { itemComments.length===0? <NoComments>No Comments</NoComments>: null}
+            {itemComments && itemComments.map(({id, ...rest})=> {
+                return <CommentWrapper key={id}><CommentComponent {...rest}/></CommentWrapper>
+          })}
+          </CommentBox>
+          <FormBox >
+            <InputComment  placeholder="Type..." />
+            <CommentButton>
+              <SendIcon/>
+            </CommentButton>
+          </FormBox>
+          </ChatBox>
         </FlexBox>
-        </Container>
+        </BoxContainer>
 
     </BackGroundGrey>
   );

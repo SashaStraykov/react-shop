@@ -70,21 +70,22 @@ const ProductsCategoryItemsPageContent = () => {
 
         </FlexSearch>
 
-        <Container>
+
           {posts.length === 0 ? <H2>No matches</H2> : posts.map((item) => (
             <Link key={item.id} to={`${url}/${item.id}`}>
-              <ContainerItem>
-                <ProductsCategoryItem {...item} />
-              </ContainerItem>
+                <Container>
+                  <ProductsCategoryItem {...item} />
+                </Container>
             </Link>
           ))}
-          <Pagination
-            postsPerPage={postsPerPage}
-            totalPosts={totalPosts}
-            paginate={paginate}
-            category={category}
-            currentPage={currentPage}
-          />
+          <Container>
+            <Pagination
+              postsPerPage={postsPerPage}
+              totalPosts={totalPosts}
+              paginate={paginate}
+              category={category}
+              currentPage={currentPage}
+            />
         </Container>
       </BackGroundGrey>
   );

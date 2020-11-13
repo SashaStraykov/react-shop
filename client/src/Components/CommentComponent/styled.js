@@ -5,6 +5,7 @@ display:flex;
 flex-direction:row;
 justify-content:flex-start;
 padding:1em;
+position:relative;
 `;
 export const PersonAvatar = styled.img`
 width:5em;
@@ -46,3 +47,12 @@ margin-top:1em;
 overflow:hidden;
 text-align:left;
 `;
+
+export const DeleteButton = styled.div`
+position:absolute;
+top:10px;
+right:15px;
+&:hover {
+    cursor:pointer;
+}
+`

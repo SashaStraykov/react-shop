@@ -22,7 +22,7 @@ function ModalForm() {
     <ModalBox>
       <ModalButtonBox sign={sign} >
         <ModalButton  onClick={() => setSign(!sign)} sign={!sign}>
-          {sign?'Sign in' : 'Sign up'}
+          {sign?'Sign up' : 'Sign in'}
         </ModalButton>
       </ModalButtonBox>
       <SignInBox sign={sign}>

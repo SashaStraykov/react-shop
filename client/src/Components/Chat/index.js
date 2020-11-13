@@ -25,7 +25,7 @@ const Chat = ({ item }) => {
           ? <H2>Still no comments</H2>
           : item.comments.map(({ id, ...rest }) => (
             <Container key={id}>
-              <CommentComponent {...rest} />
+              <CommentComponent item={item} {...rest} id={id}/>
             </Container>
           ))}
       </ChatTable>

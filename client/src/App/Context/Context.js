@@ -12,16 +12,20 @@ export const Provider = ({ children }) => {
   const [amountItemsinBucket, setAmountItemsinBucket] = useState(0);
   const [openToast, setOpenToast] = useState(false);
   const [errorMessage, setErrorMessage] = useState('')
+  const [confirmComponent, setConfirmComponent] = useState(false);
 
   useEffect(() => {
+
     if (user) {
       if (localStorage.getItem(user.id) !== null) {
-        const getLS = localStorage.getItem(user.id).split(',');
+        const getLS = localStorage.getItem(user.id).split(','); 
         if (getLS[0] === '') {
           setAmountItemsinBucket(0);
         } else {
           setAmountItemsinBucket(getLS.length);
         }
+      } else {
+        setAmountItemsinBucket(0);
       }
     }
   }, [cart, user]);
@@ -117,6 +121,22 @@ export const Provider = ({ children }) => {
     id: PropTypes.string.isRequired,
     items: PropTypes.arrayOf(PropTypes.string).isRequired,
   };
+
+  const deleteComment =  async(userId, commentId) => {
+const postData = {
+  userId,
+  commentId
+}
+    await fetch(`${process.env.REACT_APP_API_ITEMS}/deletecomment`, {
+      method: 'delete',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('DataUser')}`,
+        
+      },
+      body: JSON.stringify(postData),
+    })
+  }
   const contextData = {
     user,
     setUser,
@@ -135,7 +155,10 @@ export const Provider = ({ children }) => {
     openToast,
     setOpenToast,
     errorMessage,
-    setErrorMessage
+    setErrorMessage,
+    confirmComponent,
+    setConfirmComponent,
+    deleteComment
   };
   return (
     <Context.Provider value={{ contextData }}>{children}</Context.Provider>

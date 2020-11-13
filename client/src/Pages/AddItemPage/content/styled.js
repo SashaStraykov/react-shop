@@ -66,13 +66,13 @@ export const Select = styled.select`
   }
 `;
 
-export const InputDescription = styled.input`
+export const InputDescription = styled.textarea`
   width: 60%;
   height: 6em;
   border: none;
   background: rgb(238, 238, 238);
   font-size: 1.2em;
-  padding: 0.2em 1em;
+  padding: 0.5em 1em;
   color: rgb(66, 66, 66);
   white-space: wrap;
 
