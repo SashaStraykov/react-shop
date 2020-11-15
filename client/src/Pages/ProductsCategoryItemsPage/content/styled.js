@@ -14,11 +14,11 @@ export const Container = styled.div`
   padding: 1em;
   margin-bottom: 1em;
 `;
-export const H2 = styled.h2`
+export const H2 = styled.div`
   font-size: 2em;
-  margin: 1em;
-  margin-top: 1em;
-  display: inline-block;
+  font-weight:bold;
+  width:70%;
+  margin: 1em auto;
   color: rgb(66, 66, 66);
 `;
 
@@ -39,6 +39,9 @@ export const SearchPannel = styled.input`
   border-bottom: 3px solid rgb(66, 66, 66);
   &:focus {
     outline: none;
+  };
+  &::placeholder{
+    color:var(--font-color);
   }
 `;
 

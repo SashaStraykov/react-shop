@@ -18,8 +18,10 @@ export const Container = styled.div`
   padding: 1em;
 `;
 
-export const H2 = styled.h2`
-  color: rgb(66, 66, 66);
+export const H2 = styled.div`
   font-size: 2em;
-  margin: 1em 0;
+  font-weight:bold;
+  width:70%;
+  margin: 1em auto;
+  color: rgb(66, 66, 66);
 `;

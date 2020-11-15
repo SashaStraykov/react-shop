@@ -61,7 +61,8 @@ const InfoPageContent = () => {
   const { infoContextData } = useContext(InfoPageContext);
   const {
     user,  myItems, loading, error, confirmComponent,
-    addConfirmComponent, confirmInfo, getComments, itemComments
+    addConfirmComponent, confirmInfo, getComments, itemComments,
+    postComment, comment, setComment
   } = infoContextData;
   const { contextData } = useContext(AppContext);
   const { openToast, errorMessage} = contextData;
@@ -132,22 +133,21 @@ const classes = useStyles();
             )}
           </FlexBoxItems>
           <ChatBox>
-          <CommentBox>
-
-            {itemComments.comments.length===0? <NoComments>No Comments</NoComments>: null}
-            {itemComments && itemComments.comments.map(({id, ...rest})=> {
-                return <CommentWrapper key={id}><CommentComponent item={itemComments.itemId}  id={id} {...rest}/></CommentWrapper>
-          })}
-          </CommentBox>
-          <FormBox >
-            <InputComment  placeholder="Type..." />
-            <CommentButton>
-              <SendIcon/>
-            </CommentButton>
-          </FormBox>
+            <CommentBox>
+              {itemComments.comments.length===0? <NoComments>No Comments</NoComments>: null}
+              {itemComments && itemComments.comments.map(({id, ...rest})=> {
+                  return <CommentWrapper key={id}><CommentComponent item={itemComments.itemId}  id={id} {...rest}/></CommentWrapper>
+            })}
+            </CommentBox>
+            {itemComments.itemId && <FormBox onSubmit={(e)=>postComment(e)}>
+              <InputComment  value={comment} onChange={(e)=>setComment(e.target.value)} placeholder="Type..." />
+                <CommentButton>
+                  <SendIcon/>
+                </CommentButton>
+            </FormBox> }
           </ChatBox>
         </FlexBox>
-        </BoxContainer>
+      </BoxContainer>
 
     </BackGroundGrey>
   );

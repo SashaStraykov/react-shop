@@ -10,6 +10,6 @@ module.exports = (req, res, next) => {
         }
 
       } catch(e) {
-        res.status(511).json({message: e})
+        res.status(511).json({message: 'Need authorization'})
       }
 }

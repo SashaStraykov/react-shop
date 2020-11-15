@@ -16,16 +16,18 @@ const upload = multer({
   limits: { fileSize: 1024 * 1024 * 5},
   fileFilter: (req, file, cb) => {
     checkFileType(file, cb)
+    // console.log(checkFileType)
   }
 
 })
 
-const checkFileType = (file, cb) => {
+const checkFileType = ( file, cb ) => {
 const fileTypes = /jpeg|jpg|png|gif/;
 const extName = fileTypes.test(path.extname(file.originalname).toLocaleLowerCase());
 const mimeTypes = fileTypes.test(file.mimetype)
 if(mimeTypes && extName) {
   return cb(null, true)
+
 } else {
   cb('Error: images only!')
 }

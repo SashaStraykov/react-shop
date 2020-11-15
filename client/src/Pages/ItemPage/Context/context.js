@@ -49,6 +49,9 @@ export const Provider = ({ children, itemid, category }) => {
 
   const postComment = async (e) => {
     e.preventDefault();
+    if(comment.trim() === '') {
+      return setComment('')
+    }
     const postData = {
       login: user.login,
       comment,

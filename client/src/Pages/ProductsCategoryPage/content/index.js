@@ -28,8 +28,8 @@ const ProductsCategoryPageContent = () => {
 
   return (
     <BackGroundGrey>
+      <H2>Select Category</H2>
       <Container>
-        <H2>Select Category</H2>
         <DivGrid>
           {category.map(({ idCategory, title, img }) => (
             <CategoryComponent

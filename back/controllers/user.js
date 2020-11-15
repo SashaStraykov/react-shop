@@ -43,7 +43,6 @@ exports.authorization = async (req, res) => {
             const {login, password } = req.body;
     
             const regUser = await User.findOne({login: login})
-            console.log(regUser)
             if( !regUser ) {
              return   res.status(400).json( { message: 'Such user is not found' } )
             }
@@ -78,8 +77,6 @@ exports.authorization = async (req, res) => {
     }
 
     exports.checkUser = async (req, res) => {
-
-        // if(req.body.tokenUser) {
           try{
             const userToken = req.headers.authorization.split(' ')[1];
             const decoded =   jwt.verify(userToken, process.env.JWT_SECRET);
@@ -88,16 +85,4 @@ exports.authorization = async (req, res) => {
           } catch(e) {
             res.status(511).json({message: e})
           }
-
-
-
-
-            // console.log(decoding.foo)
-            // console.log(decoding.userId)
-            // if(decoding) {
-            //     const regUser = await User.findOne({id: decoding.userId})
-            //     res.json(regUser)
-            // }
-            
-        // } 
     } 

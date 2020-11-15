@@ -19,10 +19,18 @@ export const Provider = ({ children }) => {
       await axios.get(`${process.env.REACT_APP_API_ITEMS_APPROVING}`)
         .then(({data}) => {
           setUnApprovedItems(data)})
-        .catch(() => setError(true));
+          .catch((e) => {   
+            setError(true)
+            const authError = e.message.split(' ');
+            const l = authError.length
+            if(authError[l-1] === '511') {
+              setUser(null)
+            }
+          });
     };
     req();
     setLoading(false);
+    return setLoading(false)
   }, []);
 
 

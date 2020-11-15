@@ -3,7 +3,7 @@ import AdminRemarkForm from '../../../Components/AdminRemarkForm';
 import { AdminPageContext } from '../context';
 import ErrorModal from '../../../Components/ErrorModal';
 import Spinner from '../../../Components/Spinner';
-import { BackGroundGrey, H2, Container } from './styled';
+import { BackGroundGrey, H2, Container, H21 } from './styled';
 import { AppContext } from '../../../App/Context/Index';
 import Toast from '../../../Components/Toast'
 
@@ -24,10 +24,10 @@ const AdminPageContent = () => {
       <BackGroundGrey>
         <H2>Admin page</H2>
         <Container>
-          <H2>
+          <H21>
             New Items
             <span>&#8595;</span>
-          </H2>
+          </H21>
         </Container>
         {unApprovedItems.map(({ id, ...rest }) => (
           <Container key={id}>

@@ -17,8 +17,9 @@ margin:1em;
 width:100%;
 align-items:center;
 `;
+
 export const Form = styled.form`
-  width: 60%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -86,24 +87,18 @@ export const InputDescription = styled.textarea`
 `;
 
 export const Box = styled.div`
-  padding: 2em;
   width: 100%;
   background: rgb(238, 238, 238);
   overflow:scroll;
   height:100vh;
 `;
-export const H2 = styled.h2`
-  font-size: 2em;
-  margin-bottom:1em;
-  display: inline-block;
-  color: rgb(66, 66, 66);
-`;
 
-export const Container = styled.div`
-  width: 80%;
-  margin: 1.5em auto;
-  background: rgb(245, 245, 245);
-  padding: 0;
+export const H2 = styled.div`
+  font-size: 2em;
+  font-weight:bold;
+  width:80%;
+  margin: 1em auto;
+  color: rgb(66, 66, 66);
 `;
 
 export const Button = styled.button`

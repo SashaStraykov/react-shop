@@ -7,15 +7,17 @@ export const BackGroundGrey = styled.div`
   margin-top: 0;
   border: 1px solid rgb(238, 238, 238);
 `;
-export const H2 = styled.h2`
+
+export const H2 = styled.div`
   font-size: 2em;
-  margin: 1em;
-  margin-top: 1em;
-  display: inline-block;
+  font-weight:bold;
+  width:70%;
+  margin: 1em auto;
   color: rgb(66, 66, 66);
 `;
+
 export const Container = styled.div`
-  width: 80%;
+  width: 70%;
   margin: 2em auto;
   background: rgb(245, 245, 245);
   padding: 0;

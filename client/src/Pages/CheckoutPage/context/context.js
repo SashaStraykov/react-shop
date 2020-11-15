@@ -10,7 +10,7 @@ export const Context = createContext();
 export const Provider = ({ children }) => {
   const { contextData } = useContext(AppContext);
   const {
-    user, cancelItem, checkoutUser, setCheckoutUser,
+    user, cancelItem, checkoutUser, setCheckoutUser, cart, setCart
   } = contextData;
   const [items, setItems] = useState([]);
 
@@ -24,7 +24,21 @@ export const Provider = ({ children }) => {
       const req = async () => {
         axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('DataUser')}` 
         await axios.post(`${process.env.REACT_APP_API_ITEMS_BUCKET}`, {bucketItems})
-          .then((res) => setItems(res.data))
+          .then((res) => {
+            const a = bucketItems.split(',')
+            if(a.length!==res.data.length) {
+              const  result = [];
+                a.forEach(el=> {
+                  res.data.forEach(({id})=> {
+                    if(el===id) {
+                      result.push(el)
+                    }
+                  })
+                })
+              localStorage.setItem(user.id, result)
+              setCart(cart+1);  
+            }
+            setItems(res.data)})
           .catch(() => setError(true));
       };
       req();

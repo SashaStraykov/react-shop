@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import {
   Wrapper, WrapperBox, WrapperInput, WrapperConfirmButton,
-  WrapperCancel, WrapperTitle,
+  WrapperCancel, WrapperTitle, Form
 } from './styled';
 import { AdminPageContext } from '../../Pages/AdminPage/context';
 
@@ -16,7 +16,7 @@ const ModalConfirm = ({ id, title }) => {
     <Wrapper>
       <WrapperBox>
         <WrapperCancel onClick={() => setModalConfirm(false)}>X</WrapperCancel>
-        <form name="rejected" onSubmit={(e) => { statementItem(e, id)}}>
+        <Form name="rejected" onSubmit={(e) => { statementItem(e, id)}}>
           <WrapperTitle>
             The reason for rejection of
             {' '}
@@ -24,7 +24,7 @@ const ModalConfirm = ({ id, title }) => {
           </WrapperTitle>
           <WrapperInput value={rejectedInput} onChange={(e) => setRejectedInput(e.target.value)} />
           <WrapperConfirmButton>Reject</WrapperConfirmButton>
-        </form>
+        </Form>
       </WrapperBox>
     </Wrapper>
   );

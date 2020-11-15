@@ -1,8 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-import BackGroundVideoMainPage from '../../../Components/BackGroundVideoComponent';
-import night from '../../../assets/video/night.mp4';
 import {
   PERSON_PAGE,
   PRODUCTS_CATEGORY_PAGE,
@@ -11,26 +8,27 @@ import {
 import {
   H1,
   H2,
-  ButtonContainer,
-  Container,
   ButtonCustom,
+  Screen,
+  LeftPart,
+  RightPart
 } from './styled';
 
 const MainPageContent = () => (
-  <BackGroundVideoMainPage video={night}>
-    <Container>
-      <H1>DataArt typ&apos;s shop</H1>
-      <H2>What do you want?</H2>
-      <ButtonContainer>
-        <Link to={`${PERSON_PAGE}${ADD_ANNOUNCMENT_PAGE}`}>
-          <ButtonCustom>SELL</ButtonCustom>
-        </Link>
-        <Link to={PRODUCTS_CATEGORY_PAGE}>
-          <ButtonCustom>BUY</ButtonCustom>
-        </Link>
-      </ButtonContainer>
-    </Container>
-  </BackGroundVideoMainPage>
+  <Screen>
+    <LeftPart>
+      <Link to={`${PERSON_PAGE}${ADD_ANNOUNCMENT_PAGE}`}>
+        <ButtonCustom>SELL</ButtonCustom>
+      </Link>
+    </LeftPart>
+    <RightPart>
+      <Link to={PRODUCTS_CATEGORY_PAGE}>
+        <ButtonCustom>BUY</ButtonCustom>
+      </Link>
+    </RightPart>
+      {/* <H1>DataArt typ&apos;s shop</H1>
+      <H2>What do you want?</H2> */}
+  </Screen>
 );
 
 export default MainPageContent;

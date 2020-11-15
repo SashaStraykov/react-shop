@@ -35,7 +35,6 @@ const AddItemPageContent = () => {
     <Box>
       {errorMessage && <Toast message={errorMessage}/>}
       <H2>Add new announcment</H2>
-
       <Form enctype="multipart/form-data" onSubmit={postData}>
         <BoxInfo>
           <Span>Title</Span>

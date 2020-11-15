@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const H1 = styled.h1`
   color: aliceblue;
@@ -11,31 +11,13 @@ export const H2 = styled.h2`
   font-size: 2.5em;
 `;
 
-export const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: 2em;
-`;
-
-export const Container = styled.div`
-  display: flex;
-  flex-flow: column;
-  flex: 1 1 auto;
-  align-items: center;
-  justify-content: center;
-  max-width: 1024px;
-  margin: 0 auto;
-`;
-
 export const ButtonCustom = styled.button`
-  padding: 1em;
+  padding: 1em 3em;
   border: 2px solid aliceblue;
   color: aliceblue;
   font-size: 1.5em;
   font-weight: bold;
   margin: 1.25em;
-  padding-right: 3em;
-  padding-left: 3em;
   transition: 0.5s;
   background: transparent;
   &:hover {
@@ -46,3 +28,28 @@ export const ButtonCustom = styled.button`
     cursor: pointer;
   }
 `;
+
+export const Screen = styled.div`
+  display: flex;
+  flex:1 1 auto;
+  flex-direction:row;
+  justify-content:center;
+`;
+
+export const LeftPart = styled.div`
+  display:flex;
+  width:50%;
+  background:black;
+`;
+
+
+export const RightPart = styled.div`
+  display:flex;
+  width:50%;
+  background:yellow;
+  &:hover ${LeftPart} {
+    background:red;
+  }
+
+`;
+

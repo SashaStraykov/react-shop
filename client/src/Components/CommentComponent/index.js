@@ -1,5 +1,5 @@
 import React, { useMemo, useContext } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import {
   ChatBox, PersonAvatar, AvatarBox, AvatarName, CommentBox, CommentTimeStamp, Comment, DeleteButton
 } from './styled';
@@ -35,10 +35,10 @@ const CommentComponent = ({ login, comment, timeStamp, id, item }) => {
   );
 };
 
-CommentComponent.propTypes = {
-  login: PropTypes.string.isRequired,
-  comment: PropTypes.string.isRequired,
-  timeStamp: PropTypes.string.isRequired,
-};
+// CommentComponent.propTypes = {
+//   login: PropTypes.string.isRequired,
+//   comment: PropTypes.string.isRequired,
+//   timeStamp: PropTypes.string.isRequired,
+// };
 
 export default CommentComponent;

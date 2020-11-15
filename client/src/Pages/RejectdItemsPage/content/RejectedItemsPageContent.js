@@ -6,14 +6,20 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import {
-  BackGroundGrey, H2, Container, Wrapper,
+  BackGroundGrey, H2, Container, Wrapper, CancelButton
 } from './styled';
 import { RejectedItemsPageContext } from '../context';
 import ItemModal from '../../../Components/ItemModal';
 import Spinner from '../../../Components/Spinner'
 import ErrorModal from '../../../Components/ErrorModal'
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const useStyles = makeStyles((theme) => ({
+  bar: {
+    width: '90%',
+    height: '3em'
+  },
   heading: {
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
@@ -43,16 +49,15 @@ const PersonPageRejectedItems = () => {
   }
   return (
     <BackGroundGrey>
-      <Container>
+      <H2>
+        Unapproved announcment
+        <span>&#8595;</span>
+      </H2>
         {rejectedItems && (
           <Container>
-            <H2>
-              Unapproved announcment
-              <span>&#8595;</span>
-            </H2>
             {rejectedItems.map(({ id, ...rest }) => (
               <Wrapper key={id}>
-                <Accordion>
+                <Accordion className={classes.bar}>
                   <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
@@ -62,17 +67,18 @@ const PersonPageRejectedItems = () => {
                     <Typography className={rest.approved === '' ? classes.secondaryHeadingNormal : classes.secondaryHeading}>{rest.approved === '' ? 'Submitted' : 'Declined'}</Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-
                     <ItemModal id={id} {...rest} />
-
                   </AccordionDetails>
                 </Accordion>
-
+                <CancelButton>
+                  <IconButton aria-label="delete">
+                    <DeleteIcon />
+                  </IconButton>
+                </CancelButton>
               </Wrapper>
             ))}
           </Container>
         )}
-      </Container>
     </BackGroundGrey>
   );
 };

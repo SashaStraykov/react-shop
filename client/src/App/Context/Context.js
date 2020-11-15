@@ -30,11 +30,6 @@ export const Provider = ({ children }) => {
     }
   }, [cart, user]);
 
-  useEffect(()=> {
-    if(localStorage.getItem('DataUser')) {
-
-    }
-  })
   useEffect(() => {
     if (localStorage.getItem('DataUser')) {
       const req = async () => {

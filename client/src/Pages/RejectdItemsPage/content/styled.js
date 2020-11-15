@@ -8,21 +8,29 @@ export const BackGroundGrey = styled.div`
   max-height: 90vh;
   overflow: scroll;
 `;
-export const H2 = styled.h2`
+
+export const H2 = styled.div`
   font-size: 2em;
-  margin: 1em;
-  margin-top: 1em;
-  display: inline-block;
+  font-weight:bold;
+  width:80%;
+  margin: 1em auto;
   color: rgb(66, 66, 66);
 `;
+
 export const Container = styled.div`
-  width: 70%;
-  margin: 2em auto;
+  width: 80%;
+  margin: 0 auto;
   background: rgb(245, 245, 245);
-  padding: 0;
-  margin-bottom: 1em;
-  padding-bottom:1em;
+  padding: 0.5em;
 `;
+
 export const Wrapper = styled.div`
-margin-bottom:0.5em;
+  padding-left:2em;
+  margin-bottom:0.5em;
+  display:flex;
+  flex-direction:row;
+  width:100%;
 `;
+
+export const CancelButton = styled.div`
+`

@@ -13,6 +13,14 @@ import {
 } from './styled';
 import ErrorModal from '../../../Components/ErrorModal';
 import { PRODUCTS_CATEGORY_PAGE } from '../../../constants/routes';
+import RestoreFromTrashIcon from '@material-ui/icons/RestoreFromTrash';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  icon: {
+    fontSize: '1.5em',
+  },
+});
 
 const CheckoutPageContent = () => {
   const { checkoutContextData } = useContext(CheckoutPageContext);
@@ -24,6 +32,7 @@ const CheckoutPageContent = () => {
     error,
     items,
   } = checkoutContextData;
+  const classes = useStyles();
   if (loading) {
     return <Spinner />;
   }
@@ -40,7 +49,7 @@ const CheckoutPageContent = () => {
             <Link to={`${PRODUCTS_CATEGORY_PAGE}/${idCategory}/${id}`}>
               <ProductsCategoryItem id={id} {...rest} />
             </Link>
-            <ButtonCancel onClick={() => cancelItem(id, items)}>x</ButtonCancel>
+            <ButtonCancel onClick={() => cancelItem(id, items)}><RestoreFromTrashIcon className={classes.icon}/></ButtonCancel>
           </ItemBox>
         ))}
       </Container>

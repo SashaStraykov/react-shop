@@ -13,10 +13,11 @@ import React, {
     const [error, setError] = useState(false);
     const [confirmInfo, setConfirmInfo] = useState(null);
     const [itemComments, setItemComments] = useState({comments:[],itemId: null})
+    const [comment, setComment] = useState('');
 
 
   const {contextData} = useContext(AppContext);
-  const {user, setUser, setErrorMessage, setOpenToast, confirmComponent, setConfirmComponent, cart} = contextData;
+  const {user, setUser, setErrorMessage, setOpenToast, confirmComponent, setConfirmComponent, cart, setCart } = contextData;
 
     useEffect(()=> {
       const req = async () => {
@@ -25,10 +26,18 @@ import React, {
           .then((res) => {
             setMyItems(res.data)
           })
-          .catch(() => setError(true));
+          .catch((e) => {   
+            setError(true)
+            const authError = e.message.split(' ');
+            const l = authError.length
+            if(authError[l-1] === '511') {
+              setUser(null)
+            }
+          });
       };
       req();
       setLoading(false);
+      return setLoading(false)
       // eslint-disable-next-line
     }, [cart]);
 
@@ -74,6 +83,14 @@ import React, {
 
          }
   
+        })
+        .catch((e) => {   
+          setError(true)
+          const authError = e.message.split(' ');
+          const l = authError.length
+          if(authError[l-1] === '511') {
+            setUser(null)
+          }
         });
     };
 
@@ -85,6 +102,51 @@ import React, {
     const getComments = (comments, id) => {
       setItemComments({comments, itemId: id})
     }
+
+    const postComment = async (e) => {
+      e.preventDefault();
+      if(comment.trim() === '') {
+        return setComment('')
+      }
+      const nC = {
+        login: user.login,
+        comment,
+        id: itemComments.itemId,
+        timeStamp: Date()
+      };
+      const newComments = [...itemComments.comments];
+      newComments.push(nC);
+      setItemComments({...itemComments, comments: newComments})
+
+      const postData = {
+        login: user.login,
+        comment,
+        itemId: itemComments.itemId,
+        timeStamp: Date()
+      };
+
+      await fetch(`${process.env.REACT_APP_API_ITEMS}`, {
+        method: 'put',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('DataUser')}`,
+        },
+        body: JSON.stringify(postData),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setComment('');
+          setCart(cart + 1);
+        })
+        .catch((e) => {   
+          setError(true)
+          const authError = e.message.split(' ');
+          const l = authError.length
+          if(authError[l-1] === '511') {
+            setUser(null)
+          }
+        });
+    };
 
     const infoContextData = {
       myItems,
@@ -98,7 +160,10 @@ import React, {
       confirmInfo,
       getComments, 
       itemComments, 
-      setItemComments
+      setItemComments,
+      postComment,
+      comment, 
+      setComment
     }
     return (
         <Context.Provider value={{ infoContextData }}>{children}</Context.Provider>

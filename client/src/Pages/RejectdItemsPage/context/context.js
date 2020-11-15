@@ -13,7 +13,7 @@ import React, {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const {contextData} = useContext(AppContext);
-    const {user} = contextData;
+    const {user, setUser} = contextData;
 
 
     useEffect(()=> {
@@ -23,10 +23,18 @@ import React, {
           .then((res) => {
             setRejectedItems(res.data)
           })
-          .catch(() => setError(true));
+          .catch((e) => {   
+            setError(true)
+            const authError = e.message.split(' ');
+            const l = authError.length
+            if(authError[l-1] === '511') {
+              setUser(null)
+            }
+          });
       };
       req();
       setLoading(false);
+      return setLoading(false)
       // eslint-disable-next-line
     }, []);
 

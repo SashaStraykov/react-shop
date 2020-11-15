@@ -10,13 +10,23 @@ export const BackGroundGrey = styled.div`
   overflow: scroll;
 
 `;
-export const H2 = styled.h2`
+
+export const H2 = styled.div`
   font-size: 2em;
-  margin: 1em;
-  margin-top: 1em;
-  display: inline-block;
+  font-weight:bold;
+  width:80%;
+  margin: 1em auto;
   color: rgb(66, 66, 66);
 `;
+
+export const H21 = styled.div`
+font-size: 2em;
+font-weight:bold;
+width:100%;
+margin: 1em auto;
+color: rgb(66, 66, 66);
+`;
+
 export const Container = styled.div`
   width: 80%;
   margin: 2em auto;
@@ -24,6 +34,7 @@ export const Container = styled.div`
   padding: 0;
   margin-bottom: 1em;
 `;
+
 export const Box = styled.div`
   display: block;
 `;

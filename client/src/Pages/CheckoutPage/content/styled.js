@@ -9,26 +9,28 @@ export const BackGroundGrey = styled.div`
   max-height: 90vh;
   overflow: scroll;
 `;
-export const H2 = styled.h2`
+export const H2 = styled.div`
   font-size: 2em;
-  margin: 1em;
-  margin-top: 1em;
-  display: inline-block;
+  font-weight:bold;
+  width:80%;
+  margin: 1em auto;
   color: rgb(66, 66, 66);
 `;
 export const Container = styled.div`
   width: 80%;
-  margin: 2em auto;
+  margin: 0 auto;
   background: rgb(245, 245, 245);
   padding: 0;
   margin-bottom: 1em;
 `;
 
 export const ButtonCancel = styled.button`
-  background: var(--red-color);
   font-size: 2em;
-  color: rgb(66, 66, 66);
+  color: var(--font-color);
   border: none;
+  background:var(--container-color);
+  border-left:2px solid var(--border-color);
+  transition:.3s;
   &:focus {
     outline: none;
   }
@@ -42,7 +44,7 @@ export const ButtonCancel = styled.button`
 export const ItemBox = styled.div`
   display: grid;
   grid-template-columns: 6fr 1fr;
-  border-top: 1.5em solid rgb(238, 238, 238);
+  border-bottom: 1.5em solid rgb(238, 238, 238);
 `;
 
 export const PriceBox = styled.div`

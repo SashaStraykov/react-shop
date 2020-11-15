@@ -71,5 +71,10 @@ justify-content:flex-start;
 margin:0 3em;
 margin-top:1.5em;
 color:var(--font-color);
-
 `;
+
+export const Form = styled.form`
+display:flex;
+flex-direction: column;
+
+`

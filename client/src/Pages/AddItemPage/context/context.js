@@ -65,6 +65,9 @@ export const Provider = ({ children }) => {
       setLoading(false)
       setErrorMessage(data.message)
       setOpenToast(true)
+      setDescription('')
+      setTitle('')
+      setPrice(0)
     })
   };
 

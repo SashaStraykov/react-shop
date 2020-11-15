@@ -18,6 +18,7 @@ export const H2 = styled.div`
 
 export const ItemBox = styled.div`
   margin:0.5em 0;
+  margin-top:0;
   background:var(--container-color);
   display: grid;
   grid-template-columns: 6fr 1fr;
@@ -50,11 +51,13 @@ export const FlexBoxItems = styled.div`
   display:flex;
   flex-direction:column;
   width:60%;
-
+  max-height:70vh;
+  overflow:scroll;  
 `;
 export const CommentBox = styled.div`
   overflow:scroll;  
-  margin: 0.5em;
+  margin: 0 0.5em;
+  margin-top:0;
   background:var(--container-color);
   display:flex;
   flex-direction:column;
@@ -142,7 +145,7 @@ export const FormBox = styled.form`
 `;
 
 export const InputComment = styled.input`
-  width:80%;
+  width:90%;
   padding:0.5em;
   color: var(--font-color);
   background:var(--background-color);
@@ -169,6 +172,7 @@ export const ChatBox = styled.div`
   display:flex;
   flex-direction:column;
   width:40%;
+  max-height:70vh;
 `
 
 export const CommentWrapper = styled.div`

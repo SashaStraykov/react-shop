@@ -62,6 +62,7 @@ const ProductsCategoryItemsPageContent = () => {
           <SearchPannel
           value={search}
           onChange={(e) => setSearch(e.target.value)}
+          placeholder='Search...'
           />
           <SearchButton>
           <SearchIcon className={classes.icon} />

@@ -1,6 +1,7 @@
 const Item = require('../models/item');
 const Comment = require( '../models/comment' );
 const { v4: uuidv4 } = require('uuid');
+const checkFilesMulter = require('../middleware/multer')
 
 exports.getItems = async (req, res) => {
     try {
@@ -11,8 +12,12 @@ exports.getItems = async (req, res) => {
     }
   }
 
-exports.DeclarateItem = async (req, res) => {
-    try{
+exports.DeclarateItem =  (req, res) => {
+  checkFilesMulter.checkFiles( req, res, async (err) => {
+    if(err) {
+      res.json({message: err })
+    } else {
+      try{
         const imgArray =[]
         if(req.files.imgs) {
           for(let i=0; i< req.files.imgs.length; i++) {
@@ -25,6 +30,10 @@ exports.DeclarateItem = async (req, res) => {
     } catch(e) {  
         res.status(500).json({message: e})
     }
+    }
+  } )
+
+
 }
 
 exports.DeleteItem = async (req,res)=> {
