@@ -3,7 +3,7 @@ import 'normalize.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Layouts from '../Layouts';
 
-function App() {
+const  App = () => {
   return (
     <Router>
       <Layouts />

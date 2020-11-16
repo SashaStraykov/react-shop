@@ -30,9 +30,9 @@ exports.DeclarateItem =  (req, res) => {
         res.status(200).json({message:'item declarated'})
     } catch(e) {  
         res.status(500).json({message: e})
+      }
     }
-    }
-  } )
+  })
 
 
 }

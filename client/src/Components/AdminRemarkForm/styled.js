@@ -1,24 +1,25 @@
 import styled from 'styled-components';
 
 export const BoxBottom = styled.form`
-  width:55%;
-  margin-left:auto;
+  width:40%;
+  margin:0 auto;
+  padding:1em;
   display: flex;
   flex-direction: row;
-  justify-content:center;
+  justify-content:space-around;
 
 `;
 
 export const BoxBottomTop = styled.button`
-  width:50%;
+  border-radius:50%;
   color: rgb(66, 66, 66);
   padding: 1em;
-  border: none;
-  background: rgb(197, 225, 165);
+  border: 2px solid green;
+  background: none;
   font-size: 1.1em;
   transition:0.3s;
   &:hover {
-    background: rgb(66, 66, 66);
+    background: rgba(238,238,238 ,1);
     color: rgb(245, 245, 245);
     cursor:pointer;
   }
@@ -34,16 +35,16 @@ export const BoxBottomInput = styled.input`
 `;
 
 export const BoxBottomReject = styled.div`
-  width:50%;
+  border-radius:50%;
   color: rgb(66, 66, 66);
   padding: 1em;
-  border: none;
-  background: rgb(239, 154, 154);
+  border: 2px solid red;
+  background: none;
   font-size: 1.1em;
   text-align: center;
   transition:0.3s;
   &:hover {
-    background: rgb(66, 66, 66);
+    background: rgba(238,238,238 ,1);
     color: rgb(245, 245, 245);
     cursor:pointer;
   }

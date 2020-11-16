@@ -10,7 +10,7 @@ exports.registration = async (req, res) => {
       const errors = validationResult(req)
       if(!errors.isEmpty()) {
         return res.status(400).json({errors:errors.array(),
-                                    message: 'uncorrect registration data'
+          message: 'uncorrect registration data'
         })
       }
       const {login, password }=req.body;
@@ -36,7 +36,7 @@ exports.authorization = async (req, res) => {
         const errors = validationResult(req)
         if(!errors.isEmpty()) {
           return res.status(400).json({errors:errors.array(),
-                                      message: 'uncorrect authorization data'
+             message: 'uncorrect authorization data'
           })
         }
             const {login, password } = req.body;
@@ -72,13 +72,13 @@ exports.authorization = async (req, res) => {
       }
     }
 
-    exports.checkUser = async (req, res) => {
-          try{
-            const userToken = req.headers.authorization.split(' ')[1];
-            const decoded =   jwt.verify(userToken, process.env.JWT_SECRET);
-            const user = await User.findOne({id: decoded.userID});
-            res.status(200).json(user)
-          } catch(e) {
-            res.status(511).json({message: e})
-          }
-    } 
+  exports.checkUser = async (req, res) => {
+        try{
+          const userToken = req.headers.authorization.split(' ')[1];
+          const decoded =   jwt.verify(userToken, process.env.JWT_SECRET);
+          const user = await User.findOne({id: decoded.userID});
+          res.status(200).json(user)
+        } catch(e) {
+          res.status(511).json({message: e})
+        }
+  } 

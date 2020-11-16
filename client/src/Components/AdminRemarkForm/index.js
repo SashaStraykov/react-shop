@@ -11,18 +11,29 @@ import ModalConfirm from '../ModalConfirm';
 import { AdminPageContext } from '../../Pages/AdminPage/context';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  iconUp: {
+    color: 'green',
+  },
+  iconDown: {
+    color: 'red',
+  },
+
+});
 
 const AdminRemarkForm = ({ id, ...rest }) => {
   const { adminContextData } = useContext(AdminPageContext);
   const { setModalConfirm, modalConfirm, statementItem } = adminContextData;
-  {console.log(rest.remark)}
+  const classes = useStyles();
   return (
     <>
       {modalConfirm && <ModalConfirm id={id} title={rest.title} />}
       <ItemModal {...rest} />
       <BoxBottom>
-        <BoxBottomTop name="approved" onClick={(e) => statementItem(e, id)}> <ThumbUpAltIcon/></BoxBottomTop>
-        <BoxBottomReject onClick={() => setModalConfirm(true)}><ThumbDownIcon/></BoxBottomReject>
+        <BoxBottomTop name="approved" onClick={(e) => statementItem(e, id)}> <ThumbUpAltIcon className={classes.iconUp}/></BoxBottomTop>
+        <BoxBottomReject onClick={() => setModalConfirm(true)}><ThumbDownIcon className={classes.iconDown}/></BoxBottomReject>
       </BoxBottom>
     </>
   );

@@ -15,9 +15,9 @@ const useStyles = makeStyles({
   },
 });
 
-function ProductsCategoryItem({
+const ProductsCategoryItem = ({
   title, price, date, img, description
-}) {
+}) => {
   const classes = useStyles();
   return (
     <ItemBox>

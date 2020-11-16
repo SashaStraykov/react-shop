@@ -78,6 +78,7 @@ export const Provider = ({ children }) => {
           setLoginSignUp('');
           setEmailSignUp('');
           setPasswordSignUp('');
+          setPasswordSignUpCheck('');
         }
         });
         setLoading(false);

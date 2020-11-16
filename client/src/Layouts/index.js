@@ -17,6 +17,7 @@ const Layouts = () => (
       <Route path={PERSON_PAGE}>
         <DashboardLayout />
       </Route>
+      {/* <Route render={()=><h2>Page not found</h2>}></Route> */}
     </Wrapper>
     <Footer />
   </>

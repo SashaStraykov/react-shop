@@ -138,20 +138,20 @@ const moveSignUpLeft = keyframes`
 `;
 
 export const SignUpBox = styled.div` 
-position:absolute;
-width:60%;
-top:60%;
-transform:translateY(-60%);
-animation: ${props => (props.sign ? css`${moveSignUpLeft} .5s ease-in-out forwards` : css`${moveSignUpRight} .5s ease forwards`)};
-z-index: ${props => (props.sign? '1':'2')}
+  position:absolute;
+  width:60%;
+  top:60%;
+  transform:translateY(-60%);
+  animation: ${props => (props.sign ? css`${moveSignUpLeft} .5s ease-in-out forwards` : css`${moveSignUpRight} .5s ease forwards`)};
+  z-index: ${props => (props.sign? '1':'2')}
 `;
 
 export const TextArea = styled.div`
-color:var(--background-color);
-font-size:2em;
-position:relative;
-top: 0;
-text-align:center;
-margin:0.5em;
+  color:var(--background-color);
+  font-size:2em;
+  position:relative;
+  top: 0;
+  text-align:center;
+  margin:0.5em;
 `
 
