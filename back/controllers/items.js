@@ -2,6 +2,7 @@ const Item = require('../models/item');
 const Comment = require( '../models/comment' );
 const { v4: uuidv4 } = require('uuid');
 const checkFilesMulter = require('../middleware/multer')
+const fs = require('fs')
 
 exports.getItems = async (req, res) => {
     try {
@@ -40,14 +41,15 @@ exports.DeleteItem = async (req,res)=> {
     try {
       const {id} = req.body
       const deletedItem = await Item.findOne({id: id})
+      const pathDel = deletedItem.img;
       await deletedItem.remove();
-    //   fs.unlink(deletedItem.img[0], (err) => {
-    //       console.log(deletedItem.img)
-    //     if (err) {
-    //       console.error(err)
-    //       return
-    //     }
-    //   })
+      pathDel.forEach(el=> {
+        fs.unlink('../back'+el, (e) => {
+          if(e) {
+            res.status(404).json({message: e})
+          } 
+        })
+      })
       res.status(200).json({message:'Item has deleted '})
     } catch (e) {
       res.status(500).json({message: e})

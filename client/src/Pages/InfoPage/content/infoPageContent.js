@@ -112,6 +112,7 @@ const classes = useStyles();
       <BoxContainer>
         <FlexBox>
           <FlexBoxItems>
+            {myItems.length === 0 && <CommentBox><NoComments>No announcement</NoComments></CommentBox> }
             {loading ? (
               <Spinner />
             ) : (
