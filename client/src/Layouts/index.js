@@ -4,7 +4,7 @@ import Header from './Header';
 import PublicLayout from './PublicLayout/PublicLayout';
 import DashboardLayout from './DashboardLayout';
 import { PERSON_PAGE, HOME_PAGE } from '../constants/routes';
-import { Wrapper } from './Styled';
+import { Wrapper } from './styled';
 import Footer from './Footer';
 
 const Layouts = () => (

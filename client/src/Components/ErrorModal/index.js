@@ -2,7 +2,7 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import {
   BackGroundGrey, Container, H2, IMG,
-} from './Styled';
+} from './styled';
 import errorIMG from '../../assets/images/error.png';
 
 const ErrorModal = ({ title }) => (

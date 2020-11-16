@@ -14,11 +14,12 @@ import Spinner from '../../../Components/Spinner'
 import ErrorModal from '../../../Components/ErrorModal'
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+import ConfirmComponent from '../../../Components/ConfirmComponent';
+import Toast from '../../../Components/Toast';
 
 const useStyles = makeStyles((theme) => ({
   bar: {
     width: '90%',
-    height: '3em'
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -40,7 +41,7 @@ const PersonPageRejectedItems = () => {
   const classes = useStyles();
 
   const { rejectedItemsContextData } = useContext(RejectedItemsPageContext);
-  const { rejectedItems, loading, error } = rejectedItemsContextData;
+  const { rejectedItems, loading, error, confirmComponent, addConfirmComponent, confirmInfo, openToast, errorMessage } = rejectedItemsContextData;
   if(loading) {
     return <Spinner/>
   }
@@ -49,6 +50,8 @@ const PersonPageRejectedItems = () => {
   }
   return (
     <BackGroundGrey>
+      {openToast && <Toast message={errorMessage}/>}
+      {confirmComponent && <ConfirmComponent {...confirmInfo}/>}
       <H2>
         Unapproved announcment
         <span>&#8595;</span>
@@ -71,7 +74,7 @@ const PersonPageRejectedItems = () => {
                   </AccordionDetails>
                 </Accordion>
                 <CancelButton>
-                  <IconButton aria-label="delete">
+                  <IconButton aria-label="delete" onClick={()=>addConfirmComponent(id, rest.title)} >
                     <DeleteIcon />
                   </IconButton>
                 </CancelButton>

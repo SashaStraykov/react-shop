@@ -35,7 +35,7 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { makeStyles } from '@material-ui/core/styles';
 import ConfirmComponent from '../../../Components/ConfirmComponent';
 import Toast from '../../../Components/Toast';
-import {AppContext} from '../../../App/Context/Index';
+import {AppContext} from '../../../App/context';
 import { FiFilePlus } from "react-icons/fi";
 import SendIcon from '@material-ui/icons/Send';
 import Button from '@material-ui/core/Button';

@@ -4,7 +4,7 @@ import SwiperCore, {
   Navigation, Pagination, Scrollbar, A11y,
 } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { IMG } from './Styled';
+import { IMG } from './styled';
 import 'swiper/swiper-bundle.css';
 import emptyPhoto from '../../assets/images/emptyPhoto.jpg';
 

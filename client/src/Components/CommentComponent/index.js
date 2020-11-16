@@ -12,7 +12,7 @@ import a6 from '../../assets/PersonIcons/man-2.png';
 import a7 from '../../assets/PersonIcons/man-3.png';
 import a8 from '../../assets/PersonIcons/man-4.png';
 import a9 from '../../assets/PersonIcons/man.png';
-import { AppContext } from '../../App/Context/Index'
+import { AppContext } from '../../App/context'
 import { FiX } from "react-icons/fi";
 
 const CommentComponent = ({ login, comment, timeStamp, id, item }) => {

@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
     width:100%;
     height:100%;
     background:rgba(66,66,66 ,0.5);
+    z-index:10;
 `
 export const Box = styled.div`
     position:relative;
@@ -20,6 +21,7 @@ export const Box = styled.div`
     flex-direction:column;
     align-items:center;
     justify-content:center;
+    z-index:99;
 `
 export const ConfirmButton = styled.button`
     padding:0.5em 3em;

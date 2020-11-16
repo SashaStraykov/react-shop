@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 import ModalForm from './ModalForm/ModalForm';
 import { BackGroundGrey } from './styled';
-import { AppContext } from '../../../App/Context/Index';
+import { AppContext } from '../../../App/context';
 import { INFO_PAGE, PERSON_PAGE } from '../../../constants/routes';
 import Toast from '../../../Components/Toast';
 

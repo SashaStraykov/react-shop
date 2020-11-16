@@ -2,7 +2,7 @@ import React, {
   createContext, useContext, useState,
 } from 'react';
 import PropTypes from 'prop-types';
-import { AppContext } from '../../../App/Context/Index';
+import { AppContext } from '../../../App/context';
 
 export const Context = createContext();
 

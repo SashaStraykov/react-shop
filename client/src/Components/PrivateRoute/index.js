@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { AppContext } from '../../App/Context/Index';
+import { AppContext } from '../../App/context';
 import { AUTHORIZATION_PAGE } from '../../constants/routes';
 
 const PrivateRoute = ({ children, ...route }) => {

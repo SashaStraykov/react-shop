@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import { Wrapper, Box, ConfirmButton, Title, CancelButton } from './styled'
-import {AppContext} from '../../App/Context/Index'
+import {AppContext} from '../../App/context'
 
 
 const ConfirmComponent = ({id, title, onDelete}) => {

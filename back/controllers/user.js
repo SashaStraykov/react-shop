@@ -39,9 +39,7 @@ exports.authorization = async (req, res) => {
                                       message: 'uncorrect authorization data'
           })
         }
-
             const {login, password } = req.body;
-    
             const regUser = await User.findOne({login: login})
             if( !regUser ) {
              return   res.status(400).json( { message: 'Such user is not found' } )
@@ -51,8 +49,6 @@ exports.authorization = async (req, res) => {
               res.status(400).json( { message: 'Uncorreect password' } )
             }
         
-
-    
         const userDeclaratedItems = await Item.find({userId: regUser.id})
         const userItems = userDeclaratedItems.map(el=>el.id)
     

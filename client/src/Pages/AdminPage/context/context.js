@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
-import {AppContext} from '../../../App/Context/Index'
+import {AppContext} from '../../../App/context'
 import axios from 'axios'
 
 export const Context = createContext();
@@ -50,6 +50,7 @@ export const Provider = ({ children }) => {
     const postData = {
       itemId: id,
       approved: e.target.name,
+      remark: rejectedInput,
     };
 
     await fetch(`${process.env.REACT_APP_API_ITEMS}/statement`, {

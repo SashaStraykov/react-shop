@@ -16,6 +16,7 @@ export const BoxBottomTop = styled.button`
   border: none;
   background: rgb(197, 225, 165);
   font-size: 1.1em;
+  transition:0.3s;
   &:hover {
     background: rgb(66, 66, 66);
     color: rgb(245, 245, 245);
@@ -39,6 +40,8 @@ export const BoxBottomReject = styled.div`
   border: none;
   background: rgb(239, 154, 154);
   font-size: 1.1em;
+  text-align: center;
+  transition:0.3s;
   &:hover {
     background: rgb(66, 66, 66);
     color: rgb(245, 245, 245);

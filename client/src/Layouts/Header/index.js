@@ -17,7 +17,7 @@ import {
   AmountItems,
 } from './styled';
 import dataArtLogo from '../../assets/images/LogoWhite.png';
-import { AppContext } from '../../App/Context/Index';
+import { AppContext } from '../../App/context';
 import {
   HOME_PAGE, PERSON_PAGE, AUTHORIZATION_PAGE, CHECKOUT_PAGE, INFO_PAGE,
 } from '../../constants/routes';

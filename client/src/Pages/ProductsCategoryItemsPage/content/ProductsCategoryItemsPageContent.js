@@ -10,7 +10,7 @@ import {
   FlexSearch,
   SearchButton
 } from './styled';
-import { ProductsCategoryItemsPageContext } from '../Context/Index';
+import { ProductsCategoryItemsPageContext } from '../context';
 import Spinner from '../../../Components/Spinner';
 import ErrorModal from '../../../Components/ErrorModal';
 import SearchIcon from '@material-ui/icons/Search';

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { UlPagination, LiPagination, SpanPagination } from './Styled';
+import { UlPagination, LiPagination, SpanPagination } from './styled';
 
 const Pagination = ({
   postsPerPage,

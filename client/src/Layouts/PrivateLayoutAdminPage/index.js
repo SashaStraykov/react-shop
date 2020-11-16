@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 import AdminPage from '../../Pages/AdminPage';
-import { AppContext } from '../../App/Context/Index';
+import { AppContext } from '../../App/context';
 import { PERSON_PAGE, AUTHORIZATION_PAGE, ADMIN_PAGE } from '../../constants/routes';
 
 import PrivateRoute from '../../Components/PrivateRoute';

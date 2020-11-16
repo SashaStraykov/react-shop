@@ -6,7 +6,7 @@ import {
   Wrapper, FormBox, InputComment, CommentButton, Container, H2, AuthorizathionButton, ChatTable,
 } from './styled';
 import CommentComponent from '../CommentComponent';
-import { AppContext } from '../../App/Context/Index';
+import { AppContext } from '../../App/context';
 import { AUTHORIZATION_PAGE } from '../../constants/routes';
 import { ItemPageContext } from '../../Pages/ItemPage/Context';
 

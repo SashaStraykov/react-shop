@@ -3,7 +3,7 @@ import React, {
   } from 'react';
   import axios from 'axios';
   import PropTypes from 'prop-types';
-  import {AppContext} from '../../../App/Context/Index'
+  import {AppContext} from '../../../App/context'
 
   export const Context = createContext();
 
@@ -79,7 +79,6 @@ import React, {
          } else {
           setErrorMessage(data.message)
            setOpenToast(true)
-           console.log(data.message)
 
          }
   

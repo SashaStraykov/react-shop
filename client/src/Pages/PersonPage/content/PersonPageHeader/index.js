@@ -13,7 +13,7 @@ import RejectedItemsPage from '../../../RejectdItemsPage';
 import CheckoutPage from '../../../CheckoutPage';
 import AddItemPage from '../../../AddItemPage';
 import { Nav, NavUl, NavLi } from './styled';
-import { AppContext } from '../../../../App/Context/Index';
+import { AppContext } from '../../../../App/context';
 import PrivateLayoutAdminPage from '../../../../Layouts/PrivateLayoutAdminPage';
 import {
   ADMIN_PAGE, CHECKOUT_PAGE, ADD_ANNOUNCMENT_PAGE, REJECT_ITEMS_PAGE, INFO_PAGE

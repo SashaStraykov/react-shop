@@ -41,6 +41,13 @@ exports.DeleteItem = async (req,res)=> {
       const {id} = req.body
       const deletedItem = await Item.findOne({id: id})
       await deletedItem.remove();
+    //   fs.unlink(deletedItem.img[0], (err) => {
+    //       console.log(deletedItem.img)
+    //     if (err) {
+    //       console.error(err)
+    //       return
+    //     }
+    //   })
       res.status(200).json({message:'Item has deleted '})
     } catch (e) {
       res.status(500).json({message: e})
