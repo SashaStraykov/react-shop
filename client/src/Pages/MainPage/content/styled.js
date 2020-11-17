@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const H1 = styled.h1`
@@ -28,19 +28,6 @@ export const ButtonCustom = styled.button`
     cursor: pointer;
   }
 `;
-
-const move = keyframes`
-0% {
-  width: 50%;
-}
-50% {
-  width:55%;
-}
-100% {
-  width: 50%;
-}
-`;
-
 
 export const RightPart = styled.div`
   display:flex;

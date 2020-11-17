@@ -14,9 +14,8 @@ import {
   BoxRemark,
 } from './styled';
 
-const ItemModal = ({
-  img, title, description, date, price, remark,
-}) => (
+const ItemModal = ({ img, title, description, date, price, remark }) => {
+  return (
   <RemarkFormBox>
     <BoxFirstSection>
       <BoxFirstSectionSlider>
@@ -38,7 +37,8 @@ const ItemModal = ({
     </BoxFirstSection>
     {remark && <BoxRemark>{remark}</BoxRemark>}
   </RemarkFormBox>
-);
+  )
+};
 
 ItemModal.propTypes = {
   img: PropTypes.arrayOf(

@@ -73,10 +73,11 @@ exports.DeleteItem = async (req,res)=> {
 
   exports.AddStatement = async ( req, res ) => {
     try { 
-      const { itemId, approved } = req.body;
+      const { itemId, approved, remark } = req.body;
       await Item.findOneAndUpdate( { id: itemId}, { 
         $set: {
-          approved: approved
+          approved: approved,
+          remark: remark
         }
       })
       res.status(201).json({message:'Item approved '})

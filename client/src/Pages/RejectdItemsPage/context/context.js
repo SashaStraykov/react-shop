@@ -60,8 +60,6 @@ import React, {
          } else {
           setErrorMessage(data.message)
            setOpenToast(true)
-           console.log(data.message)
-
          }
   
         })

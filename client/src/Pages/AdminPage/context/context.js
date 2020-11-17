@@ -38,7 +38,6 @@ export const Provider = ({ children }) => {
   const statementItem = async (e, id) => {
     e.preventDefault();
     setModalConfirm(false)
-    setRejectedInput('')
 
     const a=[];
     unApprovedItems.forEach((el)=>{
@@ -47,7 +46,6 @@ export const Provider = ({ children }) => {
       }
     })
     setUnApprovedItems(a)
-  
     const postData = {
       itemId: id,
       approved: e.target.name,
@@ -65,6 +63,7 @@ export const Provider = ({ children }) => {
     })
       .then((res) => res.json())
       .then((data) => {
+        setRejectedInput('')
         if(data.message.name === "TokenExpiredError") {
           setUser(null)
         }
