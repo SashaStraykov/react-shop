@@ -1,0 +1,11 @@
+.signUpButton {
+  position: absolute;
+  bottom: 20px;
+  width: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.signUp {
+  --background: transparent;
+}

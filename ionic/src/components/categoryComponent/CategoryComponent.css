@@ -1,0 +1,35 @@
+.img {
+  border-top-left-radius: 5%;
+  border-top-right-radius: 5%;
+  flex: 1 1 auto;
+}
+
+.title {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.a {
+  border: 1px solid red;
+}
+
+.divFlex {
+  display: flex;
+  flex: 1 1 50%;
+  flex-direction: column;
+  padding: 5px;
+  text-decoration: none;
+}
+
+.spanTitle {
+  text-align: center;
+  color: var(--brand-color);
+  background: var(--backGround-color);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 10px;
+}
+
+.lol {
+  border: 1px solid red;
+}

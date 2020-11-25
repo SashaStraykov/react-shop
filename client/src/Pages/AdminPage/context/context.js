@@ -35,10 +35,9 @@ export const Provider = ({ children }) => {
   }, []);
 
 
-  const statementItem = async (e, id) => {
+  const statementItem = async (e, id, approved) => {
     e.preventDefault();
-    setModalConfirm(false)
-
+    setModalConfirm(false) 
     const a=[];
     unApprovedItems.forEach((el)=>{
       if(el.id!==id) {
@@ -48,7 +47,7 @@ export const Provider = ({ children }) => {
     setUnApprovedItems(a)
     const postData = {
       itemId: id,
-      approved: e.target.name,
+      approved: approved,
       remark: rejectedInput,
     };
 

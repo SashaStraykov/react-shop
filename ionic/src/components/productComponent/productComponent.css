@@ -1,0 +1,33 @@
+.productComponentBox {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  max-height: 180px;
+}
+
+.productComponentImg {
+  display: flex;
+  height: 160px;
+  width: 60%;
+}
+
+.productComponentFlexBox {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+.productComponentTitle,
+.productComponentPrice {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 50%;
+  align-items: center;
+}
+
+.productComponentTitle {
+  height: 30%;
+  border-bottom: 1px solid var(--border-color);
+}

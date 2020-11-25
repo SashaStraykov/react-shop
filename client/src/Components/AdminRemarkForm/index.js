@@ -27,12 +27,13 @@ const AdminRemarkForm = ({ id, ...rest }) => {
   const { adminContextData } = useContext(AdminPageContext);
   const { setModalConfirm, modalConfirm, statementItem } = adminContextData;
   const classes = useStyles();
+  const approved = 'approved'
   return (
     <>
       {modalConfirm && <ModalConfirm id={id} title={rest.title} />}
       <ItemModal {...rest} />
       <BoxBottom>
-        <BoxBottomTop name="approved" onClick={(e) => statementItem(e, id)}> <ThumbUpAltIcon className={classes.iconUp}/></BoxBottomTop>
+        <BoxBottomTop name="approved" onClick={(e) => statementItem(e, id, approved)}> <ThumbUpAltIcon className={classes.iconUp}/></BoxBottomTop>
         <BoxBottomReject onClick={() => setModalConfirm(true)}><ThumbDownIcon className={classes.iconDown}/></BoxBottomReject>
       </BoxBottom>
     </>

@@ -1,0 +1,29 @@
+.itemPageBox {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 15px;
+}
+
+.itemPageTitle {
+  font-size: 24px;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  padding: 15px;
+  padding-top: 0;
+}
+
+.itemPageDescription {
+  padding: 15px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.itemPageBucketButton {
+  border: none;
+  border: 1px solid var(--brand-color);
+  color: var(--brand-color);
+}
+

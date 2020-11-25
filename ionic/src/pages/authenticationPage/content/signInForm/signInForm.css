@@ -1,0 +1,26 @@
+.signInToggle {
+  display: flex;
+  align-items: center;
+  --background: transparent;
+}
+
+.signInForm {
+}
+
+.signInItem {
+  --background: transparent;
+}
+.signInButton {
+  position: absolute;
+  bottom: 120px;
+  width: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ionSpinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+}

@@ -1,0 +1,25 @@
+.authenticationSegment {
+  --background: black;
+}
+
+.authenticationSegmentButton {
+  --indicator-color: var(--brand-color);
+  --indicator-height: 2px;
+  ----margin-top: 20px;
+}
+
+.authenticationSegmentLabel {
+  font-size: 22px;
+  margin: 10px;
+}
+
+.authentificationSignBox {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60%;
+  border-top: 2px solid var(--brand-color);
+  padding-top: 35px;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+}

@@ -11,12 +11,13 @@ const ModalConfirm = ({ id, title }) => {
   const {
     setModalConfirm, statementItem, rejectedInput, setRejectedInput,
   } = adminContextData;
+  const approved = 'rejected';
 
   return (
     <Wrapper>
       <WrapperBox>
         <WrapperCancel onClick={() => setModalConfirm(false)}>X</WrapperCancel>
-        <Form name="rejected" onSubmit={(e) => { statementItem(e, id)}}>
+        <Form name="rejected" onSubmit={(e) => { statementItem(e, id, approved)}}>
           <WrapperTitle>
             The reason for rejection of
             {' '}

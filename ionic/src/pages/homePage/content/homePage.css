@@ -1,0 +1,35 @@
+.contentBackground {
+  background: URL("https://cdn.pixabay.com/photo/2016/12/08/19/53/fractals-1892996_1280.jpg");
+  height: 100%;
+  background-repeat: repeat-y;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  top: 45%;
+  padding: 2em;
+}
+
+.buttonStyle {
+  width: 100px;
+  height: 80px;
+}
+
+.iconStyle {
+  width: 40px;
+  height: 40px;
+}
+
+.toolBar {
+  padding: 1em;
+}
+
+.title {
+  display: flex;
+  text-align: center;
+  position: absolute;
+  top: -460px;
+}

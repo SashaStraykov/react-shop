@@ -1,0 +1,16 @@
+.logo {
+  display: flex;
+  align-items: center;
+  padding: 2em;
+}
+
+.header {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.backButton {
+  margin-left: 10px;
+}
