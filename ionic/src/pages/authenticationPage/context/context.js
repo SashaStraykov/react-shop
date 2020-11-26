@@ -1,25 +1,25 @@
 import React, { createContext, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { AppContext } from '../../../app/context';
 import axios from 'axios';
+import { AppContext } from '../../../app/context';
 
 export const Context = createContext();
 
 export const Provider = ({ children }) => {
-  const [ authentification, setAuthentification ] = useState('SignIn');
-  const [ loading, setLoading ] = useState(false);
-  const [ showToast, setShowToast ] = useState(false);
-  const [ errorMessage, setErrorMessage ] = useState('');
-  const [ signInLogin, setSignInLogin ] = useState('');
-  const [ signInPassword, setSignInPassword ] = useState('');
-  const [ signInCheckBox, setSignInCheckBox ] = useState(false);
+  const [authentification, setAuthentification] = useState('SignIn');
+  const [loading, setLoading] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [signInLogin, setSignInLogin] = useState('');
+  const [signInPassword, setSignInPassword] = useState('');
+  const [signInCheckBox, setSignInCheckBox] = useState(false);
 
-  const [ signUpEmail, setSignUpEmail ] = useState('');
-  const [ signUpLogin, setSignUpLogin ] = useState('');
-  const [ signUpPassword, setSignUpPassword ] = useState('');
-  const [ signUpPasswordCheck, setSignUpPasswordCheck ] = useState('');
-  const [ signUpCheckBox, setSignUpCheckBox ] = useState(false);
-  const [ signUpCheckBoxCheck, setSignUpCheckBoxCheck ] = useState(false);
+  const [signUpEmail, setSignUpEmail] = useState('');
+  const [signUpLogin, setSignUpLogin] = useState('');
+  const [signUpPassword, setSignUpPassword] = useState('');
+  const [signUpPasswordCheck, setSignUpPasswordCheck] = useState('');
+  const [signUpCheckBox, setSignUpCheckBox] = useState(false);
+  const [signUpCheckBoxCheck, setSignUpCheckBoxCheck] = useState(false);
 
   const { appContextData } = useContext(AppContext);
   const { setUser } = appContextData;
@@ -31,56 +31,56 @@ export const Provider = ({ children }) => {
       login: signInLogin.trim(),
       password: signInPassword.trim(),
     };
-    axios.defaults.headers.common['Content-Type']= 'application/json';
+    axios.defaults.headers.common['Content-Type'] = 'application/json';
     await axios.post(process.env.REACT_APP_API_USERS_AUTHORIZATION, personData)
-      .then(({data})=> {
-       localStorage.setItem('DataUser', data.token);
-       setUser(data);
-       setLoading(false);
+      .then(({ data }) => {
+        localStorage.setItem('DataUser', data.token);
+        setUser(data);
+        setLoading(false);
       })
-      .catch(e=>{
-        if(e.response.data.message) {
-          setErrorMessage (e.response.data.message)
+      .catch((err) => {
+        if (err.response.data.message) {
+          setErrorMessage(err.response.data.message);
           setShowToast(true);
           setLoading(false);
         }
-      })
-      return setLoading(false)
+      });
+    return setLoading(false);
   };
 
-const registration = async (e) => {
-  e.preventDefault();
-  setLoading(true);
-  if(signUpPassword!==signUpPasswordCheck) {
-    setLoading(false);
-    setErrorMessage('The password doesn not match');
-    return setShowToast(true);
-  };
-  const personData = {
-    email: signUpEmail.trim(),
-    login: signUpLogin.trim(),
-    password: signUpPassword.trim(),
-  };
-  axios.defaults.headers.common['Content-Type']= 'application/json';
-  await axios.post(process.env.REACT_APP_API_USERS_REGISTRATION, personData)
-  .then(({data}) => {
-    setErrorMessage(data.message)
-    setShowToast(true);
-    setSignUpEmail('');
-    setSignUpLogin('');
-    setSignUpPassword('');
-    setSignUpPasswordCheck('')
-    setLoading(false);
-  })
-  .catch(e=>{
-    if(e.response.data.message) {
-      setErrorMessage(e.response.data.message)
-      setShowToast(true);
+  const registration = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    if (signUpPassword !== signUpPasswordCheck) {
       setLoading(false);
+      setErrorMessage('The password doesn not match');
+      return setShowToast(true);
     }
-  })
-  return setLoading(false);
-}
+    const personData = {
+      email: signUpEmail.trim(),
+      login: signUpLogin.trim(),
+      password: signUpPassword.trim(),
+    };
+    axios.defaults.headers.common['Content-Type'] = 'application/json';
+    await axios.post(process.env.REACT_APP_API_USERS_REGISTRATION, personData)
+      .then(({ data }) => {
+        setErrorMessage(data.message);
+        setShowToast(true);
+        setSignUpEmail('');
+        setSignUpLogin('');
+        setSignUpPassword('');
+        setSignUpPasswordCheck('');
+        setLoading(false);
+      })
+      .catch((err) => {
+        if (err.response.data.message) {
+          setErrorMessage(err.response.data.message);
+          setShowToast(true);
+          setLoading(false);
+        }
+      });
+    return setLoading(false);
+  };
 
   const authenticationPageContextData = {
     authentification,
@@ -93,13 +93,13 @@ const registration = async (e) => {
     setSignInCheckBox,
     signUpEmail,
     setSignUpEmail,
-    signUpLogin, 
+    signUpLogin,
     setSignUpLogin,
-    signUpPassword, 
+    signUpPassword,
     setSignUpPassword,
-    signUpPasswordCheck, 
+    signUpPasswordCheck,
     setSignUpPasswordCheck,
-    signUpCheckBox, 
+    signUpCheckBox,
     setSignUpCheckBox,
     signUpCheckBoxCheck,
     setSignUpCheckBoxCheck,
@@ -108,7 +108,7 @@ const registration = async (e) => {
     setShowToast,
     errorMessage,
     loading,
-    registration
+    registration,
   };
   return (
     <Context.Provider value={{ authenticationPageContextData }}>

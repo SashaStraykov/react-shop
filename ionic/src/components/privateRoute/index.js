@@ -7,13 +7,15 @@ import { AUTHENTIFICATION_PAGE } from '../../constants';
 const PrivateRoute = ({ children, path }) => {
   const { appContextData } = useContext(AppContext);
   const { user } = appContextData;
+
+  if (!user) return <Redirect from={path} to={AUTHENTIFICATION_PAGE} />;
+
   return (
-    user ? (
-      <Route path={path} exact={true}>
-        {children}
-      </Route>
-    )
-    : <Redirect to={AUTHENTIFICATION_PAGE} />);
+    <Route path={path}>
+      {children}
+    </Route>
+
+  );
 };
 
 PrivateRoute.propTypes = {

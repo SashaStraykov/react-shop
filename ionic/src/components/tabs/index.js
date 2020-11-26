@@ -1,43 +1,39 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
-import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, IonBadge, IonRouterOutlet } from '@ionic/react';
-import { calendar, personCircle, map, informationCircle } from 'ionicons/icons';
-import { HOME_PAGE, CHECKOUT_PAGE, PERSON_PAGE } from '../../constants';
-import HomePage from '../../pages/homePage';
-import PersonPage from '../../pages/personPage';
+import {
+  IonTabs, IonTabBar, IonTabButton, IonIcon, IonBadge, IonRouterOutlet,
+} from '@ionic/react';
+import {
+  informationCircle,
+  home, person, cart,
+} from 'ionicons/icons';
 
-const Tabs = () => {
-    return (
-        <IonTabs>
-            <IonRouterOutlet>
-                <Route path="/person-page-info">
-<h1>Person-pageInfo</h1>
-                </Route>
-            </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="schedule" href={HOME_PAGE}>
-            <IonIcon icon={calendar} />
-            <IonLabel>Schedule</IonLabel>
-            <IonBadge>6</IonBadge>
-          </IonTabButton>
-    
-          <IonTabButton tab="speakers"  href="/person-page-info">
-            <IonIcon icon={personCircle} />
-            <IonLabel>Speakers</IonLabel>
-          </IonTabButton>
-    
-          <IonTabButton tab="map">
-            <IonIcon icon={map} />
-            <IonLabel>Map</IonLabel>
-          </IonTabButton>
-    
-          <IonTabButton tab="about">
-            <IonIcon icon={informationCircle} />
-            <IonLabel>About</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    )
-}
+import {
+  HOME_PAGE, CHECKOUT_PAGE, PERSON_PAGE,
+} from '../../constants';
+import LayOuts from '../../layouts';
+import './tabs.css';
+
+const Tabs = () => (
+  <IonTabs>
+    <IonRouterOutlet>
+      <LayOuts />
+    </IonRouterOutlet>
+    <IonTabBar slot="bottom">
+      <IonTabButton tab="tab1" href={HOME_PAGE} className="tabBackground">
+        <IonIcon icon={home} />
+      </IonTabButton>
+      <IonTabButton tab="personpage" href={PERSON_PAGE} className="tabBackground">
+        <IonIcon icon={person} />
+      </IonTabButton>
+      <IonTabButton tab="checkoutpage" href={CHECKOUT_PAGE} className="tabBackground">
+        <IonIcon icon={cart} />
+        <IonBadge color="danger">6</IonBadge>
+      </IonTabButton>
+      <IonTabButton tab="about" className="tabBackground">
+        <IonIcon icon={informationCircle} />
+      </IonTabButton>
+    </IonTabBar>
+  </IonTabs>
+);
 
 export default Tabs;

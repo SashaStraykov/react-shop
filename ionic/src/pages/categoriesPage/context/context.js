@@ -6,24 +6,24 @@ export const Context = createContext();
 
 export const Provider = ({ children }) => {
   const [categories, setCategories] = useState(null);
-  const [loading, setLoading] = useState(false)
-   
-  useEffect(()=> {
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
     setLoading(true);
-    const req = async()=> {
+    const req = async () => {
       await axios.get(`${process.env.REACT_APP_API_CATEGORY}`)
-      .then(({data})=>{
-        setCategories(data);
-        setLoading(false)
-      })
-    }
+        .then(({ data }) => {
+          setCategories(data);
+          setLoading(false);
+        });
+    };
     req();
-    return setLoading(false)
-  }, [])
+    return setLoading(false);
+  }, []);
 
   const categoriesPageContextData = {
     loading,
-    categories
+    categories,
   };
   return (
     <Context.Provider value={{ categoriesPageContextData }}>

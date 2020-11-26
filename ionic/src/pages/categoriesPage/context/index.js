@@ -1,5 +1,4 @@
 export {
-    Context as CategoriesPageContext,
-    Provider as CategoriesPageContextProvider,
-  } from './context';
-  
+  Context as CategoriesPageContext,
+  Provider as CategoriesPageContextProvider,
+} from './context';

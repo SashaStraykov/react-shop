@@ -7,7 +7,7 @@ import { AUTHORIZATION_PAGE } from '../../constants/routes';
 const PrivateRoute = ({ children, ...route }) => {
   const { contextData } = useContext(AppContext);
   const { user } = contextData;
-
+console.log(route)
   return user
     ? (
       <Route {...route}>

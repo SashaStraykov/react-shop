@@ -1,32 +1,35 @@
-import React from 'react'
+import React from 'react';
 import { Route } from 'react-router-dom';
-import { HOME_PAGE, CATEGORIES_PAGE, AUTHENTIFICATION_PAGE } from '../../constants';
+import { IonRouterOutlet } from '@ionic/react';
+import {
+  HOME_PAGE, CATEGORIES_PAGE, AUTHENTIFICATION_PAGE,
+} from '../../constants';
 import HomePage from '../../pages/homePage';
 import CategoriesPage from '../../pages/categoriesPage';
 import ProductsPage from '../../pages/productsPage';
 import ItemPage from '../../pages/itemPage';
 import AuthenticationPage from '../../pages/authenticationPage';
+import DashLayOut from '../dashLayout';
 
-const PublickLayOut = () => {
-    return (
-        <>
-            <Route path = {HOME_PAGE} exact={true} >
-                <HomePage/>
-            </Route>
-            <Route path = {`${CATEGORIES_PAGE}/:category`} exact={true}>
-                <ProductsPage/>
-            </Route>
-            <Route path = {`${CATEGORIES_PAGE}/:category/:id`} exact={true}>
-                <ItemPage/>
-            </Route>
-            <Route path = {CATEGORIES_PAGE}  exact={true}>
-                <CategoriesPage/>
-            </Route>
-            <Route path = {AUTHENTIFICATION_PAGE}  exact={true}>
-                <AuthenticationPage/>
-            </Route>
-        </>
-    )
-}
+const PublickLayOut = () => (
+  <IonRouterOutlet>
+    <Route path={HOME_PAGE} exact>
+      <HomePage />
+    </Route>
+    <Route path={`${CATEGORIES_PAGE}/:category`} exact>
+      <ProductsPage />
+    </Route>
+    <Route path={`${CATEGORIES_PAGE}/:category/:id`} exact>
+      <ItemPage />
+    </Route>
+    <Route path={CATEGORIES_PAGE} exact>
+      <CategoriesPage />
+    </Route>
+    <Route path={AUTHENTIFICATION_PAGE} exact>
+      <AuthenticationPage />
+    </Route>
+    <DashLayOut />
+  </IonRouterOutlet>
+);
 
 export default PublickLayOut;

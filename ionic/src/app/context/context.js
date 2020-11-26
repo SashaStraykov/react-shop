@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
 
 export const Context = createContext();
@@ -10,10 +10,10 @@ export const Provider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   const signOut = () => {
-    if(user) {
-      setUser(null)
+    if (user) {
+      setUser(null);
     }
-  }
+  };
 
   const appContextData = {
     search,
@@ -25,15 +25,15 @@ export const Provider = ({ children }) => {
     user,
     setUser,
     signOut,
-    };
+  };
 
-    return (
-      <Context.Provider value={{ appContextData }}>
-        {children}
-      </Context.Provider>
-    );
+  return (
+    <Context.Provider value={{ appContextData }}>
+      {children}
+    </Context.Provider>
+  );
 };
-    
+
 Provider.propTypes = {
   children: PropTypes.node.isRequired,
 };

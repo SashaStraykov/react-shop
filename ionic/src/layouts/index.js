@@ -1,14 +1,12 @@
-import React from 'react'
+import React from 'react';
 import PublicLayout from './publickLayOut';
 import DashLayOut from './dashLayout';
 
-const LayOuts = () => {
-    return (
-        <>
-            <PublicLayout/>
-            <DashLayOut/>
-        </>
-    )
-}
+const LayOuts = () => (
+  <>
+    <PublicLayout />
+    <DashLayOut />
+  </>
+);
 
-export default LayOuts
+export default LayOuts;

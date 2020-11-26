@@ -1,15 +1,15 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import ItemPageContent from './content/ItemPageContent';
 import { ItemPageContextProvider } from './context';
-import { useParams } from 'react-router-dom';
 
 const ItemPage = () => {
-    const { category, id } = useParams();
-    return (
-        <ItemPageContextProvider category={category} itemId={id}>
-            <ItemPageContent/>
-        </ItemPageContextProvider>
-    )
-}
+  const { category, id } = useParams();
+  return (
+    <ItemPageContextProvider category={category} itemId={id}>
+      <ItemPageContent />
+    </ItemPageContextProvider>
+  );
+};
 
-export default ItemPage
+export default ItemPage;

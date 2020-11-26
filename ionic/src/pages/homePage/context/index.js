@@ -1,5 +1,4 @@
 export {
-    Context as HomePageContext,
-    Provider as HomePageContextProvider,
-  } from './context';
-  
+  Context as HomePageContext,
+  Provider as HomePageContextProvider,
+} from './context';

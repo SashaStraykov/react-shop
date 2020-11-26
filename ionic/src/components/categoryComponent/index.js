@@ -1,16 +1,22 @@
-import { IonItem } from '@ionic/react';
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import './CategoryComponent.css';
+import PropTypes from 'prop-types';
 
-const CategoryCompomnent = ({_id, img, title, url}) => {
-    return (
-        <Link to={url}  className="divFlex">
-            <img src={img} className="img"/>
-            <span className="spanTitle">{title.toUpperCase()}</span>
-        </Link>
+const CategoryCompomnent = ({
+  img, title, url,
+}) => (
+  <a to={url} className="divFlex">
+    <img src={img} alt={img} className="img" />
+    <span className="spanTitle">{title.toUpperCase()}</span>
+  </a>
 
-    )
-}   
+);
 
-export default CategoryCompomnent
+CategoryCompomnent.propTypes = {
+  img: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+};
+
+export default CategoryCompomnent;

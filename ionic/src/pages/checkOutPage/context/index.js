@@ -1,5 +1,4 @@
 export {
-    Context as CheckOutPageContext,
-    Provider as CheckOutPageContextProvider,
-  } from './context';
-  
+  Context as CheckOutPageContext,
+  Provider as CheckOutPageContextProvider,
+} from './context';

@@ -1,29 +1,29 @@
 import React from 'react';
-import { IonButton, IonContent, IonIcon, IonItem, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import { CATEGORIES_PAGE } from '../../../constants';
+import {
+  IonButton, IonContent, IonIcon, IonPage, IonTitle,
+} from '@ionic/react';
 import { logoUsd, cube } from 'ionicons/icons';
+import { CATEGORIES_PAGE } from '../../../constants';
 import BackGround from '../../../components/backGround';
 import './homePage.css';
 
-const HomePageContent = () => {
-    return (
-        <IonPage>
-            <IonContent fullscreen={true} >
-                <BackGround>
-                    <IonTitle className="title" size="large">Typ's Shop</IonTitle>
-                    <div className="buttonContainer">
-                        <IonButton color="secondary" shape="round" fill="outline" size="large" className="buttonStyle">
-                            <IonIcon className="iconStyle" icon={logoUsd}/>
-                        </IonButton>
-                        <IonButton  color="secondary" routerLink={CATEGORIES_PAGE}  shape="round" fill="outline" size="large" className="buttonStyle">
-                            <IonIcon className="iconStyle" icon={cube}/>
-                        </IonButton>
-                    </div>
-                </BackGround>
+const HomePageContent = () => (
+  <IonPage>
+    <IonContent fullscreen>
+      <BackGround>
+        <IonTitle className="title" size="large">Typ&#39;s Shop</IonTitle>
+        <div className="buttonContainer">
+          <IonButton color="secondary" shape="round" fill="outline" size="large" className="buttonStyle">
+            <IonIcon className="iconStyle" icon={logoUsd} />
+          </IonButton>
+          <IonButton color="secondary" routerLink={CATEGORIES_PAGE} shape="round" fill="outline" size="large" className="buttonStyle">
+            <IonIcon className="iconStyle" icon={cube} />
+          </IonButton>
+        </div>
+      </BackGround>
 
-            </IonContent>
-        </IonPage>
-    )
-}
+    </IonContent>
+  </IonPage>
+);
 
-export default HomePageContent
+export default HomePageContent;
