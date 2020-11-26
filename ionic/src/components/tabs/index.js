@@ -10,15 +10,9 @@ const Tabs = () => {
     return (
         <IonTabs>
             <IonRouterOutlet>
-                {/* <Route path={HOME_PAGE} exact={true}>
-                    <HomePage/>
+                <Route path="/person-page-info">
+<h1>Person-pageInfo</h1>
                 </Route>
-                <Route path={PERSON_PAGE} exact={true}>
-                    <PersonPage/>
-                </Route> */}
-                {/* <Route path="/tab1" component={Tab1} exact={true} />
-                <Route path="/tab2" component={Tab2} exact={true} />
-                <Route path="/tab3" component={Tab3} /> */}
             </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="schedule" href={HOME_PAGE}>
@@ -27,7 +21,7 @@ const Tabs = () => {
             <IonBadge>6</IonBadge>
           </IonTabButton>
     
-          <IonTabButton tab="speakers" >
+          <IonTabButton tab="speakers"  href="/person-page-info">
             <IonIcon icon={personCircle} />
             <IonLabel>Speakers</IonLabel>
           </IonTabButton>

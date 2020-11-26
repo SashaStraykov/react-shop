@@ -1,15 +1,18 @@
 import React from 'react';
-import { PERSON_PAGE } from '../../constants';
-import PersonPage from '../../pages/personPage';
+import { PERSON_PAGE, CHECKOUT_PAGE } from '../../constants';
 import PrivateRoute from '../../components/privateRoute';
-import { Route, Redirect } from 'react-router-dom';
+import PersonPage from '../../pages/personPage';
+import CheckOutPage from '../../pages/checkOutPage';
 
 const DashLayOut = () => {
     return (
         <>
-            <Route path = {PERSON_PAGE} exact={true} >
+            <PrivateRoute path = {PERSON_PAGE}  >
                 <PersonPage/>
-            </Route>
+            </PrivateRoute>
+            <PrivateRoute path = {`${PERSON_PAGE}${CHECKOUT_PAGE}`}>
+                <CheckOutPage/>
+            </PrivateRoute>
         </>
     )
 }

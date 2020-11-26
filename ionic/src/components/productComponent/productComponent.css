@@ -8,11 +8,11 @@
 .productComponentImg {
   display: flex;
   height: 160px;
-  width: 60%;
+  width: 200px;
 }
 
 .productComponentFlexBox {
-  width: 40%;
+  width: 200px;
   display: flex;
   flex-direction: column;
 }

@@ -1,3 +1,4 @@
+import { IonItem } from '@ionic/react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './CategoryComponent.css';
@@ -10,6 +11,6 @@ const CategoryCompomnent = ({_id, img, title, url}) => {
         </Link>
 
     )
-}
+}   
 
 export default CategoryCompomnent

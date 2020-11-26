@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import { AppContext } from '../../app/context';
 import { AUTHENTIFICATION_PAGE } from '../../constants';
 
-const PrivateRoute = ({ children, ...route }) => {
+const PrivateRoute = ({ children, path }) => {
   const { appContextData } = useContext(AppContext);
   const { user } = appContextData;
   return (
     user ? (
-      <Route {...route} exact={true}>
+      <Route path={path} exact={true}>
         {children}
       </Route>
     )
@@ -18,6 +18,7 @@ const PrivateRoute = ({ children, ...route }) => {
 
 PrivateRoute.propTypes = {
   children: PropTypes.node.isRequired,
+  path: PropTypes.string.isRequired,
 };
 
 export default PrivateRoute;
