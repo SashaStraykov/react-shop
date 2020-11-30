@@ -7,7 +7,8 @@ export const Context = createContext();
 export const Provider = ({ children, category, itemId }) => {
   const [item, setItem] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  console.log('id-', itemId);
+  console.log('category', category);
   useEffect(() => {
     setLoading(true);
     const req = async () => {

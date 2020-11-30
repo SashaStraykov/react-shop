@@ -9,9 +9,8 @@ const PrivateRoute = ({ children, path }) => {
   const { user } = appContextData;
 
   if (!user) return <Redirect from={path} to={AUTHENTIFICATION_PAGE} />;
-
   return (
-    <Route path={path}>
+    <Route path={path} exact>
       {children}
     </Route>
 

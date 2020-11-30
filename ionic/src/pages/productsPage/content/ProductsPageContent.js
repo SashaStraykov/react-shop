@@ -7,6 +7,7 @@ import {
   IonInfiniteScrollContent,
   IonInfiniteScroll,
 } from '@ionic/react';
+import { useRouteMatch } from 'react-router-dom';
 import { CATEGORIES_PAGE } from '../../../constants';
 import Header from '../../../layouts/header';
 import ProductComponent from '../../../components/productComponent';
@@ -15,6 +16,8 @@ import SearchPannel from '../../../components/searchPannel';
 import './productsPageContent.css';
 
 const HomePageContent = () => {
+  const { url } = useRouteMatch();
+  console.log('url-', url);
   const { productsPageContextData } = useContext(ProductsPageContext);
   const {
     category, loading, products, nextItems, disableInfiniteScroll,

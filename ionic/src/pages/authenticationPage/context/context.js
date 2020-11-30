@@ -8,8 +8,6 @@ export const Context = createContext();
 export const Provider = ({ children }) => {
   const [authentification, setAuthentification] = useState('SignIn');
   const [loading, setLoading] = useState(false);
-  const [showToast, setShowToast] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
   const [signInLogin, setSignInLogin] = useState('');
   const [signInPassword, setSignInPassword] = useState('');
   const [signInCheckBox, setSignInCheckBox] = useState(false);
@@ -22,7 +20,9 @@ export const Provider = ({ children }) => {
   const [signUpCheckBoxCheck, setSignUpCheckBoxCheck] = useState(false);
 
   const { appContextData } = useContext(AppContext);
-  const { setUser } = appContextData;
+  const {
+    setUser, showToast, setShowToast, errorMessage, setErrorMessage,
+  } = appContextData;
 
   const authorization = async (e) => {
     e.preventDefault();

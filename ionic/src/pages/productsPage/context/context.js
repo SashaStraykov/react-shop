@@ -17,25 +17,15 @@ export const Provider = ({ children, category }) => {
 
   const { appContextData } = useContext(AppContext);
   const {
-    search, reload, searchValue, setSearchValue,
+    search, reload,
   } = appContextData;
-  const [a, setA] = useState(1);
 
   useEffect(() => {
     setLoading(true);
-    setSearchValue(search);
-    if (search) {
-      if (a === 0) {
-        setCounter(1);
-        setA(1);
-      }
-    } else if (a === 1) {
-      setCounter(1);
-      setA(0);
-    }
     const req = async () => {
-      await axios.get(`${process.env.REACT_APP_API_ITEMS}/${category}?postsperpage=${postsPerPage}&&currentpage=${search && search !== searchValue ? 1 : counter}&&searchmatch=${search}`)
+      await axios.get(`${process.env.REACT_APP_API_ITEMS}/${category}?postsperpage=${postsPerPage}&&currentpage=${counter}&&searchmatch=${search}`)
         .then(({ data }) => {
+          console.log('category', category);
           setProducts([...products, ...data.finalItems]);
           setLoading(false);
         });

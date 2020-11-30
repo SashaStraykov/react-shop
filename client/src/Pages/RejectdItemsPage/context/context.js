@@ -17,7 +17,7 @@ import React, {
     const { user, setUser, errorMessage, confirmComponent, setConfirmComponent, setErrorMessage, openToast, setOpenToast, cart, setCart } = contextData;
 
 
-    useEffect(()=> {
+    useEffect(()=> {    
       const req = async () => {
         axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('DataUser')}` 
         await axios.get(`${process.env.REACT_APP_API_REJECTED_ITEMS}?id=${user.id}`)

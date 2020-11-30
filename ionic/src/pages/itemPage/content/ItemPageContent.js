@@ -15,6 +15,7 @@ const ItemPageContent = () => {
   const {
     title, img, price, date, description,
   } = item;
+  console.log(item);
   return (
     <IonPage>
       <Header linkTo={`${CATEGORIES_PAGE}/${category}`} />

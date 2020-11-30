@@ -5,3 +5,27 @@
   padding: 10px;
   font-size: 20px;
 }
+
+.personPageDeleteIcon {
+  margin: 20px;
+  font-size: 24px;
+}
+
+.personPageSegment {
+  --background: black;
+  color: white;
+}
+
+.personPageSegmentLabel {
+  font-size: 22px;
+  margin: 10px;
+}
+
+.personPageSegmentButton {
+  --indicator-color: var(--brand-color);
+  --indicator-height: 2px;
+}
+
+.personPageSegmentIcon {
+  font-size: 25px;
+}

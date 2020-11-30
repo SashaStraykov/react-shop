@@ -6,8 +6,11 @@ export const Context = createContext();
 export const Provider = ({ children }) => {
   const [search, setSearch] = useState('');
   const [reload, setReload] = useState(false);
-  const [searchValue, setSearchValue] = useState('');
   const [user, setUser] = useState(null);
+  const [showToast, setShowToast] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [cart, setCart] = useState(1);
+  const [checkoutUser, setCheckoutUser] = useState([]);
 
   const signOut = () => {
     if (user) {
@@ -20,11 +23,17 @@ export const Provider = ({ children }) => {
     setSearch,
     reload,
     setReload,
-    searchValue,
-    setSearchValue,
     user,
     setUser,
     signOut,
+    showToast,
+    setShowToast,
+    errorMessage,
+    setErrorMessage,
+    cart,
+    setCart,
+    checkoutUser,
+    setCheckoutUser,
   };
 
   return (

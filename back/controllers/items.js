@@ -103,7 +103,6 @@ exports.DeleteItem = async (req,res)=> {
         finalItems,
         totalAmount: totalEndItems.length
       }
-      console.log(currentPage)
       res.status(200).json(sentData);
       } catch (e) {
       res.status(500).json({ message: e });

@@ -1,5 +1,4 @@
 import React from 'react';
-// import { IonRouterOutlet } from '@ionic/react';
 import { PERSON_PAGE, CHECKOUT_PAGE } from '../../constants';
 import PrivateRoute from '../../components/privateRoute';
 import PersonPage from '../../pages/personPage';
@@ -13,6 +12,7 @@ const DashLayOut = () => (
     <PrivateRoute path={CHECKOUT_PAGE}>
       <CheckOutPage />
     </PrivateRoute>
+
   </>
 );
 

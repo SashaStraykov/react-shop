@@ -1,0 +1,47 @@
+.cardHeaderD {
+  color: red;
+}
+
+.cardContent {
+  display: flex;
+  justify-content: center;
+}
+
+.cardColF {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.cardColS {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.cardIcon {
+  margin-right: 5px;
+}
+
+.cardC {
+  padding: 0;
+}
+
+.test {
+  margin: 0;
+  color: red;
+}
+
+.cardDescription {
+  max-height: 150px;
+  overflow: scroll;
+}
+
+.cardDelIcon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 20px;
+  color: var(--brand-color);
+  padding: 15px;
+}

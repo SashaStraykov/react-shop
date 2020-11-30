@@ -11,7 +11,6 @@ export const Provider = ({ children, itemid, category }) => {
   const {
     user, addItemToBucket, bucketItems, added, setAdded, cart, setCart
   } = contextData;
-
   const [item, setItem] = useState([]);
   const [loading, setLoading] = useState(true);
 
