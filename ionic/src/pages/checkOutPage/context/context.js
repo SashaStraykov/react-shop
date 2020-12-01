@@ -1,12 +1,17 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, {
+  createContext, useState, useEffect, useContext,
+} from 'react';
+import { Plugins } from '@capacitor/core';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { AppContext } from '../../../app/context';
 
+const { Storage } = Plugins;
+
 export const Context = createContext();
 
 export const Provider = ({ children }) => {
-  const { appContextData } = useState(AppContext);
+  const { appContextData } = useContext(AppContext);
   const {
     user, cart, setCart, checkoutUser, setCheckoutUser,
   } = appContextData;
@@ -16,53 +21,61 @@ export const Provider = ({ children }) => {
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
-    const bucketItems = localStorage.getItem(user.id);
-    if (bucketItems) {
-      const req = async () => {
-        axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem('DataUser')}`;
-        await axios.post(`${process.env.REACT_APP_API_ITEMS_BUCKET}`, { bucketItems })
-          .then((res) => {
-            const a = bucketItems.split(',');
-            if (a.length !== res.data.length) {
-              const result = [];
-              a.forEach((el) => {
-                res.data.forEach(({ id }) => {
-                  if (el === id) {
-                    result.push(el);
-                  }
+    const getBucketItems = async () => {
+      const bucketItem = await Storage.get({ key: user.id });
+      const bucketItems = bucketItem.value;
+      if (bucketItems !== null) {
+        const req = async () => {
+          axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem('DataUser')}`;
+          await axios.post(`${process.env.REACT_APP_API_ITEMS_BUCKET}`, { bucketItems })
+            .then(({ data }) => {
+              const a = bucketItems.split(',');
+              if (a.length !== data.length) {
+                const result = [];
+                a.forEach((el) => {
+                  data.forEach(({ id }) => {
+                    if (el === id) {
+                      result.push(el);
+                    }
+                  });
                 });
-              });
-              localStorage.setItem(user.id, result);
-              setCart(cart + 1);
-            }
-            setItems(res.data);
-          })
-          .catch(() => setError(true));
-      };
-      req();
-    }
-
+                Storage.set({ key: user.id, value: result });
+                setCart(cart + 1);
+              }
+              setItems(data);
+            })
+            .catch(() => setError(true));
+        };
+        req();
+      }
+    };
+    getBucketItems();
     setLoading(false);
     return setLoading(false);
     // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
-    const storage = [];
+    // const storage = [];
+    let storage;
     const checkout = [];
-    if (localStorage.getItem(user.id.toString())) {
-      storage.push(...localStorage.getItem(user.id).split(','));
-    }
-
-    items.forEach((el) => {
-      // eslint-disable-next-line no-restricted-syntax
-      for (const key of storage) {
-        if (key === el.id) {
-          checkout.push(el);
-        }
+    const check = async () => {
+      const getStorageItems = await Storage.get({ key: user.id });
+      if (getStorageItems.value !== null) {
+        storage = getStorageItems.value.split(',');
       }
-    });
-    setCheckoutUser(checkout);
+      items.forEach((el) => {
+        // eslint-disable-next-line no-restricted-syntax
+        for (const key of storage) {
+          if (key === el.id) {
+            checkout.push(el);
+          }
+        }
+      });
+      setCheckoutUser(checkout);
+    };
+    check();
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [items]);
 
@@ -72,12 +85,39 @@ export const Provider = ({ children }) => {
     }
   }, [checkoutUser]);
 
+  // const onDelete = async (id) => {
+  //   const newPosts = [];
+  //   myAnouncement.forEach((el) => {
+  //     if (el.id !== id) {
+  //       newPosts.push(el);
+  //     }
+  //   });
+  //   setMyAnouncement(newPosts);
+  //   const postData = {
+  //     data: {
+  //       id,
+  //     },
+  //   };
+  //   axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem('DataUser')}`;
+  //   axios.defaults.headers.common['Content-Type'] = 'application/json';
+  //   await axios.delete(process.env.REACT_APP_API_ITEMS, postData)
+  //     .then(({ data }) => {
+  //       setErrorMessage(data.message);
+  //       setShowToast(true);
+  //     })
+  //     .catch((err) => {
+  //       if (err.response.data.message) {
+  //         setErrorMessage(err.response.data.message);
+  //         setShowToast(true);
+  //       }
+  //     });
+  // };
+
   const checkOutPageContextData = {
     loading,
     checkoutUser,
     totalPrice,
     error,
-    items,
   };
   return (
     <Context.Provider value={{ checkOutPageContextData }}>

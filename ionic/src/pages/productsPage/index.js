@@ -5,7 +5,6 @@ import { ProductsPageContextProvider } from './context';
 
 const ItemPage = () => {
   const { category } = useParams();
-  console.log('provider category', category);
   return (
     <ProductsPageContextProvider category={category}>
       <ProductsPageContent />

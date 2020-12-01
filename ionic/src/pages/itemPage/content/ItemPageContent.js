@@ -11,11 +11,12 @@ import Slider from '../../../components/slider';
 
 const ItemPageContent = () => {
   const { itemPageContextData } = useContext(ItemPageContext);
-  const { category, loading, item } = itemPageContextData;
   const {
-    title, img, price, date, description,
+    category, loading, item, addItemToBucket, added,
+  } = itemPageContextData;
+  const {
+    title, img, price, date, description, id,
   } = item;
-  console.log(item);
   return (
     <IonPage>
       <Header linkTo={`${CATEGORIES_PAGE}/${category}`} />
@@ -28,7 +29,7 @@ const ItemPageContent = () => {
                 {img && <Slider img={img} />}
               </div>
               <div className="itemPageDescription">{description}</div>
-              <IonButton className="itemPageBucketButton" color="secondary" expand="full" fill="outline">Add to bucket</IonButton>
+              <IonButton onClick={() => addItemToBucket(id)} className="itemPageBucketButton" color="secondary" expand="full" fill="outline">{added ? 'Already in the bucket' : 'Add to bucket'}</IonButton>
             </div>
           ) }
         </BackGround>
