@@ -25,7 +25,6 @@ export const Provider = ({ children, category }) => {
     const req = async () => {
       await axios.get(`${process.env.REACT_APP_API_ITEMS}/${category}?postsperpage=${postsPerPage}&&currentpage=${counter}&&searchmatch=${search}`)
         .then(({ data }) => {
-          console.log('category', category);
           setProducts([...products, ...data.finalItems]);
           setLoading(false);
         });

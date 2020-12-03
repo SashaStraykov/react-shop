@@ -1,0 +1,14 @@
+.scrollTopButton {
+  border: 1px solid red;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
+}
+
+.scrollTopButtonUnVissible {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+}

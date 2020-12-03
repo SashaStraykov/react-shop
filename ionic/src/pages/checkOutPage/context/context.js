@@ -14,11 +14,15 @@ export const Provider = ({ children }) => {
   const { appContextData } = useContext(AppContext);
   const {
     user, cart, setCart, checkoutUser, setCheckoutUser,
+    setErrorMessage, errorMessage, setShowToast, showToast,
   } = appContextData;
   const [loading, setLoading] = useState(true);
   const [items, setItems] = useState([]);
   const [error, setError] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [idDeleteAnnouncement, setIdDeleteAnnouncement] = useState('');
+  const [alert, setAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState('');
 
   useEffect(() => {
     const getBucketItems = async () => {
@@ -85,39 +89,52 @@ export const Provider = ({ children }) => {
     }
   }, [checkoutUser]);
 
-  // const onDelete = async (id) => {
-  //   const newPosts = [];
-  //   myAnouncement.forEach((el) => {
-  //     if (el.id !== id) {
-  //       newPosts.push(el);
-  //     }
-  //   });
-  //   setMyAnouncement(newPosts);
-  //   const postData = {
-  //     data: {
-  //       id,
-  //     },
-  //   };
-  //   axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem('DataUser')}`;
-  //   axios.defaults.headers.common['Content-Type'] = 'application/json';
-  //   await axios.delete(process.env.REACT_APP_API_ITEMS, postData)
-  //     .then(({ data }) => {
-  //       setErrorMessage(data.message);
-  //       setShowToast(true);
-  //     })
-  //     .catch((err) => {
-  //       if (err.response.data.message) {
-  //         setErrorMessage(err.response.data.message);
-  //         setShowToast(true);
-  //       }
-  //     });
-  // };
+  const cancelItem = (id, array) => {
+    const storage = [];
+    const newCheckoutItems = [];
+    let index;
+    const reqStorage = async () => {
+      const lStorage = await Storage.get({ key: user.id });
+      storage.push(...lStorage.value.split(','));
+      storage.forEach((el, i) => {
+        if (el === id) {
+          index = i;
+        }
+      });
+      storage.splice(index, 1);
+      array.forEach((el) => {
+        // eslint-disable-next-line no-restricted-syntax
+        for (const key of storage) {
+          if (key === el.id) {
+            newCheckoutItems.push(el);
+          }
+        }
+      });
+      setCheckoutUser(newCheckoutItems);
+      Storage.set({ key: user.id, value: storage });
+      setCart(cart - 1);
+      setErrorMessage('Product removed from bucket');
+      setShowToast(true);
+    };
+    reqStorage();
+  };
 
   const checkOutPageContextData = {
     loading,
     checkoutUser,
     totalPrice,
     error,
+    idDeleteAnnouncement,
+    setIdDeleteAnnouncement,
+    alertMessage,
+    setAlertMessage,
+    alert,
+    setAlert,
+    cancelItem,
+    items,
+    showToast,
+    setShowToast,
+    errorMessage,
   };
   return (
     <Context.Provider value={{ checkOutPageContextData }}>

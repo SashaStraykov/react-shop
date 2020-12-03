@@ -62,6 +62,9 @@ export const Provider = ({ children, category, itemId }) => {
         if (bucketItems.some((el) => el === id)) {
           return bucketItems;
         }
+        if (bucketItems[0] === '') {
+          bucketItems.splice(0, 1);
+        }
         setBucketItems(bucketItems.push(id));
 
         Storage.set({ key: user.id, value: bucketItems });

@@ -16,7 +16,7 @@ export const Provider = ({ children }) => {
   const [checkoutUser, setCheckoutUser] = useState([]);
   const [added, setAdded] = useState(false);
   const [bucketItems, setBucketItems] = useState(0);
-  const [ammountItemsinBucket, setAmmountItemsinBucket] = useState(0);
+  const [amountItemsinBucket, setAmountItemsinBucket] = useState(0);
 
   const signOut = () => {
     if (user) {
@@ -37,7 +37,11 @@ export const Provider = ({ children }) => {
   }, [user, cart]);
 
   useEffect(() => {
-    setAmmountItemsinBucket(bucketItems.length);
+    if (bucketItems[0] === '' && bucketItems.length === 1) {
+      setAmountItemsinBucket(0);
+    } else {
+      setAmountItemsinBucket(bucketItems.length);
+    }
   }, [bucketItems]);
 
   const appContextData = {
@@ -60,7 +64,7 @@ export const Provider = ({ children }) => {
     setAdded,
     bucketItems,
     setBucketItems,
-    ammountItemsinBucket,
+    amountItemsinBucket,
   };
 
   return (

@@ -3,12 +3,10 @@ import {
   IonTabs, IonTabBar, IonTabButton, IonIcon, IonBadge, IonRouterOutlet,
 } from '@ionic/react';
 import {
-  informationCircle,
-  home, person, cart,
+  home, person, cart, layers,
 } from 'ionicons/icons';
-
 import {
-  HOME_PAGE, CHECKOUT_PAGE, PERSON_PAGE,
+  HOME_PAGE, CHECKOUT_PAGE, PERSON_PAGE, ADMIN_PAGE,
 } from '../../constants';
 import LayOuts from '../../layouts';
 import './tabs.css';
@@ -16,7 +14,7 @@ import { AppContext } from '../../app/context';
 
 const Tabs = () => {
   const { appContextData } = useContext(AppContext);
-  const { ammountItemsinBucket, user } = appContextData;
+  const { amountItemsinBucket, user } = appContextData;
 
   return (
     <IonTabs>
@@ -32,11 +30,13 @@ const Tabs = () => {
         </IonTabButton>
         <IonTabButton tab="checkoutpage" href={CHECKOUT_PAGE} className="tabBackground">
           <IonIcon icon={cart} />
-          {user && <IonBadge color="danger">{ammountItemsinBucket}</IonBadge>}
+          {user && <IonBadge color="danger">{amountItemsinBucket}</IonBadge>}
         </IonTabButton>
-        <IonTabButton tab="about" className="tabBackground">
-          <IonIcon icon={informationCircle} />
+        {user && user.role === 'admin' && (
+        <IonTabButton tab="about" className="tabBackground" href={ADMIN_PAGE}>
+          <IonIcon icon={layers} />
         </IonTabButton>
+        )}
       </IonTabBar>
     </IonTabs>
   );

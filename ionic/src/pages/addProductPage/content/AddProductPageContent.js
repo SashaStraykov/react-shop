@@ -23,7 +23,7 @@ const AddProductPageContent = () => {
     return <IonSpinner />;
   }
   return (
-    <div>
+    <>
       <IonItem>
         <IonLabel position="floating">Title</IonLabel>
         <IonInput value={title} onIonChange={(e) => setTitle(e.detail.value)} />
@@ -46,7 +46,7 @@ const AddProductPageContent = () => {
         <IonLabel position="floating">Photos</IonLabel>
         <IonInput type="file" />
       </IonItem>
-    </div>
+    </>
   );
 };
 

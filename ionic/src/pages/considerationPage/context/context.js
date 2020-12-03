@@ -69,6 +69,10 @@ export const Provider = ({ children }) => {
         }
       });
   };
+
+  const onDeleteButtonCard = (id, title) => {
+    setIdDeleteAnnouncement(id); setAlert(true); setAlertMessage(title);
+  };
   const considerationPageContextData = {
     loading,
     considerationProducts,
@@ -80,6 +84,7 @@ export const Provider = ({ children }) => {
     setAlertMessage,
     idDeleteAnnouncement,
     setIdDeleteAnnouncement,
+    onDeleteButtonCard,
   };
   return (
     <Context.Provider value={{ considerationPageContextData }}>

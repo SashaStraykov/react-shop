@@ -15,6 +15,7 @@ const ConsiderationPageContent = () => {
     alertMessage,
     setAlert,
     alert,
+    onDeleteButtonCard,
   } = considerationPageContextData;
   if (loading) {
     return <IonSpinner />;
@@ -24,7 +25,7 @@ const ConsiderationPageContent = () => {
   }
   return (
     <>
-      {considerationProducts.map(({ id, ...rest }) => <CardComponent key={id} id={id} {...rest} />)}
+      {considerationProducts.map(({ id, ...rest }) => <CardComponent key={id} id={id} {...rest} onDeleteButtonCard={onDeleteButtonCard} consideration />)}
       <IonAlert
         isOpen={alert}
         onDidDismiss={() => setAlert(false)}

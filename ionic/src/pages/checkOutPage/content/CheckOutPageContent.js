@@ -1,61 +1,79 @@
 import {
-  IonContent,
   IonItemSliding,
-  IonPage,
   IonSpinner,
   IonItem,
   IonItemOptions,
   IonItemOption,
   IonIcon,
-  IonLabel,
+  IonAlert,
+  IonToast,
 } from '@ionic/react';
 import {
   trashOutline,
   logoUsd,
 } from 'ionicons/icons';
 import React, { useContext } from 'react';
-import Header from '../../../layouts/header';
 import { HOME_PAGE, CATEGORIES_PAGE } from '../../../constants';
 import './CheckOutPageContent.css';
 import { CheckOutPageContext } from '../context';
 import ProductComponent from '../../../components/productComponent';
-import BackGround from '../../../components/backGround';
+import Wrapper from '../../../components/wrapper';
 
 const CheckOutPageContent = () => {
   const { checkOutPageContextData } = useContext(CheckOutPageContext);
-  const { checkoutUser, loading, totalPrice } = checkOutPageContextData;
+  const {
+    checkoutUser, loading, totalPrice, cancelItem,
+    idDeleteAnnouncement, setIdDeleteAnnouncement,
+    alertMessage, setAlertMessage, alert, setAlert,
+    items, showToast, setShowToast, errorMessage,
+  } = checkOutPageContextData;
   return (
-    <IonPage>
-      <Header linkTo={HOME_PAGE} />
-      <IonContent>
-        <BackGround>
-          <div className="checkOutTitle">Checkout Products</div>
-          {loading ? <IonSpinner />
-            : checkoutUser.map((item) => (
-              <IonItemSliding key={item.id}>
-                <IonItem routerLink={`${CATEGORIES_PAGE}/${item.idCategory}/${item.id}`}>
-                  <ProductComponent {...item} />
-                </IonItem>
-                <IonItemOptions side="end">
-                  <IonItemOption>
-                    <IonIcon icon={trashOutline} />
-                  </IonItemOption>
-                </IonItemOptions>
-              </IonItemSliding>
-            ))}
-          <IonItem>
-            <div className="checkOutTotalPrice">
-              <span>
-                Total prcie:
-                {' '}
-              </span>
-              <IonIcon icon={logoUsd} className="checkOutIcon" />
-              <div>{totalPrice}</div>
-            </div>
-          </IonItem>
-        </BackGround>
-      </IonContent>
-    </IonPage>
+    <Wrapper link={HOME_PAGE}>
+      <div className="checkOutTitle">Checkout Products</div>
+      {loading ? <IonSpinner />
+        : checkoutUser.map((item) => (
+          <IonItemSliding key={item.id}>
+            <IonItem routerLink={`${CATEGORIES_PAGE}/${item.idCategory}/${item.id}`}>
+              <ProductComponent {...item} />
+            </IonItem>
+            <IonItemOptions side="end">
+              <IonItemOption color="danger" onClick={() => { setIdDeleteAnnouncement(item.id); setAlert(true); setAlertMessage(item.title); }}>
+                <IonIcon icon={trashOutline} className="checkOutIconD" />
+              </IonItemOption>
+            </IonItemOptions>
+          </IonItemSliding>
+        ))}
+      <IonItem>
+        <div className="checkOutTotalPrice">
+          <span>
+            Total prcie:
+            {' '}
+          </span>
+          <IonIcon icon={logoUsd} className="checkOutIcon" />
+          <div>{totalPrice}</div>
+        </div>
+      </IonItem>
+      <IonAlert
+        isOpen={alert}
+        onDidDismiss={() => setAlert(false)}
+        header="Do you really want remove from bucket"
+        message={alertMessage}
+        buttons={[{
+          text: 'Yes',
+          handler: () => {
+            cancelItem(idDeleteAnnouncement, items);
+          },
+        }, 'CANCEL']}
+      />
+      <IonToast
+        isOpen={showToast}
+        onDidDismiss={() => setShowToast(false)}
+        message={errorMessage}
+        duration={2000}
+        color="secondary"
+        position="bottom"
+      />
+    </Wrapper>
   );
 };
 
