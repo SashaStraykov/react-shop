@@ -39,6 +39,7 @@ exports.authorization = async (req, res) => {
              message: 'uncorrect authorization data'
           })
         }
+        console.log(req.body)
             const {login, password } = req.body;
             const regUser = await User.findOne({login: login})
             if( !regUser ) {

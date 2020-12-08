@@ -21,19 +21,19 @@ const Tabs = () => {
       <IonRouterOutlet>
         <LayOuts />
       </IonRouterOutlet>
-      <IonTabBar slot="bottom">
-        <IonTabButton tab="tab1" href={HOME_PAGE} className="tabBackground">
+      <IonTabBar slot="bottom" className="tabBackground">
+        <IonTabButton tab="tab1" href={HOME_PAGE} className="iconTab">
           <IonIcon icon={home} />
         </IonTabButton>
-        <IonTabButton tab="personpage" href={PERSON_PAGE} className="tabBackground">
+        <IonTabButton tab="personpage" href={PERSON_PAGE} className="iconTab">
           <IonIcon icon={person} />
         </IonTabButton>
-        <IonTabButton tab="checkoutpage" href={CHECKOUT_PAGE} className="tabBackground">
+        <IonTabButton tab="checkoutpage" href={CHECKOUT_PAGE} className="iconTab">
           <IonIcon icon={cart} />
           {user && <IonBadge color="danger">{amountItemsinBucket}</IonBadge>}
         </IonTabButton>
         {user && user.role === 'admin' && (
-        <IonTabButton tab="about" className="tabBackground" href={ADMIN_PAGE}>
+        <IonTabButton tab="about" className="iconTab" href={ADMIN_PAGE}>
           <IonIcon icon={layers} />
         </IonTabButton>
         )}

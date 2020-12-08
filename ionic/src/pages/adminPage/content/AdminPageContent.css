@@ -1,0 +1,7 @@
+.adminTitle {
+  text-align: center;
+  color: var(--text-color);
+  font-size: 24px;
+  padding: 10px;
+  padding-bottom: 0;
+}

@@ -45,3 +45,22 @@
   color: var(--brand-color);
   padding: 15px;
 }
+
+.cardWrapper {
+  margin-bottom: 0;
+}
+
+.cardStatementIconUp {
+  color: green;
+  font-size: 24px;
+  margin-right: 15px;
+}
+.cardStatementIconDown {
+  color: red;
+  font-size: 24px;
+}
+.cardStatementIcons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}

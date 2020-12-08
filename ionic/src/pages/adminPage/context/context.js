@@ -11,12 +11,15 @@ export const Provider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [unApprovedItems, setUnApprovedItems] = useState([]);
   const [error, setError] = useState(false);
+  const [idStateAnnouncement, setIdStateAnnouncement] = useState('');
+  const [alert, setAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState('');
 
   const { appContextData } = useContext(AppContext);
   const {
-    user, setUser, setErrorMessage, setShowToast,
+    setUser, setErrorMessage, setShowToast,
   } = appContextData;
-
+  //   setErrorMessage, setShowToast,  user,
   useEffect(() => {
     const req = async () => {
       axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem('DataUser')}`;
@@ -39,10 +42,44 @@ export const Provider = ({ children }) => {
     // eslint-disable-next-line
   }, []);
 
+  const onStateButtonCard = (id, title) => {
+    setIdStateAnnouncement(id); setAlert(true); setAlertMessage(title);
+  };
+
+  const onChangeState = (id, approved, remark) => {
+    const req = async () => {
+      const postData = {
+        itemId: id,
+        approved,
+        remark,
+      };
+      axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem('DataUser')}`;
+      axios.defaults.headers.common['Content-Type'] = 'application/json';
+      await axios.put(`${process.env.REACT_APP_API_ITEMS}/statement`, postData)
+        .then(({ data }) => {
+          setErrorMessage(data.message);
+          setShowToast(true);
+        })
+        .catch((err) => {
+          if (err.response.data.message) {
+            setErrorMessage(err.response.data.message);
+            setShowToast(true);
+          }
+        });
+    };
+    req();
+  };
+
   const adminPageContextData = {
     loading,
     unApprovedItems,
     error,
+    onStateButtonCard,
+    alert,
+    setAlert,
+    alertMessage,
+    idStateAnnouncement,
+    onChangeState,
   };
   return (
     <Context.Provider value={{ adminPageContextData }}>

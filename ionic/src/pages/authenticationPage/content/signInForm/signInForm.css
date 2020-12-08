@@ -4,18 +4,12 @@
   --background: transparent;
 }
 
-.signInForm {
-}
-
 .signInItem {
   --background: transparent;
 }
 .signInButton {
-  position: absolute;
-  bottom: 120px;
   width: 80%;
-  left: 50%;
-  transform: translateX(-50%);
+  margin: 50px auto;
 }
 
 .ionSpinner {
@@ -23,4 +17,12 @@
   top: 50%;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.signInLogin {
+  --color: var(--text-color);
+}
+
+.signInLabel {
+  --color: var(--text-color) !important;
 }

@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import CardComponent from '../../../components/cardComponent';
 import { ConsiderationPageContext } from '../context';
 import ErrorPage from '../../../components/error';
+import './ConsiderationPageContent.css';
 
 const ConsiderationPageContent = () => {
   const { considerationPageContextData } = useContext(ConsiderationPageContext);
@@ -25,7 +26,16 @@ const ConsiderationPageContent = () => {
   }
   return (
     <>
-      {considerationProducts.map(({ id, ...rest }) => <CardComponent key={id} id={id} {...rest} onDeleteButtonCard={onDeleteButtonCard} consideration />)}
+      <div className="considerationTitle">Consideration products</div>
+      {considerationProducts.map(({ id, ...rest }) => (
+        <CardComponent
+          key={id}
+          id={id}
+          {...rest}
+          onDeleteButtonCard={onDeleteButtonCard}
+          consideration
+        />
+      ))}
       <IonAlert
         isOpen={alert}
         onDidDismiss={() => setAlert(false)}

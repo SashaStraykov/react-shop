@@ -11,7 +11,7 @@ export const Provider = ({ children }) => {
   useEffect(() => {
     setLoading(true);
     const req = async () => {
-      await axios.get(`${process.env.REACT_APP_API_CATEGORY}`)
+      await axios.get(process.env.REACT_APP_API_CATEGORY)
         .then(({ data }) => {
           setCategories(data);
           setLoading(false);

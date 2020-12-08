@@ -8,7 +8,7 @@ import Logo from '../../assets/dataArtLogo.png';
 import './header.css';
 
 const Header = ({ linkTo }) => (
-  <IonHeader>
+  <IonHeader className="clearFix">
     <IonToolbar className="header">
       <IonButtons slot="start" className="backButton">
         <IonBackButton text="" icon={chevronBack} color="secondary" defaultHref={linkTo} />

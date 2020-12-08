@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import {
   IonItem,
-  IonList,
   IonSpinner,
   IonItemSliding,
   IonItemOption,
@@ -41,20 +40,18 @@ const PersonPageInfoContent = () => {
   return (
     <>
       <div className="personPageTitle">My announcement</div>
-      <IonList>
-        {myAnouncement.map((announcement) => (
-          <IonItemSliding key={announcement.id}>
-            <IonItem routerLink={`${CATEGORIES_PAGE}/${announcement.idCategory}/${announcement.id}`}>
-              <ProductComponent {...announcement} />
-            </IonItem>
-            <IonItemOptions side="end" onClick={() => { setIdDeleteAnnouncement(announcement.id); setAlert(true); setAlertMessage(announcement.title); }}>
-              <IonItemOption color="danger">
-                <IonIcon icon={trashOutline} className="personPageDeleteIcon" />
-              </IonItemOption>
-            </IonItemOptions>
-          </IonItemSliding>
-        ))}
-      </IonList>
+      {myAnouncement.map((announcement) => (
+        <IonItemSliding key={announcement.id}>
+          <IonItem className="itemCss" routerLink={`${CATEGORIES_PAGE}/${announcement.idCategory}/${announcement.id}`}>
+            <ProductComponent {...announcement} />
+          </IonItem>
+          <IonItemOptions side="end" onClick={() => { setIdDeleteAnnouncement(announcement.id); setAlert(true); setAlertMessage(announcement.title); }}>
+            <IonItemOption color="danger">
+              <IonIcon icon={trashOutline} className="personPageDeleteIcon" />
+            </IonItemOption>
+          </IonItemOptions>
+        </IonItemSliding>
+      ))}
       <IonAlert
         isOpen={alert}
         onDidDismiss={() => setAlert(false)}

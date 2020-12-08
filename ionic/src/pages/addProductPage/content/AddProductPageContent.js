@@ -24,25 +24,33 @@ const AddProductPageContent = () => {
   }
   return (
     <>
-      <IonItem>
+      <div className="addTitle">Add new anouncement</div>
+      <IonItem className="itemCss">
         <IonLabel position="floating">Title</IonLabel>
         <IonInput value={title} onIonChange={(e) => setTitle(e.detail.value)} />
       </IonItem>
-      <IonItem>
+      <IonItem className="itemCss">
         <IonLabel>Category</IonLabel>
         <IonSelect value={selectCategory} onIonChange={(e) => setSelectCategory(e.detail.value)}>
-          {category.map((el) => <IonSelectOption value={el.title} key={el._id}>{el.title}</IonSelectOption>)}
+          {category.map((el) => (
+            <IonSelectOption
+              value={el.title}
+              key={el._id}
+            >
+              {el.title}
+            </IonSelectOption>
+          ))}
         </IonSelect>
       </IonItem>
-      <IonItem>
+      <IonItem className="itemCss">
         <IonLabel position="floating">Price</IonLabel>
         <IonInput value={price} onIonChange={(e) => setPrice(e.detail.value)} type="number" />
       </IonItem>
-      <IonItem>
+      <IonItem className="itemCss">
         <IonLabel position="floating">Description</IonLabel>
         <IonTextarea rows="6" value={description} onIonChange={(e) => setDescription(e.detail.value)} />
       </IonItem>
-      <IonItem>
+      <IonItem className="itemCss">
         <IonLabel position="floating">Photos</IonLabel>
         <IonInput type="file" />
       </IonItem>

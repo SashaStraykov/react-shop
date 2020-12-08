@@ -21,18 +21,18 @@ const SignIn = () => {
     return <IonSpinner className="ionSpinner" />;
   }
   return (
-    <form>
+    <>
       <IonItem className="signInItem">
-        <IonLabel position="floating">Login...</IonLabel>
-        <IonInput value={signInLogin} onIonChange={(e) => setSignInLogin(e.detail.value)} />
+        <IonLabel className="signInLabel" position="floating">Login...</IonLabel>
+        <IonInput value={signInLogin} onIonChange={(e) => setSignInLogin(e.detail.value)} className="signInLogin" />
       </IonItem>
       <IonItem className="signInToggle">
-        <IonLabel position="floating">Password...</IonLabel>
-        <IonInput type={signInCheckBox ? 'password' : 'text'} value={signInPassword} onIonChange={(e) => setSignInPassword(e.detail.value)} />
+        <IonLabel className="signInLabel" position="floating">Password...</IonLabel>
+        <IonInput type={signInCheckBox ? 'password' : 'text'} value={signInPassword} onIonChange={(e) => setSignInPassword(e.target.value)} className="signInLogin" />
         <IonToggle color="secondary" slot="end" checked={signInCheckBox} onIonChange={() => setSignInCheckBox(!signInCheckBox)} />
       </IonItem>
-      <IonButton onIonFocus={authorization} className="signInButton" color="secondary" expand="block" fill="outline">Submit</IonButton>
-    </form>
+      <IonButton onClick={authorization} className="signInButton" color="secondary" expand="block" fill="outline">Submit</IonButton>
+    </>
   );
 };
 

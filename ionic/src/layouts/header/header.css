@@ -9,8 +9,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-shrink: 1;
+  --background: var(--black-color);
 }
 
 .backButton {
   margin-left: 10px;
+}
+
+.clearFix {
+  margin: 0;
 }

@@ -18,7 +18,7 @@ app.use(express.json({ extended: true}))
 app.use(methodOverride('_method '))
 
 const corsConfig = {
-  "origin": [process.env.CLIENT_URL, process.env.MOBILE_APP_URL ],
+  "origin": [process.env.CLIENT_URL, process.env.MOBILE_APP_URL, process.env.MOBILE_EMULATOR_URL ],
   "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
   "preflightContinue": false,
   "optionsSuccessStatus": 204

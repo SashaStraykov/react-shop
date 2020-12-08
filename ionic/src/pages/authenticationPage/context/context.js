@@ -10,7 +10,7 @@ export const Provider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [signInLogin, setSignInLogin] = useState('');
   const [signInPassword, setSignInPassword] = useState('');
-  const [signInCheckBox, setSignInCheckBox] = useState(false);
+  const [signInCheckBox, setSignInCheckBox] = useState(true);
 
   const [signUpEmail, setSignUpEmail] = useState('');
   const [signUpLogin, setSignUpLogin] = useState('');

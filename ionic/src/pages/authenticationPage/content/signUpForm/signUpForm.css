@@ -1,9 +1,7 @@
 .signUpButton {
-  position: absolute;
-  bottom: 20px;
   width: 80%;
-  left: 50%;
-  transform: translateX(-50%);
+  width: 80%;
+  margin: 50px auto;
 }
 
 .signUp {

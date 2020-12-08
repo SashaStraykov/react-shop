@@ -29,24 +29,24 @@ const SignUp = () => {
   return (
     <form>
       <IonItem className="signUp">
-        <IonLabel position="floating">Email...</IonLabel>
+        <IonLabel className="signInLabel" position="floating">Email...</IonLabel>
         <IonInput inputmode="email" value={signUpEmail} onIonChange={(e) => setSignUpEmail(e.target.value)} />
       </IonItem>
       <IonItem className="signUp">
-        <IonLabel position="floating">Login...</IonLabel>
+        <IonLabel className="signInLabel" position="floating">Login...</IonLabel>
         <IonInput value={signUpLogin} onIonChange={(e) => setSignUpLogin(e.target.value)} />
       </IonItem>
       <IonItem className="signInToggle">
-        <IonLabel position="floating">Password...</IonLabel>
+        <IonLabel className="signInLabel" position="floating">Password...</IonLabel>
         <IonInput type={signUpCheckBox ? 'password' : 'text'} value={signUpPassword} onIonChange={(e) => setSignUpPassword(e.target.value)} />
         <IonToggle color="secondary" slot="end" checked={signUpCheckBox} onIonChange={() => setSignUpCheckBox(!signUpCheckBox)} />
       </IonItem>
       <IonItem className="signInToggle">
-        <IonLabel position="floating">Repeat Password...</IonLabel>
+        <IonLabel className="signInLabel" position="floating">Repeat Password...</IonLabel>
         <IonInput type={signUpCheckBoxCheck ? 'password' : 'text'} value={signUpPasswordCheck} onIonChange={(e) => setSignUpPasswordCheck(e.target.value)} />
         <IonToggle color="secondary" slot="end" checked={signUpCheckBoxCheck} onIonChange={() => setSignUpCheckBoxCheck(!signUpCheckBoxCheck)} />
       </IonItem>
-      <IonButton onIonFocus={registration} className="signUpButton" color="secondary" expand="block" fill="outline">Submit</IonButton>
+      <IonButton onClick={registration} className="signUpButton" color="secondary" expand="block" fill="outline">Submit</IonButton>
     </form>
   );
 };

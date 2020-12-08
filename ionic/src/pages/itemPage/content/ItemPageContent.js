@@ -14,8 +14,9 @@ const ItemPageContent = () => {
     category, loading, item, addItemToBucket, added,
   } = itemPageContextData;
   const {
-    title, img, price, date, description, id,
+    title, img, description, id,
   } = item;
+  // price, date,
   return (
     <Wrapper link={`${CATEGORIES_PAGE}/${category}`}>
       {loading ? <IonSpinner /> : (

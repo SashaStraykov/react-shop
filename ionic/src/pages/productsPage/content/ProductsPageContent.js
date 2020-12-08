@@ -35,6 +35,7 @@ const HomePageContent = () => {
             key={id}
             routerLink={`${CATEGORIES_PAGE}/${category}/${id}`}
             routerDirection="forward"
+            className="productItem"
           >
             <ProductComponent {...rest} id={id} />
           </IonItem>

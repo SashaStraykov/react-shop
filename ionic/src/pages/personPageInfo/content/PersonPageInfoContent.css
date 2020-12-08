@@ -1,5 +1,10 @@
 .personPageTitle {
-  font-size: 24px;
   text-align: center;
-  margin: 20px;
+  font-size: 24px;
+  padding: 10px;
+  color: var(--text-color);
+}
+
+.testL {
+  --background: transparent !important;
 }

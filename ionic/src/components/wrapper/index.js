@@ -10,8 +10,9 @@ const Wrapper = ({ children, link = HOME_PAGE, header = true }) => {
   const scrollToTop = () => {
     document.getElementById('contentId').scrollToTop(500);
     console.log(document.getElementById('contentId').clientHeight);
-    console.log(document.getElementById('contentId').scrollTop);  
+    console.log(document.getElementById('contentId').scrollTop);
   };
+
   return (
     <IonPage>
       {header && <Header linkTo={link} />}

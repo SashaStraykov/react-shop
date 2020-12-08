@@ -13,6 +13,7 @@ import {
 } from '@ionic/react';
 import {
   calendarOutline, logoUsd, trashOutline,
+  thumbsUpSharp, thumbsDownSharp,
 } from 'ionicons/icons';
 import PropTypes from 'prop-types';
 import './CardComponent.css';
@@ -21,19 +22,27 @@ import Slider from '../slider';
 const CardComponent = ({
   id, description, img, price, remark, title,
   date, approved, onDeleteButtonCard = null, consideration = false,
+  onStateButtonCard = null, onChangeState = null,
 }) => (
-  <IonCard>
+  <IonCard className="cardWrapper">
     <Slider img={img} />
     <IonCardHeader>
       {consideration
-      && (
-      <>
-        <div onClick={() => onDeleteButtonCard(id, title)} className="cardDelIcon">
-          <IonIcon icon={trashOutline} />
-        </div>
-        <IonCardSubtitle className={approved === '' ? null : 'cardHeaderD'}>{approved === '' ? 'Submitted' : 'Declined'}</IonCardSubtitle>
-      </>
-      )}
+        ? (
+          <>
+            <div onClick={() => onDeleteButtonCard(id, title)} className="cardDelIcon">
+              <IonIcon icon={trashOutline} />
+            </div>
+
+            <IonCardSubtitle className={approved === '' ? null : 'cardHeaderD'}>{approved === '' ? 'Submitted' : 'Declined'}</IonCardSubtitle>
+          </>
+        ) : (
+          <div className="cardStatementIcons">
+            <IonIcon onClick={() => onChangeState(id, 'approved')} className="cardStatementIconUp" icon={thumbsUpSharp} />
+            <IonIcon onClick={() => onStateButtonCard(id, title)} className="cardStatementIconDown" icon={thumbsDownSharp} />
+          </div>
+        )}
+
       <IonCardTitle>{title}</IonCardTitle>
     </IonCardHeader>
     <IonCardContent className="cardDescription">{description}</IonCardContent>
@@ -58,6 +67,8 @@ const CardComponent = ({
 CardComponent.defaultProps = {
   onDeleteButtonCard: null,
   consideration: false,
+  onStateButtonCard: null,
+  onChangeState: null,
 };
 
 CardComponent.propTypes = {
@@ -73,6 +84,8 @@ CardComponent.propTypes = {
   approved: PropTypes.string.isRequired,
   onDeleteButtonCard: PropTypes.func,
   consideration: PropTypes.bool,
+  onStateButtonCard: PropTypes.func,
+  onChangeState: PropTypes.func,
 };
 
 export default CardComponent;

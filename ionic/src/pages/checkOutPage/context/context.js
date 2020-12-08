@@ -28,6 +28,7 @@ export const Provider = ({ children }) => {
     const getBucketItems = async () => {
       const bucketItem = await Storage.get({ key: user.id });
       const bucketItems = bucketItem.value;
+      console.log(bucketItems);
       if (bucketItems !== null) {
         const req = async () => {
           axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem('DataUser')}`;

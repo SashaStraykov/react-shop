@@ -33,7 +33,7 @@ const CheckOutPageContent = () => {
       {loading ? <IonSpinner />
         : checkoutUser.map((item) => (
           <IonItemSliding key={item.id}>
-            <IonItem routerLink={`${CATEGORIES_PAGE}/${item.idCategory}/${item.id}`}>
+            <IonItem className="itemCss" routerLink={`${CATEGORIES_PAGE}/${item.idCategory}/${item.id}`}>
               <ProductComponent {...item} />
             </IonItem>
             <IonItemOptions side="end">
@@ -43,7 +43,7 @@ const CheckOutPageContent = () => {
             </IonItemOptions>
           </IonItemSliding>
         ))}
-      <IonItem>
+      <IonItem className="itemCss">
         <div className="checkOutTotalPrice">
           <span>
             Total prcie:

@@ -3,3 +3,7 @@
   height: 200px;
   color: red;
 }
+
+.productItem {
+  --background: transparent;
+}

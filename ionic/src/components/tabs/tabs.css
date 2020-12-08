@@ -1,4 +1,8 @@
 .tabBackground {
   /* --background-focused: red; */
+  --background: var(--black-color);
+}
+
+.iconTab {
   --color-selected: var(--brand-color);
 }
