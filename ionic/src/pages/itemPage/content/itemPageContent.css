@@ -27,3 +27,15 @@
   color: var(--brand-color);
 }
 
+.itemPageBucketButtonAuth {
+  border: none;
+  width: 100%;
+  position: relative;
+  margin: auto;
+}
+
+.itemPageLink {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,7 @@
+.searchPannelForm {
+  --background: transparent;
+}
+
+.searcPannelLabel {
+  --color: var(--text-color) !important;
+}

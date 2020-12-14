@@ -4,6 +4,7 @@ import React, {
 import { Plugins } from '@capacitor/core';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+// import { SQLite } from '@ionic-native/sqlite/';
 import { AppContext } from '../../../app/context';
 
 const { Storage } = Plugins;
@@ -18,11 +19,6 @@ export const Provider = ({ children, category, itemId }) => {
     added, setAdded, bucketItems, setBucketItems, user, cart, setCart,
   } = appContextData;
 
-  const cleanUp = () => {
-    setLoading(false);
-    setAdded(false);
-  };
-
   useEffect(() => {
     setLoading(true);
     const req = async () => {
@@ -33,7 +29,10 @@ export const Provider = ({ children, category, itemId }) => {
         });
     };
     req();
-    return cleanUp();
+    return () => {
+      setLoading(false);
+      setAdded(false);
+    };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -58,16 +57,16 @@ export const Provider = ({ children, category, itemId }) => {
   const addItemToBucket = async (id) => {
     if (user) {
       const bucketItem = await Storage.get({ key: user.id });
-      if (bucketItem.value !== null) {
+      if (bucketItem.value !== null && bucketItem.value !== '') {
         if (bucketItems.some((el) => el === id)) {
           return bucketItems;
         }
         if (bucketItems[0] === '') {
           bucketItems.splice(0, 1);
+        } else {
+          setBucketItems(bucketItems.push(id));
         }
-        setBucketItems(bucketItems.push(id));
-
-        Storage.set({ key: user.id, value: bucketItems });
+        Storage.set({ key: user.id, value: bucketItems.join(',') });
       } else {
         Storage.set({ key: user.id, value: id });
       }
@@ -83,6 +82,7 @@ export const Provider = ({ children, category, itemId }) => {
     item,
     addItemToBucket,
     added,
+    user,
   };
   return (
     <Context.Provider value={{ itemPageContextData }}>

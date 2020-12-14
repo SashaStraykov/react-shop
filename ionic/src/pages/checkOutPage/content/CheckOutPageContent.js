@@ -1,6 +1,5 @@
 import {
   IonItemSliding,
-  IonSpinner,
   IonItem,
   IonItemOptions,
   IonItemOption,
@@ -18,6 +17,7 @@ import './CheckOutPageContent.css';
 import { CheckOutPageContext } from '../context';
 import ProductComponent from '../../../components/productComponent';
 import Wrapper from '../../../components/wrapper';
+import Spinner from '../../../components/spinner';
 
 const CheckOutPageContent = () => {
   const { checkOutPageContextData } = useContext(CheckOutPageContext);
@@ -30,7 +30,7 @@ const CheckOutPageContent = () => {
   return (
     <Wrapper link={HOME_PAGE}>
       <div className="checkOutTitle">Checkout Products</div>
-      {loading ? <IonSpinner />
+      {loading ? <Spinner />
         : checkoutUser.map((item) => (
           <IonItemSliding key={item.id}>
             <IonItem className="itemCss" routerLink={`${CATEGORIES_PAGE}/${item.idCategory}/${item.id}`}>

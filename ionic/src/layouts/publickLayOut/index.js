@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import { IonRouterOutlet } from '@ionic/react';
 import {
   HOME_PAGE, CATEGORIES_PAGE, AUTHENTIFICATION_PAGE,
@@ -29,6 +29,7 @@ const PublickLayOut = () => (
       <Route path={AUTHENTIFICATION_PAGE} exact>
         <AuthenticationPage />
       </Route>
+      <Redirect exact from="/" to={HOME_PAGE} />
     </Switch>
 
     {/* <DashLayOut /> */}

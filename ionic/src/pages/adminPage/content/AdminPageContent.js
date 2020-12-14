@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { IonAlert, IonSpinner } from '@ionic/react';
+import { IonAlert, IonSpinner, IonToast } from '@ionic/react';
 import Wrapper from '../../../components/wrapper';
 import { HOME_PAGE } from '../../../constants';
 import { AdminPageContext } from '../context';
@@ -11,6 +11,7 @@ const AdminPageContent = () => {
   const {
     loading, unApprovedItems, onStateButtonCard,
     alert, setAlert, alertMessage, idStateAnnouncement, onChangeState,
+    showToast, errorMessage, setShowToast,
   } = adminPageContextData;
   return (
     <Wrapper link={HOME_PAGE}>
@@ -42,6 +43,14 @@ const AdminPageContent = () => {
             onChangeState(idStateAnnouncement, approved, remarkInput);
           },
         }, 'CANCEL']}
+      />
+      <IonToast
+        isOpen={showToast}
+        onDidDismiss={() => setShowToast(false)}
+        message={errorMessage}
+        duration={2000}
+        color="secondary"
+        position="top"
       />
     </Wrapper>
   );

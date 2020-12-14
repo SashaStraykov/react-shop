@@ -45,7 +45,9 @@ export const Provider = ({ children }) => {
           setLoading(false);
         }
       });
-    return setLoading(false);
+    return () => {
+      setLoading(false);
+    };
   };
 
   const registration = async (e) => {
@@ -79,7 +81,9 @@ export const Provider = ({ children }) => {
           setLoading(false);
         }
       });
-    return setLoading(false);
+    return () => {
+      setLoading(false);
+    };
   };
 
   const authenticationPageContextData = {

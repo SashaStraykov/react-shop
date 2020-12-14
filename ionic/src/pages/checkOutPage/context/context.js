@@ -28,7 +28,6 @@ export const Provider = ({ children }) => {
     const getBucketItems = async () => {
       const bucketItem = await Storage.get({ key: user.id });
       const bucketItems = bucketItem.value;
-      console.log(bucketItems);
       if (bucketItems !== null) {
         const req = async () => {
           axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem('DataUser')}`;
@@ -56,7 +55,9 @@ export const Provider = ({ children }) => {
     };
     getBucketItems();
     setLoading(false);
-    return setLoading(false);
+    return () => {
+      setLoading(false);
+    };
     // eslint-disable-next-line
   }, []);
 
@@ -112,7 +113,7 @@ export const Provider = ({ children }) => {
         }
       });
       setCheckoutUser(newCheckoutItems);
-      Storage.set({ key: user.id, value: storage });
+      Storage.set({ key: user.id, value: storage.join(',') });
       setCart(cart - 1);
       setErrorMessage('Product removed from bucket');
       setShowToast(true);

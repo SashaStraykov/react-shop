@@ -14,12 +14,14 @@ export const Provider = ({ children }) => {
   const [idStateAnnouncement, setIdStateAnnouncement] = useState('');
   const [alert, setAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState('');
+  const [showToast, setShowToast] = useState(false);
 
   const { appContextData } = useContext(AppContext);
   const {
-    setUser, setErrorMessage, setShowToast,
+    setUser, setErrorMessage,
+    errorMessage,
   } = appContextData;
-  //   setErrorMessage, setShowToast,  user,
+  // user,
   useEffect(() => {
     const req = async () => {
       axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem('DataUser')}`;
@@ -48,6 +50,13 @@ export const Provider = ({ children }) => {
 
   const onChangeState = (id, approved, remark) => {
     const req = async () => {
+      const a = [];
+      unApprovedItems.forEach((el) => {
+        if (el.id !== id) {
+          a.push(el);
+        }
+      });
+      setUnApprovedItems(a);
       const postData = {
         itemId: id,
         approved,
@@ -80,6 +89,9 @@ export const Provider = ({ children }) => {
     alertMessage,
     idStateAnnouncement,
     onChangeState,
+    showToast,
+    setShowToast,
+    errorMessage,
   };
   return (
     <Context.Provider value={{ adminPageContextData }}>

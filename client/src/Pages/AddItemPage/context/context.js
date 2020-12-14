@@ -50,7 +50,7 @@ export const Provider = ({ children }) => {
   for (let i=0; i<imgs.length; i++) {
     formData.append('imgs', imgs[i]);
   }
-      
+      console.log(imgs[0])
     formData.set('idCategory', category);
     formData.set('title', title);
     formData.set('description', description);

@@ -4,4 +4,6 @@ body {
   --border-color: #cccaca;
   --black-color: #1c1c1c;
   --text-color: #f0f2f5;
+  --red-color: #e32020;
+  background: var(--black-color);
 }

@@ -40,7 +40,9 @@ export const Provider = ({ children }) => {
     };
     req();
     setLoading(false);
-    return setLoading(false);
+    return () => {
+      setLoading(false);
+    };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

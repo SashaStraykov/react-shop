@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import {
-  IonSpinner,
   IonItem,
   IonInfiniteScrollContent,
   IonInfiniteScroll,
@@ -10,6 +9,7 @@ import ProductComponent from '../../../components/productComponent';
 import { ProductsPageContext } from '../context';
 import SearchPannel from '../../../components/searchPannel';
 import Wrapper from '../../../components/wrapper';
+import Spinner from '../../../components/spinner';
 import './productsPageContent.css';
 
 const HomePageContent = () => {
@@ -19,16 +19,10 @@ const HomePageContent = () => {
   } = productsPageContextData;
   return (
     <Wrapper link={CATEGORIES_PAGE}>
-      <IonItem>
-        <SearchPannel />
-      </IonItem>
+      <SearchPannel />
       {loading
         ? (
-          <IonSpinner
-            name="dots"
-            color="secondary"
-            className="spinnerItem"
-          />
+          <Spinner />
         )
         : products.map(({ id, ...rest }) => (
           <IonItem

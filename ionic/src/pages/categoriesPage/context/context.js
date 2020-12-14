@@ -15,10 +15,14 @@ export const Provider = ({ children }) => {
         .then(({ data }) => {
           setCategories(data);
           setLoading(false);
+        })
+        .catch(() => {
         });
     };
     req();
-    return setLoading(false);
+    return () => {
+      setLoading(false);
+    };
   }, []);
 
   const categoriesPageContextData = {

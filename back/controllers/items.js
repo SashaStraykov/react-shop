@@ -19,6 +19,7 @@ exports.DeclarateItem =  (req, res) => {
       res.json({message: err })
     } else {
       try{
+        console.log(req.body)
         const imgArray =[]
         if(req.files.imgs) {
           for(let i=0; i< req.files.imgs.length; i++) {
@@ -80,7 +81,7 @@ exports.DeleteItem = async (req,res)=> {
           remark: remark
         }
       })
-      res.status(201).json({message:'Item approved '})
+      res.status(201).json({message:'Item statement changed '})
     } catch (e) {
       res.status(501).json({message: e})
     }

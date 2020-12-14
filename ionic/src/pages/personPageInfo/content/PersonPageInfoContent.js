@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import {
   IonItem,
-  IonSpinner,
   IonItemSliding,
   IonItemOption,
   IonItemOptions,
@@ -16,6 +15,7 @@ import ProductComponent from '../../../components/productComponent';
 import './PersonPageInfoContent.css';
 import ErrorPage from '../../../components/error';
 import { CATEGORIES_PAGE } from '../../../constants';
+import Spinner from '../../../components/spinner';
 
 const PersonPageInfoContent = () => {
   const { infoPageContextData } = useContext(InfoPageContext);
@@ -32,7 +32,7 @@ const PersonPageInfoContent = () => {
     setAlertMessage,
   } = infoPageContextData;
   if (loading) {
-    return <IonSpinner />;
+    return <Spinner />;
   }
   if (error) {
     return <ErrorPage />;

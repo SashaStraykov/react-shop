@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import {
-  IonItem, IonLabel, IonInput, IonToggle, IonButton, IonSpinner,
+  IonItem, IonLabel, IonInput, IonToggle, IonButton,
 } from '@ionic/react';
 import { AuthenticationPageContext } from '../../context';
 import './signInForm.css';
+import Spinner from '../../../../components/spinner';
 
 const SignIn = () => {
   const { authenticationPageContextData } = useContext(AuthenticationPageContext);
@@ -18,7 +19,7 @@ const SignIn = () => {
     loading,
   } = authenticationPageContextData;
   if (loading) {
-    return <IonSpinner className="ionSpinner" />;
+    return <Spinner />;
   }
   return (
     <>

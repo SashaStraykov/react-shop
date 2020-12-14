@@ -1,4 +1,5 @@
 import {
+  IonButton,
   IonInput, IonItem, IonLabel, IonSelect, IonSelectOption, IonSpinner, IonTextarea,
 } from '@ionic/react';
 import React, { useContext } from 'react';
@@ -18,6 +19,9 @@ const AddProductPageContent = () => {
     setPrice,
     description,
     setDescription,
+    takePhoto,
+    photos,
+    postData,
   } = addProductPageContextData;
   if (loading) {
     return <IonSpinner />;
@@ -50,9 +54,12 @@ const AddProductPageContent = () => {
         <IonLabel position="floating">Description</IonLabel>
         <IonTextarea rows="6" value={description} onIonChange={(e) => setDescription(e.detail.value)} />
       </IonItem>
-      <IonItem className="itemCss">
-        <IonLabel position="floating">Photos</IonLabel>
-        <IonInput type="file" />
+      <IonItem>
+        <IonButton onClick={takePhoto}>Camera</IonButton>
+      </IonItem>
+      <div>{photos && photos.map((pic) => <img key={pic.webviewPath} alt="lol" src={pic.webviewPath} />)}</div>
+      <IonItem>
+        <IonButton onClick={postData}>Send</IonButton>
       </IonItem>
     </>
   );

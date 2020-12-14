@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+// import { SQLite } from '@ionic-native/sqlite/';
 import { Plugins } from '@capacitor/core';
 
 const { Storage } = Plugins;

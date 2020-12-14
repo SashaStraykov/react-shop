@@ -1,9 +1,10 @@
-import { IonSpinner, IonAlert } from '@ionic/react';
+import { IonAlert } from '@ionic/react';
 import React, { useContext } from 'react';
 import CardComponent from '../../../components/cardComponent';
 import { ConsiderationPageContext } from '../context';
 import ErrorPage from '../../../components/error';
 import './ConsiderationPageContent.css';
+import Spinner from '../../../components/spinner';
 
 const ConsiderationPageContent = () => {
   const { considerationPageContextData } = useContext(ConsiderationPageContext);
@@ -19,7 +20,7 @@ const ConsiderationPageContent = () => {
     onDeleteButtonCard,
   } = considerationPageContextData;
   if (loading) {
-    return <IonSpinner />;
+    return <Spinner />;
   }
   if (error) {
     return <ErrorPage />;

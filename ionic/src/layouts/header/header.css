@@ -17,6 +17,14 @@
   margin-left: 10px;
 }
 
+.exitButton {
+  margin-right: 10px;
+}
+
 .clearFix {
   margin: 0;
+  display: flex;
+  /* flex-shrink: 1;
+  flex-basis: 1; */
+  padding-bottom: 20px;
 }

@@ -3,7 +3,6 @@ const https = require('https')
 
 exports.getCategories = async (req, res) => {
     try {
-      console.log(111)
       const category = await Category.find();
       res.status(200).json(category);
     } catch (e) {
