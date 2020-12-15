@@ -8,7 +8,7 @@ import { AppContext } from '../../../app/context';
 export const Context = createContext();
 
 export const Provider = ({ children }) => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [unApprovedItems, setUnApprovedItems] = useState([]);
   const [error, setError] = useState(false);
   const [idStateAnnouncement, setIdStateAnnouncement] = useState('');
@@ -21,15 +21,17 @@ export const Provider = ({ children }) => {
     setUser, setErrorMessage,
     errorMessage,
   } = appContextData;
-  // user,
   useEffect(() => {
+    setLoading(true);
     const req = async () => {
       axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem('DataUser')}`;
       await axios.get(`${process.env.REACT_APP_API_ITEMS_APPROVING}`)
         .then(({ data }) => {
+          setLoading(false);
           setUnApprovedItems(data);
         })
         .catch((e) => {
+          setLoading(false);
           setError(true);
           const authError = e.message.split(' ');
           const l = authError.length;
@@ -39,8 +41,9 @@ export const Provider = ({ children }) => {
         });
     };
     req();
-    setLoading(false);
-    return setLoading(false);
+    return () => {
+      setLoading(false);
+    };
     // eslint-disable-next-line
   }, []);
 

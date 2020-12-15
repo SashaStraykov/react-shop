@@ -9,7 +9,7 @@ export const Context = createContext();
 
 export const Provider = ({ children }) => {
   const [myAnouncement, setMyAnouncement] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [alert, setAlert] = useState(false);
   const [idDeleteAnnouncement, setIdDeleteAnnouncement] = useState('');
@@ -27,9 +27,11 @@ export const Provider = ({ children }) => {
       axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem('DataUser')}`;
       await axios.get(`${process.env.REACT_APP_API_ITEMS}?id=${user.id}`)
         .then(({ data }) => {
+          setLoading(false);
           setMyAnouncement(data);
         })
         .catch((e) => {
+          setLoading(false);
           setError(true);
           const authError = e.message.split(' ');
           const l = authError.length;
@@ -39,7 +41,6 @@ export const Provider = ({ children }) => {
         });
     };
     req();
-    setLoading(false);
     return () => {
       setLoading(false);
     };

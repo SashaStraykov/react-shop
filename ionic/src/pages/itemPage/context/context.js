@@ -4,7 +4,6 @@ import React, {
 import { Plugins } from '@capacitor/core';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-// import { SQLite } from '@ionic-native/sqlite/';
 import { AppContext } from '../../../app/context';
 
 const { Storage } = Plugins;
@@ -14,6 +13,10 @@ export const Context = createContext();
 export const Provider = ({ children, category, itemId }) => {
   const [item, setItem] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [commentValue, setCommentValue] = useState('');
+  const [reload, setReload] = useState(1);
+  const [showToast, setShowToast] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const { appContextData } = useContext(AppContext);
   const {
     added, setAdded, bucketItems, setBucketItems, user, cart, setCart,
@@ -34,7 +37,7 @@ export const Provider = ({ children, category, itemId }) => {
       setAdded(false);
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [reload]);
 
   useEffect(() => {
     const req = async () => {
@@ -76,6 +79,44 @@ export const Provider = ({ children, category, itemId }) => {
     }
   };
 
+  const postComment = async () => {
+    if (commentValue.trim() === '') {
+      return setCommentValue('');
+    }
+    const postData = {
+      login: user.login,
+      comment: commentValue,
+      itemId: item.id,
+    };
+    axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem('DataUser')}`;
+    axios.defaults.headers.common['Content-Type'] = 'application/json';
+    await axios.put(`${process.env.REACT_APP_API_ITEMS}`, postData)
+      .then(({ data }) => {
+        setErrorMessage(data.message);
+        setShowToast(true);
+        setReload(reload + 1);
+        setCommentValue('');
+      });
+  };
+
+  const deleteComment = async (productIdId, commentId) => {
+    const postData = {
+      data: {
+        itemId: productIdId,
+        commentId,
+      },
+
+    };
+    axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem('DataUser')}`;
+    axios.defaults.headers.common['Content-Type'] = 'application/json';
+    await axios.delete(`${process.env.REACT_APP_API_ITEMS}/deletecomment`, postData)
+      .then(({ data }) => {
+        setErrorMessage(data.message);
+        setShowToast(true);
+        setReload(reload - 1);
+      });
+  };
+
   const itemPageContextData = {
     category,
     loading,
@@ -83,6 +124,13 @@ export const Provider = ({ children, category, itemId }) => {
     addItemToBucket,
     added,
     user,
+    commentValue,
+    setCommentValue,
+    postComment,
+    deleteComment,
+    showToast,
+    setShowToast,
+    errorMessage,
   };
   return (
     <Context.Provider value={{ itemPageContextData }}>

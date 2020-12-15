@@ -12,6 +12,7 @@ const Header = ({ linkTo }) => {
   const { appContextData } = useContext(AppContext);
   const { user, setUser } = appContextData;
   const [showAlert, setShowAlert] = useState(false);
+
   return (
     <>
       <IonHeader className="clearFix">

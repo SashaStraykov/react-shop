@@ -19,7 +19,9 @@ exports.DeclarateItem =  (req, res) => {
       res.json({message: err })
     } else {
       try{
-        console.log(req.body)
+        // console.log(req.body)
+        const a =req.body.imgs;
+        console.log(a )
         const imgArray =[]
         if(req.files.imgs) {
           for(let i=0; i< req.files.imgs.length; i++) {
@@ -151,6 +153,7 @@ exports.DeleteItem = async (req,res)=> {
 
   exports.DeleteComment = async (req, res) => {
     try {
+      console.log(req.body)
        await Item.findOneAndUpdate( {id: req.body.itemId}, 
         { 
           $pull: {

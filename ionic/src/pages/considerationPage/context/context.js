@@ -10,7 +10,7 @@ export const Context = createContext();
 export const Provider = ({ children }) => {
   const [considerationProducts, setConsiderationProducts] = useState([]);
   const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState('');
   const [idDeleteAnnouncement, setIdDeleteAnnouncement] = useState(null);
@@ -25,9 +25,11 @@ export const Provider = ({ children }) => {
       axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem('DataUser')}`;
       await axios.get(`${process.env.REACT_APP_API_REJECTED_ITEMS}?id=${user.id}`)
         .then(({ data }) => {
+          setLoading(false);
           setConsiderationProducts(data);
         })
         .catch((e) => {
+          setLoading(false);
           setError(true);
           const authError = e.message.split(' ');
           const l = authError.length;
@@ -37,7 +39,6 @@ export const Provider = ({ children }) => {
         });
     };
     req();
-    setLoading(false);
     return () => {
       setLoading(false);
     };

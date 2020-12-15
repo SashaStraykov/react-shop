@@ -1,0 +1,44 @@
+.commentItem {
+  --background: transparent;
+  display: flex;
+  align-items: center;
+}
+
+.commentLabel {
+  --color: var(--text-color) !important;
+  margin-left: 20px;
+}
+
+.commentP {
+  color: var(--border-color) !important;
+}
+
+.commentWrapper {
+  background: transparent;
+  max-height: 300px;
+  overflow: scroll;
+}
+
+.commentInputLabel {
+  color: var(--text-color) !important;
+}
+
+.commentInput {
+  --color: var(--text-color) !important;
+}
+
+.commentIconSend {
+  color: var(--text-color);
+  font-size: 24px;
+  padding: 5px;
+}
+
+.commentCancelIcon {
+  color: var(--brand-color);
+}
+
+.commentSpan {
+  color: var(--text-color);
+  display: flex;
+  justify-content: center ;
+}

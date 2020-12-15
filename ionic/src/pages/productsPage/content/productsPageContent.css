@@ -1,3 +1,11 @@
 .productItem {
   --background: transparent;
 }
+
+.productNoMatches {
+  display: flex;
+  justify-content: center;
+  color: var(--text-color);
+  font-size: 24px;
+  margin-top: 20px;
+}

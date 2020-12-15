@@ -16,7 +16,7 @@ export const Provider = ({ children }) => {
     user, cart, setCart, checkoutUser, setCheckoutUser,
     setErrorMessage, errorMessage, setShowToast, showToast,
   } = appContextData;
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [items, setItems] = useState([]);
   const [error, setError] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -25,6 +25,7 @@ export const Provider = ({ children }) => {
   const [alertMessage, setAlertMessage] = useState('');
 
   useEffect(() => {
+    setLoading(true);
     const getBucketItems = async () => {
       const bucketItem = await Storage.get({ key: user.id });
       const bucketItems = bucketItem.value;
@@ -47,14 +48,17 @@ export const Provider = ({ children }) => {
                 setCart(cart + 1);
               }
               setItems(data);
+              setLoading(false);
             })
-            .catch(() => setError(true));
+            .catch(() => {
+              setLoading(false);
+              setError(true);
+            });
         };
         req();
       }
     };
     getBucketItems();
-    setLoading(false);
     return () => {
       setLoading(false);
     };

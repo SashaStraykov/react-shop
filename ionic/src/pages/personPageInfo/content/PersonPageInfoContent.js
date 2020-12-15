@@ -42,7 +42,7 @@ const PersonPageInfoContent = () => {
       <div className="personPageTitle">My announcement</div>
       {myAnouncement.map((announcement) => (
         <IonItemSliding key={announcement.id}>
-          <IonItem className="itemCss" routerLink={`${CATEGORIES_PAGE}/${announcement.idCategory}/${announcement.id}`}>
+          <IonItem className="personPageInfoProduct" routerLink={`${CATEGORIES_PAGE}/${announcement.idCategory}/${announcement.id}`}>
             <ProductComponent {...announcement} />
           </IonItem>
           <IonItemOptions side="end" onClick={() => { setIdDeleteAnnouncement(announcement.id); setAlert(true); setAlertMessage(announcement.title); }}>

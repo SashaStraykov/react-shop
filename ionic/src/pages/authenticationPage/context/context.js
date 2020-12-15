@@ -24,8 +24,7 @@ export const Provider = ({ children }) => {
     setUser, showToast, setShowToast, errorMessage, setErrorMessage,
   } = appContextData;
 
-  const authorization = async (e) => {
-    e.preventDefault();
+  const authorization = async () => {
     setLoading(true);
     const personData = {
       login: signInLogin.trim(),
@@ -35,8 +34,8 @@ export const Provider = ({ children }) => {
     await axios.post(process.env.REACT_APP_API_USERS_AUTHORIZATION, personData)
       .then(({ data }) => {
         localStorage.setItem('DataUser', data.token);
-        setUser(data);
         setLoading(false);
+        setUser(data);
       })
       .catch((err) => {
         if (err.response.data.message) {

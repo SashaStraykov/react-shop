@@ -1,10 +1,13 @@
 import {
   IonButton,
-  IonInput, IonItem, IonLabel, IonSelect, IonSelectOption, IonSpinner, IonTextarea,
+  IonInput, IonItem, IonLabel, IonSelect, IonSelectOption, IonTextarea,
+  IonIcon,
 } from '@ionic/react';
+import { cameraOutline } from 'ionicons/icons';
 import React, { useContext } from 'react';
 import { AddProductPageContext } from '../context';
 import './AddProductPage.css';
+import Spinner from '../../../components/spinner';
 
 const AddProductPageContent = () => {
   const { addProductPageContextData } = useContext(AddProductPageContext);
@@ -19,12 +22,12 @@ const AddProductPageContent = () => {
     setPrice,
     description,
     setDescription,
-    takePhoto,
-    photos,
     postData,
+    setPhotos,
+    photos,
   } = addProductPageContextData;
   if (loading) {
-    return <IonSpinner />;
+    return <Spinner />;
   }
   return (
     <>
@@ -54,13 +57,31 @@ const AddProductPageContent = () => {
         <IonLabel position="floating">Description</IonLabel>
         <IonTextarea rows="6" value={description} onIonChange={(e) => setDescription(e.detail.value)} />
       </IonItem>
-      <IonItem>
-        <IonButton onClick={takePhoto}>Camera</IonButton>
-      </IonItem>
-      <div>{photos && photos.map((pic) => <img key={pic.webviewPath} alt="lol" src={pic.webviewPath} />)}</div>
-      <IonItem>
-        <IonButton onClick={postData}>Send</IonButton>
-      </IonItem>
+      <div className="inputWrapper">
+        <input
+          name="file"
+          type="file"
+          id="inputFile"
+          className="inputFile"
+          onChange={(e) => setPhotos(e.target.files)}
+          multiple
+        />
+        <label htmlFor="inputFile" className="inputFileButton">
+          <span className="inputFileIconWrapper">
+            <IonIcon className="inputIcon" icon={cameraOutline} />
+          </span>
+          <span className="inputFileButtonText">Select photos</span>
+        </label>
+      </div>
+      <div className="addSelectedFiles">
+        Selected
+        {' '}
+        {photos.length}
+        {' '}
+        photos
+      </div>
+      <IonButton className="addItemButton" color="secondary" expand="block" fill="outline" onClick={postData}>Send</IonButton>
+
     </>
   );
 };

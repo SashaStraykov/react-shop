@@ -13,17 +13,19 @@
   font-weight: bold;
   padding: 15px;
   padding-top: 0;
+  color: var(--text-color);
 }
 
 .itemPageDescription {
   padding: 15px;
   text-align: justify;
   text-justify: inter-word;
+  color: var(--text-color);
 }
 
 .itemPageBucketButton {
+  margin-top: 25px;
   border: none;
-  border: 1px solid var(--brand-color);
   color: var(--brand-color);
 }
 
@@ -31,11 +33,12 @@
   border: none;
   width: 100%;
   position: relative;
-  margin: auto;
+  margin: 25px auto;
 }
 
 .itemPageLink {
   width: 100%;
   display: flex;
   justify-content: center;
+  text-decoration: none;
 }

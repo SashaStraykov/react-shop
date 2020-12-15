@@ -8,3 +8,7 @@
 .testL {
   --background: transparent !important;
 }
+
+.personPageInfoProduct {
+  --background: var(--darkBlack-color) !important;
+}

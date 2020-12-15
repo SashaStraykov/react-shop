@@ -34,6 +34,7 @@ const HomePageContent = () => {
             <ProductComponent {...rest} id={id} />
           </IonItem>
         ))}
+      {products && products.length === 0 && <div className="productNoMatches">No matches</div>}
       <IonInfiniteScroll
         threshold="50px"
         disabled={disableInfiniteScroll}

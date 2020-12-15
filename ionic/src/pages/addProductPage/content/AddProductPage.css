@@ -9,3 +9,70 @@
   padding: 10px;
   color: var(--text-color);
 }
+
+.inputIcon {
+  font-size: 25px;
+  color: var(--brand-color);
+}
+
+.inputWrapper {
+  width: 100%;
+  position: relative;
+  margin: 15px 0;
+  text-align: center;
+}
+
+.inputFile {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+}
+
+.inputFileIconWrapper {
+  height: 50px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid var(--brand-color);
+  font-size: 0;
+}
+
+.inputFileButtonText {
+  display: flex;
+  justify-content: center;
+  margin: auto auto;
+  color: var(--brand-color);
+  font-weight: 500;
+}
+
+.inputFileButton {
+  width: 100%;
+  max-width: 270px;
+  height: 50px;
+  border: 1px solid var(--brand-color);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.125rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+.addItemButton {
+  width: 170px;
+  height: 40px;
+  font-size: 20px;
+  margin: auto auto;
+}
+
+.addSelectedFiles {
+  color: var(--brand-color);
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+}

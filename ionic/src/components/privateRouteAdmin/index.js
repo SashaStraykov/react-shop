@@ -8,7 +8,7 @@ const PrivateRouteAdmin = ({ children, path }) => {
   const { appContextData } = useContext(AppContext);
   const { user } = appContextData;
 
-  if (!user && !user.role !== 'admin') return <Redirect from={path} to={AUTHENTIFICATION_PAGE} />;
+  if (!user || user.role !== 'admin') return <Redirect from={path} to={AUTHENTIFICATION_PAGE} />;
   return (
     <Route path={path} exact>
       {children}
