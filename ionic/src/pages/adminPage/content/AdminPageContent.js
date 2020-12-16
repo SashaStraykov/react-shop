@@ -5,14 +5,18 @@ import { HOME_PAGE } from '../../../constants';
 import { AdminPageContext } from '../context';
 import CardComponent from '../../../components/cardComponent';
 import './AdminPageContent.css';
+import ErrorPage from '../../../components/error';
 
 const AdminPageContent = () => {
   const { adminPageContextData } = useContext(AdminPageContext);
   const {
     loading, unApprovedItems, onStateButtonCard,
     alert, setAlert, alertMessage, idStateAnnouncement, onChangeState,
-    showToast, errorMessage, setShowToast,
+    showToast, errorMessage, setShowToast, error,
   } = adminPageContextData;
+  if (error) {
+    return <ErrorPage />;
+  }
   return (
     <Wrapper link={HOME_PAGE}>
       <div className="adminTitle">Admin page</div>

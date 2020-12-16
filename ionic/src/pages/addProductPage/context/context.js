@@ -17,6 +17,9 @@ export const Provider = ({ children }) => {
   const { appContextData } = useContext(AppContext);
   const { user } = appContextData;
   const [photos, setPhotos] = useState([]);
+  const [error, setError] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     setLoading(true);
@@ -26,6 +29,12 @@ export const Provider = ({ children }) => {
           setLoading(false);
           setCategory(data);
           setSelectCategory(data[0].title);
+        })
+        .catch((err) => {
+          if (err && !err.response) {
+            setLoading(false);
+            return setError(true);
+          }
         });
     };
     req();
@@ -59,11 +68,18 @@ export const Provider = ({ children }) => {
     axios.post(process.env.REACT_APP_API_ITEMS, formData)
       .then(({ data }) => {
         setLoading(false);
-        console.log(data);
         setDescription('');
         setTitle('');
         setPrice(0);
         setPhotos([]);
+        setErrorMessage(data.message);
+        setShowToast(true);
+      })
+      .catch((err) => {
+        if (err && !err.response) {
+          setLoading(false);
+          return setError(true);
+        }
       });
 
     return () => {
@@ -85,6 +101,10 @@ export const Provider = ({ children }) => {
     photos,
     postData,
     setPhotos,
+    error,
+    errorMessage,
+    setShowToast,
+    showToast,
   };
 
   return (

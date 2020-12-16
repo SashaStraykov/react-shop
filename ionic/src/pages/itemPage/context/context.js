@@ -14,9 +14,9 @@ export const Provider = ({ children, category, itemId }) => {
   const [item, setItem] = useState([]);
   const [loading, setLoading] = useState(true);
   const [commentValue, setCommentValue] = useState('');
-  const [reload, setReload] = useState(1);
   const [showToast, setShowToast] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [error, setError] = useState(false);
   const { appContextData } = useContext(AppContext);
   const {
     added, setAdded, bucketItems, setBucketItems, user, cart, setCart,
@@ -29,6 +29,12 @@ export const Provider = ({ children, category, itemId }) => {
         .then(({ data }) => {
           setItem(data);
           setLoading(false);
+        })
+        .catch((err) => {
+          if (err && !err.response) {
+            setLoading(false);
+            return setError(true);
+          }
         });
     };
     req();
@@ -37,7 +43,7 @@ export const Provider = ({ children, category, itemId }) => {
       setAdded(false);
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [reload]);
+  }, []);
 
   useEffect(() => {
     const req = async () => {
@@ -80,6 +86,13 @@ export const Provider = ({ children, category, itemId }) => {
   };
 
   const postComment = async () => {
+    const fakeItem = item;
+    fakeItem.comments.push({
+      id: new Date().valueOf().toString(),
+      login: user.login,
+      comment: commentValue,
+    });
+    setItem(fakeItem);
     if (commentValue.trim() === '') {
       return setCommentValue('');
     }
@@ -94,12 +107,20 @@ export const Provider = ({ children, category, itemId }) => {
       .then(({ data }) => {
         setErrorMessage(data.message);
         setShowToast(true);
-        setReload(reload + 1);
         setCommentValue('');
       });
   };
 
   const deleteComment = async (productIdId, commentId) => {
+    const fakeItem = item;
+    let indexOfComment;
+    fakeItem.comments.forEach((el, i) => {
+      if (el.id === commentId) {
+        indexOfComment = i;
+      }
+    });
+    fakeItem.comments.splice(indexOfComment, 1);
+    setItem(fakeItem);
     const postData = {
       data: {
         itemId: productIdId,
@@ -113,7 +134,12 @@ export const Provider = ({ children, category, itemId }) => {
       .then(({ data }) => {
         setErrorMessage(data.message);
         setShowToast(true);
-        setReload(reload - 1);
+      })
+      .catch((err) => {
+        if (err && !err.response) {
+          setLoading(false);
+          return setError(true);
+        }
       });
   };
 
@@ -131,6 +157,7 @@ export const Provider = ({ children, category, itemId }) => {
     showToast,
     setShowToast,
     errorMessage,
+    error,
   };
   return (
     <Context.Provider value={{ itemPageContextData }}>

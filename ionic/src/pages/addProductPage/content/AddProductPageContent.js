@@ -2,12 +2,14 @@ import {
   IonButton,
   IonInput, IonItem, IonLabel, IonSelect, IonSelectOption, IonTextarea,
   IonIcon,
+  IonToast,
 } from '@ionic/react';
 import { cameraOutline } from 'ionicons/icons';
 import React, { useContext } from 'react';
 import { AddProductPageContext } from '../context';
 import './AddProductPage.css';
 import Spinner from '../../../components/spinner';
+import ErrorPage from '../../../components/error';
 
 const AddProductPageContent = () => {
   const { addProductPageContextData } = useContext(AddProductPageContext);
@@ -25,9 +27,16 @@ const AddProductPageContent = () => {
     postData,
     setPhotos,
     photos,
+    error,
+    errorMessage,
+    setShowToast,
+    showToast,
   } = addProductPageContextData;
   if (loading) {
     return <Spinner />;
+  }
+  if (error) {
+    return <ErrorPage />;
   }
   return (
     <>
@@ -81,7 +90,14 @@ const AddProductPageContent = () => {
         photos
       </div>
       <IonButton className="addItemButton" color="secondary" expand="block" fill="outline" onClick={postData}>Send</IonButton>
-
+      <IonToast
+        isOpen={showToast}
+        onDidDismiss={() => setShowToast(false)}
+        message={errorMessage}
+        duration={2000}
+        color="secondary"
+        position="top"
+      />
     </>
   );
 };

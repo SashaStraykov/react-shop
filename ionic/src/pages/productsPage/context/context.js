@@ -14,6 +14,7 @@ export const Provider = ({ children, category }) => {
   // eslint-disable-next-line no-unused-vars
   const [disableInfiniteScroll, setDisableInfiniteScroll] = useState(false);
   const [postsPerPage] = useState(5);
+  const [error, setError] = useState(false);
 
   const { appContextData } = useContext(AppContext);
   const {
@@ -27,6 +28,12 @@ export const Provider = ({ children, category }) => {
         .then(({ data }) => {
           setProducts([...products, ...data.finalItems]);
           setLoading(false);
+        })
+        .catch((err) => {
+          if (err && !err.response) {
+            setLoading(false);
+            return setError(true);
+          }
         });
     };
     req();
@@ -50,6 +57,7 @@ export const Provider = ({ children, category }) => {
     products,
     nextItems,
     disableInfiniteScroll,
+    error,
   };
   return (
     <Context.Provider value={{ productsPageContextData }}>

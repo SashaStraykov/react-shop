@@ -1,0 +1,12 @@
+.errorTitle {
+  color: var(--text-color);
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.errorImg {
+  object-fit: contain;
+  width: 100%;
+}

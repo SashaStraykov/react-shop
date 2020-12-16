@@ -10,16 +10,21 @@ import { HOME_PAGE, PERSON_PAGE } from '../../../constants';
 import './AuthenticationPageContent.css';
 import { AppContext } from '../../../app/context';
 import Wrapper from '../../../components/wrapper';
+import ErrorPage from '../../../components/error';
 
 const AuthenticationPageContent = () => {
   const { authenticationPageContextData } = useContext(AuthenticationPageContext);
   const {
     authentification, setAuthentification, showToast, setShowToast, errorMessage,
+    error,
   } = authenticationPageContextData;
   const { appContextData } = useContext(AppContext);
   const { user } = appContextData;
   if (user) {
     return <Redirect to={PERSON_PAGE} />;
+  }
+  if (error) {
+    return <ErrorPage />;
   }
 
   return (

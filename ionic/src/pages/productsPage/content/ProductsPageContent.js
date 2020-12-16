@@ -11,12 +11,17 @@ import SearchPannel from '../../../components/searchPannel';
 import Wrapper from '../../../components/wrapper';
 import Spinner from '../../../components/spinner';
 import './productsPageContent.css';
+import ErrorPage from '../../../components/error';
 
 const HomePageContent = () => {
   const { productsPageContextData } = useContext(ProductsPageContext);
   const {
     category, loading, products, nextItems, disableInfiniteScroll,
+    error,
   } = productsPageContextData;
+  if (error) {
+    return <ErrorPage />;
+  }
   return (
     <Wrapper link={CATEGORIES_PAGE}>
       <SearchPannel />
@@ -41,7 +46,7 @@ const HomePageContent = () => {
         onIonInfinite={(e) => nextItems(e)}
       >
         <IonInfiniteScrollContent
-          loadingText="Loading more good doggos..."
+          loadingText="Loading more products..."
         />
       </IonInfiniteScroll>
     </Wrapper>

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './backGround.css';
+import './BackGround.css';
 
 const BackGround = ({ children }) => (
   <div className="backGround">

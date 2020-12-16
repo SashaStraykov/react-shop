@@ -73,6 +73,10 @@ export const Provider = ({ children }) => {
           setShowToast(true);
         })
         .catch((err) => {
+          if (err && !err.response) {
+            setLoading(false);
+            return setError(true);
+          }
           if (err.response.data.message) {
             setErrorMessage(err.response.data.message);
             setShowToast(true);

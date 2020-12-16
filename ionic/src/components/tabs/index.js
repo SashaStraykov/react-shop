@@ -9,7 +9,7 @@ import {
   HOME_PAGE, CHECKOUT_PAGE, PERSON_PAGE, ADMIN_PAGE,
 } from '../../constants';
 import LayOuts from '../../layouts';
-import './tabs.css';
+import './Tabs.css';
 import { AppContext } from '../../app/context';
 
 const Tabs = () => {

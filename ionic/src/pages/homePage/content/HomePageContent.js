@@ -4,7 +4,7 @@ import {
 } from '@ionic/react';
 import { logoUsd, cube } from 'ionicons/icons';
 import { CATEGORIES_PAGE, PERSON_PAGE } from '../../../constants';
-import './homePage.css';
+import './HomePage.css';
 import Wrapper from '../../../components/wrapper';
 
 const HomePageContent = () => (

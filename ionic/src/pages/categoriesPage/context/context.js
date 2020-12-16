@@ -7,6 +7,7 @@ export const Context = createContext();
 export const Provider = ({ children }) => {
   const [categories, setCategories] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -16,7 +17,11 @@ export const Provider = ({ children }) => {
           setCategories(data);
           setLoading(false);
         })
-        .catch(() => {
+        .catch((err) => {
+          if (err && !err.response) {
+            setLoading(false);
+            return setError(true);
+          }
         });
     };
     req();
@@ -28,6 +33,7 @@ export const Provider = ({ children }) => {
   const categoriesPageContextData = {
     loading,
     categories,
+    error,
   };
   return (
     <Context.Provider value={{ categoriesPageContextData }}>

@@ -18,7 +18,7 @@ import {
   HOME_PAGE, PERSON_PAGE, AUTHENTIFICATION_PAGE, CHECKOUT_PAGE,
 } from '../../constants';
 import { AppContext } from '../../app/context';
-import './menu.css';
+import './Menu.css';
 
 const Menu = () => {
   const { appContextData } = useContext(AppContext);

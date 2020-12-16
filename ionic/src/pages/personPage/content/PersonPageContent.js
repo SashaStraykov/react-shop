@@ -54,7 +54,7 @@ const PersonPageContent = () => {
         message={errorMessage}
         duration={2000}
         color="secondary"
-        position="bottom"
+        position="top"
       />
     </Wrapper>
   );

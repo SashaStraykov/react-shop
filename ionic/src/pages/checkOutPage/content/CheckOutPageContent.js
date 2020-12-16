@@ -18,6 +18,7 @@ import { CheckOutPageContext } from '../context';
 import ProductComponent from '../../../components/productComponent';
 import Wrapper from '../../../components/wrapper';
 import Spinner from '../../../components/spinner';
+import ErrorPage from '../../../components/error';
 
 const CheckOutPageContent = () => {
   const { checkOutPageContextData } = useContext(CheckOutPageContext);
@@ -26,7 +27,11 @@ const CheckOutPageContent = () => {
     idDeleteAnnouncement, setIdDeleteAnnouncement,
     alertMessage, setAlertMessage, alert, setAlert,
     items, showToast, setShowToast, errorMessage,
+    error,
   } = checkOutPageContextData;
+  if (error) {
+    return <ErrorPage />;
+  }
   return (
     <Wrapper link={HOME_PAGE}>
       <div className="checkOutTitle">Checkout Products</div>
@@ -71,7 +76,7 @@ const CheckOutPageContent = () => {
         message={errorMessage}
         duration={2000}
         color="secondary"
-        position="bottom"
+        position="top"
       />
     </Wrapper>
   );

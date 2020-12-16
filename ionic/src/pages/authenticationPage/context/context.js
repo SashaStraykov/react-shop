@@ -11,6 +11,7 @@ export const Provider = ({ children }) => {
   const [signInLogin, setSignInLogin] = useState('');
   const [signInPassword, setSignInPassword] = useState('');
   const [signInCheckBox, setSignInCheckBox] = useState(true);
+  const [error, setError] = useState(false);
 
   const [signUpEmail, setSignUpEmail] = useState('');
   const [signUpLogin, setSignUpLogin] = useState('');
@@ -38,6 +39,10 @@ export const Provider = ({ children }) => {
         setUser(data);
       })
       .catch((err) => {
+        if (err && !err.response) {
+          setLoading(false);
+          return setError(true);
+        }
         if (err.response.data.message) {
           setErrorMessage(err.response.data.message);
           setShowToast(true);
@@ -49,8 +54,7 @@ export const Provider = ({ children }) => {
     };
   };
 
-  const registration = async (e) => {
-    e.preventDefault();
+  const registration = async () => {
     setLoading(true);
     if (signUpPassword !== signUpPasswordCheck) {
       setLoading(false);
@@ -74,6 +78,10 @@ export const Provider = ({ children }) => {
         setLoading(false);
       })
       .catch((err) => {
+        if (err && !err.response) {
+          setLoading(false);
+          return setError(true);
+        }
         if (err.response.data.message) {
           setErrorMessage(err.response.data.message);
           setShowToast(true);
@@ -112,6 +120,7 @@ export const Provider = ({ children }) => {
     errorMessage,
     loading,
     registration,
+    error,
   };
   return (
     <Context.Provider value={{ authenticationPageContextData }}>

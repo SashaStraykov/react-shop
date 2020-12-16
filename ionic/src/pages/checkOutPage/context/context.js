@@ -50,9 +50,11 @@ export const Provider = ({ children }) => {
               setItems(data);
               setLoading(false);
             })
-            .catch(() => {
-              setLoading(false);
-              setError(true);
+            .catch((err) => {
+              if (err && !err.response) {
+                setLoading(false);
+                return setError(true);
+              }
             });
         };
         req();

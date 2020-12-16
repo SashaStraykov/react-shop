@@ -1,5 +1,5 @@
 import React from 'react';
-import './productComponent.css';
+import './ProductComponent.css';
 import PropTypes from 'prop-types';
 import { logoUsd } from 'ionicons/icons';
 import { IonIcon } from '@ionic/react';

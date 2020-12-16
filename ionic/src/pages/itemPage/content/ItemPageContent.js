@@ -6,11 +6,12 @@ import { logoUsd } from 'ionicons/icons';
 import { Link } from 'react-router-dom';
 import { CATEGORIES_PAGE, AUTHENTIFICATION_PAGE } from '../../../constants';
 import { ItemPageContext } from '../context';
-import './itemPageContent.css';
+import './ItemPageContent.css';
 import Slider from '../../../components/slider';
 import Wrapper from '../../../components/wrapper';
 import Spinner from '../../../components/spinner';
 import CommentBox from '../../../components/commentBox';
+import ErrorPage from '../../../components/error';
 
 const ItemPageContent = () => {
   const { itemPageContextData } = useContext(ItemPageContext);
@@ -18,10 +19,14 @@ const ItemPageContent = () => {
     category, loading, item, addItemToBucket, added,
     user, commentValue, setCommentValue, postComment,
     deleteComment, showToast, errorMessage, setShowToast,
+    error,
   } = itemPageContextData;
   const {
     title, img, description, id, comments, price,
   } = item;
+  if (error) {
+    return <ErrorPage />;
+  }
   return (
     <Wrapper link={`${CATEGORIES_PAGE}/${category}`}>
       {loading ? <Spinner /> : (
